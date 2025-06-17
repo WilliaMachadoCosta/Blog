@@ -1,6 +1,8 @@
 // src/app/layout.tsx
-import { Header } from '@/components/header/Header'
+
+import Header from '@/components/header/Header'
 import './globals.css'
+import { SpinLoader } from '@/components/SpinLoad/SpinLoader'
 
 
 export const metadata = {
@@ -17,6 +19,7 @@ export default function RootLayout({
     <html lang="pt">
       <body>
         <Header />
+        <SpinLoader />
         {children}
       </body>
     </html>

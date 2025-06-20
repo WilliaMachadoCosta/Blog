@@ -1,3 +1,4 @@
+
 import { PostModel } from "@/models/posts/post-model";
 import { resolve } from "path";
 import { readFile } from "fs/promises";
@@ -16,6 +17,12 @@ export class JsonPostRepository implements PostRepository {
 
   async findAll(): Promise<PostModel[]> {
     return this.readFromDisk();
+  }
+
+  async findId(postId: string): Promise<PostModel | undefined> {
+    const posts = await this.findAll()
+    const post = posts.find(p => p.id == postId);
+    return post;
   }
 }
 

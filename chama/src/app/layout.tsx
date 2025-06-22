@@ -2,7 +2,7 @@
 
 import Header from '@/components/header/Header'
 import './globals.css'
-import { SpinLoader } from '@/components/SpinLoad/SpinLoader'
+
 
 
 export const metadata = {

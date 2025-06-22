@@ -1,6 +1,6 @@
 
 'use client'
-import { Search, MessageCircle, MoreVertical, FireExtinguisher } from 'lucide-react';
+import { Search, MessageCircle, MoreVertical } from 'lucide-react';
 
 export default function Header() {
     return (

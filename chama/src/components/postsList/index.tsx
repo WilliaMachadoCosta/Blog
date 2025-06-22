@@ -6,9 +6,7 @@ function delay(ms: number) {
 
 export async function PostList() {
   await delay(5000); // Espera 5 segundos
-
   const posts = await postRepository.findAll();
-
   return (
     <div>
       {posts.map(post => (

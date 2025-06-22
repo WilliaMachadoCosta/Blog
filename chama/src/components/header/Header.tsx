@@ -1,26 +1,13 @@
 
 'use client'
-import { Search, MessageCircle, MoreVertical } from 'lucide-react';
+import { Menu } from 'lucide-react';
 
 export default function Header() {
     return (
-        <header className="flex items-center justify-between bg-[#008069] px-4 py-2 shadow-md">
-            <div className="flex items-center gap-2 text-white text-xl font-semibold">
-                Chama <span className="text-orange-500">🔥</span> No ZAP
-            </div>
 
-            {/* Ações */}
-            <div className="flex items-center gap-4 text-white">
-                <button className="hover:text-gray-300">
-                    <Search size={20} />
-                </button>
-                <button className="hover:text-gray-300">
-                    <MessageCircle size={20} />
-                </button>
-                <button className="hover:text-gray-300">
-                    <MoreVertical size={20} />
-                </button>
-            </div>
+        <header className="bg-green-900 text-white p-4 flex items-center justify-between">
+            <h1 className="text-xl font-bold">Atendimento</h1>
+            <Menu className="w-6 h-6" />
         </header>
     );
 }

@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="pt">
       <body>
         <Header />
-        <SpinLoader />
+
         {children}
       </body>
     </html>

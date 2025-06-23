@@ -1,13 +1,38 @@
 
 'use client'
-import { Menu } from 'lucide-react';
+import { Search, MoreVertical, Flame } from "lucide-react";
+import Link from "next/link";
 
 export default function Header() {
     return (
+        <header className="w-full bg-green-900 text-white flex items-center justify-between px-4 py-3 shadow-md">
+            {/* Logo ou Nome */}
+            <div className="text-xl font-semibold">
+                {/* Pesquisa */}
+                <button aria-label="Pesquisar">
+                    <Flame className="w-6 h-6" />
+                </button>
+                No Zap
+            </div>
 
-        <header className="bg-green-900 text-white p-4 flex items-center justify-between">
-            <h1 className="text-xl font-bold">Atendimento</h1>
-            <Menu className="w-6 h-6" />
+            {/* Ícones */}
+
+            <div className="flex items-center gap-5">
+                {/* Link para Blog */}
+                <Link href="#" aria-label="Blog">
+                    <p className="font-semibold">Blog</p>
+                </Link>
+
+                {/* Pesquisa */}
+                <button aria-label="Pesquisar">
+                    <Search className="w-6 h-6" />
+                </button>
+
+                {/* Menu (três pontinhos) */}
+                <button aria-label="Menu">
+                    <MoreVertical className="w-6 h-6" />
+                </button>
+            </div>
         </header>
     );
 }

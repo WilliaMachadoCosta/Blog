@@ -3,6 +3,7 @@
 import Header from '@/components/header/Header'
 import './globals.css'
 import { Footer } from '@/components/footer/footer'
+import AdBanner from '@/components/banner/adBanner'
 
 
 
@@ -18,9 +19,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt">
-      <body>
+      <body >
         <Header />
-
+        <AdBanner />
         {children}
         <Footer />
       </body>

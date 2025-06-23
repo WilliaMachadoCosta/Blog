@@ -9,7 +9,7 @@ const companies = [
     { name: "Avianca", color: "bg-red-500", logo: "✈️" },
     { name: "Viação Cometa", color: "bg-blue-700", logo: "🚍" },
 ];
-export default function Body() {
+export default function Container() {
     const [selected, setSelected] = useState("GOL");
     return (
         <div >

@@ -118,12 +118,12 @@ export default function Container() {
         setPage((old) => (old - 1 + totalPages) % totalPages);
     }
 
-    function nextPost() {
-        setPostIndex((old) => (old + 1) % totalPostPages);
-    }
-    function prevPost() {
-        setPostIndex((old) => (old - 1 + totalPostPages) % totalPostPages);
-    }
+    // function nextPost() {
+    //     setPostIndex((old) => (old + 1) % totalPostPages);
+    // }
+    // function prevPost() {
+    //     setPostIndex((old) => (old - 1 + totalPostPages) % totalPostPages);
+    // }
 
     // Dados de contato para o post da Azul (mocados para o exemplo)
     const contactInfo = {

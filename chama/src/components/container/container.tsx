@@ -22,7 +22,7 @@ const companies = [
 ];
 
 const posts = [
-    { id: 1, title: "Post 1", content: "Conteúdo do post 1", image: "/logos/azul.jpeg" },
+    { id: 1, title: "Azul linhas ", content: "Conteúdo do post 1", image: "/logos/azul.jpeg" },
     { id: 2, title: "Post 2", content: "Conteúdo do post 2", image: "/logos/gol.jpg" },
     { id: 3, title: "Post 3", content: "Conteúdo do post 3", image: "/logos/latam.png" },
     // { id: 4, title: "Post 4", content: "Conteúdo do post 4", image: "/posts/post4.jpg" },
@@ -226,7 +226,6 @@ export default function Container() {
                 </>
             )}
 
-
             {/* POST-BLOG */}
             {selectedCompany && (
                 <div className="bg-white rounded-lg p-4 shadow">
@@ -318,7 +317,7 @@ export default function Container() {
                     <div className="mt-8 p-4 bg-gray-100 border border-dashed border-gray-300 text-center text-gray-600 rounded-lg">
                         <p className="font-semibold mb-2">Espaço para Google Ads</p>
                         <p className="text-sm">Insira o código do seu anúncio do Google AdSense aqui.</p>
-                        {/* */}
+
                         {/* <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
                             crossOrigin="anonymous"></script>
                         <ins className="adsbygoogle"

@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import CompanyLogo from "../company/companyLogo";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const companies = [
-    { name: "Azul", descricao: "Fale com a Azul", logo: "/logos/azul.jpeg", comentarios: ["Excelente atendimento!", "Muito boa!"] },
-    { name: "GOL", descricao: "Fale com a Gol", logo: "/logos/gol.jpg", comentarios: ["Preço acessível."] },
-    { name: "Avianca", descricao: "Fale com a Avianca", logo: "/logos/avianca.png", comentarios: [] },
-    { name: "Viação Cometa", descricao: "Fale com a Cometa", logo: "/logos/cometa.png", comentarios: ["Viagem confortável."] },
-    { name: "Latam", descricao: "Fale com a Latam", logo: "/logos/latam.png", comentarios: ["Ótima experiência!"] },
+    { name: "Azul", descricao: "Fale com a Azul", logo: "/logos/azul.jpeg", comentarios: ["Excelente atendimento!", "Muito boa!"], title: "WhatsApp Azul, Telefone, SAC" },
+    { name: "GOL", descricao: "Fale com a Gol", logo: "/logos/gol.jpg", comentarios: ["Preço acessível."], title: "WhatsApp Gol, Telefone, SAC" },
+    { name: "Avianca", descricao: "Fale com a Avianca", logo: "/logos/avianca.png", comentarios: [], title: "WhatsApp Avianca, Telefone, SAC" },
+    { name: "Viação Cometa", descricao: "Fale com a Cometa", logo: "/logos/cometa.png", comentarios: ["Viagem confortável."], title: "WhatsApp Cometa, Telefone, SAC" },
+    { name: "Latam", descricao: "Fale com a Latam", logo: "/logos/latam.png", comentarios: ["Ótima experiência!"], title: "WhatsApp Latam, Telefone, SAC" },
     // { name: "São Paulo Transportes", descricao: "Fale com a SPT", logo: "/logos/spt.png", comentarios: ["Serviço eficiente"] },
     // // pode adicionar mais
     // { name: "Azul", descricao: "Fale com a Azul", logo: "/logos/azul.png", comentarios: ["Excelente atendimento!", "Muito boa!"] },
@@ -77,6 +78,7 @@ export default function Container() {
                                 />
                                 <div>
                                     <p className="font-semibold text-black">{company.name}</p>
+                                    <p className="font-normal text-neutral-800">{company.title}</p>
                                     <p className="text-sm text-gray-600">
                                         {company.comentarios.length > 0
                                             ? company.comentarios[company.comentarios.length - 1]
@@ -96,20 +98,20 @@ export default function Container() {
                     <div className="flex justify-center gap-3 mb-10">
                         <button
                             onClick={prevPage}
-                            className="px-3 py-1 rounded bg-green-900 text-white hover:bg-green-900"
-                            disabled={totalPages <= 1}
+                            className="flex items-center gap-1 px-4 py-2 rounded-full border border-green-900 text-green-900 hover:bg-green-900 hover:text-white transition"
                         >
-                            ← Anterior
+                            <ChevronLeft size={20} />
                         </button>
+
                         <span className="flex items-center text-gray-700">
                             Página {page + 1} de {totalPages}
                         </span>
                         <button
                             onClick={nextPage}
-                            className="px-3 py-1 rounded bg-green-900 text-white hover:bg-green-900"
+                            className="flex items-center gap-1 px-4 py-2 rounded-full border border-green-900 text-green-900 hover:bg-green-900 hover:text-white transition"
                             disabled={totalPages <= 1}
                         >
-                            Próximo →
+                            <ChevronRight size={20} />
                         </button>
                     </div>
 

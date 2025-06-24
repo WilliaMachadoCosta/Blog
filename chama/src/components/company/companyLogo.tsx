@@ -26,7 +26,7 @@ export default function CompanyLogo({ src, alt = '', fallbackText }: CompanyLogo
             alt={alt}
             width={48}
             height={48}
-            className="rounded-full object-cover"
+            className="w-10 h-10 rounded-full object-cover"
             onError={() => setImageError(true)}
         />
     );

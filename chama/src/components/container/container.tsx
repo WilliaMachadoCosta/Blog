@@ -59,7 +59,7 @@ export default function Container() {
     }
 
     return (
-        <div className="min-h-screen bg-[#ece5dd] p-4">
+        <div className="min-h-screen bg-[#f5f3ef] p-4">
             {!selected && (
                 <>
                     {/* Lista paginada de empresas */}
@@ -68,7 +68,7 @@ export default function Container() {
                             <li
                                 key={company.name}
                                 onClick={() => setSelected(company.name)}
-                                className="flex items-center gap-3 bg-white p-3 rounded shadow cursor-pointer hover:bg-gray-100"
+                                className="flex items-center gap-3 bg-[#f5f3ef] p-3 rounded shadow cursor-pointer hover:bg-gray-100"
                             >
                                 <CompanyLogo
                                     src={company.logo}

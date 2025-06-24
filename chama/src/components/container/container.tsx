@@ -10,7 +10,7 @@ const companies = [
     { name: "Avianca", descricao: "Fale com a Avianca", logo: "/logos/avianca.png", comentarios: [], title: "WhatsApp Avianca, Telefone, SAC" },
     { name: "Viação Cometa", descricao: "Fale com a Cometa", logo: "/logos/cometa.png", comentarios: ["Viagem confortável."], title: "WhatsApp Cometa, Telefone, SAC" },
     { name: "Latam", descricao: "Fale com a Latam", logo: "/logos/latam.png", comentarios: ["Ótima experiência!"], title: "WhatsApp Latam, Telefone, SAC" },
-    // { name: "São Paulo Transportes", descricao: "Fale com a SPT", logo: "/logos/spt.png", comentarios: ["Serviço eficiente"] },
+    { name: "São Paulo Transportes", descricao: "Fale com a SPT", logo: "/logos/spt.png", comentarios: ["Serviço eficiente"] },
     // // pode adicionar mais
     // { name: "Azul", descricao: "Fale com a Azul", logo: "/logos/azul.png", comentarios: ["Excelente atendimento!", "Muito boa!"] },
     // { name: "GOL", descricao: "Fale com a Gol", logo: "/logos/gol.png", comentarios: ["Preço acessível."] },

@@ -2,6 +2,7 @@
 'use client'
 import { Search, MoreVertical, Flame } from "lucide-react";
 import Link from "next/link";
+import CompanyLogo from "../company/companyLogo";
 
 export default function Header() {
     return (
@@ -10,9 +11,10 @@ export default function Header() {
             <div className="text-xl font-semibold">
                 {/* Pesquisa */}
                 <button aria-label="Pesquisar">
-                    <Flame className="w-6 h-6" />
+                    <CompanyLogo src={"/logos/chama.png"}
+                        alt={`Logo Chama No Zap`}
+                        fallbackText={"Chama no Zap"} />
                 </button>
-                No Zap
             </div>
 
             {/* Ícones */}

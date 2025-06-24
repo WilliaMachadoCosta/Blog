@@ -84,7 +84,7 @@ export default function Container() {
                                     </p>
                                 </div>
                                 {company.comentarios.length > 0 && (
-                                    <span className="ml-auto bg-green-500 text-white text-xs px-2 h-5 min-w-[20px] rounded-full flex items-center justify-center">
+                                    <span className="ml-auto bg-green-900 text-white text-xs px-2 h-5 min-w-[20px] rounded-full flex items-center justify-center">
                                         {company.comentarios.length}
                                     </span>
                                 )}
@@ -96,7 +96,7 @@ export default function Container() {
                     <div className="flex justify-center gap-3 mb-10">
                         <button
                             onClick={prevPage}
-                            className="px-3 py-1 rounded bg-green-600 text-white hover:bg-green-700"
+                            className="px-3 py-1 rounded bg-green-900 text-white hover:bg-green-900"
                             disabled={totalPages <= 1}
                         >
                             ← Anterior
@@ -106,7 +106,7 @@ export default function Container() {
                         </span>
                         <button
                             onClick={nextPage}
-                            className="px-3 py-1 rounded bg-green-600 text-white hover:bg-green-700"
+                            className="px-3 py-1 rounded bg-green-900 text-white hover:bg-green-900"
                             disabled={totalPages <= 1}
                         >
                             Próximo →
@@ -115,12 +115,12 @@ export default function Container() {
 
                     {/* Carrossel de posts */}
                     <div>
-                        <h3 className="text-xl font-semibold mb-4 text-green-800">Posts em Destaque</h3>
+                        <h3 className="text-xl font-semibold mb-4 text-green-900">Posts em Destaque</h3>
 
                         <div className="relative">
                             <button
                                 onClick={prevPost}
-                                className="absolute left-0 top-1/2 -translate-y-1/2 bg-green-600 text-white p-2 rounded-full hover:bg-green-700 z-10"
+                                className="absolute left-0 top-1/2 -translate-y-1/2 bg-green-900 text-white p-2 rounded-full hover:bg-green-900 z-10"
                             >
                                 ←
                             </button>
@@ -143,7 +143,7 @@ export default function Container() {
 
                             <button
                                 onClick={nextPost}
-                                className="absolute right-0 top-1/2 -translate-y-1/2 bg-green-600 text-white p-2 rounded-full hover:bg-green-700 z-10"
+                                className="absolute right-0 top-1/2 -translate-y-1/2 bg-green-900 text-white p-2 rounded-full hover:bg-green-700 z-10"
                             >
                                 →
                             </button>

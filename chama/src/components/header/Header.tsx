@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Header() {
     return (
-        <header className="w-full bg-green-900 text-white flex items-center justify-between px-4 py-3 shadow-md">
+        <header className="w-full bg-[#f5f3ef] text-black flex items-center justify-between px-4 py-3 shadow-md">
             {/* Logo ou Nome */}
             <div className="text-xl font-semibold">
                 {/* Pesquisa */}

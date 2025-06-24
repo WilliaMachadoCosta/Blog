@@ -1,7 +1,7 @@
 
 
 import Container from "@/components/container/container";
-import { PostList } from "@/components/postsList";
+
 import { SpinLoader } from "@/components/SpinLoad/SpinLoader";
 import { Suspense } from "react";
 
@@ -10,7 +10,7 @@ export default function Home() {
     <div >
       <Suspense fallback={<SpinLoader />}>
         <Container />
-        <PostList />
+        {/* <PostList /> */}
       </Suspense>
     </div>
   );

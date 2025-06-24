@@ -19,12 +19,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt">
-      <body >
+      <body className="flex flex-col min-h-screen">
         <Header />
         <AdBanner />
-        {children}
+
+        <main className="flex-1 overflow-y-auto">
+          {children}
+        </main>
+
         <Footer />
       </body>
     </html>
-  )
+  );
 }

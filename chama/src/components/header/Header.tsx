@@ -1,6 +1,6 @@
 
 'use client'
-import { Search, MoreVertical, Flame } from "lucide-react";
+import { Search, MoreVertical } from "lucide-react";
 import Link from "next/link";
 import CompanyLogo from "../company/companyLogo";
 

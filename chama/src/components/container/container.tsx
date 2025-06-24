@@ -5,9 +5,9 @@ import CompanyLogo from "../company/companyLogo";
 
 const companies = [
     { name: "Azul", descricao: "Fale com a Azul", logo: "/logos/azul.jpeg", comentarios: ["Excelente atendimento!", "Muito boa!"] },
-    // { name: "GOL", descricao: "Fale com a Gol", logo: "/logos/gol.png", comentarios: ["Preço acessível."] },
-    // { name: "Avianca", descricao: "Fale com a Avianca", logo: "/logos/avianca.png", comentarios: [] },
-    // { name: "Viação Cometa", descricao: "Fale com a Cometa", logo: "/logos/cometa.png", comentarios: ["Viagem confortável."] },
+    { name: "GOL", descricao: "Fale com a Gol", logo: "/logos/gol.jpg", comentarios: ["Preço acessível."] },
+    { name: "Avianca", descricao: "Fale com a Avianca", logo: "/logos/avianca.png", comentarios: [] },
+    { name: "Viação Cometa", descricao: "Fale com a Cometa", logo: "/logos/cometa.png", comentarios: ["Viagem confortável."] },
     { name: "Latam", descricao: "Fale com a Latam", logo: "/logos/latam.png", comentarios: ["Ótima experiência!"] },
     // { name: "São Paulo Transportes", descricao: "Fale com a SPT", logo: "/logos/spt.png", comentarios: ["Serviço eficiente"] },
     // // pode adicionar mais

@@ -4,11 +4,13 @@ import ShareButtons from "@/components/buttons/shareButtons";
 import type { Metadata } from "next";
 import { PostContent } from "@/components/container/post-content";
 
-type Params = {
-  params: { slug: string };
-};
+interface PageProps {
+  params: {
+    slug: string;
+  };
+}
 
-export async function generateMetadata({ params }: Params): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const post = await getPostBySlug(params.slug);
   if (!post) {
     return {
@@ -23,7 +25,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   };
 }
 
-export default async function PostPage({ params }: Params) {
+export default async function PostPage({ params }: PageProps) {
   const post = await getPostBySlug(params.slug);
 
   if (!post) return notFound();

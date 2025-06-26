@@ -14,7 +14,7 @@ export default async function Home() {
     const posts: IPost[] = await getAllPosts();
     return (
         <Suspense fallback={<SpinLoader />}>
-            <Container posts={posts} />
+            <Container />
             <Carrocel posts={posts} />
         </Suspense>
 

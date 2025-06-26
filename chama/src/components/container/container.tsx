@@ -3,11 +3,9 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Undo2, Phone, Globe, MessageSquare } from "lucide-react";
 import CompanyLogo from "../company/companyLogo";
-import { IPost } from "@/models/interfaces/post";
 
-type Props = {
-    posts: IPost[];
-};
+
+
 
 const companies = [
     { name: "Azul", descricao: "Fale com a Azul", logo: "/logos/azul.jpeg", comentarios: ["Excelente atendimento!", "Muito boa!"], title: "WhatsApp Azul, Telefone, SAC" },
@@ -24,7 +22,7 @@ const contactInfo = {
     site: "https://www.voeazul.com.br"
 };
 
-export default function Container({ posts }: Props) {
+export default function Container() {
     const [selected, setSelected] = useState<string | null>(null);
     const selectedCompany = companies.find(c => c.name === selected);
 

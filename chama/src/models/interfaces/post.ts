@@ -6,6 +6,20 @@ export interface IPost {
   slug: string;
   date: string;
   featuredImage: string;
-  author?: string;
-  categories?: number[];
+  author: string;
+  categories: number[];
+}
+
+export interface WordPressPost {
+  id: number;
+  title: { rendered: string };
+  content: { rendered: string };
+  excerpt: { rendered: string };
+  slug: string;
+  date: string;
+  categories: number[];
+  _embedded?: {
+    author?: { name: string }[];
+    "wp:featuredmedia"?: { source_url: string }[];
+  };
 }

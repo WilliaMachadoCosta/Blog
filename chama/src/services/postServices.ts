@@ -1,6 +1,6 @@
 // src/services/postService.ts
 
-import { IPost } from "@/models/interfaces/post";
+import { IPost, WordPressPost } from "@/models/interfaces/post";
 
 const API_BASE = "https://chamanozap.net/wp-json/wp/v2";
 
@@ -71,8 +71,7 @@ export async function getCommentsByPost(postId: number) {
   }
 }
 
-function mapPost(post: any): IPost {
-  console.log(post.content)
+function mapPost(post: WordPressPost): IPost {
   return {
     id: post.id,
     title: post.title?.rendered ?? "",
@@ -85,3 +84,5 @@ function mapPost(post: any): IPost {
     categories: Array.isArray(post.categories) ? post.categories : [],
   };
 }
+
+

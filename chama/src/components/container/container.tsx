@@ -29,7 +29,7 @@ export default function Container() {
     const itemsPerPage = 5;
     const [page, setPage] = useState(0);
     const totalPages = Math.ceil(companies.length / itemsPerPage);
-    const pagedCompanies = companies.slice(page * itemsPerPage, (page + 1) * itemsPerPage); 2;
+    const pagedCompanies = companies.slice(page * itemsPerPage, (page + 1) * itemsPerPage);
 
     const nextPage = () => setPage((prev) => (prev + 1) % totalPages);
     const prevPage = () => setPage((prev) => (prev - 1 + totalPages) % totalPages);

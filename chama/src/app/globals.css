@@ -24,3 +24,47 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ===== Conteúdo de Postagens (WordPress HTML) ===== */
+article h2 {
+  @apply text-3xl font-bold mt-6 mb-4 text-neutral-950;
+}
+
+article h3 {
+  @apply text-2xl font-semibold mt-5 mb-3 text-green-800;
+}
+
+article h4 {
+  @apply text-xl font-semibold mt-4 mb-2 text-green-700;
+}
+
+article p {
+  @apply mb-4 leading-relaxed text-gray-800 text-[17px];
+}
+
+article ul,
+article ol {
+  @apply list-disc list-inside mb-4 pl-4 text-gray-800;
+}
+
+article li {
+  @apply mb-2;
+}
+
+article blockquote {
+  @apply border-l-4 border-green-500 bg-green-50 text-green-900 italic pl-4 py-2 px-2 rounded-md mb-4;
+}
+
+article img {
+  @apply max-w-full h-auto rounded-md mb-6 mx-auto;
+}
+
+/* Links nos posts */
+article a {
+  @apply text-blue-700 hover:underline font-medium;
+}
+
+/* Botões simulados */
+.wp-block-button__link {
+  @apply inline-block bg-green-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-green-700 transition;
+}

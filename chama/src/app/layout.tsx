@@ -3,7 +3,8 @@
 import Header from '@/components/header/Header'
 import './globals.css'
 import { Footer } from '@/components/footer/footer'
-import AdBanner from '@/components/banner/adBanner'
+import { Nunito } from "next/font/google";
+import AdBanner from '@/components/banner/adBanner';
 
 
 
@@ -12,21 +13,27 @@ export const metadata = {
   description: 'Descrição do site',
 }
 
+const nunito = Nunito({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-nunito",
+});
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt">
-      <body className="flex flex-col h-screen overflow-hidden">
+    <html lang="pt" className={nunito.variable}>
+      <body className="flex flex-col h-screen overflow-hidden font-nunito">
         <div className="fixed top-0 left-0 w-full z-50">
           <Header />
           <AdBanner />
         </div>
 
         {/* Conteúdo central rolável */}
-        <main className="flex-1 overflow-y-auto pt-[120px] pb-[60px]">
+        <main className="flex-1 overflow-y-auto pt-[160px] pb-[60px]">
           {children}
         </main>
 

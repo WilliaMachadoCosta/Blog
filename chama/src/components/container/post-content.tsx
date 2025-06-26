@@ -1,4 +1,4 @@
-import parse, { domToReact, Element } from "html-react-parser";
+import parse, { Element } from "html-react-parser";
 import { GenericButton } from "../buttons/genericButton";
 
 

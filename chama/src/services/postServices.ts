@@ -14,10 +14,38 @@ const fetchJson = async (url: string) => {
 
 export async function getAllPosts(): Promise<IPost[]> {
   try {
-    const data = await fetchJson(`${API_BASE}/posts?_embed&orderby=date&order=desc`);
+    const data = await fetchJson(`${API_BASE}/posts?_embed&orderby=date&order=desc&per_page=100`);
     return data.map(mapPost);
   } catch (err) {
     console.error("Erro em getAllPosts:", err);
+    return [];
+  }
+}
+
+export async function getCompanyPosts(): Promise<IPost[]> {
+  try {
+    // Buscar posts da categoria "empresas" ou com tag específica
+    const data = await fetchJson(`${API_BASE}/posts?categories=empresas&_embed&orderby=date&order=desc`);
+    return data.map(mapPost);
+  } catch (err) {
+    console.error("Erro em getCompanyPosts:", err);
+    return [];
+  }
+}
+
+export async function getAllPostsWithCompanies(): Promise<IPost[]> {
+  try {
+    // Buscar todos os posts incluindo empresas
+    const [regularPosts, companyPosts] = await Promise.all([
+      getAllPosts(),
+      getCompanyPosts()
+    ]);
+
+    // Combinar e ordenar por data
+    const allPosts = [...regularPosts, ...companyPosts];
+    return allPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  } catch (err) {
+    console.error("Erro em getAllPostsWithCompanies:", err);
     return [];
   }
 }

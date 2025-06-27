@@ -1,22 +1,21 @@
 // src/app/page
-import { Carrocel } from '@/components/container/carrocel';
-import Container from '@/components/container/container'
-import { SpinLoader } from '@/components/SpinLoad/SpinLoader'
-import { IPost } from '@/models/interfaces/post'
-import { getAllPosts } from '@/services/postServices';
-
+import Container from '@/components/container/container';
+import { SpinLoader } from '@/components/SpinLoad/SpinLoader';
 import { Suspense } from 'react'
+
 export const revalidate = 60; // ISR: revalida a cada 60 segundos
 
-
-
 export default async function Home() {
-    const posts: IPost[] = await getAllPosts();
     return (
-        <Suspense fallback={<SpinLoader />}>
-            <Container />
-            <Carrocel posts={posts} />
-        </Suspense>
+        <main className="min-h-screen bg-[#f5f3ef] py-6 px-4">
+            <div className="max-w-4xl mx-auto">
 
+
+                <Suspense fallback={<SpinLoader />}>
+                    {/* <PostsListWithCompanies />  */}
+                    <Container />
+                </Suspense>
+            </div>
+        </main>
     )
 }

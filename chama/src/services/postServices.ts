@@ -72,6 +72,7 @@ export async function getCommentsByPost(postId: number) {
 }
 
 function mapPost(post: WordPressPost): IPost {
+  console.log(post.content)
   return {
     id: post.id,
     title: post.title?.rendered ?? "",
@@ -82,6 +83,7 @@ function mapPost(post: WordPressPost): IPost {
     featuredImage: post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ?? "/fallback.jpg",
     author: post._embedded?.author?.[0]?.name ?? "Desconhecido",
     categories: Array.isArray(post.categories) ? post.categories : [],
+    modified: post.modified,
   };
 }
 

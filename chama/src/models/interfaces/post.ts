@@ -8,6 +8,7 @@ export interface IPost {
   featuredImage: string;
   author: string;
   categories: number[];
+  modified: string;
 }
 
 export interface WordPressPost {
@@ -17,6 +18,7 @@ export interface WordPressPost {
   excerpt: { rendered: string };
   slug: string;
   date: string;
+  modified: string;
   categories: number[];
   _embedded?: {
     author?: { name: string }[];

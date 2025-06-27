@@ -1,17 +1,17 @@
 import { getPostBySlug } from "@/services/postServices";
 import { notFound } from "next/navigation";
 import ShareButtons from "@/components/buttons/shareButtons";
-import type { Metadata } from "next";
 import { PostContent } from "@/components/container/post-content";
+import Image from "next/image";
+import type { Metadata } from "next";
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
-
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const post = await getPostBySlug(params.slug);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
   if (!post) {
     return {
       title: "Post não encontrado | Blog",
@@ -25,8 +25,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function PostPage({ params }: PageProps) {
-  const post = await getPostBySlug(params.slug);
+export default async function PostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
 
   if (!post) return notFound();
 
@@ -35,7 +40,6 @@ export default async function PostPage({ params }: PageProps) {
   return (
     <main className="min-h-screen bg-[#f5f3ef] py-6 px-4">
       <article className="bg-white max-w-2xl mx-auto rounded-xl shadow-md p-6 space-y-6">
-
         <h1
           className="text-3xl font-bold leading-tight text-black"
           dangerouslySetInnerHTML={{ __html: post.title }}
@@ -54,21 +58,17 @@ export default async function PostPage({ params }: PageProps) {
         </p>
 
         {post.featuredImage && (
-          <img
-            src={post.featuredImage}
+          <Image
+            src={post.featuredImage ?? "/placeholder.jpg"}
             alt={cleanTitle}
+            width={800}
+            height={600}
             className="w-full h-auto rounded-md object-cover max-h-96"
             loading="lazy"
           />
         )}
 
-        {/* <div
-          className="prose prose-neutral max-w-none text-black"
-          dangerouslySetInnerHTML={{ __html: sanitizeHtml(post.content) }}
-        /> */}
-
         <PostContent html={sanitizeHtml(post.content)} />
-
         <ShareButtons />
       </article>
     </main>
@@ -77,9 +77,8 @@ export default async function PostPage({ params }: PageProps) {
 
 function sanitizeHtml(html: string): string {
   return html
-    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "") // remove scripts
-    .replace(/class="[^"]*"/g, "") // remove classes
-    .replace(/<!--[\s\S]*?-->/g, ""); // remove comentários
+    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "")
+    .replace(/class="[^"]*"/g, "")
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/data-src=/gi, "src=");
 }
-
-

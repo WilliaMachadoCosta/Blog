@@ -49,12 +49,12 @@ async function CompaniesList() {
                                 <div>
                                     <p className="font-semibold text-black">
                                         {company.empresaNome.length > 50
-                                            ? `${company.empresaNome.slice(0, 40)}...`
+                                            ? `${company.empresaNome.slice(0, 30)}...`
                                             : company.empresaNome}
                                     </p>
                                     <p className="font-normal text-neutral-800">
-                                        {company.excerpt.length > 100
-                                            ? `${company.excerpt.slice(3, 50)}...`
+                                        {company.excerpt.length > 30
+                                            ? `${company.excerpt.slice(3, 30)}...`
                                             : company.excerpt}
                                     </p>
                                 </div>

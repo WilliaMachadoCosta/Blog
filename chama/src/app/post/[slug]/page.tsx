@@ -4,6 +4,9 @@ import ShareButtons from "@/components/buttons/shareButtons";
 import { PostContent } from "@/components/container/post-content";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { extractCompanyData } from "@/components/container/companyData";
+
+import SubHeaderClient from "@/components/header/sub-header-client";
 
 export async function generateMetadata({
   params,
@@ -18,6 +21,8 @@ export async function generateMetadata({
       description: "O conteúdo procurado não foi encontrado.",
     };
   }
+
+
 
   return {
     title: post.title.replace(/<[^>]*>/g, ""),
@@ -34,12 +39,13 @@ export default async function PostPage({
   const post = await getPostBySlug(slug);
 
   if (!post) return notFound();
-
+  const company = extractCompanyData(post.content);
   const cleanTitle = post.title?.replace(/<[^>]*>/g, "") || "Post";
-
   return (
     <main className="min-h-screen bg-[#f5f3ef] py-6 px-4">
       <article className="bg-white max-w-2xl mx-auto rounded-xl shadow-md p-6 space-y-6">
+
+        <SubHeaderClient company={company} />
         <h1
           className="text-3xl font-bold leading-tight text-black"
           dangerouslySetInnerHTML={{ __html: post.title }}

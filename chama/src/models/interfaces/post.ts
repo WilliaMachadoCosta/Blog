@@ -9,6 +9,7 @@ export interface IPost {
   author: string;
   categories: number[];
   modified: string;
+  comments?: any[];
 }
 
 export interface WordPressPost {

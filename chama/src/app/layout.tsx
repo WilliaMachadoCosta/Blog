@@ -29,7 +29,7 @@ export default function RootLayout({
 
         {/* Container com sidebars e conteúdo */}
         <div className="flex flex-1 pt-[60px] pb-[50px] overflow-hidden h-full bg-neutral-100">
-          {/* Sidebar esquerda */}
+          {/* Sidebar esquerda
           <aside className="hidden lg:block w-64 p-4 bg-white shadow-inner overflow-y-auto">
             <div className="sticky top-[60px]">
               <p className="font-bold mb-2 text-neutral-400">📌 Links úteis</p>
@@ -39,7 +39,7 @@ export default function RootLayout({
                 <li><a href="#" className="text-blue-600 hover:underline">Blog</a></li>
               </ul>
             </div>
-          </aside>
+          </aside> */}
 
           {/* Conteúdo principal */}
           <main className="flex-1 overflow-y-auto px-4 bg-white">
@@ -47,7 +47,7 @@ export default function RootLayout({
           </main>
 
           {/* Sidebar direita */}
-          <aside className="hidden xl:block w-72 p-4 bg-white shadow-inner overflow-y-auto">
+          {/* <aside className="hidden xl:block w-72 p-4 bg-white shadow-inner overflow-y-auto">
             <div className="sticky top-[60px]">
               <p className="font-bold mb-2 text-neutral-400">📰 Notícias</p>
               <ul className="text-sm space-y-2">
@@ -55,7 +55,7 @@ export default function RootLayout({
                 <li><a href="#" className="text-blue-600 hover:underline">Dicas de viagem</a></li>
               </ul>
             </div>
-          </aside>
+          </aside> */}
         </div>
 
         {/* Footer fixo */}

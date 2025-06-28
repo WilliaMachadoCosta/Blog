@@ -12,20 +12,30 @@ const fetchJson = async (url: string) => {
   return res.json();
 };
 
-
 export async function getPostsByIds(ids: number[]): Promise<IPost[]> {
   if (!ids.length) return [];
 
   try {
     const includeParam = ids.join(",");
     const data = await fetchJson(`${API_BASE}/posts?include=${includeParam}&_embed`);
-    return data.map(mapPost);
+    const posts = data.map(mapPost);
+
+    // Buscar comentários para cada post em paralelo
+    const commentsByPost = await Promise.all(
+      posts.map((post: IPost) => getCommentsByPost(post.id))
+    );
+
+    // Atribuir os comentários aos respectivos posts
+    posts.forEach((post: IPost, index: number) => {
+      post.comments = commentsByPost[index];
+    });
+
+    return posts;
   } catch (err) {
     console.error("Erro em getPostsByIds:", err);
     return [];
   }
 }
-
 
 export async function getAllPosts(): Promise<IPost[]> {
   try {
@@ -115,7 +125,6 @@ export async function getCommentsByPost(postId: number) {
 }
 
 function mapPost(post: WordPressPost): IPost {
-  console.log(post.content)
   return {
     id: post.id,
     title: post.title?.rendered ?? "",
@@ -127,6 +136,7 @@ function mapPost(post: WordPressPost): IPost {
     author: post._embedded?.author?.[0]?.name ?? "Desconhecido",
     categories: Array.isArray(post.categories) ? post.categories : [],
     modified: post.modified,
+    comments: [],
   };
 }
 

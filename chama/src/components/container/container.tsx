@@ -1,89 +1,99 @@
-'use client';
-
-import { useState } from "react";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+
 import CompanyLogo from "../company/companyLogo";
 import { getPostsByIds } from "@/services/postServices";
 import { extractCompanyData } from "./companyData";
+import { Suspense } from "react";
+import Pagination from "./pagination";
 
-// const rawCompanies = await getPostsByIds([927, 1410, 6142, 476]);
-const rawCompanies = await getPostsByIds([927]);
-
-const companies = rawCompanies.map((post) => {
-    const empresa = extractCompanyData(post.content);
-
-    return {
-        ...post,
-        empresaNome: empresa.nome ?? post.title,
-        empresaLogo: empresa.logo ?? post.featuredImage,
-    };
-});
-export default function Container() {
-    const itemsPerPage = 5; // Mostra 10 por página
-    const [page, setPage] = useState(0);
-
-    const totalPages = Math.ceil(companies.length / itemsPerPage);
-
-    const pagedCompanies = companies.slice(
-        page * itemsPerPage,
-        (page + 1) * itemsPerPage
+// Componente de loading para cada item
+function CompanyItemSkeleton() {
+    return (
+        <div className="flex items-center justify-between bg-white p-3 rounded shadow animate-pulse">
+            <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-gray-300 rounded-full"></div>
+                <div>
+                    <div className="h-4 bg-gray-300 rounded w-32 mb-1"></div>
+                    <div className="h-3 bg-gray-200 rounded w-24"></div>
+                </div>
+            </div>
+        </div>
     );
+}
 
-    const nextPage = () => {
-        if (page < totalPages - 1) {
-            setPage((prev) => prev + 1);
-        }
-    };
+// Componente de lista de empresas otimizado
+async function CompaniesList() {
+    const rawCompanies = await getPostsByIds([927, 1410, 6142, 476, 7427, 417, 1091]);
 
-    const prevPage = () => {
-        if (page > 0) {
-            setPage((prev) => prev - 1);
-        }
-    };
+    const companies = rawCompanies.map((post) => {
+        const empresa = extractCompanyData(post.content);
+        return {
+            ...post,
+            empresaNome: empresa.nome ?? post.title,
+            empresaLogo: empresa.logo ?? post.featuredImage,
+        };
+    });
 
     return (
-        <div className="min-h-screen bg-[#f5f3ef] p-4">
-            <ul className="space-y-2 mb-8">
-                {pagedCompanies.map((company) => (
-                    <li key={company.slug}>
-                        <Link href={`/post/${company.slug}`}>
-                            <div className="flex items-center gap-3 bg-white p-3 rounded shadow cursor-pointer hover:bg-gray-100 transition">
+        <ul className="space-y-2 mb-8">
+            {companies.map((company) => (
+                <li key={company.slug}>
+                    <Link href={`/post/${company.slug}`} prefetch={false}>
+                        <div className="flex items-center justify-between bg-white p-3 rounded shadow cursor-pointer hover:bg-gray-100 transition">
+                            <div className="flex items-center gap-3">
                                 <CompanyLogo
                                     src={company.empresaLogo}
                                     alt={`Logo da ${company.empresaNome}`}
                                     fallbackText={company.empresaNome}
                                 />
                                 <div>
-                                    <p className="font-semibold text-black">{company.empresaNome}</p>
-                                    <p className="font-normal text-neutral-800">{company.empresaNome}</p>
+                                    <p className="font-semibold text-black">
+                                        {company.empresaNome.length > 50
+                                            ? `${company.empresaNome.slice(0, 40)}...`
+                                            : company.empresaNome}
+                                    </p>
+                                    <p className="font-normal text-neutral-800">
+                                        {company.excerpt.length > 100
+                                            ? `${company.excerpt.slice(3, 50)}...`
+                                            : company.excerpt}
+                                    </p>
                                 </div>
                             </div>
-                        </Link>
-                    </li>
-                ))}
-            </ul>
 
-            {/* Paginação */}
-            <div className="flex justify-center gap-3 mb-10">
-                <button
-                    onClick={prevPage}
-                    disabled={page === 0}
-                    className="flex items-center gap-1 px-4 py-2 rounded-full border border-green-900 text-green-900 hover:bg-green-900 hover:text-white transition disabled:opacity-50"
-                >
-                    <ChevronLeft size={20} /> Anterior
-                </button>
+                            {/* Indicador de comentários */}
+                            {company.comments && company.comments.length > 0 && (
+                                <div className="flex flex-col items-end gap-1">
+                                    <div className="bg-green-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center min-w-[20px]">
+                                        {company.comments.length > 99 ? '99+' : company.comments.length}
+                                    </div>
+                                    <span className="text-xs text-gray-500">
+                                        {/* {company.comments.length === 1 ? 'comentário' : 'comentários'} */}
+                                    </span>
+                                </div>
+                            )}
+                        </div>
+                    </Link>
+                </li>
+            ))}
+        </ul>
+    );
+}
 
-                <span className="text-gray-700">Página {page + 1} de {totalPages}</span>
+// Componente principal otimizado
+export default function Container() {
+    return (
+        <div className="min-h-screen bg-[#f5f3ef] p-4">
+            <Suspense fallback={
+                <div className="space-y-2 mb-8">
+                    {[...Array(5)].map((_, i) => (
+                        <CompanyItemSkeleton key={i} />
+                    ))}
+                </div>
+            }>
+                <CompaniesList />
+            </Suspense>
 
-                <button
-                    onClick={nextPage}
-                    disabled={page >= totalPages - 1}
-                    className="flex items-center gap-1 px-4 py-2 rounded-full border border-green-900 text-green-900 hover:bg-green-900 hover:text-white transition disabled:opacity-50"
-                >
-                    Próximo <ChevronRight size={20} />
-                </button>
-            </div>
+            <Pagination totalItems={1} itemsPerPage={5} />
         </div>
     );
 }

@@ -12,9 +12,24 @@ const fetchJson = async (url: string) => {
   return res.json();
 };
 
+
+export async function getPostsByIds(ids: number[]): Promise<IPost[]> {
+  if (!ids.length) return [];
+
+  try {
+    const includeParam = ids.join(",");
+    const data = await fetchJson(`${API_BASE}/posts?include=${includeParam}&_embed`);
+    return data.map(mapPost);
+  } catch (err) {
+    console.error("Erro em getPostsByIds:", err);
+    return [];
+  }
+}
+
+
 export async function getAllPosts(): Promise<IPost[]> {
   try {
-    const data = await fetchJson(`${API_BASE}/posts?_embed&orderby=date&order=desc&per_page=100`);
+    const data = await fetchJson(`${API_BASE}/posts?_embed&orderby=date&order=desc&per_page=15`);
     return data.map(mapPost);
   } catch (err) {
     console.error("Erro em getAllPosts:", err);
@@ -100,7 +115,7 @@ export async function getCommentsByPost(postId: number) {
 }
 
 function mapPost(post: WordPressPost): IPost {
-  console.log(post.content)
+  //console.log(post.content)
   return {
     id: post.id,
     title: post.title?.rendered ?? "",

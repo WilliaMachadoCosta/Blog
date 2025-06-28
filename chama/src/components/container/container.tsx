@@ -4,10 +4,20 @@ import { useState } from "react";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import CompanyLogo from "../company/companyLogo";
-import { getAllPostsWithCompanies } from "@/services/postServices";
+import { getPostsByIds } from "@/services/postServices";
+import { extractCompanyData } from "./companyData";
 
-const companies = await getAllPostsWithCompanies();
+const rawCompanies = await getPostsByIds([927, 1410, 6142, 476]);
 
+const companies = rawCompanies.map((post) => {
+    const empresa = extractCompanyData(post.content);
+
+    return {
+        ...post,
+        empresaNome: empresa.nome ?? post.title,
+        empresaLogo: empresa.logo ?? post.featuredImage,
+    };
+});
 export default function Container() {
     const itemsPerPage = 5; // Mostra 10 por página
     const [page, setPage] = useState(0);
@@ -39,13 +49,13 @@ export default function Container() {
                         <Link href={`/post/${company.slug}`}>
                             <div className="flex items-center gap-3 bg-white p-3 rounded shadow cursor-pointer hover:bg-gray-100 transition">
                                 <CompanyLogo
-                                    src={company.featuredImage}
-                                    alt={`Logo da ${company.title}`}
-                                    fallbackText={company.title}
+                                    src={company.empresaLogo}
+                                    alt={`Logo da ${company.empresaNome}`}
+                                    fallbackText={company.empresaNome}
                                 />
                                 <div>
-                                    <p className="font-semibold text-black">{company.title}</p>
-                                    <p className="font-normal text-neutral-800">{company.title}</p>
+                                    <p className="font-semibold text-black">{company.empresaNome}</p>
+                                    <p className="font-normal text-neutral-800">{company.empresaNome}</p>
                                 </div>
                             </div>
                         </Link>

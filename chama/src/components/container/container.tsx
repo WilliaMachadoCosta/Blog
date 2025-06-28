@@ -7,7 +7,8 @@ import CompanyLogo from "../company/companyLogo";
 import { getPostsByIds } from "@/services/postServices";
 import { extractCompanyData } from "./companyData";
 
-const rawCompanies = await getPostsByIds([927, 1410, 6142, 476]);
+// const rawCompanies = await getPostsByIds([927, 1410, 6142, 476]);
+const rawCompanies = await getPostsByIds([927]);
 
 const companies = rawCompanies.map((post) => {
     const empresa = extractCompanyData(post.content);

@@ -115,7 +115,7 @@ export async function getCommentsByPost(postId: number) {
 }
 
 function mapPost(post: WordPressPost): IPost {
-  //console.log(post.content)
+  console.log(post.content)
   return {
     id: post.id,
     title: post.title?.rendered ?? "",

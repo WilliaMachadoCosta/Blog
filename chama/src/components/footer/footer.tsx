@@ -5,6 +5,7 @@ import {
     Store,
     MessageSquareText
 } from "lucide-react";
+import Link from "next/link";
 
 export function Footer() {
     return (
@@ -19,10 +20,10 @@ export function Footer() {
                 <span className="text-[10px] sm:text-[11px]">Contatos</span>
             </div> */}
 
-            <div className="flex flex-col items-center flex-1">
+            <Link href="/sobre" className="flex flex-col items-center flex-1 hover:text-blue-500">
                 <Building size={20} className="sm:w-5 sm:h-5 mb-1" />
                 <span className="text-[10px] sm:text-[11px]">Quem somos</span>
-            </div>
+            </Link>
 
             {/* <div className="flex flex-col items-center flex-1">
                 <User size={20} className="sm:w-5 sm:h-5 mb-1" />

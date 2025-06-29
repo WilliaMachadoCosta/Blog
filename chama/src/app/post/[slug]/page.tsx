@@ -42,12 +42,12 @@ export default async function PostPage({
   const company = extractCompanyData(post.content);
   const cleanTitle = post.title?.replace(/<[^>]*>/g, "") || "Post";
   return (
-    <main className="min-h-screen bg-[#f5f3ef] py-6 px-4">
-      <article className="bg-white max-w-2xl mx-auto rounded-xl shadow-md p-6 space-y-6">
+    <main className="min-h-screen bg-[#f5f3ef] py-6 px-4 overflow-x-hidden">
+      <article className="bg-white max-w-2xl mx-auto rounded-xl shadow-md p-4 sm:p-6 space-y-6 overflow-hidden">
 
         <SubHeaderClient company={company} />
         <h1
-          className="text-3xl font-bold leading-tight text-black"
+          className="text-2xl sm:text-3xl font-bold leading-tight text-black break-words"
           dangerouslySetInnerHTML={{ __html: post.title }}
         />
 

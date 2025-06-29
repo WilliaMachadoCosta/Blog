@@ -9,10 +9,10 @@ import Pagination from "./pagination";
 // Componente de loading para cada item
 function CompanyItemSkeleton() {
     return (
-        <div className="flex items-center justify-between bg-white p-3 rounded shadow animate-pulse">
-            <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-gray-300 rounded-full"></div>
-                <div>
+        <div className="flex items-center justify-between bg-white p-3 sm:p-4 rounded shadow animate-pulse w-full">
+            <div className="flex items-center gap-3 flex-1 min-w-0">
+                <div className="w-8 h-8 bg-gray-300 rounded-full flex-shrink-0"></div>
+                <div className="flex-1 min-w-0">
                     <div className="h-4 bg-gray-300 rounded w-32 mb-1"></div>
                     <div className="h-3 bg-gray-200 rounded w-24"></div>
                 </div>
@@ -39,20 +39,20 @@ async function CompaniesList() {
             {companies.map((company) => (
                 <li key={company.slug}>
                     <Link href={`/post/${company.slug}`} prefetch={false}>
-                        <div className="flex items-center justify-between bg-white p-3 rounded shadow cursor-pointer hover:bg-gray-100 transition">
-                            <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-between bg-white p-3 sm:p-4 rounded shadow cursor-pointer hover:bg-gray-100 transition w-full">
+                            <div className="flex items-center gap-3 flex-1 min-w-0">
                                 <CompanyLogo
                                     src={company.empresaLogo}
                                     alt={`Logo da ${company.empresaNome}`}
                                     fallbackText={company.empresaNome}
                                 />
-                                <div>
-                                    <p className="font-semibold text-black">
+                                <div className="flex-1 min-w-0">
+                                    <p className="font-semibold text-black text-sm sm:text-base truncate">
                                         {company.empresaNome.length > 50
                                             ? `${company.empresaNome.slice(0, 30)}...`
                                             : company.empresaNome}
                                     </p>
-                                    <p className="font-normal text-neutral-800">
+                                    <p className="font-normal text-neutral-800 text-xs sm:text-sm truncate">
                                         {company.excerpt.length > 30
                                             ? `${company.excerpt.slice(3, 30)}...`
                                             : company.excerpt}
@@ -82,7 +82,7 @@ async function CompaniesList() {
 // Componente principal otimizado
 export default function Container() {
     return (
-        <div className="min-h-screen bg-[#f5f3ef] p-4">
+        <div className="min-h-screen bg-[#f5f3ef] p-2 sm:p-4">
             <Suspense fallback={
                 <div className="space-y-2 mb-8">
                     {[...Array(5)].map((_, i) => (

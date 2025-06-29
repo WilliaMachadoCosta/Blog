@@ -6,7 +6,7 @@ import Image from "next/image";
 import { BookOpen, Filter, Calendar, User, Tag, ChevronDown, Home } from "lucide-react";
 import { IPost } from "@/models/interfaces/post";
 import { ICategory } from "@/services/categoryServices";
-import { getPostsByCategory } from "@/services/postServices";
+import { getPostsByCategorySlug } from "@/services/postServices";
 import { SpinLoader } from "@/components/SpinLoad/SpinLoader";
 
 interface BlogClientProps {
@@ -35,17 +35,17 @@ export default function BlogClient({ initialPosts, categories }: BlogClientProps
     };
   }, []);
 
-  const handleCategoryFilter = async (categoryId: string) => {
+  const handleCategoryFilter = async (categorySlug: string) => {
     setIsLoading(true);
-    setSelectedCategory(categoryId);
+    setSelectedCategory(categorySlug);
     setIsDropdownOpen(false);
 
     try {
-      if (categoryId === "") {
+      if (categorySlug === "") {
         // Reset para todos os posts
         setPosts(initialPosts);
       } else {
-        const filteredPosts = await getPostsByCategory(parseInt(categoryId));
+        const filteredPosts = await getPostsByCategorySlug(categorySlug);
         setPosts(filteredPosts);
       }
     } catch (error) {
@@ -64,7 +64,7 @@ export default function BlogClient({ initialPosts, categories }: BlogClientProps
   };
 
   const selectedCategoryName = selectedCategory 
-    ? categories.find(cat => cat.id.toString() === selectedCategory)?.name 
+    ? categories.find(cat => cat.slug === selectedCategory)?.name 
     : "Todas as categorias";
 
   return (
@@ -123,8 +123,8 @@ export default function BlogClient({ initialPosts, categories }: BlogClientProps
                 
                 {categories.map((category) => (
                   <button
-                    key={category.id}
-                    onClick={() => handleCategoryFilter(category.id.toString())}
+                    key={category.slug}
+                    onClick={() => handleCategoryFilter(category.slug)}
                     className="w-full px-4 py-2 text-left hover:bg-gray-100 transition-colors border-b border-gray-100 last:border-b-0"
                   >
                     <div className="font-medium text-gray-900">{category.name}</div>

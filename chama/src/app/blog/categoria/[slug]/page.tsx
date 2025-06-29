@@ -1,9 +1,9 @@
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
-import { getPostsByCategory } from "@/services/postServices";
+import { getPostsByCategorySlug } from "@/services/postServices";
 import { getCategoryBySlug } from "@/services/categoryServices";
 import { SpinLoader } from "@/components/SpinLoad/SpinLoader";
-import CategoryClient from "./CategoryClient";
+import CategoryClient from "@/app/blog/categoria/[slug]/CategoryClient";
 import type { Metadata } from "next";
 
 interface CategoryPageProps {
@@ -50,7 +50,7 @@ async function CategoryContent({ slug }: { slug: string }) {
     notFound();
   }
 
-  const posts = await getPostsByCategory(category.id);
+  const posts = await getPostsByCategorySlug(slug);
 
   return <CategoryClient category={category} posts={posts} />;
 } 

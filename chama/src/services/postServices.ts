@@ -155,6 +155,28 @@ export async function getPostsByCategory(categoryId: number): Promise<IPost[]> {
   }
 }
 
+export async function getPostsByCategorySlug(categorySlug: string): Promise<IPost[]> {
+  try {
+    // Primeiro, buscar a categoria pelo slug para obter o ID
+    const categoryResponse = await fetchJson(`${API_BASE}/categories?slug=${categorySlug}`);
+    
+    if (!categoryResponse || categoryResponse.length === 0) {
+      console.log(`Categoria não encontrada: ${categorySlug}`);
+      return [];
+    }
+    
+    const categoryId = categoryResponse[0].id;
+    console.log(`Buscando posts para categoria ID: ${categoryId} (slug: ${categorySlug})`);
+    
+    // Agora buscar os posts usando o ID da categoria
+    const data = await fetchJson(`${API_BASE}/posts?categories=${categoryId}&_embed&orderby=date&order=desc`);
+    return data.map(mapPost);
+  } catch (err) {
+    console.error("Erro em getPostsByCategorySlug:", err);
+    return [];
+  }
+}
+
 export async function getPostsByAuthor(authorId: number): Promise<IPost[]> {
   try {
     const data = await fetchJson(`${API_BASE}/posts?author=${authorId}&_embed&orderby=date&order=desc`);

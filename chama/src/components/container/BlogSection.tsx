@@ -2,28 +2,43 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { BookOpen, Calendar, User, ArrowRight } from 'lucide-react';
 import { IPost } from '@/models/interfaces/post';
-import { getAllPosts } from '@/services/postServices';
+import { getAllPosts, getPostsByCategorySlug } from '@/services/postServices';
 import { getAllCategories } from '@/services/categoryServices';
 
 // Função para buscar posts recentes das categorias definidas
 async function getRecentBlogPosts(): Promise<IPost[]> {
     try {
-        const allPosts = await getAllPosts();
         const categories = getAllCategories();
         
-        // Filtrar posts que pertencem às categorias definidas
-        const categoryIds = categories.map(cat => cat.id);
-        const filteredPosts = allPosts.filter(post => 
-            post.categories && post.categories.some(catId => categoryIds.includes(catId))
+        // Buscar posts de cada categoria usando slug
+        const postsPromises = categories.map(category => 
+            getPostsByCategorySlug(category.slug)
+        );
+        
+        const allCategoryPosts = await Promise.all(postsPromises);
+        
+        // Combinar todos os posts e remover duplicatas
+        const allPosts = allCategoryPosts.flat();
+        const uniquePosts = allPosts.filter((post, index, self) => 
+            index === self.findIndex(p => p.id === post.id)
         );
         
         // Retornar apenas os 3 mais recentes
-        return filteredPosts
+        return uniquePosts
             .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
             .slice(0, 3);
     } catch (error) {
         console.error("Erro ao buscar posts do blog:", error);
-        return [];
+        // Fallback: buscar todos os posts se houver erro
+        try {
+            const allPosts = await getAllPosts();
+            return allPosts
+                .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+                .slice(0, 3);
+        } catch (fallbackError) {
+            console.error("Erro no fallback:", fallbackError);
+            return [];
+        }
     }
 }
 

@@ -102,7 +102,7 @@ export default async function BlogSection() {
                         key={post.id}
                         className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
                     >
-                        <Link href={`/post/${post.slug}`}>
+                        <Link href={`/${post.slug}`}>
                             {/* Imagem do post */}
                             <div className="relative h-32 sm:h-40">
                                 <Image

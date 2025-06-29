@@ -42,7 +42,7 @@ export default function CompaniesListWithPagination({ companies }: CompaniesList
             <ul className="space-y-2 mb-8">
                 {currentCompanies.map((company) => (
                     <li key={company.slug}>
-                        <Link href={`/post/${company.slug}`} prefetch={false}>
+                        <Link href={`/${company.slug}`} prefetch={false}>
                             <div className="flex items-center justify-between bg-white p-3 sm:p-4 rounded shadow cursor-pointer hover:bg-gray-100 transition w-full">
                                 <div className="flex items-center gap-3 flex-1 min-w-0">
                                     <CompanyLogo

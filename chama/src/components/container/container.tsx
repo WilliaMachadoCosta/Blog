@@ -40,7 +40,7 @@ async function CompaniesData() {
 // Componente principal otimizado
 export default function Container() {
     return (
-        <div className="min-h-screen bg-[#f5f3ef] p-2 sm:p-4">
+        <div className="min-h-screen bg-white p-2 sm:p-4">
             <Suspense fallback={
                 <div className="space-y-2 mb-8">
                     {[...Array(5)].map((_, i) => (

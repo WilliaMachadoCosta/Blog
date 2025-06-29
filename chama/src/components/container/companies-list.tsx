@@ -19,7 +19,7 @@ interface CompaniesListWithPaginationProps {
 export default function CompaniesListWithPagination({ companies }: CompaniesListWithPaginationProps) {
     const [currentPage, setCurrentPage] = useState(0);
     const itemsPerPage = 5;
-    
+
     const totalPages = Math.ceil(companies.length / itemsPerPage);
     const startIndex = currentPage * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
@@ -80,30 +80,47 @@ export default function CompaniesListWithPagination({ companies }: CompaniesList
                     </li>
                 ))}
             </ul>
-            
+
             {totalPages > 1 && (
-                <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-3 mb-10 px-4">
+                <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-4 mt-6 mb-12 px-4">
                     <button
                         onClick={prevPage}
                         disabled={currentPage === 0}
-                        className="flex items-center gap-1 px-3 sm:px-4 py-2 rounded-full border border-green-900 text-green-900 hover:bg-green-900 hover:text-white transition disabled:opacity-50 text-sm sm:text-base w-full sm:w-auto justify-center"
+                        className={`px-3 py-1 rounded text-sm font-medium border transition-all
+        ${currentPage === 0
+                                ? "text-gray-400 border-gray-300 cursor-not-allowed font-bold"
+                                : "text-green-700  border-green-600 hover:bg-green-100 font-bold"}`}
                     >
-                        ← Anterior
+                        Anterior
                     </button>
 
-                    <span className="text-gray-700 text-sm sm:text-base order-first sm:order-none">
-                        Página {currentPage + 1} de {totalPages}
-                    </span>
+                    {Array.from({ length: totalPages }, (_, i) => (
+                        <button
+                            key={i}
+                            onClick={() => setCurrentPage(i)}
+                            className={`w-8 h-8 text-sm rounded transition-all font-medium
+          ${i === currentPage
+                                    ? "bg-green-600 text-white font-bold shadow"
+                                    : "text-green-700 hover:bg-green-100 font-bold"}`}
+                        >
+                            {i + 1}
+                        </button>
+                    ))}
 
                     <button
                         onClick={nextPage}
                         disabled={currentPage >= totalPages - 1}
-                        className="flex items-center gap-1 px-3 sm:px-4 py-2 rounded-full border border-green-900 text-green-900 hover:bg-green-900 hover:text-white transition disabled:opacity-50 text-sm sm:text-base w-full sm:w-auto justify-center"
+                        className={`px-3 py-1 rounded text-sm font-medium border transition-all
+        ${currentPage >= totalPages - 1
+                                ? "text-gray-400 border-gray-300 cursor-not-allowed"
+                                : "text-green-700 border-green-600 hover:bg-green-100"}`}
                     >
-                        Próximo →
+                        Próximo
                     </button>
                 </div>
             )}
+
+
         </>
     );
 } 

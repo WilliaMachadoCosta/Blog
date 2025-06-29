@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface PaginationProps {
     totalItems: number;
@@ -11,40 +10,54 @@ interface PaginationProps {
 export default function Pagination({ totalItems, itemsPerPage }: PaginationProps) {
     const [page, setPage] = useState(0);
     const totalPages = Math.ceil(totalItems / itemsPerPage);
+    const visiblePages = 5;
 
-    const nextPage = () => {
-        if (page < totalPages - 1) {
-            setPage((prev) => prev + 1);
-        }
-    };
+    const startPage = Math.max(0, Math.min(page - 2, totalPages - visiblePages));
+    const endPage = Math.min(startPage + visiblePages, totalPages);
 
-    const prevPage = () => {
-        if (page > 0) {
-            setPage((prev) => prev - 1);
+    const goToPage = (pageNum: number) => {
+        if (pageNum >= 0 && pageNum < totalPages) {
+            setPage(pageNum);
         }
     };
 
     if (totalPages <= 1) return null;
 
     return (
-        <div className="flex justify-center gap-3 mb-10">
+        <div className="flex justify-center items-center gap-2 my-10">
             <button
-                onClick={prevPage}
+                onClick={() => goToPage(page - 1)}
                 disabled={page === 0}
-                className="flex items-center gap-1 px-4 py-2 rounded-full border border-green-900 text-green-900 hover:bg-green-900 hover:text-white transition disabled:opacity-50"
+                className="px-3 py-1 rounded text-sm border border-green-600 text-green-600 hover:bg-green-100 disabled:opacity-50"
             >
-                <ChevronLeft size={20} /> Anterior
+                Back
             </button>
 
-            <span className="text-gray-700">Página {page + 1} de {totalPages}</span>
+            {[...Array(endPage - startPage)].map((_, index) => {
+                const pageIndex = startPage + index;
+                const isActive = pageIndex === page;
+
+                return (
+                    <button
+                        key={pageIndex}
+                        onClick={() => goToPage(pageIndex)}
+                        className={`w-8 h-8 text-sm rounded ${isActive
+                            ? "bg-green-600 text-white shadow"
+                            : "text-green-600 hover:bg-green-100"
+                            }`}
+                    >
+                        {pageIndex + 1}
+                    </button>
+                );
+            })}
 
             <button
-                onClick={nextPage}
+                onClick={() => goToPage(page + 1)}
                 disabled={page >= totalPages - 1}
-                className="flex items-center gap-1 px-4 py-2 rounded-full border border-green-900 text-green-900 hover:bg-green-900 hover:text-white transition disabled:opacity-50"
+                className="px-3 py-1 rounded text-sm border border-green-600 text-green-600 hover:bg-green-100 disabled:opacity-50"
             >
-                Próximo <ChevronRight size={20} />
+                Next
             </button>
         </div>
     );
-} 
+}

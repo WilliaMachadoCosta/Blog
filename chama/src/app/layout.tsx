@@ -29,33 +29,11 @@ export default function RootLayout({
 
         {/* Container com sidebars e conteúdo */}
         <div className="flex flex-1 pt-[60px] pb-[50px] h-full bg-neutral-100 overflow-x-hidden">
-          {/* Sidebar esquerda
-          <aside className="hidden lg:block w-64 p-4 bg-white shadow-inner overflow-y-auto">
-            <div className="sticky top-[60px]">
-              <p className="font-bold mb-2 text-neutral-400">📌 Links úteis</p>
-              <ul className="text-sm space-y-2">
-                <li><a href="#" className="text-blue-600 hover:underline">Promoções</a></li>
-                <li><a href="#" className="text-blue-600 hover:underline">Contato</a></li>
-                <li><a href="#" className="text-blue-600 hover:underline">Blog</a></li>
-              </ul>
-            </div>
-          </aside> */}
 
           {/* Conteúdo principal */}
-          <main className="flex-1 overflow-y-auto overflow-x-hidden px-2 sm:px-4 bg-white">
+          <main className="flex-1 overflow-y-auto overflow-x-hidden px-2 sm:px-4 bg-[#f5f3ef]">
             {children}
           </main>
-
-          {/* Sidebar direita */}
-          {/* <aside className="hidden xl:block w-72 p-4 bg-white shadow-inner overflow-y-auto">
-            <div className="sticky top-[60px]">
-              <p className="font-bold mb-2 text-neutral-400">📰 Notícias</p>
-              <ul className="text-sm space-y-2">
-                <li><a href="#" className="text-blue-600 hover:underline">Últimas atualizações</a></li>
-                <li><a href="#" className="text-blue-600 hover:underline">Dicas de viagem</a></li>
-              </ul>
-            </div>
-          </aside> */}
         </div>
 
         {/* Footer fixo */}

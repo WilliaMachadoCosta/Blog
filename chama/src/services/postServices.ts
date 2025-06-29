@@ -4,13 +4,63 @@ import { IPost, WordPressPost } from "@/models/interfaces/post";
 
 const API_BASE = "https://chamanozap.net/wp-json/wp/v2";
 
-const fetchJson = async (url: string) => {
-  const res = await fetch(url, { cache: "no-store" });
+// Cache em memória para evitar requisições desnecessárias
+const cache = new Map<string, { data: any; timestamp: number }>();
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutos em millisegundos
+
+const fetchJson = async (url: string, useCache = true) => {
+  const cacheKey = url;
+  
+  // Verificar cache se habilitado
+  if (useCache && cache.has(cacheKey)) {
+    const cached = cache.get(cacheKey)!;
+    const now = Date.now();
+    
+    // Se o cache ainda é válido, retornar dados em cache
+    if (now - cached.timestamp < CACHE_DURATION) {
+      console.log(`Cache hit: ${url}`);
+      return cached.data;
+    } else {
+      // Cache expirado, remover
+      cache.delete(cacheKey);
+    }
+  }
+
+  // Fazer requisição à API
+  console.log(`Fetching from API: ${url}`);
+  const res = await fetch(url, { 
+    cache: "force-cache", // Usar cache do Next.js
+    next: { 
+      revalidate: 300 // Revalidar a cada 5 minutos
+    }
+  });
+  
   if (!res.ok) {
     throw new Error(`Erro ao buscar: ${url}`);
   }
-  return res.json();
+  
+  const data = await res.json();
+  
+  // Armazenar no cache em memória
+  if (useCache) {
+    cache.set(cacheKey, { data, timestamp: Date.now() });
+  }
+  
+  return data;
 };
+
+// Função para limpar cache expirado
+const cleanupCache = () => {
+  const now = Date.now();
+  for (const [key, value] of cache.entries()) {
+    if (now - value.timestamp > CACHE_DURATION) {
+      cache.delete(key);
+    }
+  }
+};
+
+// Limpar cache a cada 10 minutos
+setInterval(cleanupCache, 10 * 60 * 1000);
 
 export async function getPostsByIds(ids: number[]): Promise<IPost[]> {
   if (!ids.length) return [];
@@ -20,7 +70,7 @@ export async function getPostsByIds(ids: number[]): Promise<IPost[]> {
     const data = await fetchJson(`${API_BASE}/posts?include=${includeParam}&_embed`);
     const posts = data.map(mapPost);
 
-    // Buscar comentários para cada post em paralelo
+    // Buscar comentários para cada post em paralelo (com cache)
     const commentsByPost = await Promise.all(
       posts.map((post: IPost) => getCommentsByPost(post.id))
     );
@@ -122,6 +172,26 @@ export async function getCommentsByPost(postId: number) {
     console.error("Erro em getCommentsByPost:", err);
     return [];
   }
+}
+
+// Função para limpar cache manualmente (útil para desenvolvimento)
+export function clearCache() {
+  cache.clear();
+  console.log("Cache limpo manualmente");
+}
+
+// Função para verificar status do cache
+export function getCacheStatus() {
+  const now = Date.now();
+  const validEntries = Array.from(cache.entries()).filter(([_, value]) => 
+    now - value.timestamp < CACHE_DURATION
+  );
+  
+  return {
+    totalEntries: cache.size,
+    validEntries: validEntries.length,
+    expiredEntries: cache.size - validEntries.length
+  };
 }
 
 function mapPost(post: WordPressPost): IPost {

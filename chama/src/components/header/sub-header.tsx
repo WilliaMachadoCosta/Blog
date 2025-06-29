@@ -16,11 +16,11 @@ interface SubHeaderProps {
 
 export function SubHeader({ company, onBack }: SubHeaderProps) {
     return (
-        <div className="flex items-center justify-between bg-white px-3 py-2 rounded shadow-sm">
+        <div className="flex items-center justify-between bg-white px-2 sm:px-3 py-1.5 sm:py-2 rounded shadow-sm">
             {/* Esquerda: ícone voltar + logo + nome */}
-            <div className="flex items-center gap-2">
-                <button onClick={onBack} className="text-blue-600 p-1">
-                    <ArrowLeft size={18} />
+            <div className="flex items-center gap-1 sm:gap-2 flex-1 min-w-0">
+                <button onClick={onBack} className="text-blue-600 p-1 hover:bg-gray-100 rounded-full transition-colors">
+                    <ArrowLeft size={16} className="sm:w-4 sm:h-4" />
                 </button>
 
                 <CompanyLogo
@@ -29,20 +29,20 @@ export function SubHeader({ company, onBack }: SubHeaderProps) {
                     fallbackText={company.nome || "Empresa"}
                 />
 
-                <div className="flex items-center">
-                    <span className="text-sm font-medium leading-none text-black">
+                <div className="flex items-center flex-1 min-w-0">
+                    <span className="text-xs sm:text-sm font-medium leading-none text-black truncate">
                         {company.nome}
                     </span>
                 </div>
             </div>
 
             {/* Direita: ícones */}
-            <div className="flex items-center gap-3 text-blue-600 pr-1">
-                <Link href={`#mensagem`} aria-label="Mensagem">
-                    <MessageCircle size={18} />
+            <div className="flex items-center gap-2 sm:gap-3 text-blue-600 pr-1">
+                <Link href={`#mensagem`} aria-label="Mensagem" className="p-1 hover:bg-gray-100 rounded-full transition-colors">
+                    <MessageCircle size={16} className="sm:w-4 sm:h-4" />
                 </Link>
-                <a href={`tel:${company.telefone ?? ""}`} aria-label="Telefone">
-                    <Phone size={18} />
+                <a href={`tel:${company.telefone ?? ""}`} aria-label="Telefone" className="p-1 hover:bg-gray-100 rounded-full transition-colors">
+                    <Phone size={16} className="sm:w-4 sm:h-4" />
                 </a>
             </div>
         </div>

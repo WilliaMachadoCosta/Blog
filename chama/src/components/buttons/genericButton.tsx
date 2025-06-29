@@ -5,8 +5,7 @@ interface GenericButtonProps {
 }
 
 export function GenericButton({ href, label, variant = "default" }: GenericButtonProps) {
-    const base = "inline-flex items-center px-4 py-2 rounded-md shadow font-medium transition text-white no-underline visited:text-white hover:text-white";
-
+    const base = "inline-flex items-center px-3 sm:px-4 py-2 sm:py-3 rounded-md shadow font-medium transition text-white no-underline visited:text-white hover:text-white text-sm sm:text-base";
 
     const variants = {
         whatsapp: `${base} bg-green-800 hover:bg-green-600`,

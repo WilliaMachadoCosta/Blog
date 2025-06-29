@@ -42,16 +42,16 @@ export default async function PostPage({
   const company = extractCompanyData(post.content);
   const cleanTitle = post.title?.replace(/<[^>]*>/g, "") || "Post";
   return (
-    <main className="min-h-screen bg-[#f5f3ef] py-6 px-4 overflow-x-hidden">
-      <article className="bg-white max-w-2xl mx-auto rounded-xl shadow-md p-4 sm:p-6 space-y-6 overflow-hidden">
+    <main className="min-h-screen bg-[#f5f3ef] py-4 sm:py-6 px-2 sm:px-4 overflow-x-hidden">
+      <article className="bg-white max-w-2xl mx-auto rounded-xl shadow-md p-3 sm:p-4 md:p-6 space-y-4 sm:space-y-6 overflow-hidden">
 
         <SubHeaderClient company={company} />
         <h1
-          className="text-2xl sm:text-3xl font-bold leading-tight text-black break-words"
+          className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight text-black break-words"
           dangerouslySetInnerHTML={{ __html: post.title }}
         />
 
-        <p className="text-sm text-neutral-900 dark:text-neutral-900">
+        <p className="text-xs sm:text-sm text-neutral-900 dark:text-neutral-900">
           Publicado em{" "}
           <time dateTime={post.date}>
             {new Date(post.date).toLocaleDateString("pt-BR", {
@@ -69,7 +69,7 @@ export default async function PostPage({
             alt={cleanTitle}
             width={800}
             height={600}
-            className="w-full h-auto rounded-md object-cover max-h-96"
+            className="w-full h-auto rounded-md object-cover max-h-48 sm:max-h-64 md:max-h-96"
             loading="lazy"
           />
         )}

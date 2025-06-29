@@ -8,7 +8,7 @@ interface PostContentProps {
 
 export function PostContent({ html }: PostContentProps) {
     return (
-        <article className="prose prose-neutral max-w-none text-black overflow-hidden">
+        <article className="prose prose-neutral max-w-none text-black overflow-hidden prose-sm sm:prose-base lg:prose-lg">
             <div className="break-words overflow-hidden">
                 {parse(html, {
                     replace: (domNode) => {
@@ -26,7 +26,7 @@ export function PostContent({ html }: PostContentProps) {
                                 | "default";
 
                             return (
-                                <div className="w-full flex justify-center my-4">
+                                <div className="w-full flex justify-center my-3 sm:my-4 px-2 sm:px-0">
                                     <GenericButton label={label} href={href} variant={variant} />
                                 </div>
                             );

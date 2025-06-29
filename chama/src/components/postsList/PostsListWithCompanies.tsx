@@ -6,7 +6,7 @@ export async function PostsListWithCompanies() {
   const posts = await getAllPostsWithCompanies();
 
   return (
-    <div className="space-y-2 mb-8">
+    <div className="space-y-2 sm:space-y-4 mb-6 sm:mb-8">
       {posts.map((post) => (
         <article
           key={post.id}
@@ -21,24 +21,24 @@ export async function PostsListWithCompanies() {
                   alt={post.title.replace(/<[^>]*>/g, "")}
                   width={400}
                   height={300}
-                  className="w-full h-48 md:h-full object-cover"
+                  className="w-full h-32 sm:h-48 md:h-full object-cover"
                   loading="lazy"
                 />
               </div>
 
               {/* Conteúdo do post */}
-              <div className="md:w-2/3 p-6">
+              <div className="md:w-2/3 p-3 sm:p-4 md:p-6">
                 <h2
-                  className="text-xl font-bold text-gray-900 mb-2 line-clamp-2"
+                  className="text-lg sm:text-xl font-bold text-gray-900 mb-2 line-clamp-2"
                   dangerouslySetInnerHTML={{ __html: post.title }}
                 />
 
-                <p className="text-gray-600 mb-4 line-clamp-3">
+                <p className="text-gray-600 mb-3 sm:mb-4 line-clamp-3 text-sm sm:text-base">
                   {post.excerpt.replace(/<[^>]*>/g, "")}
                 </p>
 
-                <div className="flex items-center justify-between text-sm text-gray-500">
-                  <div className="flex items-center space-x-4">
+                <div className="flex items-center justify-between text-xs sm:text-sm text-gray-500">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-1 sm:space-y-0">
                     <span>Por {post.author}</span>
                     <time dateTime={post.date}>
                       {new Date(post.date || Date.now()).toLocaleDateString("pt-BR", {

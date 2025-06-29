@@ -5,6 +5,7 @@ import { getPostsByIds } from "@/services/postServices";
 import { extractCompanyData } from "./companyData";
 import { Suspense } from "react";
 import CompaniesListWithPagination from "./companies-list";
+import BlogSection, { BlogSectionSkeleton } from "./BlogSection";
 
 // Componente de loading para cada item
 function CompanyItemSkeleton() {
@@ -41,6 +42,7 @@ async function CompaniesData() {
 export default function Container() {
     return (
         <div className="min-h-screen bg-white p-2 sm:p-4">
+            {/* Seção de Empresas */}
             <Suspense fallback={
                 <div className="space-y-2 mb-8">
                     {[...Array(5)].map((_, i) => (
@@ -49,6 +51,11 @@ export default function Container() {
                 </div>
             }>
                 <CompaniesData />
+            </Suspense>
+
+            {/* Seção de Blog */}
+            <Suspense fallback={<BlogSectionSkeleton />}>
+                <BlogSection />
             </Suspense>
         </div>
     );

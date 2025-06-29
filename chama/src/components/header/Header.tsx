@@ -58,12 +58,11 @@ export default function Header() {
         <header className="w-full bg-[#f5f3ef] text-black flex items-center justify-between px-3 sm:px-4 py-2 sm:py-3 shadow-md relative">
             {/* Logo ou Nome */}
             <div className="text-lg sm:text-xl font-semibold">
-                {/* Pesquisa */}
-                <button aria-label="Pesquisar">
+                <Link href="/" aria-label="Ir para página inicial">
                     <CompanyLogo src={"/logos/chama.png"}
                         alt={`Logo Chama No Zap`}
                         fallbackText={"Chama no Zap"} />
-                </button>
+                </Link>
             </div>
 
             {/* Menu de Navegação */}

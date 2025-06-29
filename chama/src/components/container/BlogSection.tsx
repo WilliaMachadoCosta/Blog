@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { BookOpen, Calendar, User, ArrowRight } from 'lucide-react';
+import { BookOpen, Calendar, User, ArrowRight, MessageCircle } from 'lucide-react';
 import { IPost } from '@/models/interfaces/post';
 import { getAllPosts, getPostsByCategorySlug } from '@/services/postServices';
 import { getAllCategories } from '@/services/categoryServices';
@@ -42,6 +42,18 @@ async function getRecentBlogPosts(): Promise<IPost[]> {
     }
 }
 
+// Função utilitária para tempo relativo em português
+function tempoRelativo(dateString: string) {
+    const now = new Date();
+    const date = new Date(dateString);
+    const diff = Math.floor((now.getTime() - date.getTime()) / 1000);
+    if (diff < 60) return 'agora mesmo';
+    if (diff < 3600) return `há ${Math.floor(diff / 60)} min`;
+    if (diff < 86400) return `há ${Math.floor(diff / 3600)} h`;
+    if (diff < 2592000) return `há ${Math.floor(diff / 86400)} d`;
+    return date.toLocaleDateString('pt-BR');
+}
+
 // Componente de loading para posts
 function BlogPostSkeleton() {
     return (
@@ -77,18 +89,18 @@ export default async function BlogSection() {
     };
 
     return (
-        <section className="mt-8 mb-6">
+        <section
+            className="mt-8 mb-6 bg-[#f5f3ef] rounded-xl shadow-lg p-4"
+        >
             {/* Header da seção */}
             <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
                     <BookOpen className="w-6 h-6 text-green-600" />
-                    <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
-                        Blog
-                    </h2>
+                    <h2 className="text-2xl font-bold text-gray-900">Blog</h2>
                 </div>
                 <Link 
                     href="/blog"
-                    className="flex items-center gap-2 text-green-600 hover:text-green-700 font-semibold text-sm sm:text-base transition-colors"
+                    className="flex items-center gap-2 text-green-600 hover:text-green-700 font-semibold text-base transition-colors"
                 >
                     <span>Veja mais</span>
                     <ArrowRight className="w-4 h-4" />
@@ -96,15 +108,43 @@ export default async function BlogSection() {
             </div>
 
             {/* Grid de posts */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="flex flex-col gap-4">
                 {posts.map((post) => (
                     <article
                         key={post.id}
-                        className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+                        className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col md:flex-row items-stretch"
                     >
-                        <Link href={`/${post.slug}`}>
+                        {/* Conteúdo do post */}
+                        <Link href={`/${post.slug}`} className="flex-1 flex flex-col md:flex-row">
+                            <div className="flex-1 p-4 flex flex-col justify-between">
+                                <h3
+                                    className="font-bold text-gray-900 mb-2 text-lg md:text-xl line-clamp-2"
+                                    dangerouslySetInnerHTML={{ __html: post.title }}
+                                />
+                                <p className="text-gray-600 mb-3 line-clamp-2 text-sm md:text-base">
+                                    {post.excerpt.replace(/<[^>]*>/g, "")}
+                                </p>
+                                {/* Meta informações */}
+                                <div className="flex items-center justify-between text-xs text-gray-500 mt-auto">
+                                    <div className="flex items-center gap-2">
+                                        {/* Avatar do autor (inicial) */}
+                                        <span className="w-7 h-7 rounded-full bg-green-600 flex items-center justify-center text-white font-bold text-sm">
+                                            {post.author?.[0]?.toUpperCase() || '?'}
+                                        </span>
+                                        <span className="truncate">{post.author}</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <Calendar className="w-4 h-4" />
+                                        <span>{tempoRelativo(post.date)}</span>
+                                    </div>
+                                    <div className="flex items-center gap-1">
+                                        <MessageCircle className="w-4 h-4" />
+                                        <span>1</span>
+                                    </div>
+                                </div>
+                            </div>
                             {/* Imagem do post */}
-                            <div className="relative h-32 sm:h-40">
+                            <div className="relative w-full md:w-48 h-32 md:h-auto md:min-h-full">
                                 <Image
                                     src={post.featuredImage}
                                     alt={post.title.replace(/<[^>]*>/g, "")}
@@ -112,32 +152,6 @@ export default async function BlogSection() {
                                     className="object-cover"
                                     loading="lazy"
                                 />
-                            </div>
-
-                            {/* Conteúdo do post */}
-                            <div className="p-4">
-                                <h3
-                                    className="font-semibold text-gray-900 mb-2 line-clamp-2 text-sm sm:text-base"
-                                    dangerouslySetInnerHTML={{ __html: post.title }}
-                                />
-
-                                <p className="text-gray-600 mb-3 line-clamp-2 text-xs sm:text-sm">
-                                    {post.excerpt.replace(/<[^>]*>/g, "")}
-                                </p>
-
-                                {/* Meta informações */}
-                                <div className="flex items-center justify-between text-xs text-gray-500">
-                                    <div className="flex items-center gap-1">
-                                        <User className="w-3 h-3" />
-                                        <span className="truncate">{post.author}</span>
-                                    </div>
-                                    <div className="flex items-center gap-1">
-                                        <Calendar className="w-3 h-3" />
-                                        <time dateTime={post.date}>
-                                            {formatDate(post.date)}
-                                        </time>
-                                    </div>
-                                </div>
                             </div>
                         </Link>
                     </article>

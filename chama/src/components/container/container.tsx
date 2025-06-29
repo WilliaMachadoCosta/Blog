@@ -6,6 +6,8 @@ import { extractCompanyData } from "./companyData";
 import { Suspense } from "react";
 import CompaniesListWithPagination from "./companies-list";
 import BlogSection, { BlogSectionSkeleton } from "./BlogSection";
+import GoogleAdSense from "@/components/banner/GoogleAdSense";
+import { getAdConfig, shouldShowAds } from "@/config/ads";
 
 // Componente de loading para cada item
 function CompanyItemSkeleton() {
@@ -52,6 +54,16 @@ export default function Container() {
             }>
                 <CompaniesData />
             </Suspense>
+
+            {/* Anúncio do Google AdSense entre seções */}
+            {shouldShowAds() && (
+                <div className="my-8">
+                    <GoogleAdSense 
+                        {...getAdConfig('BETWEEN_POSTS')}
+                        className="w-full"
+                    />
+                </div>
+            )}
 
             {/* Seção de Blog */}
             <Suspense fallback={<BlogSectionSkeleton />}>

@@ -4,6 +4,8 @@ import { BookOpen, Calendar, User, ArrowRight, MessageCircle } from 'lucide-reac
 import { IPost } from '@/models/interfaces/post';
 import { getAllPosts, getPostsByCategorySlug } from '@/services/postServices';
 import { getAllCategories } from '@/services/categoryServices';
+import GoogleAdSense from '@/components/banner/GoogleAdSense';
+import { getAdConfig, shouldShowAds } from '@/config/ads';
 
 // Função para buscar posts recentes das categorias definidas
 async function getRecentBlogPosts(): Promise<IPost[]> {
@@ -106,6 +108,16 @@ export default async function BlogSection() {
                     <ArrowRight className="w-4 h-4" />
                 </Link>
             </div>
+
+            {/* Anúncio do Google AdSense */}
+            {shouldShowAds() && (
+                <div className="mb-6">
+                    <GoogleAdSense 
+                        {...getAdConfig('HORIZONTAL_MAIN')}
+                        className="w-full"
+                    />
+                </div>
+            )}
 
             {/* Grid de posts */}
             <div className="flex flex-col gap-4">

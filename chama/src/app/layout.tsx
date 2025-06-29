@@ -3,6 +3,7 @@
 import Header from '@/components/header/Header'
 import './globals.css'
 import { Footer } from '@/components/footer/footer'
+import Script from 'next/script'
 
 
 
@@ -21,6 +22,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt" className="bg-neutral-100">
+      <head>
+        {/* Google AdSense Script */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5074393689985715"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+      </head>
       <body className="flex flex-col h-screen bg-neutral-100 text-black overflow-x-hidden">
         {/* Header fixo */}
         <div className="fixed top-0 left-0 w-full z-50">

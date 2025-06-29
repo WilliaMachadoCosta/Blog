@@ -8,6 +8,8 @@ import { IPost } from "@/models/interfaces/post";
 import { ICategory } from "@/services/categoryServices";
 import { getPostsByCategorySlug } from "@/services/postServices";
 import { SpinLoader } from "@/components/SpinLoad/SpinLoader";
+import GoogleAdSense from "@/components/banner/GoogleAdSense";
+import { getAdConfig, shouldShowAds } from "@/config/ads";
 
 interface BlogClientProps {
   initialPosts: IPost[];
@@ -154,6 +156,16 @@ export default function BlogClient({ initialPosts, categories }: BlogClientProps
           </div>
         )}
       </div>
+
+      {/* Anúncio do Google AdSense */}
+      {shouldShowAds() && (
+        <div className="bg-white rounded-lg shadow-md p-4">
+          <GoogleAdSense 
+            {...getAdConfig('HORIZONTAL_MAIN')}
+            className="w-full"
+          />
+        </div>
+      )}
 
       {/* Lista de Posts */}
       <div className="space-y-4">

@@ -174,6 +174,21 @@ export async function getCommentsByPost(postId: number) {
   }
 }
 
+export async function searchPosts(query: string): Promise<IPost[]> {
+  if (!query || query.trim().length < 4) {
+    return [];
+  }
+
+  try {
+    const searchQuery = encodeURIComponent(query.trim());
+    const data = await fetchJson(`${API_BASE}/posts?search=${searchQuery}&_embed&orderby=relevance&order=desc&per_page=20`);
+    return data.map(mapPost);
+  } catch (err) {
+    console.error("Erro em searchPosts:", err);
+    return [];
+  }
+}
+
 // Função para limpar cache manualmente (útil para desenvolvimento)
 export function clearCache() {
   cache.clear();

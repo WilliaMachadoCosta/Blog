@@ -26,7 +26,8 @@ function CompanyItemSkeleton() {
 
 // Componente que busca e renderiza os dados
 async function CompaniesData() {
-    const rawCompanies = await getPostsByIds([927, 1410, 6142, 476, 7427, 417, 1091]);
+    const rawCompanies = await getPostsByIds([927, 1410, 6142, 476, 7427, 417, 1091, 758, 1128, 826, 153, 482,
+        7906, 1057, 4241, 6084, 7701, 1259, 2783, 1026, 716, 1165, 320]);
 
     const companies = rawCompanies.map((post) => {
         const empresa = extractCompanyData(post.content);
@@ -36,6 +37,7 @@ async function CompaniesData() {
             empresaLogo: empresa.logo ?? post.featuredImage,
         };
     });
+    console.log("Total de empresas recebidas:", companies.length);
 
     return <CompaniesListWithPagination companies={companies} />;
 }
@@ -58,7 +60,7 @@ export default function Container() {
             {/* Anúncio do Google AdSense entre seções */}
             {shouldShowAds() && (
                 <div className="my-8">
-                    <GoogleAdSense 
+                    <GoogleAdSense
                         {...getAdConfig('BETWEEN_POSTS')}
                         className="w-full"
                     />

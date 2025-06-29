@@ -10,12 +10,12 @@ const CACHE_DURATION = 5 * 60 * 1000; // 5 minutos em millisegundos
 
 const fetchJson = async (url: string, useCache = true) => {
   const cacheKey = url;
-  
+
   // Verificar cache se habilitado
   if (useCache && cache.has(cacheKey)) {
     const cached = cache.get(cacheKey)!;
     const now = Date.now();
-    
+
     // Se o cache ainda é válido, retornar dados em cache
     if (now - cached.timestamp < CACHE_DURATION) {
       console.log(`Cache hit: ${url}`);
@@ -28,24 +28,24 @@ const fetchJson = async (url: string, useCache = true) => {
 
   // Fazer requisição à API
   console.log(`Fetching from API: ${url}`);
-  const res = await fetch(url, { 
+  const res = await fetch(url, {
     cache: "force-cache", // Usar cache do Next.js
-    next: { 
+    next: {
       revalidate: 300 // Revalidar a cada 5 minutos
     }
   });
-  
+
   if (!res.ok) {
     throw new Error(`Erro ao buscar: ${url}`);
   }
-  
+
   const data = await res.json();
-  
+
   // Armazenar no cache em memória
   if (useCache) {
     cache.set(cacheKey, { data, timestamp: Date.now() });
   }
-  
+
   return data;
 };
 
@@ -67,7 +67,7 @@ export async function getPostsByIds(ids: number[]): Promise<IPost[]> {
 
   try {
     const includeParam = ids.join(",");
-    const data = await fetchJson(`${API_BASE}/posts?include=${includeParam}&_embed`);
+    const data = await fetchJson(`${API_BASE}/posts?include=${includeParam}&per_page=30&_embed`);
     const posts = data.map(mapPost);
 
     // Buscar comentários para cada post em paralelo (com cache)
@@ -159,15 +159,15 @@ export async function getPostsByCategorySlug(categorySlug: string): Promise<IPos
   try {
     // Primeiro, buscar a categoria pelo slug para obter o ID
     const categoryResponse = await fetchJson(`${API_BASE}/categories?slug=${categorySlug}`);
-    
+
     if (!categoryResponse || categoryResponse.length === 0) {
       console.log(`Categoria não encontrada: ${categorySlug}`);
       return [];
     }
-    
+
     const categoryId = categoryResponse[0].id;
     console.log(`Buscando posts para categoria ID: ${categoryId} (slug: ${categorySlug})`);
-    
+
     // Agora buscar os posts usando o ID da categoria
     const data = await fetchJson(`${API_BASE}/posts?categories=${categoryId}&_embed&orderby=date&order=desc`);
     return data.map(mapPost);
@@ -220,10 +220,10 @@ export function clearCache() {
 // Função para verificar status do cache
 export function getCacheStatus() {
   const now = Date.now();
-  const validEntries = Array.from(cache.entries()).filter(([_, value]) => 
+  const validEntries = Array.from(cache.entries()).filter(([_, value]) =>
     now - value.timestamp < CACHE_DURATION
   );
-  
+
   return {
     totalEntries: cache.size,
     validEntries: validEntries.length,

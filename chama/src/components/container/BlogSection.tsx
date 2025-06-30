@@ -77,6 +77,7 @@ function BlogPostSkeleton() {
 // Componente principal da seção de blog
 export default async function BlogSection() {
     const posts = await getRecentBlogPosts();
+    const showAds = shouldShowAds();
 
     if (posts.length === 0) {
         return null; // Não mostra a seção se não há posts
@@ -110,7 +111,7 @@ export default async function BlogSection() {
             </div>
 
             {/* Anúncio do Google AdSense */}
-            {shouldShowAds() && (
+            {showAds && (
                 <div className="mb-6">
                     <GoogleAdSense 
                         {...getAdConfig('HORIZONTAL_MAIN')}

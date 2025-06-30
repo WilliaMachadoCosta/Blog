@@ -25,6 +25,88 @@ html, body {
   font-family: 'Segoe UI', 'Roboto', 'San Francisco', 'Helvetica Neue', Arial, sans-serif;
 }
 
+/* ===== CONTROLE DE ANÚNCIOS ===== */
+/* Container principal dos anúncios */
+.ad-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  margin: 1rem 0;
+  z-index: 1;
+}
+
+.ad-container-vertical {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  overflow: hidden;
+  margin: 1rem 0;
+  z-index: 1;
+}
+
+/* Controle específico dos anúncios do Google AdSense */
+.adsbygoogle {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 90px !important;
+  max-height: 600px !important;
+  z-index: 1 !important;
+  overflow: hidden !important;
+}
+
+/* Prevenir que anúncios cubram o conteúdo */
+.adsbygoogle iframe {
+  position: relative !important;
+  z-index: 1 !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* Garantir que o conteúdo principal fique sempre visível */
+main {
+  position: relative;
+  z-index: 2;
+}
+
+/* Prevenir overlays indesejados */
+* {
+  box-sizing: border-box;
+}
+
+/* ===== PROTEÇÃO CONTRA ELEMENTOS QUE COBREM A TELA ===== */
+/* Prevenir que qualquer elemento cubra toda a tela */
+*[style*="position: fixed"][style*="top: 0"][style*="left: 0"][style*="width: 100%"][style*="height: 100%"] {
+  display: none !important;
+}
+
+/* Prevenir elementos com z-index muito alto */
+*[style*="z-index: 9999"], *[style*="z-index: 99999"], *[style*="z-index: 999999"] {
+  z-index: 1 !important;
+}
+
+/* Prevenir elementos que cobrem toda a viewport */
+*[style*="width: 100vw"][style*="height: 100vh"] {
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* Prevenir elementos com posição absoluta que possam cobrir o conteúdo */
+.adsbygoogle[style*="position: absolute"] {
+  position: relative !important;
+}
+
+/* Garantir que iframes de anúncios não cubram o conteúdo */
+iframe[src*="googlesyndication"], iframe[src*="doubleclick"], iframe[src*="googleadservices"] {
+  position: relative !important;
+  z-index: 1 !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
 /* ===== Conteúdo de Postagens (WordPress HTML) ===== */
 article h2 {
   @apply text-3xl font-bold mt-6 mb-4 text-neutral-950;

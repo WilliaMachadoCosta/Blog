@@ -81,18 +81,95 @@ export default function RootLayout({
             }
           `}
         </Script>
+        {/* Script de proteção contra anúncios que cobrem o conteúdo */}
+        <Script id="ad-protection" strategy="afterInteractive">
+          {`
+            (function() {
+              function protectContentFromAds() {
+                // Encontra todos os elementos que podem ser anúncios problemáticos
+                const problematicElements = document.querySelectorAll('*[style*="position: fixed"], *[style*="position: absolute"], *[style*="z-index: 999"]');
+                
+                problematicElements.forEach(function(element) {
+                  const style = window.getComputedStyle(element);
+                  
+                  // Se o elemento está cobrindo toda a tela
+                  if (style.position === 'fixed' && 
+                      (style.top === '0px' || style.top === '0') &&
+                      (style.left === '0px' || style.left === '0') &&
+                      (style.width === '100vw' || style.width === '100%') &&
+                      (style.height === '100vh' || style.height === '100%')) {
+                    
+                    // Corrige o elemento para não cobrir toda a tela
+                    element.style.position = 'relative';
+                    element.style.top = 'auto';
+                    element.style.left = 'auto';
+                    element.style.width = '100%';
+                    element.style.height = 'auto';
+                    element.style.zIndex = '1';
+                  }
+                  
+                  // Se o z-index é muito alto
+                  if (parseInt(style.zIndex) > 100) {
+                    element.style.zIndex = '1';
+                  }
+                });
+                
+                // Específico para anúncios do Google AdSense
+                const ads = document.querySelectorAll('.adsbygoogle, ins.adsbygoogle');
+                ads.forEach(function(ad) {
+                  ad.style.position = 'relative';
+                  ad.style.zIndex = '1';
+                  ad.style.width = '100%';
+                  ad.style.maxWidth = '100%';
+                  ad.style.height = 'auto';
+                  ad.style.maxHeight = '600px';
+                  ad.style.overflow = 'hidden';
+                });
+                
+                // Verifica iframes de anúncios
+                const adIframes = document.querySelectorAll('iframe[src*="googlesyndication"], iframe[src*="doubleclick"]');
+                adIframes.forEach(function(iframe) {
+                  iframe.style.position = 'relative';
+                  iframe.style.zIndex = '1';
+                  iframe.style.maxWidth = '100%';
+                  iframe.style.height = 'auto';
+                });
+              }
+              
+              // Executa imediatamente
+              protectContentFromAds();
+              
+              // Executa após um delay
+              setTimeout(protectContentFromAds, 1000);
+              
+              // Executa periodicamente
+              setInterval(protectContentFromAds, 3000);
+              
+              // Observa mudanças no DOM
+              if (typeof MutationObserver !== 'undefined') {
+                const observer = new MutationObserver(protectContentFromAds);
+                observer.observe(document.body, {
+                  childList: true,
+                  subtree: true,
+                  attributes: true,
+                  attributeFilter: ['style']
+                });
+              }
+            })();
+          `}
+        </Script>
       </head>
-      <body className="flex flex-col h-screen bg-neutral-100 text-black overflow-x-hidden">
+      <body className="flex flex-col h-screen bg-neutral-100 text-black overflow-x-hidden" style={{ position: 'relative', zIndex: 1 }}>
         {/* Header fixo */}
         <div className="fixed top-0 left-0 w-full z-50">
           <Header />
         </div>
 
         {/* Container com sidebars e conteúdo */}
-        <div className="flex flex-1 pt-[60px] pb-[50px] h-full bg-neutral-100 overflow-x-hidden">
+        <div className="flex flex-1 pt-[60px] pb-[50px] h-full bg-neutral-100 overflow-x-hidden" style={{ position: 'relative', zIndex: 2 }}>
 
           {/* Conteúdo principal */}
-          <main className="flex-1 overflow-y-auto overflow-x-hidden px-2 sm:px-4 bg-[#f5f3ef]">
+          <main className="flex-1 overflow-y-auto overflow-x-hidden px-2 sm:px-4 bg-[#f5f3ef]" style={{ position: 'relative', zIndex: 3 }}>
             {children}
           </main>
         </div>

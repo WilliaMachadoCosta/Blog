@@ -33,15 +33,29 @@ export const ADS_CONFIG = {
 
 // Função para verificar se os anúncios devem ser exibidos
 export function shouldShowAds(): boolean {
-    // Em desenvolvimento, você pode querer desabilitar os anúncios
+    // Em desenvolvimento, desabilitar os anúncios para evitar problemas
     if (process.env.NODE_ENV === 'development') {
+        return false;
+    }
+    
+    // Verificar se estamos no servidor
+    if (typeof window === 'undefined') {
         return false;
     }
     
     // Verificar se o usuário não está usando ad blocker (opcional)
     // Esta é uma verificação básica, não é 100% confiável
-    if (typeof window !== 'undefined') {
-        return !window.navigator.userAgent.includes('AdBlock');
+    if (window.navigator && window.navigator.userAgent) {
+        const userAgent = window.navigator.userAgent.toLowerCase();
+        if (userAgent.includes('adblock') || userAgent.includes('ublock')) {
+            return false;
+        }
+    }
+    
+    // Verificar se há algum problema com o DOM
+    if (document.body && document.body.children.length > 100) {
+        // Se há muitos elementos, pode haver um problema
+        return false;
     }
     
     return true;

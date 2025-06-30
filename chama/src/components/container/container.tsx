@@ -44,8 +44,20 @@ async function CompaniesData() {
 
 // Componente principal otimizado
 export default function Container() {
+    const showAds = shouldShowAds();
+
     return (
         <div className="min-h-screen bg-white p-2 sm:p-4">
+            {/* Indicador de status dos anúncios (apenas em desenvolvimento) */}
+            {process.env.NODE_ENV === 'development' && (
+                <div className="mb-4 p-3 bg-yellow-100 border border-yellow-400 rounded-lg">
+                    <p className="text-yellow-800 text-sm">
+                        🔧 <strong>Modo Desenvolvimento:</strong> Anúncios desabilitados para evitar problemas de layout.
+                        {showAds ? ' (Anúncios ativos)' : ' (Anúncios inativos)'}
+                    </p>
+                </div>
+            )}
+
             {/* Seção de Empresas */}
             <Suspense fallback={
                 <div className="space-y-2 mb-8">
@@ -58,7 +70,7 @@ export default function Container() {
             </Suspense>
 
             {/* Anúncio do Google AdSense entre seções */}
-            {shouldShowAds() && (
+            {showAds && (
                 <div className="my-8">
                     <GoogleAdSense
                         {...getAdConfig('BETWEEN_POSTS')}

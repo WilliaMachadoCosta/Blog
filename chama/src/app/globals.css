@@ -45,6 +45,27 @@ html, body {
   z-index: 1;
 }
 
+/* Anúncios dentro do conteúdo do artigo */
+.ad-in-content {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  margin: 1.5rem 0;
+  z-index: 1;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border: 1px solid #dee2e6;
+}
+
+.ad-in-content-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
 /* Controle específico dos anúncios do Google AdSense */
 .adsbygoogle {
   position: relative !important;
@@ -88,13 +109,13 @@ main {
   z-index: 1 !important;
 }
 
-/* Prevenir elementos que cobrem toda a viewport */
+/* Prevenir elementos que ocupam toda a viewport */
 *[style*="width: 100vw"][style*="height: 100vh"] {
   width: 100% !important;
   height: auto !important;
 }
 
-/* Prevenir elementos com posição absoluta que possam cobrir o conteúdo */
+/* Controle específico para anúncios problemáticos */
 .adsbygoogle[style*="position: absolute"] {
   position: relative !important;
 }
@@ -193,4 +214,16 @@ article embed {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* ===== RESPONSIVIDADE PARA ANÚNCIOS ===== */
+@media (max-width: 768px) {
+  .ad-in-content {
+    margin: 1rem 0;
+    padding: 0.75rem;
+  }
+  
+  .ad-container {
+    margin: 0.75rem 0;
+  }
 }

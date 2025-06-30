@@ -157,16 +157,6 @@ export default async function PostPage({
 
         <PostContent html={sanitizeHtml(post.content)} />
         
-        {/* Anúncio do Google AdSense */}
-        {shouldShowAds() && (
-            <div className="my-6">
-                <GoogleAdSense 
-                    {...getAdConfig('BETWEEN_POSTS')}
-                    className="w-full"
-                />
-            </div>
-        )}
-        
         <ShareButtons />
       </article>
     </main>

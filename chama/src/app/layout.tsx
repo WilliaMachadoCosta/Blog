@@ -81,6 +81,45 @@ export default function RootLayout({
             }
           `}
         </Script>
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Meu site" />
+        <meta property="og:description" content="Descrição do site" />
+        <meta property="og:url" content="https://chamanozap.net/" />
+        <meta property="og:site_name" content="chamanozap.net" />
+        <meta property="og:image" content="https://chamanozap.net/logo.png" />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Meu site" />
+        <meta name="twitter:description" content="Descrição do site" />
+        <meta name="twitter:site" content="@SeuTwitter" />
+        <meta name="twitter:image" content="https://chamanozap.net/logo.png" />
+        {/* Canonical */}
+        <link rel="canonical" href="https://chamanozap.net/" />
+        {/* Organization Structured Data */}
+        <Script id="organization-ld-json" type="application/ld+json" strategy="afterInteractive">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Wmc Webao Suporte Tecnico Manutencao e Desenvolvimento de Sistemas LTDA",
+              "url": "https://chamanozap.net/",
+              "logo": "https://chamanozap.net/logo.png",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "rua andorra",
+                "addressLocality": "Itapevi",
+                "addressRegion": "SP",
+                "addressCountry": "BR"
+              },
+              "identifier": {
+                "@type": "PropertyValue",
+                "propertyID": "CNPJ",
+                "value": "42385680000159"
+              }
+            }
+          `}
+        </Script>
       </head>
       <body className="flex flex-col h-screen bg-neutral-100 text-black overflow-x-hidden">
         {/* Header fixo */}

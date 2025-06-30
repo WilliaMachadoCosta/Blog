@@ -200,7 +200,7 @@ export default function BlogClient({ initialPosts, categories }: BlogClientProps
                 key={post.id}
                 className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
               >
-                <Link href={`/post/${post.slug}`}>
+                <Link href={`/${post.slug}`}>
                   <div className="flex flex-col md:flex-row">
                     {/* Imagem do post */}
                     <div className="md:w-1/3">

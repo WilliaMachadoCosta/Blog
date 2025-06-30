@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 import { extractCompanyData } from "@/components/container/companyData";
 import GoogleAdSense from "@/components/banner/GoogleAdSense";
 import { getAdConfig, shouldShowAds } from "@/config/ads";
+import Script from 'next/script';
 
 import SubHeaderClient from "@/components/header/sub-header-client";
 
@@ -24,11 +25,31 @@ export async function generateMetadata({
     };
   }
 
-
+  const cleanTitle = post.title.replace(/<[^>]*>/g, "");
+  const cleanExcerpt = post.excerpt?.replace(/<[^>]*>/g, "").slice(0, 160) || '';
+  const canonicalUrl = `https://chamanozap.net/${post.slug}`;
+  const imageUrl = post.featuredImage || 'https://chamanozap.net/logo.png';
 
   return {
-    title: post.title.replace(/<[^>]*>/g, ""),
-    description: post.excerpt?.replace(/<[^>]*>/g, "").slice(0, 160),
+    title: cleanTitle,
+    description: cleanExcerpt,
+    openGraph: {
+      title: cleanTitle,
+      description: cleanExcerpt,
+      url: canonicalUrl,
+      type: 'article',
+      images: [imageUrl],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: cleanTitle,
+      description: cleanExcerpt,
+      images: [imageUrl],
+      site: '@SeuTwitter',
+    },
+    alternates: {
+      canonical: canonicalUrl,
+    },
   };
 }
 
@@ -45,6 +66,64 @@ export default async function PostPage({
   const cleanTitle = post.title?.replace(/<[^>]*>/g, "") || "Post";
   return (
     <main className="min-h-screen bg-[#f5f3ef] py-4 sm:py-6 px-2 sm:px-4 overflow-x-hidden">
+      {/* Structured Data: BreadcrumbList */}
+      <Script id="breadcrumb-ld-json" type="application/ld+json" strategy="afterInteractive">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Blog",
+              "item": "https://chamanozap.net/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": cleanTitle,
+              "item": `https://chamanozap.net/${post.slug}`
+            }
+          ]
+        })}
+      </Script>
+      {/* Structured Data: BlogPosting */}
+      <Script id="blogposting-ld-json" type="application/ld+json" strategy="afterInteractive">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": cleanTitle,
+          "description": post.excerpt?.replace(/<[^>]*>/g, "").slice(0, 160) || '',
+          "image": post.featuredImage || 'https://chamanozap.net/logo.png',
+          "datePublished": post.date,
+          "dateModified": post.date,
+          "author": {
+            "@type": "Person",
+            "name": post.author
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Wmc Webao Suporte Tecnico Manutencao e Desenvolvimento de Sistemas LTDA",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://chamanozap.net/logo.png"
+            }
+          },
+          "mainEntityOfPage": `https://chamanozap.net/${post.slug}`,
+          ...(company && company.nome && {
+            about: {
+              "@type": "Organization",
+              name: company.nome
+            },
+            mentions: [
+              {
+                "@type": "Organization",
+                name: company.nome
+              }
+            ]
+          })
+        })}
+      </Script>
       <article className="bg-white max-w-2xl mx-auto rounded-xl shadow-md p-3 sm:p-4 md:p-6 space-y-4 sm:space-y-6 overflow-hidden">
 
         <SubHeaderClient company={company} />

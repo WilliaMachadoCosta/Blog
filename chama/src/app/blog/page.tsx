@@ -17,9 +17,8 @@ export default async function BlogPage() {
 }
 
 async function BlogContent() {
-  // Buscar posts e categorias
   const posts = await getAllPosts();
-  const categories = getAllCategories(); // Agora é síncrono
+  const categories = getAllCategories();
 
   return <BlogClient initialPosts={posts} categories={categories} />;
 } 

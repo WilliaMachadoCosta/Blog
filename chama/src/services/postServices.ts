@@ -26,27 +26,42 @@ const fetchJson = async (url: string, useCache = true) => {
     }
   }
 
-  // Fazer requisição à API
+  // Fazer requisição à API com timeout
   console.log(`Fetching from API: ${url}`);
-  const res = await fetch(url, {
-    cache: "force-cache", // Usar cache do Next.js
-    next: {
-      revalidate: 300 // Revalidar a cada 5 minutos
+  
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 segundos timeout
+
+  try {
+    const res = await fetch(url, {
+      cache: "force-cache", // Usar cache do Next.js
+      next: {
+        revalidate: 300 // Revalidar a cada 5 minutos
+      },
+      signal: controller.signal
+    });
+
+    clearTimeout(timeoutId);
+
+    if (!res.ok) {
+      throw new Error(`Erro ao buscar: ${url} - Status: ${res.status}`);
     }
-  });
 
-  if (!res.ok) {
-    throw new Error(`Erro ao buscar: ${url}`);
+    const data = await res.json();
+
+    // Armazenar no cache em memória
+    if (useCache) {
+      cache.set(cacheKey, { data, timestamp: Date.now() });
+    }
+
+    return data;
+  } catch (error) {
+    clearTimeout(timeoutId);
+    if (error instanceof Error && error.name === 'AbortError') {
+      throw new Error(`Timeout ao buscar: ${url}`);
+    }
+    throw error;
   }
-
-  const data = await res.json();
-
-  // Armazenar no cache em memória
-  if (useCache) {
-    cache.set(cacheKey, { data, timestamp: Date.now() });
-  }
-
-  return data;
 };
 
 // Função para limpar cache expirado

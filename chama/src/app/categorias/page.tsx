@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { getAllCategories } from "@/services/categoryServices";
-import { getPostsByCategorySlug } from "@/services/postServices";
 import { Tag, ArrowRight, BookOpen } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -11,17 +10,6 @@ export const metadata: Metadata = {
 
 export default async function CategoriesPage() {
   const categories = getAllCategories();
-  
-  // Buscar contagem de posts para cada categoria usando slug
-  const categoriesWithCount = await Promise.all(
-    categories.map(async (category) => {
-      const posts = await getPostsByCategorySlug(category.slug);
-      return {
-        ...category,
-        count: posts.length
-      };
-    })
-  );
 
   return (
     <main className="min-h-screen bg-[#f5f3ef] py-4 sm:py-6 px-2 sm:px-4">
@@ -41,7 +29,7 @@ export default async function CategoriesPage() {
 
         {/* Lista de Categorias */}
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {categoriesWithCount.map((category) => (
+          {categories.map((category) => (
             <Link
               key={category.id}
               href={`/blog/categoria/${category.slug}`}
@@ -57,7 +45,7 @@ export default async function CategoriesPage() {
                       {category.name}
                     </h2>
                     <p className="text-sm text-gray-500">
-                      {category.count} post{category.count !== 1 ? 's' : ''}
+                      Ver posts
                     </p>
                   </div>
                 </div>
@@ -81,25 +69,25 @@ export default async function CategoriesPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             <div>
               <div className="text-2xl font-bold text-green-600">
-                {categoriesWithCount.length}
+                {categories.length}
               </div>
               <div className="text-sm text-gray-600">Categorias</div>
             </div>
             <div>
               <div className="text-2xl font-bold text-blue-600">
-                {categoriesWithCount.reduce((sum, cat) => sum + cat.count, 0)}
+                -
               </div>
               <div className="text-sm text-gray-600">Total de Posts</div>
             </div>
             <div>
               <div className="text-2xl font-bold text-purple-600">
-                {categoriesWithCount.filter(cat => cat.count > 0).length}
+                -
               </div>
               <div className="text-sm text-gray-600">Categorias com Posts</div>
             </div>
             <div>
               <div className="text-2xl font-bold text-orange-600">
-                {Math.max(...categoriesWithCount.map(cat => cat.count))}
+                -
               </div>
               <div className="text-sm text-gray-600">Mais Posts</div>
             </div>

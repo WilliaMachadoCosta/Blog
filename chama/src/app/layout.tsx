@@ -1,50 +1,25 @@
 // src/app/layout.tsx
 
-import Header from '@/components/header/Header'
-import './globals.css'
-import { Footer } from '@/components/footer/footer'
-import Script from 'next/script'
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import Header from "@/components/header/Header";
+import { Footer } from "@/components/footer/footer";
+import SubHeaderClient from "@/components/header/sub-header-client";
+import Script from 'next/script';
 
-export const metadata = {
-  title: 'Meu site',
-  description: 'Descrição do site',
-  openGraph: {
-    type: 'website',
-    title: 'Meu site',
-    description: 'Descrição do site',
-    url: 'https://chamanozap.net/',
-    siteName: 'chamanozap.net',
-    images: [
-      {
-        url: 'https://chamanozap.net/logo.png',
-        width: 1200,
-        height: 630,
-        alt: 'Logo do site',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Meu site',
-    description: 'Descrição do site',
-    site: '@SeuTwitter',
-    images: ['https://chamanozap.net/logo.png'],
-  },
-  alternates: {
-    canonical: 'https://chamanozap.net/',
-  },
-  verification: {
-    msvalidate: '09EFB24C7F86C6EC11550597A3D4A1DE',
-    google: 'oNTWJA1YzjgaEx4CCGjnl4kbpxk058p0TLKSyIVmhNs',
-    msvalidate2: '2A882223291B6B632B1DED256F291FE8',
-  },
-}
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "Chama - Blog de Viagens e Turismo",
+  description: "Descubra os melhores destinos, dicas de viagem e experiências únicas. Seu guia completo para explorar o mundo.",
+};
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode
-}) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="pt" className="bg-neutral-100">
       {/* Google AdSense Script */}
@@ -232,10 +207,4 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
-
-// Componente de monitor de cache (lazy load)
-async function CacheMonitor() {
-  const { default: Monitor } = await import('@/components/debug/cache-monitor');
-  return <Monitor />;
 }

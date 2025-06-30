@@ -23,6 +23,10 @@ export default function RootLayout({
   return (
     <html lang="pt" className="bg-neutral-100">
       <head>
+        {/* Metatags de verificação */}
+        <meta name="msvalidate.01" content="09EFB24C7F86C6EC11550597A3D4A1DE" />
+        <meta name="google-site-verification" content="oNTWJA1YzjgaEx4CCGjnl4kbpxk058p0TLKSyIVmhNs" />
+        <meta name="msvalidate.01" content="2A882223291B6B632B1DED256F291FE8" />
         {/* Google AdSense Script */}
         <Script
           async
@@ -30,6 +34,53 @@ export default function RootLayout({
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
+        {/* Funding Choices (ant block google) */}
+        <Script
+          async
+          src="https://fundingchoicesmessages.google.com/i/pub-5074393689985715?ers=1"
+          nonce="BojMnZHyFUjZyBBFk9E92Q"
+          strategy="afterInteractive"
+        />
+        <Script id="ant-block-google" nonce="BojMnZHyFUjZyBBFk9E92Q" strategy="afterInteractive">
+          {`(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();`}
+        </Script>
+        {/* AMP auto ads */}
+        <Script
+          async
+          custom-element="amp-auto-ads"
+          src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"
+          strategy="afterInteractive"
+        />
+        {/* Google Analytics */}
+        <Script id="gtag" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-53750184-3');`}
+        </Script>
+        {/* Google Tag Manager */}
+        <Script id="gtm" strategy="afterInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-NGNZHGB');`}
+        </Script>
+        {/* JSON-LD Schema.org */}
+        <Script id="ld-json" type="application/ld+json" strategy="afterInteractive">
+          {`
+            {
+              "@context": "http://schema.org",
+              "@type": "WebSite",
+              "url": "https://chamanozap.net/",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://chamanozap.net/?s={search_term}",
+                "query-input": "required name=search_term"
+              }
+            }
+          `}
+        </Script>
       </head>
       <body className="flex flex-col h-screen bg-neutral-100 text-black overflow-x-hidden">
         {/* Header fixo */}

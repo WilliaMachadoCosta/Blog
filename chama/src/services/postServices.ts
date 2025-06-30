@@ -8,8 +8,9 @@ const API_BASE = "https://chamanozap.net/wp-json/wp/v2";
 const cache = new Map<string, { data: any; timestamp: number }>();
 const CACHE_DURATION = 5 * 60 * 1000; // 5 minutos em millisegundos
 
-const fetchJson = async (url: string, useCache = true) => {
+const fetchJson = async (url: string, useCache = true, retryCount = 0) => {
   const cacheKey = url;
+  const maxRetries = 3;
 
   // Verificar cache se habilitado
   if (useCache && cache.has(cacheKey)) {
@@ -27,10 +28,10 @@ const fetchJson = async (url: string, useCache = true) => {
   }
 
   // Fazer requisição à API com timeout
-  console.log(`Fetching from API: ${url}`);
+  console.log(`Fetching from API: ${url} (attempt ${retryCount + 1}/${maxRetries + 1})`);
   
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 segundos timeout
+  const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 segundos timeout
 
   try {
     const res = await fetch(url, {
@@ -38,12 +39,24 @@ const fetchJson = async (url: string, useCache = true) => {
       next: {
         revalidate: 300 // Revalidar a cada 5 minutos
       },
-      signal: controller.signal
+      signal: controller.signal,
+      headers: {
+        'User-Agent': 'ChamaNoZap-Blog/1.0',
+        'Accept': 'application/json',
+        'Accept-Encoding': 'gzip, deflate, br'
+      }
     });
 
     clearTimeout(timeoutId);
 
     if (!res.ok) {
+      // Se for erro 5xx e ainda temos tentativas, tentar novamente
+      if (res.status >= 500 && res.status < 600 && retryCount < maxRetries) {
+        console.log(`Server error ${res.status}, retrying... (${retryCount + 1}/${maxRetries})`);
+        await new Promise(resolve => setTimeout(resolve, 1000 * (retryCount + 1))); // Backoff exponencial
+        return fetchJson(url, useCache, retryCount + 1);
+      }
+      
       throw new Error(`Erro ao buscar: ${url} - Status: ${res.status}`);
     }
 
@@ -57,6 +70,20 @@ const fetchJson = async (url: string, useCache = true) => {
     return data;
   } catch (error) {
     clearTimeout(timeoutId);
+    
+    // Se for erro de rede e ainda temos tentativas, tentar novamente
+    if (retryCount < maxRetries && (
+      error instanceof Error && (
+        error.name === 'AbortError' || 
+        error.message.includes('fetch') ||
+        error.message.includes('network')
+      )
+    )) {
+      console.log(`Network error, retrying... (${retryCount + 1}/${maxRetries})`);
+      await new Promise(resolve => setTimeout(resolve, 1000 * (retryCount + 1))); // Backoff exponencial
+      return fetchJson(url, useCache, retryCount + 1);
+    }
+    
     if (error instanceof Error && error.name === 'AbortError') {
       throw new Error(`Timeout ao buscar: ${url}`);
     }

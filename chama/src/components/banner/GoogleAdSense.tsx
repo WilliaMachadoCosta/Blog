@@ -6,9 +6,10 @@ interface GoogleAdSenseProps {
     adClient: string;
     adSlot: string;
     className?: string;
+    isInContent?: boolean;
 }
 
-export default function GoogleAdSense({ adClient, adSlot, className = "" }: GoogleAdSenseProps) {
+export default function GoogleAdSense({ adClient, adSlot, className = "", isInContent = false }: GoogleAdSenseProps) {
     useEffect(() => {
         // Carrega o script do Google AdSense se ainda não estiver carregado
         if (typeof window !== 'undefined' && !window.adsbygoogle) {
@@ -89,7 +90,7 @@ export default function GoogleAdSense({ adClient, adSlot, className = "" }: Goog
             width: '100%',
             maxWidth: '100%',
             overflow: 'hidden',
-            margin: '1rem 0',
+            margin: isInContent ? '0.5rem 0' : '1rem 0',
             zIndex: 1
         }}>
             <ins
@@ -100,8 +101,8 @@ export default function GoogleAdSense({ adClient, adSlot, className = "" }: Goog
                     width: '100%',
                     maxWidth: '100%',
                     height: 'auto',
-                    minHeight: '90px',
-                    maxHeight: '600px',
+                    minHeight: isInContent ? '60px' : '90px',
+                    maxHeight: isInContent ? '300px' : '400px',
                     zIndex: 1,
                     overflow: 'hidden'
                 }}

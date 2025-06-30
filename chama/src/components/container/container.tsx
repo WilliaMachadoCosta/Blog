@@ -26,8 +26,9 @@ function CompanyItemSkeleton() {
 
 // Componente que busca e renderiza os dados
 async function CompaniesData() {
-    const rawCompanies = await getPostsByIds([927, 1410, 6142, 476, 7427, 417, 1091, 758, 1128, 826, 153, 482,
-        7906, 1057, 4241, 6084, 7701, 1259, 2783, 1026, 716, 1165, 320]);
+    // const rawCompanies = await getPostsByIds([927, 1410, 6142, 476, 7427, 417, 1091, 758, 1128, 826, 153, 482,
+    //     7906, 1057, 4241, 6084, 7701, 1259, 2783, 1026, 716, 1165, 320]);
+    const rawCompanies = await getPostsByIds([927, 1410, 6142, 476, 7427, 417, 1091, 758, 1128]);
 
     const companies = rawCompanies.map((post) => {
         const empresa = extractCompanyData(post.content);

@@ -10,7 +10,7 @@ export default async function Home() {
         <main className="min-h-screen bg-[#f5f3ef] py-2 px-1">
             <div className="max-w-4xl mx-auto">
                 <Suspense fallback={<SpinLoader />}>
-                    {/* <PostsListWithCompanies />  */}
+
                     <Container />
                 </Suspense>
             </div>

@@ -48,14 +48,14 @@ export default function RootLayout({
   return (
     <html lang="pt" className="bg-neutral-100">
       {/* Google AdSense Script */}
-      <Script
+      {/* <Script
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5074393689985715"
         crossOrigin="anonymous"
         strategy="afterInteractive"
-      />
+      /> */}
       {/* Funding Choices (ant block google) */}
-      <Script
+      {/* <Script
         async
         src="https://fundingchoicesmessages.google.com/i/pub-5074393689985715?ers=1"
         nonce="BojMnZHyFUjZyBBFk9E92Q"
@@ -63,14 +63,14 @@ export default function RootLayout({
       />
       <Script id="ant-block-google" nonce="BojMnZHyFUjZyBBFk9E92Q" strategy="afterInteractive">
         {`(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();`}
-      </Script>
+      </Script> */}
       {/* AMP auto ads */}
-      <Script
+      {/* <Script
         async
         custom-element="amp-auto-ads"
         src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"
         strategy="afterInteractive"
-      />
+      /> */}
       {/* Google Analytics */}
       <Script id="gtag" strategy="afterInteractive">
         {`window.dataLayer = window.dataLayer || [];
@@ -126,7 +126,7 @@ export default function RootLayout({
         `}
       </Script>
       {/* Script de proteção contra anúncios que cobrem o conteúdo */}
-      <Script id="ad-protection" strategy="afterInteractive">
+      {/* <Script id="ad-protection" strategy="afterInteractive">
         {`
           (function() {
             function protectContentFromAds() {
@@ -201,8 +201,8 @@ export default function RootLayout({
             }
           })();
         `}
-      </Script>
-      
+      </Script> */}
+
       <body className="flex flex-col h-screen bg-neutral-100 text-black overflow-x-hidden" style={{ position: 'relative', zIndex: 1 }}>
         {/* Header fixo */}
         <div className="fixed top-0 left-0 w-full z-50">

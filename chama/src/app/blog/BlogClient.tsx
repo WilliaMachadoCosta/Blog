@@ -8,8 +8,6 @@ import { IPost } from "@/models/interfaces/post";
 import { ICategory } from "@/services/categoryServices";
 import { getPostsByCategorySlug } from "@/services/postServices";
 import { SpinLoader } from "@/components/SpinLoad/SpinLoader";
-import GoogleAdSense from "@/components/banner/GoogleAdSense";
-import { getAdConfig, shouldShowAds } from "@/config/ads";
 
 interface BlogClientProps {
   initialPosts: IPost[];
@@ -157,16 +155,6 @@ export default function BlogClient({ initialPosts, categories }: BlogClientProps
         )}
       </div>
 
-      {/* Anúncio do Google AdSense */}
-      {shouldShowAds() && (
-        <div className="bg-white rounded-lg shadow-md p-4">
-          <GoogleAdSense 
-            {...getAdConfig('HORIZONTAL_MAIN')}
-            className="w-full"
-          />
-        </div>
-      )}
-
       {/* Lista de Posts */}
       <div className="space-y-4">
         {isLoading ? (
@@ -198,52 +186,54 @@ export default function BlogClient({ initialPosts, categories }: BlogClientProps
             {posts.map((post) => (
               <article
                 key={post.id}
-                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
               >
-                <Link href={`/${post.slug}`}>
+                <Link href={`/post/${post.slug}`} className="block">
                   <div className="flex flex-col md:flex-row">
-                    {/* Imagem do post */}
-                    <div className="md:w-1/3">
-                      <Image
-                        src={post.featuredImage}
-                        alt={post.title.replace(/<[^>]*>/g, "")}
-                        width={400}
-                        height={300}
-                        className="w-full h-48 md:h-full object-cover"
-                        loading="lazy"
-                      />
-                    </div>
-
                     {/* Conteúdo do post */}
-                    <div className="flex-1 p-4 md:p-6">
+                    <div className="flex-1 p-6">
                       <h2
-                        className="text-lg sm:text-xl font-bold text-gray-900 mb-3 line-clamp-2"
+                        className="font-bold text-gray-900 mb-3 text-xl md:text-2xl line-clamp-2"
                         dangerouslySetInnerHTML={{ __html: post.title }}
                       />
-
-                      <p className="text-gray-600 mb-4 line-clamp-3 text-sm sm:text-base">
+                      <p className="text-gray-600 mb-4 line-clamp-3 text-base">
                         {post.excerpt.replace(/<[^>]*>/g, "")}
                       </p>
-
+                      
                       {/* Meta informações */}
-                      <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-gray-500">
-                        <div className="flex items-center gap-1">
-                          <User className="w-4 h-4" />
-                          <span>{post.author}</span>
+                      <div className="flex items-center justify-between text-sm text-gray-500">
+                        <div className="flex items-center gap-4">
+                          <div className="flex items-center gap-2">
+                            <User className="w-4 h-4" />
+                            <span>{post.author}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Calendar className="w-4 h-4" />
+                            <span>{formatDate(post.date)}</span>
+                          </div>
                         </div>
-                        <div className="flex items-center gap-1">
-                          <Calendar className="w-4 h-4" />
-                          <time dateTime={post.date}>
-                            {formatDate(post.date)}
-                          </time>
-                        </div>
+                        
+                        {/* Categoria */}
                         {post.categories && post.categories.length > 0 && (
-                          <div className="flex items-center gap-1">
+                          <div className="flex items-center gap-2">
                             <Tag className="w-4 h-4" />
-                            <span>{post.categories.length} categoria(s)</span>
+                            <span className="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium">
+                              {post.categories.length} categoria(s)
+                            </span>
                           </div>
                         )}
                       </div>
+                    </div>
+                    
+                    {/* Imagem do post */}
+                    <div className="relative w-full md:w-64 h-48 md:h-auto md:min-h-full">
+                      <Image
+                        src={post.featuredImage}
+                        alt={post.title.replace(/<[^>]*>/g, "")}
+                        fill
+                        className="object-cover"
+                        loading="lazy"
+                      />
                     </div>
                   </div>
                 </Link>
@@ -251,45 +241,6 @@ export default function BlogClient({ initialPosts, categories }: BlogClientProps
             ))}
           </div>
         )}
-      </div>
-
-      {/* Estatísticas */}
-      {posts.length > 0 && (
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            <div>
-              <div className="text-2xl font-bold text-green-600">{posts.length}</div>
-              <div className="text-sm text-gray-600">Posts encontrados</div>
-            </div>
-            <div>
-              <div className="text-2xl font-bold text-blue-600">{categories.length}</div>
-              <div className="text-sm text-gray-600">Categorias</div>
-            </div>
-            <div>
-              <div className="text-2xl font-bold text-purple-600">
-                {new Set(posts.map(p => p.author)).size}
-              </div>
-              <div className="text-sm text-gray-600">Autores</div>
-            </div>
-            <div>
-              <div className="text-2xl font-bold text-orange-600">
-                {posts.filter(p => new Date(p.date) > new Date(Date.now() - 30 * 24 * 60 * 60 * 1000)).length}
-              </div>
-              <div className="text-sm text-gray-600">Últimos 30 dias</div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Botão Início no final da página */}
-      <div className="bg-white rounded-lg shadow-md p-6 text-center">
-        <Link 
-          href="/"
-          className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
-        >
-          <Home className="w-4 h-4" />
-          Voltar ao Início
-        </Link>
       </div>
     </div>
   );

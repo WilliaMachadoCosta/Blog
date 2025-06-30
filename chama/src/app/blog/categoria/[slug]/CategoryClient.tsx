@@ -37,7 +37,7 @@ export default function CategoryClient({ category, posts }: CategoryClientProps)
               {category.name}
             </h1>
             <p className="text-gray-600 text-sm">
-              {category.count} post{category.count !== 1 ? 's' : ''} nesta categoria
+              Posts nesta categoria
             </p>
           </div>
         </div>

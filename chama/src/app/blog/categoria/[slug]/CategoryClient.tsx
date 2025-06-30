@@ -25,8 +25,8 @@ export default function CategoryClient({ category, posts }: CategoryClientProps)
       {/* Header da Categoria */}
       <div className="bg-white rounded-lg shadow-md p-6">
         <div className="flex items-center gap-3 mb-4">
-          <Link 
-            href="/blog" 
+          <Link
+            href="/blog"
             className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
           >
             <ArrowLeft className="w-5 h-5 text-gray-600" />
@@ -59,7 +59,7 @@ export default function CategoryClient({ category, posts }: CategoryClientProps)
             <p className="text-gray-600 mb-4">
               Não há posts disponíveis na categoria "{category.name}" no momento.
             </p>
-            <Link 
+            <Link
               href="/blog"
               className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
             >
@@ -73,7 +73,7 @@ export default function CategoryClient({ category, posts }: CategoryClientProps)
                 key={post.id}
                 className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
               >
-                <Link href={`/post/${post.slug}`}>
+                <Link href={`/${post.slug}`}>
                   <div className="flex flex-col md:flex-row">
                     {/* Imagem do post */}
                     <div className="md:w-1/3">
@@ -161,7 +161,7 @@ export default function CategoryClient({ category, posts }: CategoryClientProps)
 
       {/* Voltar ao Blog */}
       <div className="bg-white rounded-lg shadow-md p-6 text-center">
-        <Link 
+        <Link
           href="/blog"
           className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
         >

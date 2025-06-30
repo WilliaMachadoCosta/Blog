@@ -5,8 +5,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header/Header";
 import { Footer } from "@/components/footer/footer";
-import SubHeaderClient from "@/components/header/sub-header-client";
+
 import Script from 'next/script';
+import CacheMonitor from "@/components/debug/cache-monitor";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -63,8 +63,8 @@ export default function BlogClient({ initialPosts, categories }: BlogClientProps
     });
   };
 
-  const selectedCategoryName = selectedCategory 
-    ? categories.find(cat => cat.slug === selectedCategory)?.name 
+  const selectedCategoryName = selectedCategory
+    ? categories.find(cat => cat.slug === selectedCategory)?.name
     : "Todas as categorias";
 
   return (
@@ -78,9 +78,9 @@ export default function BlogClient({ initialPosts, categories }: BlogClientProps
               Blog
             </h1>
           </div>
-          
+
           {/* Botão Início */}
-          <Link 
+          <Link
             href="/"
             className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-semibold"
           >
@@ -100,7 +100,7 @@ export default function BlogClient({ initialPosts, categories }: BlogClientProps
             <Filter className="w-5 h-5 text-gray-600" />
             <span className="text-gray-700 font-medium">Filtrar por categoria:</span>
           </div>
-          
+
           {/* Dropdown de Categorias */}
           <div className="relative" ref={dropdownRef}>
             <button
@@ -120,7 +120,7 @@ export default function BlogClient({ initialPosts, categories }: BlogClientProps
                   <div className="font-medium text-gray-900">Todas as categorias</div>
                   <div className="text-sm text-gray-500">Ver todos os posts</div>
                 </button>
-                
+
                 {categories.map((category) => (
                   <button
                     key={category.slug}
@@ -168,12 +168,12 @@ export default function BlogClient({ initialPosts, categories }: BlogClientProps
               Nenhum post encontrado
             </h3>
             <p className="text-gray-600 mb-4">
-              {selectedCategory 
+              {selectedCategory
                 ? `Não há posts disponíveis na categoria "${selectedCategoryName}" no momento.`
                 : "Não há posts disponíveis no momento."
               }
             </p>
-            <Link 
+            <Link
               href="/"
               className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
             >
@@ -188,7 +188,7 @@ export default function BlogClient({ initialPosts, categories }: BlogClientProps
                 key={post.id}
                 className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
               >
-                <Link href={`/post/${post.slug}`} className="block">
+                <Link href={`/${post.slug}`} className="block">
                   <div className="flex flex-col md:flex-row">
                     {/* Conteúdo do post */}
                     <div className="flex-1 p-6">
@@ -199,7 +199,7 @@ export default function BlogClient({ initialPosts, categories }: BlogClientProps
                       <p className="text-gray-600 mb-4 line-clamp-3 text-base">
                         {post.excerpt.replace(/<[^>]*>/g, "")}
                       </p>
-                      
+
                       {/* Meta informações */}
                       <div className="flex items-center justify-between text-sm text-gray-500">
                         <div className="flex items-center gap-4">
@@ -212,7 +212,7 @@ export default function BlogClient({ initialPosts, categories }: BlogClientProps
                             <span>{formatDate(post.date)}</span>
                           </div>
                         </div>
-                        
+
                         {/* Categoria */}
                         {post.categories && post.categories.length > 0 && (
                           <div className="flex items-center gap-2">
@@ -224,7 +224,7 @@ export default function BlogClient({ initialPosts, categories }: BlogClientProps
                         )}
                       </div>
                     </div>
-                    
+
                     {/* Imagem do post */}
                     <div className="relative w-full md:w-64 h-48 md:h-auto md:min-h-full">
                       <Image

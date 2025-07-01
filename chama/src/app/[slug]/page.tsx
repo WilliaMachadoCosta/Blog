@@ -5,8 +5,7 @@ import { PostContent } from "@/components/container/post-content";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { extractCompanyData } from "@/components/container/companyData";
-import GoogleAdSense from "@/components/banner/GoogleAdSense";
-import { getAdConfig, shouldShowAds } from "@/config/ads";
+
 import Script from 'next/script';
 
 import SubHeaderClient from "@/components/header/sub-header-client";
@@ -156,14 +155,9 @@ export default async function PostPage({
         )}
 
         <PostContent html={sanitizeHtml(post.content)} />
-        
-        {/* Anúncio simples */}
-        {shouldShowAds() && (
-            <div className="my-6">
-                <GoogleAdSense {...getAdConfig()} />
-            </div>
-        )}
-        
+
+
+
         <ShareButtons />
       </article>
     </main>

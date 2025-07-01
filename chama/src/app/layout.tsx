@@ -23,31 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt" className="bg-neutral-100">
-      {/* Google AdSense Script */}
-      {/* <Script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5074393689985715"
-        crossOrigin="anonymous"
-        strategy="afterInteractive"
-      /> */}
-      {/* Funding Choices (ant block google) */}
-      {/* <Script
-        async
-        src="https://fundingchoicesmessages.google.com/i/pub-5074393689985715?ers=1"
-        nonce="BojMnZHyFUjZyBBFk9E92Q"
-        strategy="afterInteractive"
-      />
-      <Script id="ant-block-google" nonce="BojMnZHyFUjZyBBFk9E92Q" strategy="afterInteractive">
-        {`(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();`}
-      </Script> */}
-      {/* AMP auto ads */}
-      {/* <Script
-        async
-        custom-element="amp-auto-ads"
-        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"
-        strategy="afterInteractive"
-      /> */}
-      {/* Google Analytics */}
+
       <Script id="gtag" strategy="afterInteractive">
         {`window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -101,83 +77,7 @@ export default function RootLayout({
           }
         `}
       </Script>
-      {/* Script de proteção contra anúncios que cobrem o conteúdo */}
-      {/* <Script id="ad-protection" strategy="afterInteractive">
-        {`
-          (function() {
-            function protectContentFromAds() {
-              // Encontra todos os elementos que podem ser anúncios problemáticos
-              const problematicElements = document.querySelectorAll('*[style*="position: fixed"], *[style*="position: absolute"], *[style*="z-index: 999"]');
-              
-              problematicElements.forEach(function(element) {
-                const style = window.getComputedStyle(element);
-                
-                // Se o elemento está cobrindo toda a tela
-                if (style.position === 'fixed' && 
-                    (style.top === '0px' || style.top === '0') &&
-                    (style.left === '0px' || style.left === '0') &&
-                    (style.width === '100vw' || style.width === '100%') &&
-                    (style.height === '100vh' || style.height === '100%')) {
-                  
-                  // Corrige o elemento para não cobrir toda a tela
-                  element.style.position = 'relative';
-                  element.style.top = 'auto';
-                  element.style.left = 'auto';
-                  element.style.width = '100%';
-                  element.style.height = 'auto';
-                  element.style.zIndex = '1';
-                }
-                
-                // Se o z-index é muito alto
-                if (parseInt(style.zIndex) > 100) {
-                  element.style.zIndex = '1';
-                }
-              });
-              
-              // Específico para anúncios do Google AdSense
-              const ads = document.querySelectorAll('.adsbygoogle, ins.adsbygoogle');
-              ads.forEach(function(ad) {
-                ad.style.position = 'relative';
-                ad.style.zIndex = '1';
-                ad.style.width = '100%';
-                ad.style.maxWidth = '100%';
-                ad.style.height = 'auto';
-                ad.style.maxHeight = '600px';
-                ad.style.overflow = 'hidden';
-              });
-              
-              // Verifica iframes de anúncios
-              const adIframes = document.querySelectorAll('iframe[src*="googlesyndication"], iframe[src*="doubleclick"]');
-              adIframes.forEach(function(iframe) {
-                iframe.style.position = 'relative';
-                iframe.style.zIndex = '1';
-                iframe.style.maxWidth = '100%';
-                iframe.style.height = 'auto';
-              });
-            }
-            
-            // Executa imediatamente
-            protectContentFromAds();
-            
-            // Executa após um delay
-            setTimeout(protectContentFromAds, 1000);
-            
-            // Executa periodicamente
-            setInterval(protectContentFromAds, 3000);
-            
-            // Observa mudanças no DOM
-            if (typeof MutationObserver !== 'undefined') {
-              const observer = new MutationObserver(protectContentFromAds);
-              observer.observe(document.body, {
-                childList: true,
-                subtree: true,
-                attributes: true,
-                attributeFilter: ['style']
-              });
-            }
-          })();
-        `}
-      </Script> */}
+
 
       <body className="flex flex-col h-screen bg-neutral-100 text-black overflow-x-hidden" style={{ position: 'relative', zIndex: 1 }}>
         {/* Header fixo */}

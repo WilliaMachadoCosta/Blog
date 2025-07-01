@@ -6,6 +6,7 @@ import { extractCompanyData } from "./companyData";
 import { Suspense } from "react";
 import CompaniesListWithPagination from "./companies-list";
 import BlogSection, { BlogSectionSkeleton } from "./BlogSection";
+import GoogleAd from "../banner/google-ads";
 
 // Componente de loading para cada item
 function CompanyItemSkeleton() {
@@ -55,6 +56,10 @@ export default function Container() {
             }>
                 <CompaniesData />
             </Suspense>
+
+            {/* 📢 Bloco de anúncio do Google AdSense */}
+            <GoogleAd />
+
 
             {/* Seção de Blog */}
             <Suspense fallback={<BlogSectionSkeleton />}>

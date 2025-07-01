@@ -2,7 +2,7 @@
 
 import { IPost, WordPressPost } from "@/models/interfaces/post";
 
-const API_BASE = "https://chamanozap.net/wp-json/wp/v2";
+const API_BASE = "http://api.chamanozap.net/wp-json/wp/v2";
 
 // Cache em memória para evitar requisições desnecessárias
 const cache = new Map<string, { data: any; timestamp: number }>();
@@ -29,7 +29,7 @@ const fetchJson = async (url: string, useCache = true, retryCount = 0) => {
 
   // Fazer requisição à API com timeout
   console.log(`Fetching from API: ${url} (attempt ${retryCount + 1}/${maxRetries + 1})`);
-  
+
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 segundos timeout
 
@@ -56,7 +56,7 @@ const fetchJson = async (url: string, useCache = true, retryCount = 0) => {
         await new Promise(resolve => setTimeout(resolve, 1000 * (retryCount + 1))); // Backoff exponencial
         return fetchJson(url, useCache, retryCount + 1);
       }
-      
+
       throw new Error(`Erro ao buscar: ${url} - Status: ${res.status}`);
     }
 
@@ -70,11 +70,11 @@ const fetchJson = async (url: string, useCache = true, retryCount = 0) => {
     return data;
   } catch (error) {
     clearTimeout(timeoutId);
-    
+
     // Se for erro de rede e ainda temos tentativas, tentar novamente
     if (retryCount < maxRetries && (
       error instanceof Error && (
-        error.name === 'AbortError' || 
+        error.name === 'AbortError' ||
         error.message.includes('fetch') ||
         error.message.includes('network')
       )
@@ -83,7 +83,7 @@ const fetchJson = async (url: string, useCache = true, retryCount = 0) => {
       await new Promise(resolve => setTimeout(resolve, 1000 * (retryCount + 1))); // Backoff exponencial
       return fetchJson(url, useCache, retryCount + 1);
     }
-    
+
     if (error instanceof Error && error.name === 'AbortError') {
       throw new Error(`Timeout ao buscar: ${url}`);
     }

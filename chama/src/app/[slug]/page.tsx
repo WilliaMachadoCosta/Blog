@@ -1,4 +1,4 @@
-import { getPostBySlug } from "@/services/postServices";
+import { getPostBySlug, getAllPosts } from "@/services/postServices";
 import { notFound } from "next/navigation";
 import ShareButtons from "@/components/buttons/shareButtons";
 import { PostContent } from "@/components/container/post-content";
@@ -63,6 +63,11 @@ export default async function PostPage({
   if (!post) return notFound();
   const company = extractCompanyData(post.content);
   const cleanTitle = post.title?.replace(/<[^>]*>/g, "") || "Post";
+  const formattedDate = new Date(post.date).toLocaleDateString("pt-BR", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
   return (
     <main className="min-h-screen bg-[#f5f3ef] py-4 sm:py-6 px-2 sm:px-4 overflow-x-hidden">
       {/* Structured Data: BreadcrumbList */}
@@ -134,11 +139,7 @@ export default async function PostPage({
         <p className="text-xs sm:text-sm text-neutral-900 dark:text-neutral-900">
           Publicado em{" "}
           <time dateTime={post.date}>
-            {new Date(post.date).toLocaleDateString("pt-BR", {
-              day: "2-digit",
-              month: "long",
-              year: "numeric",
-            })}
+            {formattedDate}
           </time>{" "}
           por <span className="font-medium">{post.author}</span>
         </p>
@@ -169,3 +170,11 @@ function sanitizeHtml(html: string): string {
     .replace(/<!--[\s\S]*?-->/g, "")
     .replace(/data-src=/gi, "src=");
 }
+
+// Gera os slugs de todos os posts para SSG
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
+  return posts.map(post => ({ slug: post.slug }));
+}
+
+export const revalidate = 300; // revalida a cada 5 minutos (ISR)

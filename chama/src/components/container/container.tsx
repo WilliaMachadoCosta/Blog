@@ -45,26 +45,31 @@ async function CompaniesData() {
 // Componente principal otimizado
 export default function Container() {
     return (
-        <div className="min-h-screen bg-white p-2 sm:p-4">
+        <div className="min-h-screen bg-white p-2 sm:p-4 space-y-6">
             {/* Seção de Empresas */}
-            <Suspense fallback={
-                <div className="space-y-2 mb-8">
-                    {[...Array(5)].map((_, i) => (
-                        <CompanyItemSkeleton key={i} />
-                    ))}
-                </div>
-            }>
-                <CompaniesData />
-            </Suspense>
+            <div className="relative z-10">
+                <Suspense fallback={
+                    <div className="space-y-2 mb-8">
+                        {[...Array(5)].map((_, i) => (
+                            <CompanyItemSkeleton key={i} />
+                        ))}
+                    </div>
+                }>
+                    <CompaniesData />
+                </Suspense>
+            </div>
 
             {/* 📢 Bloco de anúncio do Google AdSense */}
-            {/* <GoogleAd /> */}
-            <GoogleAd />
+            <div className="relative z-20 w-full">
+                <GoogleAd />
+            </div>
 
             {/* Seção de Blog */}
-            <Suspense fallback={<BlogSectionSkeleton />}>
-                <BlogSection />
-            </Suspense>
+            <div className="relative z-10">
+                <Suspense fallback={<BlogSectionSkeleton />}>
+                    <BlogSection />
+                </Suspense>
+            </div>
         </div>
     );
 }

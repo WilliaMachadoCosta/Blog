@@ -34,15 +34,25 @@ export default function GoogleAd() {
     }, []);
 
     return (
-        <div className="my-6">
-            <ins
-                className="adsbygoogle"
-                style={{ display: 'block', backgroundColor: '#f0f0f0', height: '90px', textAlign: 'center' }}
-                data-ad-client="ca-pub-5074393689985715"
-                data-ad-slot="9365926617"
-                data-ad-format="auto"
-                data-full-width-responsive="true"
-            />
+        <div className="my-6 w-full overflow-hidden">
+            <div className="bg-gray-100 rounded-lg p-4 min-h-[250px] flex items-center justify-center">
+                <ins
+                    className="adsbygoogle"
+                    style={{ 
+                        display: 'block', 
+                        backgroundColor: 'transparent', 
+                        minHeight: '250px',
+                        width: '100%',
+                        textAlign: 'center',
+                        position: 'relative',
+                        zIndex: 1
+                    }}
+                    data-ad-client="ca-pub-5074393689985715"
+                    data-ad-slot="9365926617"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"
+                />
+            </div>
         </div>
     );
 }

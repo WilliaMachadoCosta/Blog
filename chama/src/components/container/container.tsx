@@ -58,7 +58,7 @@ export default function Container() {
             </Suspense>
 
             {/* 📢 Bloco de anúncio do Google AdSense */}
-            <GoogleAd />
+            {/* <GoogleAd /> */}
 
 
             {/* Seção de Blog */}

@@ -1,5 +1,6 @@
 import parse, { Element } from "html-react-parser";
 import { GenericButton } from "../buttons/genericButton";
+import LazyYouTube from "../media/LazyYouTube";
 
 interface PostContentProps {
     html: string;
@@ -29,6 +30,19 @@ export function PostContent({ html }: PostContentProps) {
                                     <GenericButton label={label} href={href} variant={variant} />
                                 </div>
                             );
+                        }
+                        // Lazy load YouTube embeds
+                        if (
+                            domNode instanceof Element &&
+                            domNode.name === "iframe" &&
+                            domNode.attribs?.src?.includes("youtube.com/embed/")
+                        ) {
+                            const src = domNode.attribs.src;
+                            const match = src.match(/youtube.com\/embed\/([a-zA-Z0-9_-]+)/);
+                            const videoId = match ? match[1] : undefined;
+                            if (videoId) {
+                                return <LazyYouTube videoId={videoId} title={domNode.attribs.title || "YouTube video"} />;
+                            }
                         }
                     },
                 })}

@@ -147,16 +147,14 @@ export default async function PostPage({
           <Image
             src={post.featuredImage ?? "/placeholder.jpg"}
             alt={cleanTitle}
-            width={800}
-            height={600}
+            width={600}
+            height={400}
             className="w-full h-auto rounded-md object-cover max-h-48 sm:max-h-64 md:max-h-96"
-            loading="lazy"
+            loading="eager"
           />
         )}
 
         <PostContent html={sanitizeHtml(post.content)} />
-
-
 
         <ShareButtons />
       </article>

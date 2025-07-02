@@ -18,7 +18,7 @@ export default function GoogleAd() {
             script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
             script.async = true;
             script.id = scriptId;
-            script.setAttribute('data-ad-client', 'ca-pub-3940256099942544');
+            script.setAttribute('data-ad-client', 'ca-pub-5074393689985715');
             document.head.appendChild(script);
 
             script.onload = () => {
@@ -38,8 +38,8 @@ export default function GoogleAd() {
             <ins
                 className="adsbygoogle"
                 style={{ display: 'block', backgroundColor: '#f0f0f0', height: '90px', textAlign: 'center' }}
-                data-ad-client="ca-pub-3940256099942544"
-                data-ad-slot="1234567890"
+                data-ad-client="ca-pub-5074393689985715"
+                data-ad-slot="9365926617"
                 data-ad-format="auto"
                 data-full-width-responsive="true"
             />

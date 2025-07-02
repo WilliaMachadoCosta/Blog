@@ -59,7 +59,7 @@ export default function Container() {
 
             {/* 📢 Bloco de anúncio do Google AdSense */}
             {/* <GoogleAd /> */}
-
+            <GoogleAd />
 
             {/* Seção de Blog */}
             <Suspense fallback={<BlogSectionSkeleton />}>

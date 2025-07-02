@@ -2,7 +2,7 @@
 
 import { IPost, WordPressPost } from "@/models/interfaces/post";
 
-const API_BASE = "http://api.chamanozap.net/wp-json/wp/v2";
+const API_BASE = "https://api.chamanozap.net/wp-json/wp/v2";
 
 // Cache em memória para evitar requisições desnecessárias
 const cache = new Map<string, { data: any; timestamp: number }>();
@@ -245,7 +245,26 @@ export async function searchPosts(query: string): Promise<IPost[]> {
 
   try {
     const searchQuery = encodeURIComponent(query.trim());
-    const data = await fetchJson(`${API_BASE}/posts?search=${searchQuery}&_embed&orderby=relevance&order=desc&per_page=20`);
+    console.log('Buscando posts com query:', searchQuery);
+    
+    // Usar API route local para evitar CORS
+    const url = `/api/posts/search?q=${searchQuery}`;
+    console.log('URL da busca local:', url);
+    
+    const response = await fetch(url);
+    
+    if (!response.ok) {
+      throw new Error(`Erro na busca: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    console.log('Resultados da busca:', data?.length || 0, 'posts encontrados');
+    
+    if (!Array.isArray(data)) {
+      console.error('Resposta da API não é um array:', data);
+      return [];
+    }
+    
     return data.map(mapPost);
   } catch (err) {
     console.error("Erro em searchPosts:", err);

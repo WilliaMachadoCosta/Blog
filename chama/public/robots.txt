@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://chamanozap.net/sitemap.xml
+
+# Bloquear acesso a arquivos sensíveis
+Disallow: /api/
+Disallow: /_next/
+Disallow: /wp-admin/
+Disallow: /wp-content/
+Disallow: /wp-includes/
+
+# Permitir acesso a imagens e assets
+Allow: /public/
+Allow: /logos/ 

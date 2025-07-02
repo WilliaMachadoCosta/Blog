@@ -3,7 +3,7 @@ import { Search, MoreVertical, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import CompanyLogo from "../company/companyLogo";
-import { searchPosts } from "@/services/postServices";
+import { searchPosts } from "@/services/postServicesLocal";
 import { IPost } from "@/models/interfaces/post";
 
 export default function Header() {
@@ -138,7 +138,7 @@ export default function Header() {
                                     {searchResults.map((post) => (
                                         <Link
                                             key={post.id}
-                                            href={`/post/${post.slug}`}
+                                            href={`/${post.slug}`}
                                             onClick={() => setIsSearchOpen(false)}
                                             className="block p-2 hover:bg-gray-50 rounded-lg transition-colors"
                                         >

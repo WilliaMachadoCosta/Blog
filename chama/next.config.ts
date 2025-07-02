@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   images: {
     domains: ['chamanozap.net'],
   },
+
   async headers() {
     return [
       {

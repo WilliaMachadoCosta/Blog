@@ -34,19 +34,36 @@ export default function GoogleAd() {
     }, []);
 
     return (
-        <div className="my-6 w-full overflow-hidden">
-            <div className="bg-gray-100 rounded-lg p-4 min-h-[250px] flex items-center justify-center">
+        <div className="my-6 w-full">
+            <style jsx>{`
+                .ad-wrapper {
+                    min-height: 280px;
+                    position: relative;
+                    overflow: visible !important;
+                    z-index: 100;
+                }
+                .ad-wrapper .adsbygoogle {
+                    display: block !important;
+                    background-color: transparent !important;
+                    min-height: 280px !important;
+                    width: 100% !important;
+                    text-align: center !important;
+                    position: relative !important;
+                    z-index: 1000 !important;
+                    overflow: visible !important;
+                    max-width: none !important;
+                    height: auto !important;
+                }
+                .ad-wrapper iframe {
+                    position: relative !important;
+                    z-index: 1000 !important;
+                    max-width: 100% !important;
+                    height: auto !important;
+                }
+            `}</style>
+            <div className="bg-gray-100 rounded-lg p-4 ad-wrapper">
                 <ins
                     className="adsbygoogle"
-                    style={{ 
-                        display: 'block', 
-                        backgroundColor: 'transparent', 
-                        minHeight: '250px',
-                        width: '100%',
-                        textAlign: 'center',
-                        position: 'relative',
-                        zIndex: 1
-                    }}
                     data-ad-client="ca-pub-5074393689985715"
                     data-ad-slot="9365926617"
                     data-ad-format="auto"

@@ -9,6 +9,14 @@ import { Footer } from "@/components/footer/footer";
 import Script from 'next/script';
 import CacheMonitor from "@/components/debug/cache-monitor";
 
+// Declaração global para gtag
+declare global {
+  interface Window {
+    dataLayer: any[];
+    gtag: (...args: any[]) => void;
+  }
+}
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -24,11 +32,18 @@ export default function RootLayout({
   return (
     <html lang="pt" className="bg-neutral-100">
 
+      {/* Google Analytics */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=UA-53750184-3"
+        strategy="afterInteractive"
+      />
       <Script id="gtag" strategy="afterInteractive">
-        {`window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-53750184-3');`}
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-53750184-3');
+        `}
       </Script>
       {/* Google Tag Manager */}
       <Script id="gtm" strategy="afterInteractive">

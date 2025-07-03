@@ -20,7 +20,16 @@ export default function GoogleAd() {
     }, []);
 
     return (
-        <div style={{ width: '100%', display: 'flex', justifyContent: 'center', margin: '16px 0' }}>
+        <div
+            style={{
+                width: '100%',
+                maxWidth: '320px',
+                position: 'relative',
+                zIndex: 10,
+                margin: '16px auto',
+                minHeight: '100px',
+            }}
+        >
             <Script
                 async
                 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5074393689985715"
@@ -30,12 +39,7 @@ export default function GoogleAd() {
             <ins
                 className="adsbygoogle"
                 style={{
-                    width: '100%',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    margin: '16px 0',
-                    position: 'relative',
-                    zIndex: 10, // força a ficar acima de sobreposições simples
+                    display: 'block',
                 }}
                 data-ad-client="ca-pub-5074393689985715"
                 data-ad-slot="5586358508"

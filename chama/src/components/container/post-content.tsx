@@ -1,6 +1,8 @@
+'use client';
 import parse, { Element } from "html-react-parser";
 import { GenericButton } from "../buttons/genericButton";
 import LazyYouTube from "../media/LazyYouTube";
+import GoogleAd from "../banner/google-ads";
 
 interface PostContentProps {
     html: string;
@@ -23,7 +25,17 @@ export function PostContent({ html }: PostContentProps) {
                                 | "whatsapp"
                                 | "sac"
                                 | "central"
-                                | "default";
+                                | "default"
+                                | "ads";
+
+                            // Verifica se é um anúncio
+                            if (label === "ads" || variant === "ads") {
+                                return (
+                                    <div className="w-full flex justify-center my-3 sm:my-4 px-2 sm:px-0">
+                                        <GoogleAd />
+                                    </div>
+                                );
+                            }
 
                             return (
                                 <div className="w-full flex justify-center my-3 sm:my-4 px-2 sm:px-0">

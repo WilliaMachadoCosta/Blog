@@ -36,16 +36,17 @@ export default function GoogleAd() {
             />
             
             {/* Container do anúncio */}
-            <div className="bg-gray-100 rounded-lg p-4 flex justify-center">
+            <div className="bg-gray-100 rounded-lg p-2">
                 <ins
                     className="adsbygoogle"
                     style={{
-                        display: 'inline-block',
-                        width: '300px',
-                        height: '250px'
+                        display: 'block',
+                        textAlign: 'center'
                     }}
                     data-ad-client="ca-pub-5074393689985715"
                     data-ad-slot="5586358508"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"
                 />
             </div>
         </div>

@@ -60,7 +60,7 @@ export default function Container({ showAds = true }: { showAds?: boolean }) {
             </div>
 
             {/* 📢 Bloco de anúncio do Google AdSense */}
-            {showAds && <GoogleAd className="my-8" />}
+            {showAds && <div className="my-8"><GoogleAd /></div>}
 
             {/* Seção de Blog */}
             <div className="relative z-10">

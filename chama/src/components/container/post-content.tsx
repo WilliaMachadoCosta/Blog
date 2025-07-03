@@ -31,7 +31,7 @@ export function PostContent({ html }: PostContentProps) {
                             // Verifica se é um anúncio
                             if (label === "ads" || variant === "ads") {
                                 return (
-                                    <div className="w-full flex justify-center my-3 sm:my-4 px-2 sm:px-0">
+                                    <div className="ad-in-content my-6 w-full flex justify-center px-2 sm:px-0">
                                         <GoogleAd />
                                     </div>
                                 );

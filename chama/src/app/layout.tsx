@@ -120,7 +120,7 @@ export default function RootLayout({
           </aside>
 
           {/* Conteúdo principal */}
-          <main className="flex-1 overflow-y-auto overflow-x-hidden px-2 sm:px-4 bg-[#f5f3ef]" style={{ position: 'relative', zIndex: 3 }}>
+          <main className="flex-1 overflow-y-auto overflow-x-hidden px-2 sm:px-4 bg-[#f5f3ef] pb-28" style={{ position: 'relative', zIndex: 3 }}>
             {children}
           </main>
 

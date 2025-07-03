@@ -113,10 +113,22 @@ export default function RootLayout({
         {/* Container com sidebars e conteúdo */}
         <div className="flex flex-1 pt-[60px] pb-[50px] h-full bg-neutral-100 overflow-x-hidden" style={{ position: 'relative', zIndex: 2 }}>
 
+          {/* Sidebar esquerda (aparece só em telas grandes) */}
+          <aside className="hidden xl:flex flex-col items-center w-56 px-2">
+            {/* Exemplo: Banner, links, widgets */}
+            {/* <img src="/public/ads-lateral-esquerda.png" alt="Anúncio" /> */}
+          </aside>
+
           {/* Conteúdo principal */}
           <main className="flex-1 overflow-y-auto overflow-x-hidden px-2 sm:px-4 bg-[#f5f3ef]" style={{ position: 'relative', zIndex: 3 }}>
             {children}
           </main>
+
+          {/* Sidebar direita (aparece só em telas grandes) */}
+          <aside className="hidden xl:flex flex-col items-center w-56 px-2">
+            {/* Exemplo: Banner, links, widgets */}
+            {/* <img src="/public/ads-lateral-direita.png" alt="Anúncio" /> */}
+          </aside>
         </div>
 
         {/* Footer fixo */}

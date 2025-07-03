@@ -12,44 +12,36 @@ declare global {
 
 export default function GoogleAd() {
     useEffect(() => {
-        // Aguardar um pouco para garantir que o script carregou
         setTimeout(() => {
             if (window.adsbygoogle) {
-                console.log('AdSense script carregado, executando push...');
-                window.adsbygoogle = window.adsbygoogle || [];
                 window.adsbygoogle.push({});
-                console.log('AdSense push executado');
-            } else {
-                console.log('AdSense script não encontrado');
             }
-        }, 1000);
+        }, 500);
     }, []);
 
     return (
-        <div className="my-6 w-full">
-            {/* Script do AdSense */}
+        <div style={{ width: '100%', display: 'flex', justifyContent: 'center', margin: '16px 0' }}>
             <Script
                 async
                 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5074393689985715"
                 crossOrigin="anonymous"
                 strategy="afterInteractive"
             />
-
-            {/* Container do anúncio - Versão SIMPLES */}
-            <div className="border-2 border-gray-300 rounded-lg p-4 my-4">
-                <ins
-                    className="adsbygoogle"
-                    style={{
-                        display: 'block',
-                        textAlign: 'center',
-                        minHeight: '100px'
-                    }}
-                    data-ad-client="ca-pub-5074393689985715"
-                    data-ad-slot="5586358508"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"
-                />
-            </div>
+            <ins
+                className="adsbygoogle"
+                style={{
+                    display: 'block',
+                    width: '100%',
+                    maxWidth: 320,
+                    minHeight: 100,
+                    height: 'auto',
+                    textAlign: 'center',
+                }}
+                data-ad-client="ca-pub-5074393689985715"
+                data-ad-slot="5586358508"
+                data-ad-format="auto"
+                data-full-width-responsive="true"
+            />
         </div>
     );
 }

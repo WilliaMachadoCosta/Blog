@@ -144,6 +144,8 @@ export default async function PostPage({
           por <span className="font-medium">{post.author}</span>
         </p>
 
+        {/* Removido: Imagem destacada do post */}
+        {/*
         {post.featuredImage && (
           <Image
             src={post.featuredImage ?? "/placeholder.jpg"}
@@ -154,6 +156,7 @@ export default async function PostPage({
             loading="eager"
           />
         )}
+        */}
 
         <PostContent html={sanitizeHtml(post.content)} />
 

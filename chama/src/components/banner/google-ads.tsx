@@ -34,20 +34,22 @@ export default function GoogleAd() {
                 crossOrigin="anonymous"
                 strategy="afterInteractive"
             />
-            
+
             {/* Container do anúncio */}
             <div className="bg-gray-100 rounded-lg p-2">
-                <ins
-                    className="adsbygoogle"
-                    style={{
-                        display: 'block',
-                        textAlign: 'center'
-                    }}
-                    data-ad-client="ca-pub-5074393689985715"
-                    data-ad-slot="5586358508"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"
-                />
+                <div style={{ paddingTop: '30px' }}>
+                    <ins
+                        className="adsbygoogle"
+                        style={{
+                            display: 'block',
+                            textAlign: 'center'
+                        }}
+                        data-ad-client="ca-pub-5074393689985715"
+                        data-ad-slot="5586358508"
+                        data-ad-format="auto"
+                        data-full-width-responsive="true"
+                    />
+                </div>
             </div>
         </div>
     );

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import Script from 'next/script';
 
 // 🧠 Corrige o erro de TypeScript
 declare global {
@@ -11,63 +12,40 @@ declare global {
 
 export default function GoogleAd() {
     useEffect(() => {
-        const scriptId = 'adsense-script';
-
-        if (!document.getElementById(scriptId)) {
-            const script = document.createElement('script');
-            script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
-            script.async = true;
-            script.id = scriptId;
-            script.setAttribute('data-ad-client', 'ca-pub-5074393689985715');
-            document.head.appendChild(script);
-
-            script.onload = () => {
+        // Aguardar um pouco para garantir que o script carregou
+        setTimeout(() => {
+            if (window.adsbygoogle) {
+                console.log('AdSense script carregado, executando push...');
                 window.adsbygoogle = window.adsbygoogle || [];
                 window.adsbygoogle.push({});
-            };
-        } else {
-            setTimeout(() => {
-                window.adsbygoogle = window.adsbygoogle || [];
-                window.adsbygoogle.push({});
-            }, 500);
-        }
+                console.log('AdSense push executado');
+            } else {
+                console.log('AdSense script não encontrado');
+            }
+        }, 1000);
     }, []);
 
     return (
         <div className="my-6 w-full">
-            <style jsx>{`
-                .ad-wrapper {
-                    min-height: 280px;
-                    position: relative;
-                    overflow: visible !important;
-                    z-index: 100;
-                }
-                .ad-wrapper .adsbygoogle {
-                    display: block !important;
-                    background-color: transparent !important;
-                    min-height: 280px !important;
-                    width: 100% !important;
-                    text-align: center !important;
-                    position: relative !important;
-                    z-index: 1000 !important;
-                    overflow: visible !important;
-                    max-width: none !important;
-                    height: auto !important;
-                }
-                .ad-wrapper iframe {
-                    position: relative !important;
-                    z-index: 1000 !important;
-                    max-width: 100% !important;
-                    height: auto !important;
-                }
-            `}</style>
-            <div className="bg-gray-100 rounded-lg p-4 ad-wrapper">
+            {/* Script do AdSense */}
+            <Script
+                async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5074393689985715"
+                crossOrigin="anonymous"
+                strategy="afterInteractive"
+            />
+            
+            {/* Container do anúncio */}
+            <div className="bg-gray-100 rounded-lg p-4 flex justify-center">
                 <ins
                     className="adsbygoogle"
+                    style={{
+                        display: 'inline-block',
+                        width: '300px',
+                        height: '250px'
+                    }}
                     data-ad-client="ca-pub-5074393689985715"
-                    data-ad-slot="9365926617"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"
+                    data-ad-slot="5586358508"
                 />
             </div>
         </div>

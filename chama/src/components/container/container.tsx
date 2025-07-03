@@ -60,7 +60,7 @@ export default function Container() {
             </div>
 
             {/* 📢 Bloco de anúncio do Google AdSense */}
-            <div className="relative z-20 w-full">
+            <div className="w-full">
                 <GoogleAd />
             </div>
 

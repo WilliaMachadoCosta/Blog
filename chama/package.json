@@ -37,5 +37,10 @@
     "prettier": "^3.6.2",
     "tailwindcss": "^4.1.11",
     "typescript": "^5"
-  }
+  },
+  "browserslist": [
+    "defaults and supports es6-module",
+    "not IE 11",
+    "not op_mini all"
+  ]
 }

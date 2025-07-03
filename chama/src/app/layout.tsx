@@ -31,6 +31,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt" className="bg-neutral-100">
+      <head>
+        <link
+          rel="preload"
+          as="style"
+          href="/src/app/globals.css"
+          // @ts-ignore
+          onLoad="this.rel='stylesheet'"
+        />
+        <noscript><link rel="stylesheet" href="/src/app/globals.css" /></noscript>
+      </head>
 
       {/* Google Analytics */}
       <Script

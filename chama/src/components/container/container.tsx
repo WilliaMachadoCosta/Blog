@@ -43,7 +43,7 @@ async function CompaniesData() {
 }
 
 // Componente principal otimizado
-export default function Container() {
+export default function Container({ showAds = true }: { showAds?: boolean }) {
     return (
         <div className="min-h-screen bg-white p-2 sm:p-4 space-y-6">
             {/* Seção de Empresas */}
@@ -60,7 +60,7 @@ export default function Container() {
             </div>
 
             {/* 📢 Bloco de anúncio do Google AdSense */}
-            <GoogleAd className="my-8" />
+            {showAds && <GoogleAd className="my-8" />}
 
             {/* Seção de Blog */}
             <div className="relative z-10">

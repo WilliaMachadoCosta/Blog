@@ -152,6 +152,7 @@ export default async function PostPage({
             height={400}
             className="w-full h-auto rounded-md object-cover max-h-48 sm:max-h-64 md:max-h-96"
             loading="eager"
+            fetchPriority="high"
           />
         )}
 

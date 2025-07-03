@@ -18,9 +18,9 @@ export default function ShareButtons() {
 
     return (
         <div className="mt-4 sm:mt-6 border-t pt-3 sm:pt-4">
-            <h4 className="text-xs sm:text-sm font-semibold text-neutral-700 dark:text-neutral-200 mb-2">
+            <p className="text-xs sm:text-sm font-semibold text-neutral-700 dark:text-neutral-200 mb-2">
                 Compartilhar:
-            </h4>
+            </p>
             <div className="flex flex-wrap gap-2 sm:gap-4">
                 <a
                     href={`https://wa.me/?text=${encodeURIComponent(url)}`}

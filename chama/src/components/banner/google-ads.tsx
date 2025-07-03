@@ -39,14 +39,17 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
                 strategy="afterInteractive"
                 crossOrigin="anonymous"
             />
+            <style>{`
+                .adslot_1 { display: block; width: 320px; height: 100px; }
+                @media (min-width: 500px) { .adslot_1 { width: 468px; height: 60px; } }
+                @media (min-width: 800px) { .adslot_1 { width: 728px; height: 90px; } }
+            `}</style>
             <div ref={adRef} className={`w-full flex justify-center ${className}`}>
                 <ins
-                    className="adsbygoogle"
+                    className="adsbygoogle adslot_1"
                     style={{ display: 'block' }}
                     data-ad-client="ca-pub-5074393689985715"
                     data-ad-slot="9365926617"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"
                 />
             </div>
         </>

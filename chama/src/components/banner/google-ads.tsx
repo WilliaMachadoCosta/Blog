@@ -30,12 +30,12 @@ export default function GoogleAd() {
             <ins
                 className="adsbygoogle"
                 style={{
-                    display: 'block',
                     width: '100%',
-                    maxWidth: 320,
-                    minHeight: 100,
-                    height: 'auto',
-                    textAlign: 'center',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    margin: '16px 0',
+                    position: 'relative',
+                    zIndex: 10, // força a ficar acima de sobreposições simples
                 }}
                 data-ad-client="ca-pub-5074393689985715"
                 data-ad-slot="5586358508"

@@ -60,9 +60,7 @@ export default function Container() {
             </div>
 
             {/* 📢 Bloco de anúncio do Google AdSense */}
-            <div className="w-full">
-                <GoogleAd />
-            </div>
+            <GoogleAd windowSize="large" className="my-8" />
 
             {/* Seção de Blog */}
             <div className="relative z-10">

@@ -3,7 +3,8 @@ import { Search, MoreVertical, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import CompanyLogo from "../company/companyLogo";
-import { searchPosts } from "@/services/postServicesLocal";
+import { searchPosts } from "@/services/postServices";
+import { getAllCompanyPosts, ICompanyPost } from "@/services/companyPostServices";
 import { IPost } from "@/models/interfaces/post";
 
 export default function Header() {
@@ -11,6 +12,7 @@ export default function Header() {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const [searchResults, setSearchResults] = useState<IPost[]>([]);
+    const [companyResults, setCompanyResults] = useState<ICompanyPost[]>([]);
     const [isSearching, setIsSearching] = useState(false);
     const [searchError, setSearchError] = useState("");
 
@@ -23,6 +25,7 @@ export default function Header() {
         if (!isSearchOpen) {
             setSearchQuery("");
             setSearchResults([]);
+            setCompanyResults([]);
             setSearchError("");
         }
     };
@@ -40,10 +43,20 @@ export default function Header() {
         setSearchError("");
 
         try {
+            // Buscar posts
             const results = await searchPosts(searchQuery);
             setSearchResults(results);
-            
-            if (results.length === 0) {
+            // Buscar empresas
+            const allCompanies = await getAllCompanyPosts();
+            const filteredCompanies = allCompanies.filter(company => {
+                const q = searchQuery.trim().toLowerCase();
+                return (
+                    company.companyName.toLowerCase().includes(q) ||
+                    company.slug.toLowerCase().includes(q)
+                );
+            });
+            setCompanyResults(filteredCompanies);
+            if (results.length === 0 && filteredCompanies.length === 0) {
                 setSearchError("Nenhum resultado encontrado");
             }
         } catch (error) {
@@ -129,16 +142,17 @@ export default function Header() {
                         )}
 
                         {/* Resultados da pesquisa */}
-                        {searchResults.length > 0 && (
+                        {(searchResults.length > 0 || companyResults.length > 0) && (
                             <div className="mt-4 max-h-96 overflow-y-auto">
                                 <h3 className="text-sm font-semibold text-gray-700 mb-2 px-2">
-                                    Resultados ({searchResults.length})
+                                    Resultados ({searchResults.length + companyResults.length})
                                 </h3>
                                 <div className="space-y-2">
+                                    {/* Resultados de posts */}
                                     {searchResults.map((post) => (
                                         <Link
                                             key={post.id}
-                                            href={`/${post.slug}`}
+                                            href={`/post/${post.slug}`}
                                             onClick={() => setIsSearchOpen(false)}
                                             className="block p-2 hover:bg-gray-50 rounded-lg transition-colors"
                                         >
@@ -148,6 +162,23 @@ export default function Header() {
                                             <p className="text-xs text-gray-600 mt-1 line-clamp-1">
                                                 {post.excerpt.replace(/<[^>]*>/g, '')}
                                             </p>
+                                        </Link>
+                                    ))}
+                                    {/* Resultados de empresas */}
+                                    {companyResults.map((company: ICompanyPost) => (
+                                        <Link
+                                            key={company.id}
+                                            href={`/${company.slug}`}
+                                            onClick={() => setIsSearchOpen(false)}
+                                            className="block p-2 hover:bg-green-50 rounded-lg border border-green-100 transition-colors"
+                                        >
+                                            <div className="flex items-center gap-2">
+                                                <img src={company.coverImageUrl} alt={company.companyName} className="w-8 h-8 rounded-full object-cover bg-gray-100" />
+                                                <div>
+                                                    <h4 className="font-medium text-sm text-green-800 line-clamp-1">{company.companyName}</h4>
+                                                    <p className="text-xs text-gray-600 mt-1 line-clamp-1">{company.excerpt.replace(/<[^>]*>/g, '')}</p>
+                                                </div>
+                                            </div>
                                         </Link>
                                     ))}
                                 </div>

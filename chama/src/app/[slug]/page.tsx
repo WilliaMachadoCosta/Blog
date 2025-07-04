@@ -9,6 +9,7 @@ import { extractCompanyData } from "@/components/container/companyData";
 import Script from 'next/script';
 
 import SubHeaderClient from "@/components/header/sub-header-client";
+import GoogleAd from "@/components/banner/google-ads";
 
 export async function generateMetadata({
   params,
@@ -129,7 +130,7 @@ export default async function PostPage({
         })}
       </Script>
       <article className="bg-white max-w-2xl mx-auto rounded-xl shadow-md p-3 sm:p-4 md:p-6 space-y-4 sm:space-y-6 overflow-hidden">
-
+        <div className="my-8"><GoogleAd /></div>
         <SubHeaderClient company={company} />
         <h1
           className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight text-black break-words"
@@ -158,8 +159,8 @@ export default async function PostPage({
         )}
         */}
 
-        {/* <PostContent html={sanitizeHtml(post.content)} /> */}
-        <PostContent html={(post.content)} />
+        <PostContent html={sanitizeHtml(post.content)} />
+        {/* <PostContent html={(post.content)} /> */}
 
 
         <ShareButtons />
@@ -174,9 +175,13 @@ function sanitizeHtml(html: string): string {
     .replace(/class="[^"]*"/g, "")
     .replace(/<!--[\s\S]*?-->/g, "")
     .replace(/data-src=/gi, "src=")
-    // Remove ins com data-ad-slot="8056328924" e data-ad-client="ca-pub-5074393689985715"
-    .replace(/<ins[^>]*data-ad-client="ca-pub-5074393689985715"[^>]*data-ad-slot="8056328924"[^>]*><\/ins>/gi, "")
+    // Remove <ins> com data-ad-client="ca-pub-5074393689985715" e data-ad-slot="9365926617"
+    .replace(/<ins[^>]*data-ad-client="ca-pub-5074393689985715"[^>]*data-ad-slot="9365926617"[^>]*><\/ins>/gi, "")
+    // Caso a ordem dos atributos varie, tente essa regex mais geral:
+    .replace(/<ins(?=[^>]*data-ad-client="ca-pub-5074393689985715")(?=[^>]*data-ad-slot="9365926617")[^>]*><\/ins>/gi, "")
+    .replace(/<ins(?=[^>]*data-ad-client="ca-pub-5074393689985715")(?=[^>]*data-ad-slot="8056328924")[^>]*><\/ins>/gi, "")
 }
+
 
 
 // Gera os slugs de todos os posts para SSG

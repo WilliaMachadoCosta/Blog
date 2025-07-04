@@ -16,7 +16,6 @@ interface GoogleAdProps {
 
 export default function GoogleAd({ className = '' }: GoogleAdProps) {
     const adRef = useRef<HTMLDivElement>(null);
-    console.log('anuncio  =======================>');
     useEffect(() => {
         // Aguarda o script carregar e faz o push
         const timeout = setTimeout(() => {
@@ -50,6 +49,7 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
                     style={{ display: 'block' }}
                     data-ad-client="ca-pub-5074393689985715"
                     data-ad-slot="9365926617"
+
                 />
             </div>
         </>

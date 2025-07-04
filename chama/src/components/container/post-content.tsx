@@ -11,7 +11,7 @@ interface PostContentProps {
 
 export function PostContent({ html }: PostContentProps) {
     let firstParagraphInserted = false;
-    console.log(html);
+
 
     let adInserted = false;
     const parsed = parse(html, {
@@ -27,7 +27,7 @@ export function PostContent({ html }: PostContentProps) {
                 return [
                     domNode,
                     <div key="ad-test" style={{ background: 'yellow', padding: '10px' }}>
-                        ANÚNCIO TESTE
+                        <GoogleAd />
                     </div>
                 ];
             }

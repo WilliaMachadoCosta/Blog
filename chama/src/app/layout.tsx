@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="pt" className="bg-neutral-100">
       <head>
-        <link rel="stylesheet" href="/globals.css" />
+        {/* <link rel="stylesheet" href="/globals.css" /> */}
       </head>
 
       {/* Google Analytics */}

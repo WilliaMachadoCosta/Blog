@@ -26,10 +26,10 @@ export function Footer() {
                 <span className="text-[10px] sm:text-[11px]">Quem somos</span>
             </Link>
 
-            <Link href="/sitemap.xml" className="flex flex-col items-center flex-1 hover:text-blue-500">
+            {/* <Link href="/sitemap.xml" className="flex flex-col items-center flex-1 hover:text-blue-500">
                 <Map size={20} className="sm:w-5 sm:h-5 mb-1" />
                 <span className="text-[10px] sm:text-[11px]">Sitemap</span>
-            </Link>
+            </Link> */}
 
             {/* <div className="flex flex-col items-center flex-1">
                 <User size={20} className="sm:w-5 sm:h-5 mb-1" />

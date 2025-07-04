@@ -30,7 +30,7 @@ export default function ShareButtons() {
                 >
                     <Send size={14} className="sm:w-4 sm:h-4" />
                     <span className="hidden sm:inline">WhatsApp</span>
-                    <span className="sm:hidden">WA</span>
+                    <span className="sm:hidden">WhatsApp</span>
                 </a>
 
                 <a
@@ -41,7 +41,7 @@ export default function ShareButtons() {
                 >
                     <Facebook size={14} className="sm:w-4 sm:h-4" />
                     <span className="hidden sm:inline">Facebook</span>
-                    <span className="sm:hidden">FB</span>
+                    <span className="sm:hidden">Facebook</span>
                 </a>
 
                 <a

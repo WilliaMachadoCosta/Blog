@@ -158,7 +158,9 @@ export default async function PostPage({
         )}
         */}
 
-        <PostContent html={sanitizeHtml(post.content)} />
+        {/* <PostContent html={sanitizeHtml(post.content)} /> */}
+        <PostContent html={(post.content)} />
+
 
         <ShareButtons />
       </article>
@@ -171,8 +173,11 @@ function sanitizeHtml(html: string): string {
     .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "")
     .replace(/class="[^"]*"/g, "")
     .replace(/<!--[\s\S]*?-->/g, "")
-    .replace(/data-src=/gi, "src=");
+    .replace(/data-src=/gi, "src=")
+    // Remove ins com data-ad-slot="8056328924" e data-ad-client="ca-pub-5074393689985715"
+    .replace(/<ins[^>]*data-ad-client="ca-pub-5074393689985715"[^>]*data-ad-slot="8056328924"[^>]*><\/ins>/gi, "")
 }
+
 
 // Gera os slugs de todos os posts para SSG
 export async function generateStaticParams() {

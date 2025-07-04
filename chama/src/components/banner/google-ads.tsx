@@ -16,7 +16,7 @@ interface GoogleAdProps {
 
 export default function GoogleAd({ className = '' }: GoogleAdProps) {
     const adRef = useRef<HTMLDivElement>(null);
-
+    console.log('anuncio  =======================>');
     useEffect(() => {
         // Aguarda o script carregar e faz o push
         const timeout = setTimeout(() => {

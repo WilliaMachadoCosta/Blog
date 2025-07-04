@@ -11,8 +11,11 @@ interface PostContentProps {
 
 export function PostContent({ html }: PostContentProps) {
     let firstParagraphInserted = false;
+    console.log(html);
+
     let adInserted = false;
     const parsed = parse(html, {
+
         replace: (domNode) => {
             // Inserir GoogleAd após o primeiro <p>
             if (
@@ -23,11 +26,12 @@ export function PostContent({ html }: PostContentProps) {
                 adInserted = true;
                 return [
                     domNode,
-                    <div key="google-ad-after-p" className="ad-in-content my-6 w-full flex justify-center px-2 sm:px-0">
-                        <GoogleAd />
+                    <div key="ad-test" style={{ background: 'yellow', padding: '10px' }}>
+                        ANÚNCIO TESTE
                     </div>
                 ];
             }
+
             // Custom button
             if (
                 domNode instanceof DomElement &&

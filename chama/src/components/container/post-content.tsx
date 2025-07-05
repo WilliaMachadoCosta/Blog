@@ -17,10 +17,6 @@ export function PostContent({ html }: PostContentProps) {
     const parsed = parse(html, {
 
         replace: (domNode) => {
-            // Inserir GoogleAd após o primeiro <p>
-
-
-            // Custom button
             if (
                 domNode instanceof DomElement &&
                 domNode.name === "custom-button"
@@ -67,7 +63,6 @@ export function PostContent({ html }: PostContentProps) {
     return (
         <article className="prose prose-neutral max-w-none text-black overflow-hidden prose-sm sm:prose-base lg:prose-lg">
             <div className="break-words overflow-hidden">
-                <GoogleAd />
                 {parsed}
             </div>
         </article>

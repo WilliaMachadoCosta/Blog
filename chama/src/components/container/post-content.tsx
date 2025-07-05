@@ -18,19 +18,7 @@ export function PostContent({ html }: PostContentProps) {
 
         replace: (domNode) => {
             // Inserir GoogleAd após o primeiro <p>
-            if (
-                !adInserted &&
-                domNode instanceof DomElement &&
-                domNode.name === 'p'
-            ) {
-                adInserted = true;
-                return [
-                    domNode,
-                    <div key="ad-test" style={{ background: 'yellow', padding: '10px' }}>
-                        <GoogleAd />
-                    </div>
-                ];
-            }
+
 
             // Custom button
             if (
@@ -79,6 +67,7 @@ export function PostContent({ html }: PostContentProps) {
     return (
         <article className="prose prose-neutral max-w-none text-black overflow-hidden prose-sm sm:prose-base lg:prose-lg">
             <div className="break-words overflow-hidden">
+                <GoogleAd />
                 {parsed}
             </div>
         </article>

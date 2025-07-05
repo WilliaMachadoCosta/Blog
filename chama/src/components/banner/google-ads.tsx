@@ -39,10 +39,31 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
                 crossOrigin="anonymous"
             />
             <style>{`
-                .adslot_1 { display: block; width: 320px; height: 100px; }
-                @media (min-width: 500px) { .adslot_1 { width: 468px; height: 60px; } }
-                @media (min-width: 800px) { .adslot_1 { width: 728px; height: 90px; } }
+                    .adslot_1 {
+                        display: block;
+                        width: 320px;
+                        height: 100px;
+                    }
+                    @media (min-width: 500px) {
+                        .adslot_1 {
+                        width: 468px;
+                        height: 60px;
+                        }
+                    }
+                    @media (min-width: 800px) {
+                        .adslot_1 {
+                        width: 728px;
+                        height: 90px;
+                        }
+                    }
+                    @media (min-width: 1100px) {
+                        .adslot_1.grande {
+                        width: 970px;
+                        height: 90px;
+                        }
+                    }
             `}</style>
+
             <div ref={adRef} className={`w-full flex justify-center ${className}`}>
                 <ins
                     className="adsbygoogle adslot_1"

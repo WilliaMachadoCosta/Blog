@@ -8,6 +8,7 @@ import { Footer } from "@/components/footer/footer";
 
 import Script from 'next/script';
 import CacheMonitor from "@/components/debug/cache-monitor";
+import GoogleAd from "@/components/banner/google-ads";
 
 // Declaração global para gtag
 declare global {
@@ -102,7 +103,7 @@ export default function RootLayout({
         <div className="fixed top-0 left-0 w-full z-50">
           <Header />
         </div>
-
+        <div className="mb-6 max-w-2xl mx-auto bg-gray-300"><GoogleAd /></div>
         {/* Container com sidebars e conteúdo */}
         <div className="flex flex-1 pt-[60px] pb-[50px] h-full bg-neutral-100 overflow-x-hidden" style={{ position: 'relative', zIndex: 2 }}>
 

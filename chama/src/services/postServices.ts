@@ -8,6 +8,12 @@ const API_BASE = "https://api.chamanozap.net/wp-json/wp/v2";
 const cache = new Map<string, { data: any; timestamp: number }>();
 const CACHE_DURATION = 5 * 60 * 1000; // 5 minutos em millisegundos
 
+const fixDomain = (text: string): string =>
+  typeof text === "string"
+    ? text.replace(/https:\/\/admin\.chamanozap\.net/g, 'https://api.chamanozap.net')
+    : text;
+
+
 const fetchJson = async (url: string, useCache = true, retryCount = 0) => {
   const cacheKey = url;
   const maxRetries = 3;
@@ -111,7 +117,7 @@ export async function getPostsByIds(ids: number[]): Promise<IPost[]> {
     const includeParam = ids.join(",");
     const data = await fetchJson(`${API_BASE}/posts?include=${includeParam}&per_page=30&_embed`);
     const posts = data.map(mapPost);
-
+    console.log(posts);
     // Buscar comentários para cada post em paralelo (com cache)
     const commentsByPost = await Promise.all(
       posts.map((post: IPost) => getCommentsByPost(post.id))
@@ -246,25 +252,25 @@ export async function searchPosts(query: string): Promise<IPost[]> {
   try {
     const searchQuery = encodeURIComponent(query.trim());
     console.log('Buscando posts com query:', searchQuery);
-    
+
     // Usar API route local para evitar CORS
     const url = `/api/posts/search?q=${searchQuery}`;
     console.log('URL da busca local:', url);
-    
+
     const response = await fetch(url);
-    
+
     if (!response.ok) {
       throw new Error(`Erro na busca: ${response.status}`);
     }
-    
+
     const data = await response.json();
     console.log('Resultados da busca:', data?.length || 0, 'posts encontrados');
-    
+
     if (!Array.isArray(data)) {
       console.error('Resposta da API não é um array:', data);
       return [];
     }
-    
+
     return data.map(mapPost);
   } catch (err) {
     console.error("Erro em searchPosts:", err);
@@ -296,11 +302,11 @@ function mapPost(post: WordPressPost): IPost {
   return {
     id: post.id,
     title: post.title?.rendered ?? "",
-    content: post.content?.rendered ?? "",
-    excerpt: post.excerpt?.rendered ?? "",
+    content: fixDomain(post.content.rendered) ?? "",
+    excerpt: fixDomain(post.excerpt.rendered) ?? "",
     slug: post.slug,
     date: post.date,
-    featuredImage: post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ?? "/fallback.jpg",
+    featuredImage: fixDomain(post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ?? "/fallback.jpg"),
     author: post._embedded?.author?.[0]?.name ?? "Desconhecido",
     categories: Array.isArray(post.categories) ? post.categories : [],
     modified: post.modified,

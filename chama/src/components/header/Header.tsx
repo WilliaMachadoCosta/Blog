@@ -32,7 +32,7 @@ export default function Header() {
 
     const handleSearch = async (e: React.FormEvent) => {
         e.preventDefault();
-        
+
         // Validar se tem pelo menos 4 letras
         if (searchQuery.trim().length < 4) {
             setSearchError("Digite pelo menos 4 letras para pesquisar");
@@ -79,7 +79,7 @@ export default function Header() {
             </div>
 
             {/* Menu de Navegação */}
-            <nav className="flex items-center gap-6 w-full justify-center">
+            <nav className="flex items-center gap-6 w-full justify-center md:justify-start">
                 <Link href="/" className="font-semibold text-sm sm:text-base hover:text-green-600 transition-colors">
                     Início
                 </Link>
@@ -188,8 +188,8 @@ export default function Header() {
                 )}
 
                 {/* Botão de Pesquisa */}
-                <button 
-                    aria-label="Pesquisar" 
+                <button
+                    aria-label="Pesquisar"
                     className="p-1 hover:bg-gray-200 rounded-full transition-colors"
                     onClick={toggleSearch}
                 >
@@ -197,8 +197,8 @@ export default function Header() {
                 </button>
 
                 {/* Menu (três pontinhos) - visível apenas em telas menores */}
-                <button 
-                    aria-label="Menu" 
+                <button
+                    aria-label="Menu"
                     className="p-1 hover:bg-gray-200 rounded-full transition-colors md:hidden"
                     onClick={toggleMobileMenu}
                 >
@@ -210,22 +210,22 @@ export default function Header() {
             {isMobileMenuOpen && (
                 <div className="absolute top-full left-0 right-0 bg-white shadow-lg border-t border-gray-200 md:hidden z-50">
                     <nav className="flex flex-col">
-                        <Link 
-                            href="/" 
+                        <Link
+                            href="/"
                             className="px-4 py-3 font-semibold text-sm hover:bg-gray-100 transition-colors border-b border-gray-100"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
                             Início
                         </Link>
-                        <Link 
-                            href="/categorias" 
+                        <Link
+                            href="/categorias"
                             className="px-4 py-3 font-semibold text-sm hover:bg-gray-100 transition-colors border-b border-gray-100"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
                             Categorias
                         </Link>
-                        <Link 
-                            href="/blog" 
+                        <Link
+                            href="/blog"
                             className="px-4 py-3 font-semibold text-sm hover:bg-gray-100 transition-colors"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >

@@ -117,7 +117,7 @@ export async function getPostsByIds(ids: number[]): Promise<IPost[]> {
     const includeParam = ids.join(",");
     const data = await fetchJson(`${API_BASE}/posts?include=${includeParam}&per_page=30&_embed`);
     const posts = data.map(mapPost);
-    console.log(posts);
+
     // Buscar comentários para cada post em paralelo (com cache)
     const commentsByPost = await Promise.all(
       posts.map((post: IPost) => getCommentsByPost(post.id))

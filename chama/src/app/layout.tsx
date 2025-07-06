@@ -34,6 +34,13 @@ export default function RootLayout({
     <html lang="pt" className="bg-neutral-100">
       <head>
         {/* <link rel="stylesheet" href="/globals.css" /> */}
+        <Script
+          id="adsense-init"
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5074393689985715"
+          crossOrigin="anonymous"
+        />
+
       </head>
 
       {/* Google Analytics */}

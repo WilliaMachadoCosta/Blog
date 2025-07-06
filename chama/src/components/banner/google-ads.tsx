@@ -42,6 +42,7 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
                 .adsbygoogle {
                     display: block;
                     width: 100%;
+                    min-height: 150px; /* ou 250px dependendo do slot */
                 }
             `}</style>
 
@@ -49,7 +50,7 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
             <div ref={adRef} className={`w-full flex justify-center ${className}`}>
                 <ins
                     className="adsbygoogle"
-                    style={{ display: 'block' }}
+                    style={{ display: 'block', minHeight: '150px' }}
                     data-ad-client="ca-pub-5074393689985715"
                     data-ad-slot="9365926617"
                     data-ad-format="auto"

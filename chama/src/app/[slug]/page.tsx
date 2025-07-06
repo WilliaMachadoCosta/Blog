@@ -26,8 +26,9 @@ export async function generateMetadata({
   }
 
   const cleanTitle = post.title.replace(/<[^>]*>/g, "");
-  const cleanExcerpt = post.excerpt?.replace(/<[^>]*>/g, "").slice(0, 160) || '';
-  const canonicalUrl = `https://chamanozap.net/${post.slug}`;
+  const cleanExcerpt = (post.excerpt?.replace(/<[^>]*>/g, "").split(" ").slice(0, 25).join(" ") || '') + "...";
+
+  const canonicalUrl = new URL(post.slug, 'https://chamanozap.net').toString();
   const imageUrl = post.featuredImage || 'https://chamanozap.net/logo.png';
 
   return {
@@ -50,6 +51,11 @@ export async function generateMetadata({
     alternates: {
       canonical: canonicalUrl,
     },
+    robots: {
+      index: true,
+      follow: true,
+    }
+
   };
 }
 
@@ -72,7 +78,7 @@ export default async function PostPage({
   return (
     <main className="min-h-screen bg-[#f5f3ef] py-4 sm:py-6 px-2 sm:px-4 overflow-x-hidden">
       {/* Structured Data: BreadcrumbList */}
-      <Script id="breadcrumb-ld-json" type="application/ld+json" strategy="afterInteractive">
+      <Script id="breadcrumb-ld-json" type="application/ld+json" >
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
@@ -93,7 +99,7 @@ export default async function PostPage({
         })}
       </Script>
       {/* Structured Data: BlogPosting */}
-      <Script id="blogposting-ld-json" type="application/ld+json" strategy="afterInteractive">
+      <Script id="blogposting-ld-json" type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BlogPosting",

@@ -70,7 +70,7 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
                     // style={{ display: 'block' }}
                     // data-ad-client="ca-pub-5074393689985715"
                     // data-ad-slot="9365926617"
-                    className="adsbygoogle adslot_1 grande"
+                    className="adsbygoogle adslot_1"
                     style={{
                         display: 'block',
                         width: '100%',

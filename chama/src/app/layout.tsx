@@ -37,7 +37,7 @@ export default function RootLayout({
       </head>
 
       {/* Google Analytics */}
-      <Script
+      {/* <Script
         src="https://www.googletagmanager.com/gtag/js?id=UA-53750184-3"
         strategy="afterInteractive"
       />
@@ -48,17 +48,17 @@ export default function RootLayout({
           gtag('js', new Date());
           gtag('config', 'UA-53750184-3');
         `}
-      </Script>
+      </Script> */}
       {/* Google Tag Manager */}
-      <Script id="gtm" strategy="afterInteractive">
+      {/* <Script id="gtm" >
         {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-NGNZHGB');`}
-      </Script>
+      </Script> */}
       {/* JSON-LD Schema.org - WebSite */}
-      <Script id="ld-json" type="application/ld+json" strategy="afterInteractive">
+      <Script id="ld-json" type="application/ld+json">
         {`
           {
             "@context": "http://schema.org",
@@ -73,7 +73,7 @@ export default function RootLayout({
         `}
       </Script>
       {/* Organization Structured Data */}
-      <Script id="organization-ld-json" type="application/ld+json" strategy="afterInteractive">
+      <Script id="organization-ld-json" type="application/ld+json">
         {`
           {
             "@context": "https://schema.org",

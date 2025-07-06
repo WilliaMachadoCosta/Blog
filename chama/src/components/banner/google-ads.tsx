@@ -42,7 +42,7 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
                 .adsbygoogle {
                     display: block;
                     width: 100%;
-     
+                    min-height: 250px; /* ou ajuste para 300px, 90px etc. conforme o slot */
                 }
             `}</style>
 
@@ -50,10 +50,10 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
             {/* Anúncio fixo 320x250 */}
             <div className={`flex justify-center ${className}`}>
                 <ins
-                    className="adsbygoogle"
-                    style={{ display: 'inline-block', width: '320px', height: '250px' }}
+                    className="adsbygoogle md:hidden"
+                    style={{ width: '320px', height: '100px', display: 'inline-block' }}
                     data-ad-client="ca-pub-5074393689985715"
-                    data-ad-slot="8640543084"
+                    data-ad-slot="8640543084" // 🛠 Substitua pelo slot real menor
                     ref={adRef as any}
                 />
             </div>

@@ -26,46 +26,6 @@ body {
   font-family: 'Segoe UI', 'Roboto', 'San Francisco', 'Helvetica Neue', Arial, sans-serif;
 }
 
-/* ===== CONTROLE DE ANÚNCIOS ===== */
-/* Container principal dos anúncios */
-.ad-container {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-
-  margin: 1rem 0;
-  z-index: 1;
-}
-
-.ad-container-vertical {
-  position: relative;
-  width: 100%;
-  max-width: 300px;
-
-  margin: 1rem 0;
-  z-index: 1;
-}
-
-/* Anúncios dentro do conteúdo do artigo */
-.ad-in-content {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-
-  margin: 1.5rem 0;
-  z-index: 1;
-  border-radius: 8px;
-  border: 1px solid #dee2e6;
-}
-
-.ad-in-content-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-
-  z-index: 1;
-}
-
 
 
 /* Garantir que o conteúdo principal fique sempre visível */

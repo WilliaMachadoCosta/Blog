@@ -43,6 +43,7 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
                         display: block;
                         width: 320px;
                         height: 100px;
+                        border: 2px solid green; /* ✅ Adiciona a borda verde */
                     }
                     @media (min-width: 500px) {
                         .adslot_1 {
@@ -66,22 +67,18 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
 
             <div ref={adRef} className={`w-full flex justify-center ${className}`}>
                 <ins
-                    // className="adsbygoogle adslot_1"
-                    // style={{ display: 'block' }}
-                    // data-ad-client="ca-pub-5074393689985715"
-                    // data-ad-slot="9365926617"
+                    // // className="adsbygoogle adslot_1"
+                    // // style={{ display: 'block' }}
+                    // // data-ad-client="ca-pub-5074393689985715"
+                    // // data-ad-slot="9365926617"
                     className="adsbygoogle adslot_1"
                     style={{
                         display: 'block',
-                        width: '100%',
-                        maxWidth: '728px',
-                        height: '90px',
                     }}
                     data-ad-client="ca-pub-5074393689985715"
                     data-ad-slot="9365926617"
                     data-ad-format="auto"
                     data-full-width-responsive="true"
-
                 />
             </div>
         </>

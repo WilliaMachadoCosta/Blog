@@ -47,7 +47,7 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
             `}</style>
 
 
-            <div ref={adRef} className={`w-full flex justify-center ${className}`}>
+            <div ref={adRef} className={`w-full flex justify-center min-h-[300px] ${className}`}>
                 <ins
                     className="adsbygoogle"
                     style={{ display: 'block', minHeight: '300px' }}

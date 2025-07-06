@@ -138,7 +138,7 @@ export default async function PostPage({
       <div
         style={{ textAlign: 'left', overflow: 'hidden' }}
       >
-        <div className="mb-12 max-w-2xl mx-auto flex bg-gray-100"><GoogleAd className="" /></div>
+        <GoogleAd className="" />
       </div>
 
       <article className="bg-white max-w-2xl mx-auto rounded-xl shadow-md p-3 sm:p-4 md:p-6 space-y-4 sm:space-y-6 overflow-hidden">

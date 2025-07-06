@@ -47,14 +47,13 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
             `}</style>
 
 
-            <div className={`w-full flex justify-center ${className}`}>
+            {/* Anúncio fixo 320x250 */}
+            <div className={`flex justify-center ${className}`}>
                 <ins
                     className="adsbygoogle"
-                    style={{ display: 'block', textAlign: 'center', minHeight: '250px' }}
+                    style={{ display: 'inline-block', width: '320px', height: '250px' }}
                     data-ad-client="ca-pub-5074393689985715"
-                    data-ad-slot="1893297877"
-                    data-ad-format="fluid"
-                    data-ad-layout="in-article"
+                    data-ad-slot="8640543084"
                     ref={adRef as any}
                 />
             </div>

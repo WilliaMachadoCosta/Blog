@@ -136,7 +136,7 @@ export default async function PostPage({
         })}
       </Script>
       <div
-        style={{ textAlign: 'left', overflow: 'hidden' }}
+        style={{ textAlign: 'center', overflow: 'hidden' }}
       >
         <GoogleAd className="" />
       </div>

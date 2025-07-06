@@ -74,6 +74,7 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
                     className="adsbygoogle adslot_1"
                     style={{
                         display: 'block',
+                        border: '2px solid green'
                     }}
                     data-ad-client="ca-pub-5074393689985715"
                     data-ad-slot="9365926617"

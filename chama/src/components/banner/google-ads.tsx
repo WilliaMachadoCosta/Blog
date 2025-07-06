@@ -39,43 +39,17 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
                 crossOrigin="anonymous"
             />
             <style>{`
-                    .adslot_1 {
-                        display: block;
-                        width: 320px;
-                        height: 100px;
-                        border: 2px solid green; /* ✅ Adiciona a borda verde */
-                    }
-                    @media (min-width: 500px) {
-                        .adslot_1 {
-                        width: 468px;
-                        height: 60px;
-                        }
-                    }
-                    @media (min-width: 800px) {
-                        .adslot_1 {
-                        width: 728px;
-                        height: 90px;
-                        }
-                    }
-                    @media (min-width: 1100px) {
-                        .adslot_1.grande {
-                        width: 970px;
-                        height: 90px;
-                        }
-                    }
+                .adsbygoogle {
+                    display: block;
+                    width: 100%;
+                }
             `}</style>
+
 
             <div ref={adRef} className={`w-full flex justify-center ${className}`}>
                 <ins
-                    // // className="adsbygoogle adslot_1"
-                    // // style={{ display: 'block' }}
-                    // // data-ad-client="ca-pub-5074393689985715"
-                    // // data-ad-slot="9365926617"
                     className="adsbygoogle"
-                    style={{
-                        display: 'block',
-                        border: '2px solid green'
-                    }}
+                    style={{ display: 'block' }}
                     data-ad-client="ca-pub-5074393689985715"
                     data-ad-slot="9365926617"
                     data-ad-format="auto"

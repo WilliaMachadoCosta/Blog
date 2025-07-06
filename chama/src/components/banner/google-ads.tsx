@@ -40,7 +40,7 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
             />
             <style>{`
                     .adslot_1 {
-                        display: block;
+                        display: inline;
                         width: 320px;
                         height: 100px;
                     }
@@ -70,8 +70,7 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
                     style={{ display: 'inline', width: '320px', height: '100px' }}
                     data-ad-client="ca-pub-5074393689985715"
                     data-ad-slot="9365926617"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"
+
                 />
             </div>
         </>

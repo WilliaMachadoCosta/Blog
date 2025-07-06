@@ -39,22 +39,43 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
                 crossOrigin="anonymous"
             />
             <style>{`
-                .adsbygoogle {
-                    display: block;
-                    width: 100%;
-                    min-height: 250px; /* ou ajuste para 300px, 90px etc. conforme o slot */
-                }
+                    .adslot_1 {
+                        display: block;
+                        width: 320px;
+                        height: 100px;
+                    }
+                    @media (min-width: 500px) {
+                        .adslot_1 {
+                        width: 468px;
+                        height: 60px;
+                        }
+                    }
+                    @media (min-width: 800px) {
+                        .adslot_1 {
+                        width: 728px;
+                        height: 90px;
+                        }
+                    }
+                    @media (min-width: 1100px) {
+                        .adslot_1.grande {
+                        width: 970px;
+                        height: 90px;
+                        }
+                    }
             `}</style>
 
-
-            {/* Anúncio fixo 320x250 */}
-            <div className={`flex justify-center ${className}`}>
+            <div ref={adRef} className={`w-full flex justify-center ${className}`}>
                 <ins
-                    className="adsbygoogle md:hidden"
-                    style={{ width: '320px', height: '100px', display: 'inline-block' }}
+                    className="adsbygoogle adslot_1"
+                    style={{
+                        display: 'block',
+                    }}
                     data-ad-client="ca-pub-5074393689985715"
-                    data-ad-slot="8640543084" // 🛠 Substitua pelo slot real menor
-                    ref={adRef as any}
+                    data-ad-slot="9365926617"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"
+
+
                 />
             </div>
         </>

@@ -135,7 +135,12 @@ export default async function PostPage({
           })
         })}
       </Script>
-      <div className="my-8"><GoogleAd /></div>
+      <div className="my-8 max-w-2xl mx-auto w-full h-[350px] rounded-lg overflow-hidden relative">
+        <div className="absolute inset-0 bg-neutral-200 animate-pulse z-0" />
+        <div className="absolute inset-0 z-10 flex items-center justify-center">
+          <GoogleAd className="w-full h-full" />
+        </div>
+      </div>
 
       <article className="bg-white max-w-2xl mx-auto rounded-xl shadow-md p-3 sm:p-4 md:p-6 space-y-4 sm:space-y-6 overflow-hidden">
 

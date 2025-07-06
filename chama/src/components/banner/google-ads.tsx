@@ -46,7 +46,7 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
             `}</style>
 
 
-            <div ref={adRef} className={`w-full flex justify-center ${className}`}>
+            <div ref={adRef} className={` ${className}`}>
                 <ins
                     className="adsbygoogle"
                     style={{ display: 'block' }}

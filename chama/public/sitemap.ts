@@ -465,9 +465,9 @@ export async function GET() {
 
 </urlset>`;
 
-  return new NextResponse(sitemap, {
+  return new Response(sitemap, {
     headers: {
-      'Content-Type': 'application/xml',
+      'Content-Type': 'application/xml; charset=utf-8',
     },
   });
 }

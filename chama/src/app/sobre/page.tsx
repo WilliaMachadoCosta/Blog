@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Building, Users, MessageSquare, Phone, Mail, Globe } from "lucide-react";
+import GoogleAd from "@/components/banner/google-ads";
 
 export default function SobrePage() {
     return (
@@ -16,9 +17,15 @@ export default function SobrePage() {
                         </h1>
                     </div>
                     <p className="text-gray-600 text-lg leading-relaxed">
-                        O <strong>Chama no Zap</strong> é sua plataforma de conexão direta com as principais empresas e serviços do Brasil. 
+                        O <strong>Chama no Zap</strong> é sua plataforma de conexão direta com as principais empresas e serviços do Brasil.
                         Facilitamos o contato entre você e as empresas que você precisa.
                     </p>
+                </div>
+
+                <div className="my-6 max-w-2xl mx-auto w-full h-[200px] rounded-lg relative">
+                    <div className=" flex items-center justify-center">
+                        <GoogleAd className="" />
+                    </div>
                 </div>
 
                 {/* Missão e Visão */}
@@ -29,7 +36,7 @@ export default function SobrePage() {
                             Nossa Missão
                         </h2>
                         <p className="text-gray-600 leading-relaxed">
-                            Conectar pessoas às empresas de forma rápida, eficiente e transparente, 
+                            Conectar pessoas às empresas de forma rápida, eficiente e transparente,
                             eliminando barreiras de comunicação e facilitando o acesso aos serviços essenciais.
                         </p>
                     </div>
@@ -40,7 +47,7 @@ export default function SobrePage() {
                             Nossa Visão
                         </h2>
                         <p className="text-gray-600 leading-relaxed">
-                            Ser a principal plataforma de conexão entre consumidores e empresas no Brasil, 
+                            Ser a principal plataforma de conexão entre consumidores e empresas no Brasil,
                             oferecendo uma experiência única e inovadora de comunicação.
                         </p>
                     </div>
@@ -121,8 +128,8 @@ export default function SobrePage() {
                     <p className="mb-4 text-green-100">
                         Encontre e conecte-se com as empresas que você precisa de forma rápida e eficiente.
                     </p>
-                    <Link 
-                        href="/" 
+                    <Link
+                        href="/"
                         className="inline-block bg-white text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
                     >
                         Voltar ao Início
@@ -139,14 +146,14 @@ export default function SobrePage() {
                             <Mail className="w-5 h-5 text-gray-600" />
                             <div>
                                 <p className="font-semibold text-gray-900">Email</p>
-                                <p className="text-gray-600 text-sm">contato@chamanazap.com.br</p>
+                                <p className="text-gray-600 text-sm">williamhp3@gmail.com</p>
                             </div>
                         </div>
                         <div className="flex items-center gap-3">
                             <MessageSquare className="w-5 h-5 text-gray-600" />
                             <div>
                                 <p className="font-semibold text-gray-900">WhatsApp</p>
-                                <p className="text-gray-600 text-sm">(11) 99999-9999</p>
+                                <p className="text-gray-600 text-sm">(11) 989710114</p>
                             </div>
                         </div>
                     </div>

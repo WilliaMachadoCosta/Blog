@@ -65,9 +65,11 @@ export async function GET() {
   </urlset>`
 
   return new Response(sitemap, {
+    status: 200,
     headers: {
       'Content-Type': 'application/xml; charset=utf-8',
-      'Cache-Control': 'no-cache',
+      'Cache-Control': 's-maxage=0, stale-while-revalidate=0',
     },
-  })
+  });
+
 }

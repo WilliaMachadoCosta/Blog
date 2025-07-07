@@ -21,8 +21,8 @@ declare global {
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Chama - Blog de Viagens e Turismo",
-  description: "Descubra os melhores destinos, dicas de viagem e experiências únicas. Seu guia completo para explorar o mundo.",
+  title: "Chama no Zap - WhatsApp",
+  description: "O Chama no Zap é sua plataforma de conexão direta com as principais empresas e serviços do Brasil. Facilitamos o contato entre você e as empresas que você precisa.",
 };
 
 export default function RootLayout({
@@ -34,6 +34,7 @@ export default function RootLayout({
     <html lang="pt" className="bg-neutral-100">
       <head>
         {/* <link rel="stylesheet" href="/globals.css" /> */}
+        <meta name="google-site-verification" content="U7FyXiaQb1HX4vXf7lBdxip1NGWDq83wWtrqH1TLFSI" />
         <Script
           id="adsense-init"
           async

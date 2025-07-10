@@ -1,7 +1,7 @@
-'use client';
+// 'use client';
 
-import { useEffect, useRef } from 'react';
 import Script from 'next/script';
+import { useRef } from 'react';
 
 // 🧠 Corrige o erro de TypeScript
 declare global {
@@ -16,19 +16,6 @@ interface GoogleAdProps {
 
 export default function GoogleAd({ className = '' }: GoogleAdProps) {
     const adRef = useRef<HTMLDivElement>(null);
-    useEffect(() => {
-        // Aguarda o script carregar e faz o push
-        const timeout = setTimeout(() => {
-            try {
-                if (window.adsbygoogle && adRef.current) {
-                    window.adsbygoogle.push({});
-                }
-            } catch (e) {
-                // Ignora erros do AdSense
-            }
-        }, 500);
-        return () => clearTimeout(timeout);
-    }, []);
 
     return (
         <>
@@ -37,38 +24,21 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
                 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5074393689985715"
                 strategy="afterInteractive"
                 crossOrigin="anonymous"
+                onLoad={() => {
+                    try {
+                        (window.adsbygoogle = window.adsbygoogle || []).push({});
+                    } catch (_) {
+                        // Silencia erros do AdSense
+                    }
+                }}
             />
-            <style>{`
-                    .adslot_1 {
-                        display: inline;
-                        width: 320px;
-                        height: 100px;
-                    }
-                    @media (min-width: 500px) {
-                        .adslot_1 {
-                        width: 468px;
-                        height: 60px;
-                        }
-                    }
-                    @media (min-width: 800px) {
-                        .adslot_1 {
-                        width: 728px;
-                        height: 90px;
-                        }
-                    }
-                    @media (min-width: 1100px) {
-                        .adslot_1.grande {
-                        width: 970px;
-                        height: 90px;
-                        }
-                    }
-            `}</style>
 
-            <div ref={adRef} className={`w-full flex justify-center ${className}`}>
+            {/* Espaço reservado (não interfere no ad-format:auto) */}
+            <div ref={adRef} className={`w-full flex justify-center min-h-[90px] ${className}`}>
                 <ins
-                    className="adsbygoogle adslot_1"
+                    className="adsbygoogle"
                     style={{ display: 'block' }}
-                    data-ad-ata-ad-client="ca-pub-5074393689985715"
+                    data-ad-client="ca-pub-5074393689985715"
                     data-ad-slot="9365926617"
                     data-ad-format="auto"
                     data-full-width-responsive="true"

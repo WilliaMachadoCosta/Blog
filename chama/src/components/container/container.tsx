@@ -48,6 +48,9 @@ export default function Container({ showAds = true }: { showAds?: boolean }) {
         <div className="min-h-screen bg-white p-2 sm:p-4 space-y-6">
             {/* Seção de Empresas */}
             <div className="relative z-10">
+
+                {/* 📢 Bloco de anúncio do Google AdSense */}
+                {showAds && <div className="my-8"><GoogleAd /></div>}
                 <Suspense fallback={
                     <div className="space-y-2 mb-8">
                         {[...Array(5)].map((_, i) => (
@@ -57,6 +60,7 @@ export default function Container({ showAds = true }: { showAds?: boolean }) {
                 }>
                     <CompaniesData />
                 </Suspense>
+
             </div>
 
             {/* 📢 Bloco de anúncio do Google AdSense */}

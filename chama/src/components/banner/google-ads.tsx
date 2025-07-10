@@ -71,6 +71,29 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
                     max-width: 100% !important;
                     overflow: hidden !important;
                 }
+                
+                /* Sobrescreve o comportamento de centralização do Google AdSense */
+                #mys-wrapper {
+                    align-items: flex-start !important;
+                    justify-content: flex-start !important;
+                    position: relative !important;
+                    display: block !important;
+                }
+                
+                /* Força o anúncio a seguir o layout do container pai */
+                .ad-container #mys-wrapper {
+                    width: 100% !important;
+                    height: auto !important;
+                    position: relative !important;
+                    top: auto !important;
+                    left: auto !important;
+                }
+                
+                /* Remove qualquer centralização automática */
+                .ad-container .ns-c07oy-l-banner-small-vanilla {
+                    margin: 0 auto !important;
+                    display: block !important;
+                }
             `}</style>
 
             <AdContainer className={className}>

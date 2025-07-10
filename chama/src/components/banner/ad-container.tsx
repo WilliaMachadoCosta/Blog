@@ -8,6 +8,7 @@ interface AdContainerProps {
 export default function AdContainer({ children, className = '' }: AdContainerProps) {
     return (
         <div className={`
+            ad-container
             w-full 
             max-w-full 
             overflow-hidden 

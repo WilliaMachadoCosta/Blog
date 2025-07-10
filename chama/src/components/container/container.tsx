@@ -7,6 +7,7 @@ import { Suspense } from "react";
 import CompaniesListWithPagination from "./companies-list";
 import BlogSection, { BlogSectionSkeleton } from "./BlogSection";
 import GoogleAd from "../banner/google-ads";
+import AdContainer from "../banner/ad-container";
 
 // Componente de loading para cada item
 function CompanyItemSkeleton() {
@@ -45,9 +46,9 @@ async function CompaniesData() {
 // Componente principal otimizado
 export default function Container({ showAds = true }: { showAds?: boolean }) {
     return (
-        <div className="min-h-screen bg-white p-2 sm:p-4 space-y-6">
+        <div className="min-h-screen bg-white p-2 sm:p-4 space-y-6 max-w-full overflow-hidden">
             {/* Seção de Empresas */}
-            <div className="relative z-10">
+            <div className="relative z-10 max-w-full overflow-hidden">
 
                 {/* 📢 Bloco de anúncio do Google AdSense */}
                 {showAds && <GoogleAd className="my-6" />}
@@ -67,7 +68,7 @@ export default function Container({ showAds = true }: { showAds?: boolean }) {
             {showAds && <GoogleAd className="my-6" />}
 
             {/* Seção de Blog */}
-            <div className="relative z-10">
+            <div className="relative z-10 max-w-full overflow-hidden">
                 <Suspense fallback={<BlogSectionSkeleton />}>
                     <BlogSection />
                 </Suspense>

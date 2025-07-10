@@ -1,11 +1,11 @@
 export default function AdBanner() {
     return (
-        <div className="w-full bg-green-900 dark:bg-white text-neutral-900 dark:text-neutral-100 text-center p-3 sm:p-5 shadow-sm border mb-4">
-            <span className="font-bold text-black text-sm sm:text-base">
+        <div className="w-full max-w-full bg-green-900 dark:bg-white text-neutral-900 dark:text-neutral-100 text-center p-4 sm:p-6 shadow-md border border-green-800 dark:border-gray-200 rounded-lg mb-6 overflow-hidden">
+            <span className="font-bold text-white dark:text-black text-sm sm:text-base">
                 📢  Divulgue seu negócio  🚀{' '}
                 <a
                     href="/cadastro"
-                    className="underline text-white hover:text-neutral-800 dark:text-black dark:hover:text-blue-700"
+                    className="underline text-white hover:text-neutral-200 dark:text-black dark:hover:text-blue-700 transition-colors duration-200"
                 >
                     Cadastre-se grátis
                 </a>

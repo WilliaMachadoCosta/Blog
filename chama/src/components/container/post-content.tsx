@@ -4,6 +4,7 @@ import { Element as DomElement } from "domhandler";
 import { GenericButton } from "../buttons/genericButton";
 import LazyYouTube from "../media/LazyYouTube";
 import GoogleAd from "../banner/google-ads";
+import AdContainer from "../banner/ad-container";
 
 interface PostContentProps {
     html: string;
@@ -33,9 +34,9 @@ export function PostContent({ html }: PostContentProps) {
 
                 if (label === "ads" || variant === "ads") {
                     return (
-                        <div className="ad-in-content my-6 w-full flex justify-center px-2 sm:px-0">
+                        <AdContainer className="my-6">
                             <GoogleAd />
-                        </div>
+                        </AdContainer>
                     );
                 }
 
@@ -62,7 +63,7 @@ export function PostContent({ html }: PostContentProps) {
     });
     return (
         <article className="prose prose-neutral max-w-none text-black overflow-hidden prose-sm sm:prose-base lg:prose-lg">
-            <div className="break-words overflow-hidden">
+            <div className="break-words overflow-hidden max-w-full">
                 {parsed}
             </div>
         </article>

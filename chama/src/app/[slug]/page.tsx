@@ -144,7 +144,7 @@ export default async function PostPage({
       />
 
       <div className="my-6 max-w-2xl mx-auto w-full h-[200px] rounded-lg relative">
-        <div className=" flex items-center justify-center">
+        <div className=" flex  justify-center">
           <GoogleAd className="my-6" />
         </div>
       </div>

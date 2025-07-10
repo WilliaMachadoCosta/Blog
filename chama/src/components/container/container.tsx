@@ -12,8 +12,8 @@ import AdContainer from "../banner/ad-container";
 // Componente de loading para cada item
 function CompanyItemSkeleton() {
     return (
-        <div className="flex items-center justify-between bg-white p-3 sm:p-4 rounded shadow animate-pulse w-full">
-            <div className="flex items-center gap-3 flex-1 min-w-0">
+        <div className="flex justify-between bg-white p-3 sm:p-4 rounded shadow animate-pulse w-full">
+            <div className="flex gap-3 flex-1 min-w-0">
                 <div className="w-8 h-8 bg-gray-300 rounded-full flex-shrink-0"></div>
                 <div className="flex-1 min-w-0">
                     <div className="h-4 bg-gray-300 rounded w-32 mb-1"></div>

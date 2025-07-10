@@ -74,7 +74,7 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
             `}</style>
 
             <AdContainer className={className}>
-                <div ref={adRef} className="w-full flex justify-center items-center">
+                <div ref={adRef} className="w-full flex justify-center ">
                     <ins
                         className="adsbygoogle adslot_1"
                         data-ad-client="ca-pub-5074393689985715"

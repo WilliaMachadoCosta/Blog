@@ -67,10 +67,10 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
             <div ref={adRef} className={`w-full flex justify-center ${className}`}>
                 <ins
                     className="adsbygoogle adslot_1"
-                    style={{ display: 'inline', width: '320px', height: '100px' }}
+                    style={{ display: 'block', width: '320px', height: '100px' }}
                     data-ad-client="ca-pub-5074393689985715"
                     data-ad-slot="9365926617"
-
+                    data-ad-format="auto"
                 />
             </div>
         </>

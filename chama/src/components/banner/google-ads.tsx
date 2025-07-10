@@ -19,18 +19,35 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
     const adRef = useRef<HTMLDivElement>(null);
     
     useEffect(() => {
-        // Aguarda o script carregar e faz o push
-        const timeout = setTimeout(() => {
+        // Função para carregar o anúncio
+        const loadAd = () => {
             try {
                 if (window.adsbygoogle && adRef.current) {
+                    console.log('Carregando anúncio Google AdSense...');
                     window.adsbygoogle.push({});
+                } else {
+                    console.log('Google AdSense não está disponível ainda');
                 }
             } catch (e) {
-                // Ignora erros do AdSense
+                console.error('Erro ao carregar anúncio:', e);
             }
-        }, 500);
+        };
+
+        // Tenta carregar imediatamente
+        loadAd();
         
-        return () => clearTimeout(timeout);
+        // Se não funcionar, tenta novamente após um delay
+        const timeout = setTimeout(loadAd, 1000);
+        
+        // Tenta mais algumas vezes com intervalos maiores
+        const timeout2 = setTimeout(loadAd, 2000);
+        const timeout3 = setTimeout(loadAd, 5000);
+        
+        return () => {
+            clearTimeout(timeout);
+            clearTimeout(timeout2);
+            clearTimeout(timeout3);
+        };
     }, []);
 
     return (
@@ -40,14 +57,26 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
                 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5074393689985715"
                 strategy="afterInteractive"
                 crossOrigin="anonymous"
+                onLoad={() => {
+                    console.log('Script do Google AdSense carregado');
+                }}
+                onError={(e) => {
+                    console.error('Erro ao carregar script do Google AdSense:', e);
+                }}
             />
 
             <AdContainer className={className}>
-                <div ref={adRef}>
+                <div ref={adRef} className="w-full flex justify-center">
                     <ins
                         className="adsbygoogle"
+                        style={{
+                            display: 'block',
+                            textAlign: 'center'
+                        }}
                         data-ad-client="ca-pub-5074393689985715"
                         data-ad-slot="9365926617"
+                        data-ad-format="auto"
+                        data-full-width-responsive="true"
                     />
                 </div>
             </AdContainer>

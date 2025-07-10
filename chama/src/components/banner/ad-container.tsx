@@ -20,7 +20,7 @@ export default function AdContainer({ children, className = '' }: AdContainerPro
             mb-6 mt-4
             ${className}
         `}>
-            <div className="w-full max-w-full overflow-hidden">
+            <div className="w-full max-w-full overflow-hidden flex justify-center">
                 {children}
             </div>
         </div>

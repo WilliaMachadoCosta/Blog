@@ -16,8 +16,8 @@ export default function AdContainer({ children, className = '' }: AdContainerPro
             border-gray-200 
             rounded-lg 
             shadow-sm 
-            px-4 py-2
-            mb-6 mt-2
+            px-4 py-4
+            mb-6 mt-4
             ${className}
         `}>
             <div className="w-full max-w-full overflow-hidden flex justify-center items-center">

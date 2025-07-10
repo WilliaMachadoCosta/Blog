@@ -68,9 +68,10 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
                 <ins
                     className="adsbygoogle"
                     style={{ display: 'block' }}
-                    data-ad-client="ca-pub-5074393689985715"
+                    data-ad-ata-ad-client="ca-pub-5074393689985715"
                     data-ad-slot="9365926617"
                     data-ad-format="auto"
+                    data-full-width-responsive="true"
                 />
             </div>
         </>

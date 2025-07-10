@@ -43,32 +43,29 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
                 .adslot_1 {
                     display: block !important;
                     width: 320px !important;
-                    height: 100px !important;
+                    min-height: 100px !important;
+                    height: auto !important;
                     max-width: 100% !important;
                     overflow: hidden !important;
                 }
-                
                 @media (min-width: 500px) {
                     .adslot_1 {
                         width: 468px !important;
-                        height: 60px !important;
+                        min-height: 60px !important;
                     }
                 }
-                
                 @media (min-width: 800px) {
                     .adslot_1 {
                         width: 728px !important;
-                        height: 90px !important;
+                        min-height: 90px !important;
                     }
                 }
-                
                 @media (min-width: 1100px) {
                     .adslot_1.grande {
                         width: 970px !important;
-                        height: 90px !important;
+                        min-height: 90px !important;
                     }
                 }
-                
                 /* Garante que o anúncio não ultrapasse os limites */
                 .ad-container ins {
                     max-width: 100% !important;

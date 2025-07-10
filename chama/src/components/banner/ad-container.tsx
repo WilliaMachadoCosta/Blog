@@ -8,7 +8,6 @@ interface AdContainerProps {
 export default function AdContainer({ children, className = '' }: AdContainerProps) {
     return (
         <div className={`
-            ad-container
             w-full 
             max-w-full 
             overflow-hidden 
@@ -21,7 +20,7 @@ export default function AdContainer({ children, className = '' }: AdContainerPro
             mb-6 mt-4
             ${className}
         `}>
-            <div className="w-full max-w-full overflow-hidden flex justify-center">
+            <div className="w-full max-w-full overflow-hidden">
                 {children}
             </div>
         </div>

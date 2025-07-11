@@ -48,10 +48,10 @@ export default function Container({ showAds = true }: { showAds?: boolean }) {
     return (
         <div className="min-h-screen bg-white p-2 sm:p-4 space-y-6 max-w-full overflow-visible">
             {/* Seção de Empresas */}
-            <div className="relative z-10 max-w-full overflow-visible">
+            <div className="relative z-10 max-w-full overflow-hidden">
 
                 {/* 📢 Bloco de anúncio do Google AdSense */}
-                {showAds && <GoogleAd />}
+                {showAds && <GoogleAd className="my-9" />}
                 <Suspense fallback={
                     <div className="space-y-2 mb-8">
                         {[...Array(5)].map((_, i) => (
@@ -65,7 +65,7 @@ export default function Container({ showAds = true }: { showAds?: boolean }) {
             </div>
 
             {/* 📢 Bloco de anúncio do Google AdSense */}
-            {showAds && <GoogleAd />}
+            {showAds && <GoogleAd className="my-9" />}
 
             {/* Seção de Blog */}
             <div className="relative z-10 max-w-full overflow-hidden">

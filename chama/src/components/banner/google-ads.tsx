@@ -17,7 +17,7 @@ interface GoogleAdProps {
 
 export default function GoogleAd({ className = '' }: GoogleAdProps) {
     const adRef = useRef<HTMLDivElement>(null);
-    
+
     useEffect(() => {
         // Aguarda o script carregar e faz o push
         const timeout = setTimeout(() => {
@@ -29,14 +29,14 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
                 // Ignora erros do AdSense
             }
         }, 500);
-        
+
         // MutationObserver para interceptar quando o Google AdSense adiciona o wrapper
         const observer = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
                 mutation.addedNodes.forEach((node) => {
                     if (node.nodeType === Node.ELEMENT_NODE) {
                         const element = node as Element;
-                        
+
                         // Procura por elementos do Google AdSense
                         if (element.id === 'mys-wrapper' || element.classList.contains('ns-c07oy')) {
                             // Força o comportamento desejado
@@ -52,7 +52,7 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
                                 overflow: visible !important;
                             `);
                         }
-                        
+
                         // Procura recursivamente por elementos do Google AdSense
                         const googleElements = element.querySelectorAll('#mys-wrapper, [id*="mys-wrapper"], .ns-c07oy, [class*="ns-c07oy"]');
                         googleElements.forEach((el) => {
@@ -72,7 +72,7 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
                 });
             });
         });
-        
+
         // Observa mudanças no container do anúncio
         if (adRef.current) {
             observer.observe(adRef.current, {
@@ -82,7 +82,7 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
                 attributeFilter: ['style', 'class']
             });
         }
-        
+
         // Adiciona CSS dinâmico após o carregamento
         const styleTimeout = setTimeout(() => {
             const style = document.createElement('style');
@@ -133,7 +133,7 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
             `;
             document.head.appendChild(style);
         }, 1000);
-        
+
         return () => {
             clearTimeout(timeout);
             clearTimeout(styleTimeout);
@@ -189,8 +189,8 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
             `}</style>
 
             <AdContainer className={className}>
-                <div 
-                    ref={adRef} 
+                <div
+                    ref={adRef}
                     className="google-ad-wrapper"
                     style={{
                         display: 'flex',
@@ -204,6 +204,7 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
                         className="adsbygoogle adslot_1"
                         data-ad-client="ca-pub-5074393689985715"
                         data-ad-slot="9365926617"
+                        data-ad-format='horizontal'
                         style={{
                             display: 'block',
                             margin: '0 auto',

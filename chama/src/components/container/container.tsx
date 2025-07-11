@@ -46,9 +46,9 @@ async function CompaniesData() {
 // Componente principal otimizado
 export default function Container({ showAds = true }: { showAds?: boolean }) {
     return (
-        <div className="min-h-screen bg-white p-2 sm:p-4 space-y-6 max-w-full overflow-hidden">
+        <div className="min-h-screen bg-white p-2 sm:p-4 space-y-6 max-w-full overflow-visible">
             {/* Seção de Empresas */}
-            <div className="relative z-10 max-w-full overflow-hidden">
+            <div className="relative z-10 max-w-full overflow-visible">
 
                 {/* 📢 Bloco de anúncio do Google AdSense */}
                 {showAds && <GoogleAd />}

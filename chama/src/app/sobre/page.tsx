@@ -23,7 +23,7 @@ export default function SobrePage() {
                 </div>
 
                 <div className="my-6 max-w-2xl mx-auto w-full h-[200px] rounded-lg relative">
-                    <div className=" flex items-center justify-center">
+                    <div className=" border-b-indigo-800">
                         <GoogleAd />
                     </div>
                 </div>

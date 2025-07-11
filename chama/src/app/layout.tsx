@@ -9,7 +9,7 @@ import { Footer } from "@/components/footer/footer";
 import Script from 'next/script';
 import CacheMonitor from "@/components/debug/cache-monitor";
 import GoogleAd from "@/components/banner/google-ads";
-import GoogleAdsense from "@/components/banner/googleAd";
+import GoogleAdsense from "@/components/banner/googleAdsense";
 
 // Declaração global para gtag
 declare global {
@@ -118,7 +118,7 @@ export default function RootLayout({
 
           {/* Conteúdo principal */}
           <main className="flex-1 overflow-y-auto overflow-x-hidden px-2 sm:px-4 bg-[#f5f3ef] pb-28 max-w-full" style={{ position: 'relative', zIndex: 3 }}>
-            <GoogleAdsense pId="5074393689985715" />
+
             <div className="max-w-full overflow-hidden">
               {children}
             </div>

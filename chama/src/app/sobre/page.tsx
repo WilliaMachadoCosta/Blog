@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Building, Users, MessageSquare, Phone, Mail, Globe } from "lucide-react";
 import GoogleAd from "@/components/banner/google-ads";
+import GoogleAdsense from "@/components/banner/googleAdsense";
 
 export default function SobrePage() {
     return (
@@ -22,9 +23,9 @@ export default function SobrePage() {
                     </p>
                 </div>
 
-                <div className="my-6 max-w-2xl mx-auto w-full h-[200px] rounded-lg relative">
+                <div className="my-6 max-w-2xl mx-auto w-full h-[350px] rounded-lg relative">
                     <div className=" border-b-indigo-800">
-                        <GoogleAd />
+                        <GoogleAdsense />
                     </div>
                 </div>
 

@@ -52,7 +52,7 @@ export default function GoogleAd() {
                             height: '250px',
                         }}
                         data-ad-client="ca-pub-5074393689985715"
-                        data-ad-slot="9365926617"
+                        data-ad-slot="8640543084"
                     />
                 </div>
             </section>

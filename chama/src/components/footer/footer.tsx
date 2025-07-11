@@ -35,7 +35,6 @@ export function Footer() {
 
             {/* Texto de rodapé */}
             <div className="mt-1 text-center text-[10px] sm:text-[11px]">
-                <p>Todos os direitos reservados (William Machado Costa)</p>
                 <p>Desenvolvido e mantido por <a href="https://webao.info" target="_blank" rel="noopener noreferrer" className="hover:underline text-blue-500">Webao.Info</a></p>
             </div>
         </footer>

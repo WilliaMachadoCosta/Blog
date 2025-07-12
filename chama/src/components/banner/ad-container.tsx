@@ -13,16 +13,15 @@ export default function AdContainer({ children, className = '' }: AdContainerPro
             max-w-full 
             overflow-hidden 
             bg-white 
-            border 
-           
+            border            
             rounded-lg 
             shadow-sm 
             px-4 py-2
             mb-6 mt-4
             ${className}
         `}>
+
             <div className="w-full max-w-full overflow-hidden flex justify-center">
-                <span style={{ fontSize: '10px', marginBottom: '8px' }}>Publicidade</span>
                 {children}
             </div>
         </div>

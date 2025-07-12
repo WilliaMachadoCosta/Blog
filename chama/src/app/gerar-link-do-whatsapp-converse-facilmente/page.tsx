@@ -46,14 +46,14 @@ export default function GerarLinkWhatsApp() {
                 <meta property="og:url" content="https://seudominio.com.br/gerar-link-do-whatsapp-converse-facilmente" />
             </Head>
 
-            <section className="bg-white max-w-2xl mx-auto mt-2 rounded-xl shadow-md p-3 sm:p-4 md:p-6 space-y-4 sm:space-y-6 overflow-hidden">
+            <section className="bg-white max-w-2xl mx-auto mt-6 rounded-xl shadow-md p-3 sm:p-4 md:p-2 space-y-4 sm:space-y-6 overflow-hidden">
                 <span className='flex text-center justify-center text-black text-xs'>Publicidade</span>
                 <GoogleAd />
             </section>
 
-            <main className="min-h-screen bg-[#f5f3ef] py-4 sm:py-6 px-2 sm:px-4 overflow-x-hidden flex items-center justify-center">
+            <main className="min-h-screen bg-[#f5f3ef] py-4 sm:py-8 px-2 sm:px-4 overflow-x-hidden flex items-center justify-center">
 
-                <article className="bg-white max-w-2xl mx-auto mt-8 rounded-xl shadow-md p-3 sm:p-4 md:p-6 space-y-4 sm:space-y-6 overflow-hidden">
+                <article className="bg-white max-w-2xl mx-auto mt-2 rounded-xl shadow-md p-3 sm:p-4 md:p-6 space-y-4 sm:space-y-6 overflow-hidden">
 
                     <div className="bg-white text-gray-900 rounded-2xl shadow-lg p-6 w-full max-w-sm text-center border border-gray-200">
                         <h1 className="text-xl font-bold mb-2">Gerar Link do WhatsApp - Converse Facilmente</h1>

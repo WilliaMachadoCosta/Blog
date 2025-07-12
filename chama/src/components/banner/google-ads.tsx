@@ -201,15 +201,16 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
                     }}
                 >
                     <ins
-                        className="adsbygoogle adslot_1"
+                        className="adsbygoogle google-ad-wrapper"
                         data-ad-client="ca-pub-5074393689985715"
                         data-ad-slot="9365926617"
                         data-ad-format='horizontal'
                         style={{
                             display: 'block',
-                            margin: '0 auto',
+                            textAlign: 'center',
+                            // margin: '0 auto',
                             width: '100%',
-                            maxWidth: '100%'
+                            position: 'relative'
                         }}
                     />
                 </div>

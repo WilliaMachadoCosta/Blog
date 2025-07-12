@@ -14,7 +14,7 @@ export default function AdContainer({ children, className = '' }: AdContainerPro
             overflow-hidden 
             bg-white 
             border 
-            border-red-500
+           
             rounded-lg 
             shadow-sm 
             px-4 py-2
@@ -22,6 +22,7 @@ export default function AdContainer({ children, className = '' }: AdContainerPro
             ${className}
         `}>
             <div className="w-full max-w-full overflow-hidden flex justify-center">
+                <span style={{ fontSize: '10px', marginBottom: '8px' }}>Publicidade</span>
                 {children}
             </div>
         </div>

@@ -79,7 +79,7 @@ export default function Header() {
             </div>
 
             {/* Menu de Navegação */}
-            <nav className="flex items-center gap-6 w-full justify-center md:justify-start">
+            <nav className="flex items-center gap-6 w-full justify-center md:justify-center">
                 <Link href="/" className="font-semibold text-sm sm:text-base hover:text-green-600 transition-colors">
                     Início
                 </Link>

@@ -4,6 +4,7 @@ import {
     // User,
     // Store,
     MessageSquareText,
+    SquareKanban,
     Map
 } from "lucide-react";
 import Link from "next/link";
@@ -25,6 +26,11 @@ export function Footer() {
                 <Link href="/sobre" className="flex flex-col items-center flex-1 hover:text-blue-500">
                     <Building size={20} className="sm:w-5 sm:h-5 mb-1" />
                     <span className="text-[10px] sm:text-[11px]">Quem somos</span>
+                </Link>
+
+                <Link href="/gerar-link-do-whatsapp-converse-facilmente" className="flex flex-col items-center flex-1 hover:text-blue-500">
+                    <SquareKanban size={20} className="sm:w-5 sm:h-5 mb-1" />
+                    <span className="text-[10px] sm:text-[11px]">Ferramentas</span>
                 </Link>
 
                 {/* <Link href="/sitemap.xml" className="flex flex-col items-center flex-1 hover:text-blue-500">

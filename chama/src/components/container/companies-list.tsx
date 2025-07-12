@@ -43,7 +43,7 @@ export default function CompaniesListWithPagination({ companies }: CompaniesList
                 {currentCompanies.map((company) => (
                     <li key={company.slug}>
                         <Link href={`/${company.slug}`} prefetch={false}>
-                            <div className="flex items-center justify-between bg-white p-3 sm:p-4 rounded shadow cursor-pointer hover:bg-gray-100 transition w-full">
+                            <div className="flex items-center justify-between bg-white p-3 sm:p-4 rounded  cursor-pointer hover:bg-gray-100 transition w-full">
                                 <div className="flex items-center gap-3 flex-1 min-w-0">
                                     <CompanyLogo
                                         src={company.empresaLogo}

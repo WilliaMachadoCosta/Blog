@@ -307,7 +307,7 @@ function mapPost(post: WordPressPost): IPost {
     slug: post.slug,
     date: post.date,
     featuredImage: fixDomain(post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ?? "/fallback.jpg"),
-    author: post._embedded?.author?.[0]?.name ?? "Desconhecido",
+    author: post._embedded?.author?.[0]?.name ?? "William M.",
     categories: Array.isArray(post.categories) ? post.categories : [],
     modified: post.modified,
     comments: [],

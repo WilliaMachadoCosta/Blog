@@ -13,10 +13,16 @@ interface Props {
 
 export default function PostDataInitializer({ titulo, excerto, imagemPost, autor, slug }: Props) {
     const setPostData = usePostStore((state) => state.setPostData);
-    { console.log('========================>post slug', slug) }
-    useEffect(() => {
-        setPostData({ titulo, excerto, imagemPost, autor, slug });
-    }, [titulo, excerto, imagemPost, autor, slug, setPostData]);
 
-    return null; // não renderiza nada
+    useEffect(() => {
+        try {
+            setPostData({ titulo, excerto, imagemPost, autor, slug });
+
+        } catch (err) {
+            console.error('Erro no useEffect do PostDataInitializer:', err);
+        }
+    }, [titulo, excerto, imagemPost, autor, slug]);
+
+    return null;
 }
+

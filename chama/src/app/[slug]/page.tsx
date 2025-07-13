@@ -68,7 +68,7 @@ export default async function PostPage({
 }) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
-  console.log('slug do post =======================================>', slug)
+
   if (!post) return notFound();
 
   const company = extractCompanyData(post.content);

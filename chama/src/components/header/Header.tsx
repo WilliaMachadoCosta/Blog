@@ -70,6 +70,7 @@ export default function Header() {
     };
 
     const { titulo, excerto, imagemPost, autor, slug } = usePostStore();
+
     const router = useRouter();
     const handleOpenGenerator = () => {
         if (!titulo) {

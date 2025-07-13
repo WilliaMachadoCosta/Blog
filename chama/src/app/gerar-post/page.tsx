@@ -5,6 +5,7 @@ import WebcamCapture from '@/components/media/webcam';
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { Facebook, Instagram, Twitter, MessageCircle } from 'lucide-react';
+import GoogleAd from '@/components/banner/google-ads';
 
 export default function TweetGeneratorPage() {
     const params = useSearchParams();
@@ -46,7 +47,9 @@ export default function TweetGeneratorPage() {
 
     return (
         <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-12">
+
             <div className="w-full max-w-4xl flex flex-col lg:flex-row items-center gap-8">
+                <GoogleAd />
                 <div className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center gap-4 w-full lg:w-1/2">
                     <WebcamCapture onCapture={setSelfie} />
                 </div>
@@ -93,6 +96,7 @@ export default function TweetGeneratorPage() {
                     </div>
                 </div>
             </div>
+
         </div>
     );
 }

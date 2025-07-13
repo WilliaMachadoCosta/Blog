@@ -6,6 +6,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        // define cores como hex ou rgb, não oklch
+        primary: '#10b981', // Exemplo
+      },
+      
       typography: (theme) => ({
         DEFAULT: {
           css: {
@@ -21,6 +26,9 @@ module.exports = {
         },
       }),
     },
+    experimental: {
+    optimizeUniversalDefaults: true,
+  },
   },
   plugins: [require("@tailwindcss/typography")],
 };

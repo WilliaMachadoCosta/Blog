@@ -10,15 +10,19 @@ export default function GerarLinkWhatsApp() {
     const [copiado, setCopiado] = useState(false)
 
     const gerarLink = () => {
-        const numeroLimpo = telefone.replace(/\D/g, '')
-        if (numeroLimpo.length >= 10) {
-            const link = `https://wa.me/${numeroLimpo}`
-            setLinkGerado(link)
-            setCopiado(false)
+        const numeroLimpo = telefone.replace(/\D/g, '');
+
+        // Ex: 55 + 11 (DDD) + 987654321 (número com 9 dígitos)
+        const regexNumeroValido = /^55\d{10,11}$/;
+
+        if (regexNumeroValido.test(numeroLimpo)) {
+            const link = `https://wa.me/${numeroLimpo}`;
+            setLinkGerado(link);
+            setCopiado(false);
         } else {
-            alert('Digite um número válido com DDD')
+            alert('Digite um número válido no formato: 55 + DDD + número (ex: 5511987654321)');
         }
-    }
+    };
 
     const copiarLink = async () => {
         if (linkGerado) {
@@ -68,7 +72,7 @@ export default function GerarLinkWhatsApp() {
 
                         <input
                             type="tel"
-                            placeholder="Ex: 11987654321"
+                            placeholder="Ex: 5511987654321"
                             value={telefone}
                             onChange={(e) => setTelefone(e.target.value)}
                             className="w-full p-3 mb-4 border border-gray-300 rounded-md text-center focus:outline-none focus:ring-2 focus:ring-green-500"

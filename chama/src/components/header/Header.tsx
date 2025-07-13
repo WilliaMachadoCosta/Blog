@@ -1,11 +1,13 @@
 'use client'
-import { Search, MoreVertical, X } from "lucide-react";
+import { Search, MoreVertical, X, Camera } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import CompanyLogo from "../company/companyLogo";
 import { searchPosts } from "@/services/postServices";
 import { getAllCompanyPosts, ICompanyPost } from "@/services/companyPostServices";
 import { IPost } from "@/models/interfaces/post";
+import { useRouter } from "next/navigation";
+import { usePostStore } from "@/utils/postState";
 
 export default function Header() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -67,6 +69,17 @@ export default function Header() {
         }
     };
 
+    const { titulo, excerto, imagemPost, autor, slug } = usePostStore();
+    const router = useRouter();
+    const handleOpenGenerator = () => {
+        if (!titulo) {
+            alert('Você precisa estar em um post para gerar a imagem.');
+            return;
+        }
+
+        router.push(`/gerar-post?excerto=${encodeURIComponent(excerto)}&imagemPost=${encodeURIComponent(imagemPost)}&autor=${encodeURIComponent(autor)}&slug=${encodeURIComponent(slug)}`);
+    };
+
     return (
         <header className="w-full bg-[#f5f3ef] text-black flex items-center justify-between px-3 sm:px-4 py-2 sm:py-3 shadow-md relative">
             {/* Logo ou Nome */}
@@ -89,6 +102,13 @@ export default function Header() {
                 <Link href="/blog" className="font-semibold text-sm sm:text-base hover:text-green-600 transition-colors">
                     Blog
                 </Link>
+                <button
+                    onClick={handleOpenGenerator}
+                    className="flex items-center gap-2 px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-70o"
+                >
+                    <Camera />
+
+                </button>
             </nav>
 
             {/* Ícones */}

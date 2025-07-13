@@ -8,6 +8,9 @@ import { extractCompanyData } from "@/components/container/companyData";
 
 import SubHeaderClient from "@/components/header/sub-header-client";
 import GoogleAd from "@/components/banner/google-ads";
+import TweetGeneratorPage from "../gerar-post/page";
+import { usePostStore } from "@/utils/postState";
+import PostDataInitializer from "@/components/container/postdata";
 
 export async function generateMetadata({
   params,
@@ -56,6 +59,8 @@ export async function generateMetadata({
   };
 }
 
+
+
 export default async function PostPage({
   params,
 }: {
@@ -63,7 +68,7 @@ export default async function PostPage({
 }) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
-
+  console.log('slug do post =======================================>', slug)
   if (!post) return notFound();
 
   const company = extractCompanyData(post.content);
@@ -73,6 +78,7 @@ export default async function PostPage({
     month: "long",
     year: "numeric",
   });
+
 
   return (
     <main className="min-h-screen bg-[#f5f3ef] py-4 sm:py-6 px-2 sm:px-4 overflow-x-hidden">
@@ -143,6 +149,7 @@ export default async function PostPage({
         }}
       />
 
+
       <div className="my-6 max-w-2xl mx-auto w-full h-[200px] rounded-lg relative">
         <div className=" flex  justify-center">
           <GoogleAd className="my-9" />
@@ -165,7 +172,16 @@ export default async function PostPage({
 
         <ShareButtons />
       </article>
+
+      <PostDataInitializer
+        titulo={cleanTitle}
+        excerto={post.excerpt?.replace(/<[^>]*>/g, "").slice(0, 160) || ''}
+        imagemPost={post.featuredImage || 'https://chamanozap.net/logo.png'}
+        autor={post.author}
+        slug={post.slug}
+      />
     </main>
+
   );
 }
 

@@ -104,9 +104,9 @@ export default function Header() {
                 </Link>
                 <button
                     onClick={handleOpenGenerator}
-                    className="flex items-center gap-2 px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-70o"
+                    className="flex items-center gap-2 px-4 py-2 text-black rounded hover:bg-gray-70o"
                 >
-                    <Camera />
+                    <Camera className="w-4 h-4" />
 
                 </button>
             </nav>

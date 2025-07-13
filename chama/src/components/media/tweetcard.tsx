@@ -31,21 +31,25 @@ export default function TweetCard({
             className="w-full max-w-xl p-6 bg-white rounded-2xl shadow-lg font-sans text-gray-900 border border-gray-200 space-y-4"
         >
             {/* Cabeçalho */}
-            <div className="flex items-center space-x-4">
-                {avatar ? (
-                    <img
-                        src={avatar}
-                        alt="Avatar"
-                        className="w-12 h-12 rounded-full object-cover border border-gray-300"
-                    />
-                ) : (
-                    <div className="w-12 h-12 rounded-full bg-gray-300" />
-                )}
-                <div>
+            {/* Cabeçalho */}
+            <div className="flex items-start justify-between w-full">
+                <div className="flex items-center gap-3">
+                    {avatar ? (
+                        <img
+                            src={avatar}
+                            alt="Avatar"
+                            className="w-12 h-12 object-cover rounded-full border border-gray-300"
+                            style={{ aspectRatio: '1/1' }}
+                        />
+                    ) : (
+                        <div className="w-12 h-12 rounded-full bg-gray-300" />
+                    )}
                     <p className="font-semibold text-lg leading-tight">{author}</p>
-                    <p className="text-gray-500 text-sm">@chamanozap</p>
                 </div>
+                <p className="text-gray-500 text-sm mt-1">@chamanozap</p>
             </div>
+
+
 
             {/* Texto principal */}
             <p className="text-gray-800 text-base leading-relaxed whitespace-pre-line">{excerto}</p>

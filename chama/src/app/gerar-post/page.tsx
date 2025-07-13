@@ -15,13 +15,19 @@ export default function TweetGeneratorPage() {
 
     const [selfie, setSelfie] = useState('');
 
-    const cta = `👉 Saiba mais em chamanozap.net/${slug}`;
+    const cta = `👉 Saiba mais em chamanozap.net`;
     return (
-        <main className="min-h-screen bg-[#f5f3ef] py-4 sm:py-6 px-2 sm:px-4 overflow-x-hidden">
-            <article className="bg-white max-w-2xl mx-auto rounded-xl shadow-md p-3 sm:p-4 md:p-6 space-y-4 sm:space-y-6 overflow-hidden">
-                <div className="mt-10">
-                    <WebcamCapture onCapture={setSelfie} />
 
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-12">
+            <div className="w-full max-w-4xl flex flex-col lg:flex-row items-center gap-8">
+
+                {/* Bloco da webcam */}
+                <div className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center gap-4 w-full lg:w-1/2">
+                    <WebcamCapture onCapture={setSelfie} />
+                </div>
+
+                {/* Bloco do tweet + botão */}
+                <div className="flex flex-col items-center gap-4 w-full lg:w-1/2">
                     <TweetCard
                         author={autor}
                         avatar={selfie}
@@ -33,12 +39,15 @@ export default function TweetGeneratorPage() {
 
                     <button
                         onClick={exportCardImage}
-                        className="mt-4 bg-green-600 text-white px-4 py-2 rounded"
+
+                        className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-2 rounded-lg shadow transition duration-200"
                     >
                         📥 Baixar imagem
                     </button>
                 </div>
-            </article>
-        </main>
+            </div>
+        </div>
+
+
     );
 }

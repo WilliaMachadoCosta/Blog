@@ -1,5 +1,6 @@
 'use client';
 
+import { Camera } from 'lucide-react';
 import { useRef, useState, useCallback } from 'react';
 import Webcam from 'react-webcam';
 
@@ -17,27 +18,44 @@ export default function WebcamCapture({ onCapture }: WebcamCaptureProps) {
             setCaptured(imageSrc);
             onCapture(imageSrc);
         }
-    }, [webcamRef, onCapture]);
+    }, [onCapture]);
+
+    const reset = () => setCaptured(null);
 
     return (
-        <div className="mb-4">
+        <div className="w-full flex flex-col items-center justify-center gap-4">
             {!captured ? (
                 <>
                     <Webcam
                         audio={false}
                         ref={webcamRef}
                         screenshotFormat="image/png"
-                        width={300}
-                        className="rounded-lg shadow"
+                        className="rounded-xl shadow-md border border-gray-200 w-full max-w-xs"
+                        videoConstraints={{
+                            facingMode: 'user',
+                        }}
                     />
-                    <button onClick={capture} className="mt-2 bg-blue-600 text-white px-4 py-2 rounded">
-                        📸 Tirar foto
+                    <button
+                        onClick={capture}
+                        className=" text-black text-sm px-7 py-2 rounded-full  transition"
+                    >
+                        <Camera />
                     </button>
                 </>
             ) : (
-                <div>
-                    <img src={captured} alt="Selfie capturada" className="rounded-full w-24 h-24" />
-                    <p className="text-sm mt-2">Foto capturada!</p>
+                <div className="flex flex-col items-center gap-2">
+                    <img
+                        src={captured}
+                        alt="Selfie capturada"
+                        className="rounded-full w-24 h-24 object-cover border-2 border-blue-600 shadow"
+                    />
+                    <p className="text-sm text-gray-600">Foto capturada!</p>
+                    <button
+                        onClick={reset}
+                        className="text-blue-600 hover:underline text-sm"
+                    >
+                        Tirar outra
+                    </button>
                 </div>
             )}
         </div>

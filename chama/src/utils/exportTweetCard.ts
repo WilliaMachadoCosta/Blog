@@ -1,24 +1,22 @@
-import { toPng } from 'html-to-image';
+import html2canvas from 'html2canvas-pro';
 
-export async function exportCardImage() {
-  const element = document.getElementById('tweet-card');
-
-  if (!element) {
-    console.error('Elemento tweet-card não encontrado!');
-    return;
-  }
-
-  try {
-    const dataUrl = await toPng(element, {
-      cacheBust: true,
-      pixelRatio: 2, // qualidade melhorada
-    });
-
-    const link = document.createElement('a');
-    link.download = 'tweet-card.png';
-    link.href = dataUrl;
-    link.click();
-  } catch (error) {
-    console.error('Erro ao gerar imagem:', error);
-  }
+function waitForImageLoad(img: HTMLImageElement): Promise<void> {
+  return new Promise((resolve) => {
+    if (img.complete) resolve();
+    else img.onload = () => resolve();
+  });
 }
+
+export async function exportCardImage(element: HTMLElement, filename = 'tweet-card.png') {
+  const img = element.querySelector('img');
+  if (img) {
+    await waitForImageLoad(img as HTMLImageElement);
+  }
+
+  const canvas = await html2canvas(element);
+  const link = document.createElement('a');
+  link.download = filename;
+  link.href = canvas.toDataURL();
+  link.click();
+}
+

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Building, Users, MessageSquare, Phone, Mail, Globe } from "lucide-react";
 import GoogleAd from "@/components/banner/google-ads";
 
-
 export default function SobrePage() {
     return (
         <div className="min-h-screen bg-[#f5f3ef] py-4 px-2 sm:px-4">
@@ -28,7 +27,6 @@ export default function SobrePage() {
                         <GoogleAd />
                     </div>
                 </div>
-
                 {/* Missão e Visão */}
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                     <div className="bg-white rounded-lg shadow-md p-6">

@@ -1,7 +1,6 @@
 'use client';
 
 import parse, { domToReact, HTMLReactParserOptions } from "html-react-parser";
-import { Element as DomElement } from "domhandler";
 import { GenericButton } from "../buttons/genericButton";
 import LazyYouTube from "../media/LazyYouTube";
 import GoogleAd from "../banner/google-ads";
@@ -15,49 +14,36 @@ export function PostContent({ html }: PostContentProps) {
     let adInserted = false;
 
     const options: HTMLReactParserOptions = {
-        replace: (domNode) => {
-            if (!(domNode instanceof DomElement)) return;
+        replace: (domNode: any) => {
+            if (domNode.type !== "tag") return;
 
-            // Inserir anúncio após o primeiro <p>
+            // ✅ Sempre insere o anúncio após o primeiro <p>
             if (!adInserted && domNode.name === "p") {
                 adInserted = true;
                 return (
                     <>
-                        {domToReact(domNode.children as any, options)}
-                        <AdContainer className="my-6">
-                            <GoogleAd />
-                        </AdContainer>
+                        {domToReact(domNode.children, options)}
+
+                        <GoogleAd />
+
                     </>
                 );
             }
 
-            // Custom button
+            // 🎯 Substituir custom-button manualmente (ainda funciona, mas não é obrigatório)
             if (domNode.name === "custom-button") {
                 const label = domNode.attribs["data-label"] || "Botão";
                 const href = domNode.attribs["data-href"] || "#";
-                const variant = domNode.attribs["data-variant"] as
-                    | "whatsapp"
-                    | "sac"
-                    | "central"
-                    | "default"
-                    | "ads";
-
-                if (label === "ads" || variant === "ads") {
-                    return (
-                        <AdContainer className="my-6">
-                            <GoogleAd />
-                        </AdContainer>
-                    );
-                }
+                const variant = domNode.attribs["data-variant"] || "default";
 
                 return (
                     <div className="w-full flex justify-center my-3 sm:my-4 px-2 sm:px-0">
-                        <GenericButton label={label} href={href} variant={variant} />
+                        <GenericButton label={label} href={href} variant={variant as any} />
                     </div>
                 );
             }
 
-            // Lazy load YouTube iframe
+            // 🔁 Substituição de iframe do YouTube por componente com lazy load
             if (
                 domNode.name === "iframe" &&
                 domNode.attribs?.src?.includes("youtube.com/embed/")

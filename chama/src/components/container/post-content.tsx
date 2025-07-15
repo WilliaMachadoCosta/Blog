@@ -1,5 +1,6 @@
 'use client';
-import parse from "html-react-parser";
+
+import parse, { domToReact, HTMLReactParserOptions } from "html-react-parser";
 import { Element as DomElement } from "domhandler";
 import { GenericButton } from "../buttons/genericButton";
 import LazyYouTube from "../media/LazyYouTube";
@@ -11,21 +12,30 @@ interface PostContentProps {
 }
 
 export function PostContent({ html }: PostContentProps) {
-    let firstParagraphInserted = false;
-
-
     let adInserted = false;
-    const parsed = parse(html, {
 
+    const options: HTMLReactParserOptions = {
         replace: (domNode) => {
-            if (
-                domNode instanceof DomElement &&
-                domNode.name === "custom-button"
-            ) {
-                const el = domNode as DomElement;
-                const label = el.attribs["data-label"] || "Botão";
-                const href = el.attribs["data-href"] || "#";
-                const variant = el.attribs["data-variant"] as
+            if (!(domNode instanceof DomElement)) return;
+
+            // Inserir anúncio após o primeiro <p>
+            if (!adInserted && domNode.name === "p") {
+                adInserted = true;
+                return (
+                    <>
+                        {domToReact(domNode.children as any, options)}
+                        <AdContainer className="my-6">
+                            <GoogleAd />
+                        </AdContainer>
+                    </>
+                );
+            }
+
+            // Custom button
+            if (domNode.name === "custom-button") {
+                const label = domNode.attribs["data-label"] || "Botão";
+                const href = domNode.attribs["data-href"] || "#";
+                const variant = domNode.attribs["data-variant"] as
                     | "whatsapp"
                     | "sac"
                     | "central"
@@ -46,9 +56,9 @@ export function PostContent({ html }: PostContentProps) {
                     </div>
                 );
             }
-            // Lazy load YouTube embeds
+
+            // Lazy load YouTube iframe
             if (
-                domNode instanceof DomElement &&
                 domNode.name === "iframe" &&
                 domNode.attribs?.src?.includes("youtube.com/embed/")
             ) {
@@ -56,16 +66,22 @@ export function PostContent({ html }: PostContentProps) {
                 const match = src.match(/youtube.com\/embed\/([a-zA-Z0-9_-]+)/);
                 const videoId = match ? match[1] : undefined;
                 if (videoId) {
-                    return <LazyYouTube videoId={videoId} title={domNode.attribs.title || "YouTube video"} />;
+                    return (
+                        <LazyYouTube
+                            videoId={videoId}
+                            title={domNode.attribs.title || "YouTube video"}
+                        />
+                    );
                 }
             }
         },
-    });
+    };
+
+    const parsed = parse(html, options);
+
     return (
         <article className="prose prose-neutral max-w-none text-black overflow-hidden prose-sm sm:prose-base lg:prose-lg">
-            <div className="break-words overflow-hidden max-w-full">
-                {parsed}
-            </div>
+            <div className="break-words overflow-hidden max-w-full">{parsed}</div>
         </article>
     );
 }

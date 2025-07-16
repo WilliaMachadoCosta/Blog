@@ -9,20 +9,20 @@ import { getAllCategories } from '@/services/categoryServices';
 async function getRecentBlogPosts(): Promise<IPost[]> {
     try {
         const categories = getAllCategories();
-        
+
         // Buscar posts de cada categoria usando slug
-        const postsPromises = categories.map(category => 
+        const postsPromises = categories.map(category =>
             getPostsByCategorySlug(category.slug)
         );
-        
+
         const allCategoryPosts = await Promise.all(postsPromises);
-        
+
         // Combinar todos os posts e remover duplicatas
         const allPosts = allCategoryPosts.flat();
-        const uniquePosts = allPosts.filter((post, index, self) => 
+        const uniquePosts = allPosts.filter((post, index, self) =>
             index === self.findIndex(p => p.id === post.id)
         );
-        
+
         // Retornar apenas os 3 mais recentes
         return uniquePosts
             .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
@@ -72,7 +72,6 @@ function BlogPostSkeleton() {
     );
 }
 
-// Componente principal da seção de blog
 export default async function BlogSection() {
     const posts = await getRecentBlogPosts();
 
@@ -98,7 +97,7 @@ export default async function BlogSection() {
                     <BookOpen className="w-6 h-6 text-green-600" />
                     <h2 className="text-2xl font-bold text-gray-900">Blog</h2>
                 </div>
-                <Link 
+                <Link
                     href="/blog"
                     className="flex items-center gap-2 text-green-600 hover:text-green-700 font-semibold text-base transition-colors"
                 >
@@ -160,7 +159,7 @@ export default async function BlogSection() {
 
             {/* Botão "Veja mais" para mobile */}
             <div className="mt-6 text-center md:hidden">
-                <Link 
+                <Link
                     href="/blog"
                     className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
                 >
@@ -183,7 +182,7 @@ export function BlogSectionSkeleton() {
                 </div>
                 <div className="h-4 bg-gray-300 rounded w-20"></div>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {[...Array(3)].map((_, i) => (
                     <BlogPostSkeleton key={i} />

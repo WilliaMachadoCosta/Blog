@@ -2,9 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ['api.chamanozap.net'],
+    domains: ['api.chamanozap.net', 'res.cloudinary.com'],
   },
-  
+
 
 
   async headers() {

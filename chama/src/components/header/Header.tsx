@@ -173,7 +173,7 @@ export default function Header() {
                                     {searchResults.map((post) => (
                                         <Link
                                             key={post.id}
-                                            href={`/post/${post.slug}`}
+                                            href={`/${post.slug}`}
                                             onClick={() => setIsSearchOpen(false)}
                                             className="block p-2 hover:bg-gray-50 rounded-lg transition-colors"
                                         >

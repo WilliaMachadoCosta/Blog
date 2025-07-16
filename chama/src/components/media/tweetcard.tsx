@@ -27,33 +27,31 @@ export default function TweetCard({
         year: 'numeric',
     });
 
-    // Alternar tema
     const toggleTheme = () => {
         setTheme(theme === 'light' ? 'dark' : 'light');
     };
 
-    // Classes baseadas no tema
     const bgClass = theme === 'light' ? 'bg-white' : 'bg-gray-900';
     const textClass = theme === 'light' ? 'text-gray-900' : 'text-gray-100';
     const borderClass = theme === 'light' ? 'border-gray-200' : 'border-gray-700';
     const secondaryTextClass = theme === 'light' ? 'text-gray-500' : 'text-gray-400';
-    const ctaClass = theme === 'light' ? 'text-blue-600 hover:text-blue-800' : 'text-blue-400 hover:text-blue-600';
+    const ctaClass =
+        theme === 'light' ? 'text-blue-600 hover:text-blue-800' : 'text-blue-400 hover:text-blue-600';
 
     return (
-        <div className={`w-full flex flex-col items-center space-y-4`}>
-            {/* Botão fora do card */}
-            <div className="flex justify-center w-full max-w-xl">
+        <div className="w-full flex flex-col items-center">
+            {/* Botão fora da área do card e com espaço abaixo */}
+            <div className="w-full flex justify-center mb-20">
                 <button
                     onClick={toggleTheme}
                     className="px-3 py-1 text-sm rounded bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
-                    aria-label="Alternar tema claro/escuro"
                     type="button"
                 >
                     {theme === 'light' ? 'Modo Escuro' : 'Modo Claro'}
                 </button>
             </div>
 
-            {/* Card */}
+            {/* Card exportável */}
             <div
                 id="tweet-card"
                 className={`w-full max-w-xl p-6 rounded-2xl shadow-lg font-sans space-y-4 ${bgClass} ${textClass} border ${borderClass}`}
@@ -83,18 +81,22 @@ export default function TweetCard({
                 </div>
 
                 {/* Texto principal */}
-                <p className={`text-base leading-relaxed whitespace-pre-line ${theme === 'light' ? 'text-gray-800' : 'text-gray-300'}`}>
+                <p
+                    className={`text-base leading-relaxed whitespace-pre-line ${theme === 'light' ? 'text-gray-800' : 'text-gray-300'
+                        }`}
+                >
                     {excerto}
                 </p>
 
                 {/* Imagem do post */}
-                {/* {imagemPost && (
+                {imagemPost && (
                     <img
                         src={imagemPost}
                         alt="Imagem do post"
-                        className="w-full h-[220px] object-cover rounded-xl border border-gray-100"
+                        className="w-[300px] max-h-[300px] object-cover rounded-xl border border-gray-100 mx-auto"
+                        crossOrigin="anonymous"
                     />
-                )} */}
+                )}
 
                 {/* Link CTA */}
                 <a
@@ -107,7 +109,10 @@ export default function TweetCard({
                 </a>
 
                 {/* Rodapé */}
-                <p className={`${secondaryTextClass} text-xs pt-2 border-t ${theme === 'light' ? 'border-gray-100' : 'border-gray-700'}`}>
+                <p
+                    className={`${secondaryTextClass} text-xs pt-2 border-t ${theme === 'light' ? 'border-gray-100' : 'border-gray-700'
+                        }`}
+                >
                     📅 {hoje} · chamanozap.net
                 </p>
             </div>

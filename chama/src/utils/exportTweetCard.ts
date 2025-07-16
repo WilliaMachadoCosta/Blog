@@ -13,10 +13,13 @@ export async function exportCardImage(element: HTMLElement, filename = 'tweet-ca
     await waitForImageLoad(img as HTMLImageElement);
   }
 
-  const canvas = await html2canvas(element);
+  const canvas = await html2canvas(element, {
+    useCORS: true,        // <- Habilita CORS
+    allowTaint: false,    // <- Não permite imagens sem CORS
+  });
+
   const link = document.createElement('a');
   link.download = filename;
   link.href = canvas.toDataURL();
   link.click();
 }
-

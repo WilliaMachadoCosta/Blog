@@ -40,6 +40,7 @@ export default function TweetCard({
 
     return (
         <div className="w-full flex flex-col items-center">
+
             {/* Botão fora da área do card e com espaço abaixo */}
             <div className="w-full flex justify-center mb-20">
                 <button

@@ -28,10 +28,20 @@ export function Footer() {
                     <span className="text-[10px] sm:text-[11px]">Quem somos</span>
                 </Link>
 
-                <Link href="/gerar-link-do-whatsapp-converse-facilmente" className="flex flex-col items-center flex-1 hover:text-blue-500">
-                    <SquareKanban size={20} className="sm:w-5 sm:h-5 mb-1" />
+                <Link
+                    href="/gerar-link-do-whatsapp-converse-facilmente"
+                    className="relative flex flex-col items-center flex-1 hover:text-blue-500"
+                >
+                    <div className="relative">
+                        <SquareKanban size={20} className="sm:w-5 sm:h-5 mb-1" />
+
+                        {/* Bolinha verde de notificação */}
+                        <span className="absolute top-[-2px] right-[-2px] w-2.5 h-2.5 bg-green-500 border-2 border-white rounded-full"></span>
+                    </div>
+
                     <span className="text-[10px] sm:text-[11px]">Ferramentas</span>
                 </Link>
+
 
                 {/* <Link href="/sitemap.xml" className="flex flex-col items-center flex-1 hover:text-blue-500">
                     <Map size={20} className="sm:w-5 sm:h-5 mb-1" />

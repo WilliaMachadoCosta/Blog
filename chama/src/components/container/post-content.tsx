@@ -23,7 +23,7 @@ export function PostContent({ html }: PostContentProps) {
                 return (
                     <>
                         {domToReact(domNode.children, options)}
-                        <GoogleAd />
+                        <GoogleAd className="my-9" />
                     </>
                 );
             }

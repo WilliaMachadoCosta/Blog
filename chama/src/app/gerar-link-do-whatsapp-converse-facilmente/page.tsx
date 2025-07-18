@@ -8,15 +8,17 @@ export default function GerarLinkWhatsApp() {
     const [telefone, setTelefone] = useState('')
     const [linkGerado, setLinkGerado] = useState('')
     const [copiado, setCopiado] = useState(false)
+    const [mensagem, setMensagem] = useState('');
 
     const gerarLink = () => {
         const numeroLimpo = telefone.replace(/\D/g, '');
-
-        // Ex: 55 + 11 (DDD) + 987654321 (número com 9 dígitos)
         const regexNumeroValido = /^55\d{10,11}$/;
 
         if (regexNumeroValido.test(numeroLimpo)) {
-            const link = `https://wa.me/${numeroLimpo}`;
+            const mensagemCodificada = encodeURIComponent(mensagem.trim());
+            const link = mensagemCodificada
+                ? `https://wa.me/${numeroLimpo}?text=${mensagemCodificada}`
+                : `https://wa.me/${numeroLimpo}`;
             setLinkGerado(link);
             setCopiado(false);
         } else {
@@ -47,7 +49,7 @@ export default function GerarLinkWhatsApp() {
                 />
                 <meta property="og:type" content="website" />
                 <meta property="og:image" content="/logo.png" />
-                <meta property="og:url" content="https://seudominio.com.br/gerar-link-do-whatsapp-converse-facilmente" />
+                <meta property="og:url" content="https://chamanozap.net/gerar-link-do-whatsapp-converse-facilmente" />
             </Head>
 
             <section className="bg-white max-w-2xl mx-auto mt-6 rounded-xl shadow-md p-3 sm:p-4 md:p-2 space-y-4 sm:space-y-6 overflow-hidden">
@@ -77,6 +79,13 @@ export default function GerarLinkWhatsApp() {
                             onChange={(e) => setTelefone(e.target.value)}
                             className="w-full p-3 mb-4 border border-gray-300 rounded-md text-center focus:outline-none focus:ring-2 focus:ring-green-500"
                         />
+                        <textarea
+                            placeholder="Digite sua mensagem (opcional)"
+                            value={mensagem}
+                            onChange={(e) => setMensagem(e.target.value)}
+                            className="w-full p-3 mb-4 border border-gray-300 rounded-md text-center focus:outline-none focus:ring-2 focus:ring-green-500 resize-none"
+                        />
+
 
                         <button
                             onClick={gerarLink}

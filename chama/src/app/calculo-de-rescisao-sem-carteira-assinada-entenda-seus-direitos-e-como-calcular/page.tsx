@@ -1,6 +1,6 @@
 // src/app/calculo-de-rescisao-sem-carteira-assinada-entenda-seus-direitos-e-como-calcula/page.tsx
 
-import CalculatorWrapper from '@/components/utils/calculatorWrapper';
+import CalculatorWrapper from '@/components/utils/calculo-sem-carteira-assinada/calculatorWrapper';
 import { Metadata } from 'next';
 import Script from 'next/script';
 

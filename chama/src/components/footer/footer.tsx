@@ -29,7 +29,7 @@ export function Footer() {
                 </Link>
 
                 <Link
-                    href="/gerar-link-do-whatsapp-converse-facilmente"
+                    href="/ferramentas"
                     className="relative flex flex-col items-center flex-1 hover:text-blue-500"
                 >
                     <div className="relative">

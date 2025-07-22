@@ -70,11 +70,17 @@ export default function TweetCreatorClient() {
                     <h1 className="text-black text-center py-2 mb-4 font-bold text-xl sm:text-2xl">
                         Gerador de Card de Post (Tweet Card)
                     </h1>
+
+
                     <p>
                         Crie facilmente um card de postagem no estilo de um tweet personalizado com nome, @,
                         imagem de fundo, avatar e o texto que quiser. Ideal para compartilhar conteúdo em grupos,
                         redes sociais, Instagram, WhatsApp ou Pinterest.
                     </p>
+
+
+                    <GoogleAd />
+
                     <h2>Como funciona:</h2>
                     <ul>
                         <li>Digite o nome ou @ do autor</li>

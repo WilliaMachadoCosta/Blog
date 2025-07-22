@@ -1,18 +1,29 @@
+// app/ferramentas/page.tsx
+
 import Link from "next/link";
-import { Wrench, ArrowRight, Hammer } from "lucide-react";
-import type { Metadata } from "next";
+import { Metadata } from "next";
+import {
+    Wrench,
+    ArrowRight,
+    Hammer,
+    MessageCircle,
+    Image,
+    Settings2,
+} from "lucide-react";
 
 export const metadata: Metadata = {
     title: "Ferramentas | ChamanoZap",
     description: "Descubra ferramentas úteis para automatizar e facilitar seu dia a dia.",
 };
 
+// Lista de ferramentas com ícones individuais
 const tools = [
     {
         id: 1,
         name: "Criar Post Twitter Card",
         description: "Gere um card estilizado para Twitter com imagem, avatar e excerto.",
         url: "/ferramentas/criar-post-twitter-card",
+        icon: Image,
     },
     {
         id: 2,
@@ -20,15 +31,22 @@ const tools = [
         description: "Crie links personalizados para iniciar conversas no WhatsApp com facilidade.",
         url: "https://chamanozap.net/gerar-link-do-whatsapp-converse-facilmente",
         external: true,
+        icon: MessageCircle,
     },
-    // Adicione mais ferramentas aqui conforme necessário
+    // {
+    //     id: 3,
+    //     name: "Ferramenta Genérica",
+    //     description: "Uma ferramenta qualquer para testes ou futuras funcionalidades.",
+    //     url: "#",
+    //     icon: Settings2,
+    // },
 ];
 
 export default function ToolsPage() {
     return (
         <main className="min-h-screen bg-[#f5f3ef] py-4 sm:py-6 px-2 sm:px-4">
-            <div className="max-w-4xl mx-auto">
-                {/* Header */}
+            <div className="max-w-5xl mx-auto">
+                {/* Cabeçalho */}
                 <div className="bg-white rounded-xl shadow-md p-6 mb-6">
                     <div className="flex items-center gap-3 mb-4">
                         <Wrench className="w-8 h-8 text-green-600" />
@@ -37,7 +55,7 @@ export default function ToolsPage() {
                         </h1>
                     </div>
                     <p className="text-gray-600 text-lg">
-                        Automatize suas tarefas e melhore sua produtividade com ferramentas práticas.
+                        Automatize tarefas e melhore sua produtividade com nossas ferramentas práticas.
                     </p>
                 </div>
 
@@ -45,6 +63,8 @@ export default function ToolsPage() {
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                     {tools.map((tool) => {
                         const ToolLink = tool.external ? "a" : Link;
+                        const Icon = tool.icon || Hammer;
+
                         return (
                             <ToolLink
                                 key={tool.id}
@@ -56,7 +76,7 @@ export default function ToolsPage() {
                                 <div className="flex items-start justify-between mb-4">
                                     <div className="flex items-center gap-3">
                                         <div className="p-2 bg-green-100 rounded-lg group-hover:bg-green-200 transition-colors">
-                                            <Hammer className="w-6 h-6 text-green-600" />
+                                            <Icon className="w-6 h-6 text-green-600" />
                                         </div>
                                         <div>
                                             <h2 className="text-lg font-bold text-gray-900 group-hover:text-green-600 transition-colors">
@@ -104,7 +124,7 @@ export default function ToolsPage() {
                     </div>
                 </div>
 
-                {/* Botões de Navegação */}
+                {/* Navegação */}
                 <div className="bg-white rounded-xl shadow-md p-6 mt-6 text-center">
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Link

@@ -26,40 +26,37 @@ export default function TweetCard({
     });
 
     const bgClass = theme === 'light' ? 'bg-white' : 'bg-gray-900';
-    const textClass = theme === 'light' ? 'text-gray-900' : 'text-gray-100';
+    const textClass = theme === 'light' ? 'text-black' : 'text-white';
     const borderClass = theme === 'light' ? 'border-gray-200' : 'border-gray-700';
     const secondaryTextClass = theme === 'light' ? 'text-gray-500' : 'text-gray-400';
     const ctaClass =
         theme === 'light' ? 'text-blue-600 hover:text-blue-800' : 'text-blue-400 hover:text-blue-600';
 
     return (
-        <div className="w-full flex flex-col items-center">
-            {/* Card principal */}
+        <div className="w-full flex flex-col items-center isolate">
             <div
                 id="tweet-card"
-                className={`w-full max-w-xl p-6 rounded-2xl shadow-lg font-sans space-y-4 ${bgClass} ${textClass} border ${borderClass}`}
+                className={`relative  z-10 w-full max-w-xl p-6  shadow-lg font-sans space-y-4 border ${bgClass} ${textClass} ${borderClass}`}
             >
                 {/* Cabeçalho com avatar e nome */}
                 <div className="flex items-center gap-3">
-                    {avatar ? (
-                        <img
-                            src={avatar}
-                            alt="Avatar"
-                            className="w-16 h-16 object-cover rounded-full border border-gray-300"
-                            style={{ aspectRatio: '1/1' }}
-                            crossOrigin="anonymous"
-                        />
-                    ) : (
-                        <div className="w-16 h-16 rounded-full bg-gray-300" />
-                    )}
-                    <p className="font-semibold text-lg">{author}</p>
+                    <div className="w-16 h-16 rounded-full overflow-hidden border border-gray-300 flex-shrink-0">
+                        {avatar ? (
+                            <img
+                                src={avatar}
+                                alt="Avatar"
+                                className="w-full h-full object-cover"
+                                crossOrigin="anonymous"
+                            />
+                        ) : (
+                            <div className="w-full h-full bg-gray-300" />
+                        )}
+                    </div>
+                    <p className="font-semibold text-lg text-inherit">{author}</p>
                 </div>
 
                 {/* Texto principal */}
-                <p
-                    className={`text-base leading-relaxed whitespace-pre-line ${theme === 'light' ? 'text-gray-800' : 'text-gray-300'
-                        }`}
-                >
+                <p className="text-base leading-relaxed whitespace-pre-line text-inherit">
                     {excerto}
                 </p>
 
@@ -83,13 +80,12 @@ export default function TweetCard({
                     {cta}
                 </a>
 
-                {/* Rodapé com data e @chamanozap */}
+                {/* Rodapé */}
                 <div
-                    className={`flex justify-between items-center text-xs pt-2 border-t ${theme === 'light' ? 'border-gray-100' : 'border-gray-700'
-                        } ${secondaryTextClass}`}
+                    className={`flex justify-between items-center text-xs pt-2 border-t ${borderClass} ${secondaryTextClass}`}
                 >
                     <span>📅 {hoje}</span>
-                    <span className="ml-auto">@chamanozap</span>
+                    <span className="ml-auto">chamanozap.net</span>
                 </div>
             </div>
         </div>

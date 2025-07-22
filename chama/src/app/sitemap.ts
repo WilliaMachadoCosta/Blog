@@ -1,15 +1,13 @@
 import { getAllPosts } from "@/services/postServices";
 import { MetadataRoute } from "next";
 
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://chamanozap.net';
   const currentDate = new Date();
 
-  // Buscar posts do seu serviço
   const posts = await getAllPosts();
 
-  // URLs fixas
+  // Rotas fixas
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
@@ -35,6 +33,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly',
       priority: 0.7,
     },
+    {
+      url: `${baseUrl}/ferramentas`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
   ];
 
   // URLs de posts
@@ -45,5 +49,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...postRoutes];
+  // Ferramentas manuais (adicione conforme novas forem criadas)
+  const tools = [
+    {
+      slug: 'ferramentas/criar-post-twitter-card',
+    },
+    {
+      slug: 'gerar-link-do-whatsapp-converse-facilmente',
+    },
+  ];
+
+  const toolRoutes: MetadataRoute.Sitemap = tools.map(tool => ({
+    url: `${baseUrl}/${tool.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...postRoutes, ...toolRoutes];
 }

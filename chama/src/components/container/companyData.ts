@@ -1,19 +1,47 @@
 import parse, { Element } from "html-react-parser";
 
 export function extractCompanyData(html: string) {
-    let companyInfo: { nome?: string; logo?: string } = {};
+    let companyInfo: {
+        nome?: string;
+        logo?: string;
+        whatsapp?: string;
+        telefone?: string;
+        site?: string;
+    } = {};
 
     parse(html, {
         replace: (domNode) => {
-            if (
-                domNode instanceof Element &&
-                domNode.name === "custom-empresa"
-            ) {
+            if (domNode instanceof Element) {
                 const el = domNode as Element;
-                companyInfo = {
-                    nome: el.attribs["data-nome"] || undefined,
-                    logo: el.attribs["data-logo"] || undefined,
-                };
+
+                if (el.name === "custom-empresa") {
+                    companyInfo.nome = el.attribs["data-nome"] || undefined;
+                    companyInfo.logo = el.attribs["data-logo"] || undefined;
+                }
+
+                if (el.name === "custom-button") {
+                    const variant = el.attribs["data-variant"];
+                    const href = el.attribs["data-href"];
+
+                    if (variant === "whatsapp") {
+                        const match = href.match(/phone=(\d+)/);
+                        if (match) {
+                            companyInfo.whatsapp = match[1];
+                        }
+                    }
+
+                    if (variant === "sac") {
+                        const match = href.match(/tel:(.+)/);
+                        if (match) {
+                            companyInfo.telefone = match[1];
+                        }
+                    }
+
+                    // Se quiser usar site ou outro botão customizado no futuro:
+                    // if (variant === "site") {
+                    //   companyInfo.site = href;
+                    // }
+                }
             }
         },
     });

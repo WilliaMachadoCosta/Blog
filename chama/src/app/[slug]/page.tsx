@@ -210,6 +210,10 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         imagemPost={image}
         autor={post.author}
         slug={post.slug}
+        empresa={company?.nome}
+        telefone={company?.telefone}
+        whatsapp={company?.whatsapp}
+        site={company?.site}
       />
     </main>
   );

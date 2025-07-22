@@ -1,7 +1,8 @@
+// components/container/postdata.tsx
 'use client';
-import { usePostStore } from '@/utils/postState';
-import { useEffect } from 'react';
 
+import { useEffect } from 'react';
+import { usePostStore } from '@/utils/postState';
 
 interface Props {
     titulo: string;
@@ -9,20 +10,38 @@ interface Props {
     imagemPost: string;
     autor: string;
     slug: string;
+    empresa?: string;
+    telefone?: string;
+    whatsapp?: string;
+    site?: string;
 }
 
-export default function PostDataInitializer({ titulo, excerto, imagemPost, autor, slug }: Props) {
+export default function PostDataInitializer({
+    titulo,
+    excerto,
+    imagemPost,
+    autor,
+    slug,
+    empresa,
+    telefone,
+    whatsapp,
+    site,
+}: Props) {
     const setPostData = usePostStore((state) => state.setPostData);
 
     useEffect(() => {
-        try {
-            setPostData({ titulo, excerto, imagemPost, autor, slug });
-
-        } catch (err) {
-            console.error('Erro no useEffect do PostDataInitializer:', err);
-        }
-    }, [titulo, excerto, imagemPost, autor, slug]);
+        setPostData({
+            titulo,
+            excerto,
+            imagemPost,
+            autor,
+            slug,
+            empresa,
+            telefone,
+            whatsapp,
+            site,
+        });
+    }, [titulo, excerto, imagemPost, autor, slug, empresa, telefone, whatsapp, site, setPostData]);
 
     return null;
 }
-

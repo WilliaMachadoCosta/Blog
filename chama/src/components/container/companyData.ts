@@ -37,10 +37,10 @@ export function extractCompanyData(html: string) {
                         }
                     }
 
-                    // Se quiser usar site ou outro botão customizado no futuro:
-                    // if (variant === "site") {
-                    //   companyInfo.site = href;
-                    // }
+
+                    if (variant === "site") {
+                        companyInfo.site = href;
+                    }
                 }
             }
         },

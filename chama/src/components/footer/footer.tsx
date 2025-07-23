@@ -22,13 +22,21 @@ export function Footer() {
 
     // Monta a URL final com query string
     const conversasHref = `/conversas?${query.toString()}`;
+    const conversasNaoLidas = 7; // simula conversas não lidas
 
     return (
         <footer className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 text-gray-600 px-1 sm:px-2 py-1 sm:py-2 flex flex-col items-center text-xs z-50">
             <div className="flex justify-between w-full">
                 {empresa || telefone || whatsapp || site ? (
-                    <Link href={conversasHref} className="flex flex-col items-center flex-1 hover:text-blue-500">
-                        <MessageSquareText size={20} className="sm:w-5 sm:h-5 mb-1" />
+                    <Link href={conversasHref} className="relative flex flex-col items-center flex-1 hover:text-blue-500">
+                        <div className="relative">
+                            <MessageSquareText size={20} className="sm:w-5 sm:h-5 mb-1" />
+                            {conversasNaoLidas > 0 && (
+                                <span className="absolute -top-1.5 -right-2 bg-green-500 text-white text-[9px] sm:text-[10px] font-bold px-[5px] py-[1px] rounded-full border border-white">
+                                    {conversasNaoLidas}
+                                </span>
+                            )}
+                        </div>
                         <span className="text-[10px] sm:text-[11px]">Conversas</span>
                     </Link>
                 ) : (
@@ -37,7 +45,6 @@ export function Footer() {
                         <span className="text-[10px] sm:text-[11px]">Conversas</span>
                     </div>
                 )}
-
 
                 <Link href="/sobre" className="flex flex-col items-center flex-1 hover:text-blue-500">
                     <Building size={20} className="sm:w-5 sm:h-5 mb-1" />

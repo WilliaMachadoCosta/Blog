@@ -171,6 +171,7 @@ export default async function BlogSection() {
     );
 }
 
+
 // Componente de loading para a seção
 export function BlogSectionSkeleton() {
     return (

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { MessageCircle, Phone, Globe, User, FileText } from 'lucide-react';
 import Link from 'next/link';
+import GoogleAd from '@/components/banner/google-ads';
 
 interface EmpresaData {
     nome: string;
@@ -117,9 +118,10 @@ export default function ConversasPage() {
     return (
         <main className="flex flex-col items-center justify-start min-h-screen bg-[#e5ddd5] p-4">
             <div className="w-full max-w-md bg-white rounded-xl shadow p-6 flex flex-col space-y-4">
+                <GoogleAd />
                 <div className="flex items-center space-x-3 border-b pb-3 mb-4">
                     <MessageCircle className="text-green-600" size={24} />
-                    <h1 className="text-2xl font-semibold">{empresa.nome || "Empresa Desconhecida"}</h1>
+                    <h1 className="text-2xl text-black font-semibold">{empresa.nome || "Empresa Desconhecida"}</h1>
                 </div>
 
                 <div className="flex flex-col space-y-3 max-h-[400px] overflow-y-auto px-2">

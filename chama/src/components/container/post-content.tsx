@@ -23,7 +23,12 @@ export function PostContent({ html }: PostContentProps) {
                 return (
                     <>
                         {domToReact(domNode.children, options)}
-                        <GoogleAd className="my-9" />
+                        {/* Conteúdo */}
+                        <div className="my-6 max-w-2xl mx-auto w-full h-[200px] rounded-lg relative">
+                            <div className="flex justify-center">
+                                <GoogleAd className="my-9" />
+                            </div>
+                        </div>
                     </>
                 );
             }

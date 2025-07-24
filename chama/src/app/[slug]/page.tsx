@@ -73,7 +73,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   const image = post.featuredImage || "https://chamanozap.net/logo.png";
   const company = extractCompanyData(post.content);
 
-  // === Geração do schema FAQPage ===
+  // Geração do schema FAQPage ===
   const faqMatches = [...post.content.matchAll(/<h[2-3]>(Perguntas|FAQ)<\/h[2-3]>([\s\S]*?)(?=<h[2-3]>|$)/gi)];
 
   const faqStructured = faqMatches.length

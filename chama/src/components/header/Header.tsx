@@ -104,6 +104,7 @@ export default function Header() {
                     Blog
                 </Link>
                 <button
+                    aria-label="Compartilhar com foto"
                     onClick={handleOpenGenerator}
                     className="flex items-center gap-2 px-4 py-2 text-black rounded hover:bg-gray-70o"
                 >

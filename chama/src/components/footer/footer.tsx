@@ -61,7 +61,7 @@ export function Footer() {
             </div>
 
             <div className="mt-1 text-center text-[10px] sm:text-[11px]">
-                <p>Desenvolvido e mantido por <a href="https://webao.info" target="_blank" rel="noopener noreferrer" className="hover:underline text-blue-500">Webao.Info</a></p>
+                <p>Desenvolvido e mantido por Webao.Info</p>
             </div>
         </footer>
     );

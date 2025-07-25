@@ -4,7 +4,7 @@ import parse, { domToReact, HTMLReactParserOptions } from "html-react-parser";
 import { GenericButton } from "../buttons/genericButton";
 import LazyYouTube from "../media/LazyYouTube";
 import GoogleAd from "../banner/google-ads";
-import AdContainer from "../banner/ad-container";
+import { Phone } from "lucide-react";
 
 interface PostContentProps {
     html: string;
@@ -17,13 +17,12 @@ export function PostContent({ html }: PostContentProps) {
         replace: (domNode: any) => {
             if (domNode.type !== "tag") return;
 
-            // ✅ Sempre insere o anúncio após o primeiro <p>
+            // ✅ Insere o anúncio após o primeiro <p>
             if (!adInserted && domNode.name === "p") {
                 adInserted = true;
                 return (
                     <>
                         {domToReact(domNode.children, options)}
-                        {/* Conteúdo */}
                         <div className="my-6 max-w-2xl mx-auto w-full h-[200px] rounded-lg relative">
                             <div className="flex justify-center">
                                 <GoogleAd className="my-9" />
@@ -33,20 +32,28 @@ export function PostContent({ html }: PostContentProps) {
                 );
             }
 
-            // 🎯 Substituir custom-button manualmente (ainda funciona, mas não é obrigatório)
+            // ✅ Substitui <custom-button> por uma caixa com os botões estilizados
             if (domNode.name === "custom-button") {
                 const label = domNode.attribs["data-label"] || "Botão";
                 const href = domNode.attribs["data-href"] || "#";
                 const variant = domNode.attribs["data-variant"] || "default";
 
                 return (
-                    <div className="w-full flex justify-center my-3 sm:my-4 px-2 sm:px-0">
-                        <GenericButton label={label} href={href} variant={variant as any} />
+                    <div className="w-full flex justify-center px-4 py-6 bg-gray-50">
+                        <div className="w-full max-w-md bg-white rounded-2xl shadow-lg px-6 py-8 text-center space-y-6">
+                            <p className="text-gray-800 text-base sm:text-lg font-medium">
+
+                            </p>
+
+                            <div className="space-y-4">
+                                <GenericButton label={label} href={href} variant={variant as any} />
+                            </div>
+                        </div>
                     </div>
                 );
             }
 
-            // 🔁 Substituição de iframe do YouTube por componente com lazy load
+            // ✅ Substitui iframes do YouTube por lazy load
             if (
                 domNode.name === "iframe" &&
                 domNode.attribs?.src?.includes("youtube.com/embed/")

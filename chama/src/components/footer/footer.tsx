@@ -4,6 +4,7 @@ import {
     Building,
     MessageSquareText,
     SquareKanban,
+    MessageSquareHeart
 } from "lucide-react";
 import Link from "next/link";
 import { usePostStore } from "@/utils/postState";
@@ -45,6 +46,11 @@ export function Footer() {
                         <span className="text-[10px] sm:text-[11px]">Conversas</span>
                     </div>
                 )}
+
+                <Link href="/mensagens" className="flex flex-col items-center flex-1 hover:text-blue-500">
+                    <MessageSquareHeart size={20} className="sm:w-5 sm:h-5 mb-1" />
+                    <span className="text-[10px] sm:text-[11px]">Mensagens</span>
+                </Link>
 
                 <Link href="/sobre" className="flex flex-col items-center flex-1 hover:text-blue-500">
                     <Building size={20} className="sm:w-5 sm:h-5 mb-1" />

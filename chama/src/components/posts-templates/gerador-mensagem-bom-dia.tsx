@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Download, Copy, Check, Share2 } from 'lucide-react';
 
 import { exportCardImage } from '@/utils/exportTweetCard';
+import GoogleAd from '../banner/google-ads';
 
 // Frases de bom dia
 const mensagens = [
@@ -61,8 +62,19 @@ export default function GeradorMensagemBomdia() {
 
     const handleDownload = async (index: number) => {
         const card = cardRefs.current[index];
-        if (card) await exportCardImage(card, `bom-dia-${index + 1}.png`);
+        if (!card) return;
+
+        const botoes = card.querySelector('.botoes-acao') as HTMLElement | null;
+
+        // Oculta os botões temporariamente
+        if (botoes) botoes.style.display = 'none';
+
+        await exportCardImage(card, `bom-dia-${index + 1}.png`);
+
+        // Reexibe os botões
+        if (botoes) botoes.style.display = '';
     };
+
 
     const handleShare = (mensagem: string) => {
         const texto = `${mensagem}\n\nvia chamanozap.net`;
@@ -102,6 +114,14 @@ export default function GeradorMensagemBomdia() {
                     Comece o dia com o pé direito e espalhe positividade! Aqui no <strong className="font-semibold">ChamanoZap.net</strong>, você encontra as mais lindas e inspiradoras <strong>mensagens de bom dia para WhatsApp</strong>, perfeitas para motivar amigos, familiares e colegas. Copie, baixe e compartilhe!
                 </p>
 
+                {/* Conteúdo */}
+                <div className="my-6 max-w-2xl mx-auto w-full h-[200px] rounded-lg relative">
+                    <div className="flex justify-center">
+                        <GoogleAd className="my-9" />
+                    </div>
+                </div>
+
+
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {mensagens.map((mensagem, index) => (
                         <div
@@ -123,10 +143,10 @@ export default function GeradorMensagemBomdia() {
                                 className="p-6 text-white text-center font-semibold min-h-[120px] flex flex-col justify-center"
                             >
                                 <p className="whitespace-pre-line">{mensagem}</p>
-                                <p className="text-xs mt-4 opacity-80 border-t border-white pt-2">via chamanozap.net</p>
+                                <p className="text-xs mt-4 opacity-80 border-t border-white pt-2">conheça chamanozap.net</p>
                             </div>
 
-                            <div className="flex gap-3 justify-center mt-3 mb-4 px-4">
+                            <div className="botoes-acao flex gap-3 justify-center mt-3 mb-4 px-4">
                                 <button
                                     onClick={() => handleCopy(mensagem, index)}
                                     className="bg-green-600 hover:bg-green-700 rounded px-3 py-1 text-sm flex items-center gap-1 text-white transition"
@@ -173,6 +193,14 @@ function InfoSection() {
                     Compartilhar essas mensagens fortalece laços e contribui para um ambiente mais otimista e feliz.
                 </p>
             </section>
+
+            {/* Conteúdo */}
+            <div className="my-6 max-w-2xl mx-auto w-full h-[200px] rounded-lg relative">
+                <div className="flex justify-center">
+                    <GoogleAd className="my-9" />
+                </div>
+            </div>
+
 
             <hr className="my-12 border-gray-300" />
 

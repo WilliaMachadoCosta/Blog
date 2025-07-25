@@ -4,7 +4,6 @@ import parse, { domToReact, HTMLReactParserOptions } from "html-react-parser";
 import { GenericButton } from "../buttons/genericButton";
 import LazyYouTube from "../media/LazyYouTube";
 import GoogleAd from "../banner/google-ads";
-import { Phone } from "lucide-react";
 
 interface PostContentProps {
     html: string;
@@ -17,7 +16,7 @@ export function PostContent({ html }: PostContentProps) {
         replace: (domNode: any) => {
             if (domNode.type !== "tag") return;
 
-            // ✅ Insere o anúncio após o primeiro <p>
+            // ✅ Insere anúncio após o primeiro <p>
             if (!adInserted && domNode.name === "p") {
                 adInserted = true;
                 return (
@@ -32,28 +31,23 @@ export function PostContent({ html }: PostContentProps) {
                 );
             }
 
-            // ✅ Substitui <custom-button> por uma caixa com os botões estilizados
+            // ✅ Substitui <custom-button> por layout limpo com botões alinhados
             if (domNode.name === "custom-button") {
                 const label = domNode.attribs["data-label"] || "Botão";
                 const href = domNode.attribs["data-href"] || "#";
                 const variant = domNode.attribs["data-variant"] || "default";
 
                 return (
-                    <div className="w-full flex justify-center px-4 py-6 bg-gray-50">
-                        <div className="w-full max-w-md bg-white rounded-2xl shadow-lg px-6 py-8 text-center space-y-6">
-                            <p className="text-gray-800 text-base sm:text-lg font-medium">
+                    <div className="w-full px-4 py-6 flex flex-col items-center gap-4 text-center">
 
-                            </p>
-
-                            <div className="space-y-4">
-                                <GenericButton label={label} href={href} variant={variant as any} />
-                            </div>
+                        <div className="flex flex-wrap justify-center gap-3">
+                            <GenericButton label={label} href={href} variant={variant as any} />
                         </div>
                     </div>
                 );
             }
 
-            // ✅ Substitui iframes do YouTube por lazy load
+            // ✅ Substitui iframe por LazyYouTube
             if (
                 domNode.name === "iframe" &&
                 domNode.attribs?.src?.includes("youtube.com/embed/")

@@ -11,6 +11,7 @@ import {
     Settings2,
 } from "lucide-react";
 
+export const runtime = 'edge';
 export const metadata: Metadata = {
     title: "Ferramentas | ChamanoZap",
     description: "Descubra ferramentas úteis para automatizar e facilitar seu dia a dia.",

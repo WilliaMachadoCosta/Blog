@@ -11,6 +11,7 @@ interface CategoryClientProps {
   posts: IPost[];
 }
 
+export const runtime = 'edge';
 export default function CategoryClient({ category, posts }: CategoryClientProps) {
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("pt-BR", {

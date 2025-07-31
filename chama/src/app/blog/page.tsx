@@ -4,6 +4,7 @@ import { getAllCategories } from "@/services/categoryServices";
 import { SpinLoader } from "@/components/SpinLoad/SpinLoader";
 import BlogClient from "./BlogClient";
 
+export const runtime = 'edge';
 export default async function BlogPage() {
   return (
     <div className="min-h-screen bg-[#f5f3ef] py-4 px-2 sm:px-4">
@@ -33,7 +34,7 @@ async function BlogContent() {
           <p className="text-gray-600 mb-4">
             Não há posts disponíveis no momento. Tente novamente mais tarde.
           </p>
-          <a 
+          <a
             href="/"
             className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
           >
@@ -55,7 +56,7 @@ async function BlogContent() {
         <p className="text-sm text-red-600 mb-4">
           Erro: {error instanceof Error ? error.message : 'Erro desconhecido'}
         </p>
-        <a 
+        <a
           href="/"
           className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
         >

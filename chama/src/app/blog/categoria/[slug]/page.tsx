@@ -10,12 +10,13 @@ interface CategoryPageProps {
   params: Promise<{ slug: string }>;
 }
 
+export const runtime = 'edge';
 export async function generateMetadata({
   params,
 }: CategoryPageProps): Promise<Metadata> {
   const { slug } = await params;
   const category = getCategoryBySlug(slug);
-  
+
   if (!category) {
     return {
       title: "Categoria não encontrada | Blog",
@@ -31,7 +32,7 @@ export async function generateMetadata({
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const { slug } = await params;
-  
+
   return (
     <div className="min-h-screen bg-[#f5f3ef] py-4 px-2 sm:px-4">
       <div className="max-w-6xl mx-auto">
@@ -45,7 +46,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
 async function CategoryContent({ slug }: { slug: string }) {
   const category = getCategoryBySlug(slug);
-  
+
   if (!category) {
     notFound();
   }

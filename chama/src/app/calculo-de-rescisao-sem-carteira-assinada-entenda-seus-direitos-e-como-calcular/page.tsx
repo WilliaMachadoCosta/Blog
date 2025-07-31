@@ -3,6 +3,7 @@
 import CalculatorWrapper from '@/components/utils/calculo-sem-carteira-assinada/calculatorWrapper';
 import { Metadata } from 'next';
 import Script from 'next/script';
+export const runtime = 'edge';
 
 export const metadata: Metadata = {
     title: "Cálculo de Rescisão sem Carteira Assinada [CALCULADORA]",

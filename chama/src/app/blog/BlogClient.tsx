@@ -13,6 +13,7 @@ interface BlogClientProps {
   initialPosts: IPost[];
   categories: ICategory[];
 }
+export const runtime = 'edge';
 
 export default function BlogClient({ initialPosts, categories }: BlogClientProps) {
   const [posts, setPosts] = useState<IPost[]>(initialPosts);

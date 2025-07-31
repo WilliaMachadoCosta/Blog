@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
+    "pages:build": "npx @cloudflare/next-on-pages@1",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
@@ -26,6 +27,7 @@
     "zustand": "^5.0.6"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.13.13",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",

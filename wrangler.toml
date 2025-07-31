@@ -1,11 +1,10 @@
 name = "chamanozap"
 compatibility_date = "2024-07-31"
 
-# Worker SSR:
-main = ".vercel/output/functions/[[path]].func/index.js"
+#main = ".vercel/output/functions/[[path]].func/index.js"
 
 [build]
-command = "npx @cloudflare/next-on-pages@1"
+command = "npx @cloudflare/next-on-pages@latest"
 
 [vars]
 NODE_ENV = "production"

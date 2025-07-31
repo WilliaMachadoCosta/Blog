@@ -9,6 +9,9 @@ import SubHeaderClient from "@/components/header/sub-header-client";
 import GoogleAd from "@/components/banner/google-ads";
 import PostDataInitializer from "@/components/container/postdata";
 
+export const runtime = 'edge';
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
@@ -228,9 +231,9 @@ function sanitizeHtml(html: string): string {
     .replace(/<ins(?=[^>]*data-ad-client="ca-pub-[^"]*")[^>]*><\/ins>/gi, "");
 }
 
-export async function generateStaticParams() {
-  const posts = await getAllPosts();
-  return posts.map((post) => ({ slug: post.slug }));
-}
+// export async function generateStaticParams() {
+//   const posts = await getAllPosts();
+//   return posts.map((post) => ({ slug: post.slug }));
+// }
 
-export const revalidate = 300; // ISR: revalida a cada 5 minutos
+// export const revalidate = 300; // ISR: revalida a cada 5 minutos

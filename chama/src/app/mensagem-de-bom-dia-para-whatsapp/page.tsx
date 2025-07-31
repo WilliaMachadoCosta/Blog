@@ -2,8 +2,8 @@
 import GeradorMensagemBomdia from '@/components/posts-templates/gerador-mensagem-bom-dia';
 import { Suspense } from 'react';
 
-
 export const dynamic = 'force-dynamic';
+export const runtime = 'edge';
 
 export default function MensagemBomdia() {
     return (

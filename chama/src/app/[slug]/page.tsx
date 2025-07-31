@@ -10,7 +10,6 @@ import GoogleAd from "@/components/banner/google-ads";
 import PostDataInitializer from "@/components/container/postdata";
 
 export const runtime = 'edge';
-export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;

@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
+    unoptimized: true, // Desativa a otimização de imagens da Vercel
     domains: ['api.chamanozap.net', 'res.cloudinary.com'],
   },
 

@@ -233,4 +233,4 @@ export async function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }));
 }
 
-export const revalidate = 300; // ISR: revalida a cada 5 minutos
+export const revalidate = 86400; // ISR: revalida a cada 5 minutos

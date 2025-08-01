@@ -43,7 +43,7 @@ const fetchJson = async (url: string, useCache = true, retryCount = 0) => {
     const res = await fetch(url, {
       cache: "force-cache", // Usar cache do Next.js
       next: {
-        revalidate: 300 // Revalidar a cada 5 minutos
+        revalidate: 86400 // Revalidar a cada 5 minutos
       },
       signal: controller.signal,
       headers: {

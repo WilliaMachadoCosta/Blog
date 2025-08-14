@@ -35,14 +35,12 @@ export async function GET(request: NextRequest) {
       apiUrl += `&per_page=${per_page}`;
     }
 
-    console.log('Fazendo proxy para posts:', apiUrl);
-
     const response = await fetch(apiUrl, {
       headers: {
         'User-Agent': 'ChamaNoZap-Blog/1.0',
         'Accept': 'application/json',
       },
-      next: { revalidate: 86400 } // Cache por 5 minutos
+      next: { revalidate: 86400 }
     });
 
     if (!response.ok) {

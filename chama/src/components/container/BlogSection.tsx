@@ -8,17 +8,10 @@ import { getAllCategories } from '@/services/categoryServices';
 // Função para buscar posts recentes das categorias definidas
 async function getRecentBlogPosts(): Promise<IPost[]> {
     try {
-        const categories = getAllCategories();
 
-        // Buscar posts de cada categoria usando slug
-        const postsPromises = categories.map(category =>
-            getPostsByCategorySlug(category.slug)
-        );
-
-        const allCategoryPosts = await Promise.all(postsPromises);
 
         // Combinar todos os posts e remover duplicatas
-        const allPosts = allCategoryPosts.flat();
+        const allPosts = await getAllPosts();
         const uniquePosts = allPosts.filter((post, index, self) =>
             index === self.findIndex(p => p.id === post.id)
         );

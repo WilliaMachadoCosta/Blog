@@ -23,7 +23,6 @@ async function getRecentBlogPosts(): Promise<IPost[]> {
             index === self.findIndex(p => p.id === post.id)
         );
 
-        // Retornar apenas os 3 mais recentes
         return uniquePosts
             .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
             .slice(0, 3);

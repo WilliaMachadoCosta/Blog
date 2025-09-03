@@ -4,6 +4,7 @@ import parse, { domToReact, HTMLReactParserOptions } from "html-react-parser";
 import { GenericButton } from "../buttons/genericButton";
 import LazyYouTube from "../media/LazyYouTube";
 import GoogleAd from "../banner/google-ads";
+import ScrollIndicator from "../buttons/scrollIndicador";
 
 interface PostContentProps {
     html: string;
@@ -25,6 +26,9 @@ export function PostContent({ html }: PostContentProps) {
                         <div className="my-6 max-w-2xl mx-auto w-full h-[200px] rounded-lg relative">
                             <div className="flex justify-center">
                                 <GoogleAd className="my-9" />
+                            </div>
+                            <div className="flex items-center gap-2 mt-6 text-gray-700 animate-bounce">
+                                <ScrollIndicator />
                             </div>
                         </div>
                     </>

@@ -13,7 +13,7 @@ export default function AdContainer({ children, className = '' }: AdContainerPro
             max-w-full 
             overflow-hidden 
             bg-white 
-             h-[400px]            
+            min-h-[300px]         
             rounded-lg 
             shadow-sm 
             px-4 py-2

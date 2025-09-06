@@ -208,7 +208,7 @@ export default function GoogleAd({ className = '' }: GoogleAdProps) {
                         style={{
                             display: 'block',
                             textAlign: 'center',
-                            // margin: '0 auto',
+                            minHeight: '250px',
                             width: '100%',
                             position: 'relative'
                         }}

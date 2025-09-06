@@ -22,8 +22,8 @@ export default function SobrePage() {
                     </p>
                 </div>
 
-                <div className="my-6 max-w-2xl mx-auto w-full h-[350px] rounded-lg relative">
-                    <div className=" border-b-indigo-800">
+                <div className="my-6 max-w-6xl mx-auto w-full h-[350px] rounded-lg relative">
+                    <div className=" border-amber-300">
                         <GoogleAd />
                     </div>
                 </div>

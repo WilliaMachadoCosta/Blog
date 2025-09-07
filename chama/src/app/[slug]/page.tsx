@@ -48,6 +48,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     robots: {
       index: true,
       follow: true,
+      "max-image-preview": "large",
+
     },
     metadataBase: new URL("https://chamanozap.net"),
     authors: [{ name: post.author }],

@@ -1,12 +1,12 @@
-import { getAllPosts } from "@/services/postServices";
+import { getAllForSitemap } from "@/services/postServices";
 import { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://chamanozap.net';
   const currentDate = new Date();
 
-  const posts = await getAllPosts();
-
+  const posts = await getAllForSitemap();
+  console.log(posts);
   // Rotas fixas
   const staticRoutes: MetadataRoute.Sitemap = [
     {

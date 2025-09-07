@@ -137,13 +137,51 @@ export async function getPostsByIds(ids: number[]): Promise<IPost[]> {
 
 export async function getAllPosts(): Promise<IPost[]> {
   try {
-    const data = await fetchJson(`${API_BASE}/posts?_embed&orderby=date&order=desc&per_page=15`);
+    const data = await fetchJson(`${API_BASE}/posts?_embed&orderby=date&order=desc&per_page=20`);
     return data.map(mapPost);
   } catch (err) {
     console.error("Erro em getAllPosts:", err);
     return [];
   }
 }
+
+export async function getAllForSitemap(): Promise<IPost[]> {
+  try {
+    const perPage = 100;
+    let page = 1;
+    let allPosts: IPost[] = [];
+    let totalPages = 1;
+
+    do {
+      const res = await fetch(
+        `${API_BASE}/posts?_embed&orderby=date&order=desc&per_page=${perPage}&page=${page}`
+      );
+
+      if (!res.ok) {
+        throw new Error(`Erro ao buscar posts: ${res.status}`);
+      }
+
+      const data = await res.json();
+
+      // headers retornados pelo WP
+      const total = res.headers.get("X-WP-Total");
+      const totalPagesHeader = res.headers.get("X-WP-TotalPages");
+
+      if (totalPagesHeader) {
+        totalPages = parseInt(totalPagesHeader, 10);
+      }
+
+      allPosts = [...allPosts, ...data.map(mapPost)];
+      page++;
+    } while (page <= totalPages);
+
+    return allPosts;
+  } catch (err) {
+    console.error("Erro em getAllForSitemap:", err);
+    return [];
+  }
+}
+
 
 export async function getCompanyPosts(): Promise<IPost[]> {
   try {

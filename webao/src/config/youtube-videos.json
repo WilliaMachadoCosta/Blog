@@ -1,0 +1,81 @@
+{
+  "videos": [
+    {
+      "id": "hsyEQWSt0kE",
+      "title": "WhatsApp Gontijo 0800 Compra de Passagem",
+      "description": "Compre Passagem Gontijo",
+      "type": "video",
+      "url": "https://www.youtube.com/watch?v=hsyEQWSt0kE"
+    },
+    {
+      "id": "NnCdzjmT-T4",
+      "title": "",
+      "description": "Compre Passagem.",
+      "type": "video",
+      "url": "https://www.youtube.com/watch?v=NnCdzjmT-T4"
+    },
+    {
+      "id": "VJQGZvWqcPk",
+      "title": "",
+      "description": "Descubra como automatizar seu atendimento e economizar tempo com respostas inteligentes.",
+      "type": "video",
+      "url": "https://www.youtube.com/watch?v=VJQGZvWqcPk"
+    },
+    {
+      "id": "15d3RtVMj78",
+      "title": "Integração WhatsApp com CRM - Passo a passo",
+      "description": "Aprenda a integrar seu WhatsApp com sistemas de CRM para melhor gestão de clientes.",
+      "type": "video",
+      "url": "https://www.youtube.com/watch?v=15d3RtVMj78"
+    },
+    {
+      "id": "1ETmybqdX-k",
+      "title": "Dica rápida: Status do WhatsApp Business",
+      "description": "Saiba como usar os status do WhatsApp Business para engajar seus clientes.",
+      "type": "short",
+      "url": "https://youtube.com/shorts/1ETmybqdX-k"
+    },
+    {
+      "id": "r4eHlFVJGEo",
+      "title": "Como responder mensagens rapidamente",
+      "description": "Técnicas para responder mensagens do WhatsApp de forma mais eficiente.",
+      "type": "short",
+      "url": "https://www.youtube.com/shorts/r4eHlFVJGEo"
+    },
+    {
+      "id": "1mf2XPoSJD8",
+      "title": "Organize suas conversas no WhatsApp",
+      "description": "Dicas para manter suas conversas organizadas e profissionais.",
+      "type": "short",
+      "url": "https://www.youtube.com/shorts/1mf2XPoSJD8"
+    },
+    {
+      "id": "3ukWQkNiJLM",
+      "title": "WhatsApp Business vs WhatsApp comum",
+      "description": "Entenda as principais diferenças entre as duas versões do WhatsApp.",
+      "type": "short",
+      "url": "https://www.youtube.com/shorts/3ukWQkNiJLM"
+    },
+    {
+      "id": "yFOdxjjpeW8",
+      "title": "Como criar catálogo no WhatsApp",
+      "description": "Passo a passo para criar um catálogo de produtos no WhatsApp Business.",
+      "type": "short",
+      "url": "https://www.youtube.com/shorts/yFOdxjjpeW8"
+    },
+    {
+      "id": "A6u_J8rHIB8",
+      "title": "Métricas importantes no WhatsApp Business",
+      "description": "Saiba quais métricas acompanhar para melhorar seu negócio.",
+      "type": "short",
+      "url": "https://www.youtube.com/shorts/A6u_J8rHIB8"
+    }
+  ],
+  "settings": {
+    "maxResults": 10,
+    "showThumbnails": true,
+    "showDuration": true,
+    "showViewCount": true,
+    "channelTitle": "Chama no Zap"
+  }
+}

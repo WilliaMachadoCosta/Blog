@@ -1,0 +1,94 @@
+{
+    "companyPosts": [
+        {
+            "id": "azul-company-post",
+            "companyName": "Azul",
+            "title": "Azul Linhas Aéreas - Sua companhia aérea de confiança",
+            "slug": "azul-linhas-aereas",
+            "excerpt": "Conheça a Azul, uma das principais companhias aéreas do Brasil, oferecendo voos domésticos e internacionais com qualidade e conforto.",
+            "content": "<h2>Sobre a Azul</h2><p>A Azul Linhas Aéreas Brasileiras é uma das principais companhias aéreas do Brasil, fundada em 2008. Com uma frota moderna e uma extensa rede de rotas, a Azul conecta mais de 100 destinos em todo o Brasil e América do Sul.</p><h3>Nossos Diferenciais</h3><ul><li>Maior rede de destinos do Brasil</li><li>Frota moderna e confortável</li><li>Atendimento de qualidade</li><li>Preços competitivos</li><li>Programa de fidelidade Azul Fidelidade</li></ul><h3>Como Entrar em Contato</h3><p>Estamos sempre disponíveis para atender você. Escolha a forma de contato que preferir:</p><custom-button data-label='WhatsApp Azul' data-href='https://wa.me/1140042985' data-variant='whatsapp'></custom-button><custom-button data-label='Telefone Azul' data-href='tel:40031118' data-variant='sac'></custom-button><custom-button data-label='Site Oficial' data-href='https://www.voeazul.com.br' data-variant='default'></custom-button>",
+            "coverImageUrl": "/logos/azul.jpeg",
+            "published": true,
+            "createdAt": "2025-01-15T00:00:00.000Z",
+            "updatedAt": "2025-01-15T00:00:00.000Z",
+            "author": "Equipe Azul",
+            "contactInfo": {
+                "whatsapp": "1140042985",
+                "phone": "40031118",
+                "site": "https://www.voeazul.com.br"
+            }
+        },
+        {
+            "id": "gol-company-post",
+            "companyName": "GOL",
+            "title": "GOL Linhas Aéreas - Voando alto com você",
+            "slug": "gol-linhas-aereas",
+            "excerpt": "A GOL é uma das maiores companhias aéreas de baixo custo do Brasil, oferecendo voos acessíveis para diversos destinos.",
+            "content": "<h2>Sobre a GOL</h2><p>A GOL Linhas Aéreas é uma das principais companhias aéreas de baixo custo do Brasil, fundada em 2001. Com foco em eficiência e preços acessíveis, a GOL conecta milhões de passageiros anualmente.</p><h3>Nossos Valores</h3><ul><li>Preços acessíveis</li><li>Eficiência operacional</li><li>Segurança em primeiro lugar</li><li>Atendimento ao cliente</li><li>Inovação constante</li></ul><h3>Entre em Contato</h3><p>Nossa equipe está pronta para ajudar você:</p><custom-button data-label='WhatsApp GOL' data-href='https://wa.me/1140042985' data-variant='whatsapp'></custom-button><custom-button data-label='Central de Atendimento' data-href='tel:40031118' data-variant='central'></custom-button><custom-button data-label='Visitar Site' data-href='https://www.voegol.com.br' data-variant='default'></custom-button>",
+            "coverImageUrl": "/logos/gol.jpg",
+            "published": true,
+            "createdAt": "2025-01-15T00:00:00.000Z",
+            "updatedAt": "2025-01-15T00:00:00.000Z",
+            "author": "Equipe GOL",
+            "contactInfo": {
+                "whatsapp": "1140042985",
+                "phone": "40031118",
+                "site": "https://www.voegol.com.br"
+            }
+        },
+        {
+            "id": "latam-company-post",
+            "companyName": "Latam",
+            "title": "LATAM Airlines - Conectando a América do Sul",
+            "slug": "latam-airlines",
+            "excerpt": "A LATAM é uma das maiores companhias aéreas da América do Sul, oferecendo voos domésticos e internacionais com excelência.",
+            "content": "<h2>Sobre a LATAM</h2><p>A LATAM Airlines Group é uma das maiores companhias aéreas da América do Sul, formada pela fusão da LAN e TAM. Com uma rede extensa de rotas, conectamos toda a América do Sul e destinos internacionais.</p><h3>Nossa Missão</h3><ul><li>Conectar pessoas e culturas</li><li>Promover o desenvolvimento da aviação</li><li>Oferecer experiências únicas</li><li>Contribuir para o turismo sustentável</li><li>Excelência em serviço</li></ul><h3>Fale Conosco</h3><p>Estamos aqui para você:</p><custom-button data-label='WhatsApp LATAM' data-href='https://wa.me/1140042985' data-variant='whatsapp'></custom-button><custom-button data-label='SAC LATAM' data-href='tel:40031118' data-variant='sac'></custom-button><custom-button data-label='Site LATAM' data-href='https://www.latam.com' data-variant='default'></custom-button>",
+            "coverImageUrl": "/logos/latam.png",
+            "published": true,
+            "createdAt": "2025-01-15T00:00:00.000Z",
+            "updatedAt": "2025-01-15T00:00:00.000Z",
+            "author": "Equipe LATAM",
+            "contactInfo": {
+                "whatsapp": "1140042985",
+                "phone": "40031118",
+                "site": "https://www.latam.com"
+            }
+        },
+        {
+            "id": "cometa-company-post",
+            "companyName": "Viação Cometa",
+            "title": "Viação Cometa - Sua viagem terrestre com conforto",
+            "slug": "viacao-cometa",
+            "excerpt": "A Viação Cometa é uma das principais empresas de transporte rodoviário de passageiros do Brasil, oferecendo conforto e segurança.",
+            "content": "<h2>Sobre a Viação Cometa</h2><p>A Viação Cometa é uma das mais tradicionais empresas de transporte rodoviário de passageiros do Brasil, fundada em 1949. Com mais de 70 anos de experiência, oferecemos viagens seguras e confortáveis.</p><h3>Nossos Serviços</h3><ul><li>Ônibus executivos e convencionais</li><li>Rede nacional de destinos</li><li>Wi-Fi gratuito</li><li>Ar condicionado</li><li>Banheiro a bordo</li><li>Poltronas reclináveis</li></ul><h3>Contato</h3><p>Entre em contato conosco:</p><custom-button data-label='WhatsApp Cometa' data-href='https://wa.me/1140042985' data-variant='whatsapp'></custom-button><custom-button data-label='Central Cometa' data-href='tel:40031118' data-variant='central'></custom-button><custom-button data-label='Site Cometa' data-href='https://www.viacaocometa.com.br' data-variant='default'></custom-button>",
+            "coverImageUrl": "/logos/cometa.png",
+            "published": true,
+            "createdAt": "2025-01-15T00:00:00.000Z",
+            "updatedAt": "2025-01-15T00:00:00.000Z",
+            "author": "Equipe Cometa",
+            "contactInfo": {
+                "whatsapp": "1140042985",
+                "phone": "40031118",
+                "site": "https://www.viacaocometa.com.br"
+            }
+        },
+        {
+            "id": "spt-company-post",
+            "companyName": "São Paulo Transportes",
+            "title": "São Paulo Transportes - Mobilidade urbana eficiente",
+            "slug": "sao-paulo-transportes",
+            "excerpt": "A São Paulo Transportes é responsável pela gestão do transporte público na capital paulista, oferecendo soluções de mobilidade urbana.",
+            "content": "<h2>Sobre a SPT</h2><p>A São Paulo Transportes (SPT) é a empresa responsável pela gestão e operação do sistema de transporte público da cidade de São Paulo. Trabalhamos para oferecer mobilidade urbana eficiente e acessível.</p><h3>Nossos Sistemas</h3><ul><li>Metrô de São Paulo</li><li>CPTM - Trens metropolitanos</li><li>Ônibus municipais</li><li>Bicicletas compartilhadas</li><li>Vans e micro-ônibus</li><li>Integração multimodal</li></ul><h3>Informações e Contato</h3><p>Para informações sobre rotas, horários e tarifas:</p><custom-button data-label='WhatsApp SPT' data-href='https://wa.me/1140042985' data-variant='whatsapp'></custom-button><custom-button data-label='Central SPT' data-href='tel:40031118' data-variant='central'></custom-button><custom-button data-label='Portal SPT' data-href='https://www.sptrans.com.br' data-variant='default'></custom-button>",
+            "coverImageUrl": "/logos/spt.png",
+            "published": true,
+            "createdAt": "2025-01-15T00:00:00.000Z",
+            "updatedAt": "2025-01-15T00:00:00.000Z",
+            "author": "Equipe SPT",
+            "contactInfo": {
+                "whatsapp": "1140042985",
+                "phone": "40031118",
+                "site": "https://www.sptrans.com.br"
+            }
+        }
+    ]
+} 

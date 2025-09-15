@@ -1,0 +1,177 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Paleta Instagram */
+  --insta-pink: #d62976;
+  --insta-orange: #fa7e1e;
+  --insta-yellow: #feda75;
+  --insta-purple: #962fbf;
+  --insta-blue: #4f5bd5;
+
+  --gradient-insta: linear-gradient(45deg,
+      var(--insta-yellow),
+      var(--insta-orange),
+      var(--insta-pink),
+      var(--insta-purple),
+      var(--insta-blue));
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html,
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Segoe UI', 'Roboto', 'San Francisco', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* ===== Estilos Instagram para elementos gerais ===== */
+
+/* Botões com gradiente Instagram */
+.btn-insta {
+  background: var(--gradient-insta);
+  color: white;
+  @apply px-4 py-2 rounded-lg font-semibold transition-all duration-300 shadow-lg;
+}
+
+.btn-insta:hover {
+  filter: brightness(1.1) saturate(1.2);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(214, 41, 118, 0.3);
+}
+
+/* Cards com estilo Instagram */
+.card-insta {
+  @apply bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden;
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+.card-insta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(214, 41, 118, 0.15);
+  transition: all 0.3s ease;
+}
+
+/* Inputs estilo Instagram */
+.input-insta {
+  @apply border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all;
+  border-color: #e1e5e9;
+}
+
+.input-insta:focus {
+  border-color: var(--insta-pink);
+  box-shadow: 0 0 0 3px rgba(214, 41, 118, 0.1);
+}
+
+/* Badges Instagram */
+.badge-insta {
+  background: var(--gradient-insta);
+  color: white;
+  @apply px-2 py-1 rounded-full text-xs font-semibold;
+}
+
+/* Animações Instagram */
+@keyframes insta-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.insta-pulse {
+  animation: insta-pulse 2s infinite;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-insta);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--insta-pink);
+}
+
+/* Esconder scrollbar para stories */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===== Conteúdo de Postagens (WordPress HTML) ===== */
+article h2 {
+  @apply text-3xl font-bold mt-6 mb-4;
+  background: var(--gradient-insta);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+article h3 {
+  @apply text-2xl font-semibold mt-5 mb-3;
+  color: var(--insta-purple);
+}
+
+article h4 {
+  @apply text-xl font-semibold mt-4 mb-2;
+  color: var(--insta-pink);
+}
+
+article p {
+  @apply mb-4 leading-relaxed text-gray-800 text-[17px];
+}
+
+article ul,
+article ol {
+  @apply list-disc list-inside mb-4 pl-4 text-gray-800;
+}
+
+article blockquote {
+  border-left: 4px solid var(--insta-pink);
+  background: #fff0f6;
+  color: var(--insta-purple);
+  font-style: italic;
+  @apply pl-4 py-2 px-2 rounded-md mb-4;
+}
+
+/* Links nos posts */
+article a {
+  color: var(--insta-blue);
+  @apply hover:underline font-medium;
+}
+
+/* Botões estilo Instagram */
+.wp-block-button__link {
+  background: var(--gradient-insta);
+  color: #fff;
+  @apply inline-block px-4 py-2 rounded-md font-semibold transition;
+}
+
+.wp-block-button__link:hover {
+  filter: brightness(1.1);
+}

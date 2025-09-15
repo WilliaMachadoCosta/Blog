@@ -9,6 +9,9 @@ import BlogSection, { BlogSectionSkeleton } from "./BlogSection";
 import YouTubeVideos, { YouTubeVideosSkeleton } from "./youtube-videos";
 import GoogleAd from "../banner/google-ads";
 import AdContainer from "../banner/ad-container";
+import CompaniesByRegion from "../company/companyByRegion";
+import CompaniesByState from "../company/companyByRegion";
+import StatePreviews from "../company/preview-company";
 
 // Componente de loading para cada item
 function CompanyItemSkeleton() {
@@ -100,13 +103,15 @@ export default function Container({ showAds = true }: { showAds?: boolean }) {
             {/* 📢 Bloco de anúncio do Google AdSense */}
             {showAds && <GoogleAd className="my-6" />}
 
-            {/* Seção de Vídeos do YouTube */}
-            {/* <div className="relative z-10 max-w-full overflow-hidden">
-                <Suspense fallback={<YouTubeVideosSkeleton />}>
-
+            {/* Seção de Empresas por Estado/Cidade */}
+            <div className="relative z-10 max-w-full overflow-hidden">
+                <Suspense fallback={<div>Carregando regiões...</div>}>
+                    <StatePreviews
+                        estadosSlugs={["bahia", "sao-paulo", "minas-gerais", "sergipe", "parana"]}
+                        previewCount={3} // mostrar apenas 3 empresas por estado
+                    />
                 </Suspense>
-            </div> */}
-
+            </div>
             {/* 📢 Bloco de anúncio do Google AdSense */}
             {showAds && <GoogleAd className="my-6" />}
 

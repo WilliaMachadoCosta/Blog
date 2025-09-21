@@ -26,11 +26,12 @@ export function PostContent({ html }: PostContentProps) {
                         <div className="flex items-center gap-2 mt-6 text-gray-700 animate-bounce">
                             <ScrollIndicator />
                         </div>
-                        <div className="my-6 max-w-2xl mx-auto w-full h-[200px] rounded-lg relative">
+                        {/* <div className="my-6 max-w-2xl mx-auto w-full h-[200px] rounded-lg relative">
                             <div className="flex justify-center">
                                 <GoogleAd className="my-9" />
                             </div>
-                        </div>
+                        </div> */}
+                        <GoogleAd className="my-9" />
                     </>
                 );
             }

@@ -1,28 +1,45 @@
+import { FaWhatsapp, FaPhone } from "react-icons/fa";
+
 interface GenericButtonProps {
     href: string;
     label: string;
-    variant?: "whatsapp" | "sac" | "central" | "default";
+    variant?: "whatsapp" | "sac";
 }
 
-export function GenericButton({ href, label, variant = "default" }: GenericButtonProps) {
-    const base = "inline-flex items-center px-3 sm:px-4 py-2 sm:py-3 rounded-md shadow font-medium transition text-white no-underline visited:text-white hover:text-white text-sm sm:text-base";
+export function GenericButton({ href, label, variant }: GenericButtonProps) {
 
-    const variants = {
-        whatsapp: `${base} bg-green-800 hover:bg-green-600`,
-        sac: `${base} bg-blue-600 hover:bg-blue-700`,
-        central: `${base} bg-neutral-800 hover:bg-neutral-900`,
-        default: `${base} bg-gray-600 hover:bg-gray-700`,
+    const extractNumber = (url: string) => {
+        if (url.startsWith("https://api.whatsapp.com/send?phone=")) {
+            return url.split("phone=")[1];
+        } else if (url.startsWith("tel:")) {
+            return url.replace("tel:", "");
+        }
+        return undefined;
     };
+
+    const number = extractNumber(href);
 
     return (
         <a
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className={variants[variant]}
-            style={{ color: "white" }} // força cor branca, mesmo se herdar estilo
+            className="w-full max-w-sm mx-auto bg-gray-100 rounded-lg shadow-md p-4 hover:shadow-lg transition-all"
         >
-            {label}
+            <div className="flex items-center gap-3">
+                {variant === "whatsapp" && (
+                    <FaWhatsapp className="text-green-500 bg-white rounded-full p-1 text-3xl" />
+                )}
+                {variant === "sac" && (
+                    <FaPhone className="text-blue-500 bg-white rounded-full p-1 text-3xl" />
+                )}
+                <div className="flex flex-col flex-1">
+                    <span className="text-blue-800 text-sm uppercase font-bold">{label}</span>
+                    {number && (
+                        <span className="font-bold text-lg text-blue-700">{number}</span>
+                    )}
+                </div>
+            </div>
         </a>
     );
 }

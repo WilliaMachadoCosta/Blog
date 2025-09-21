@@ -44,7 +44,7 @@ export function PostContent({ html }: PostContentProps) {
                 return (
                     <div className="w-full px-4 py-6 flex flex-col items-center gap-4 text-center">
 
-                        <div className="flex flex-wrap justify-center gap-3">
+                        <div className="flex flex-col w-full max-w-lg mx-auto gap-4">
                             <GenericButton label={label} href={href} variant={variant as any} />
                         </div>
                     </div>

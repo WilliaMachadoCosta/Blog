@@ -142,9 +142,9 @@ export default function RootLayout({
           <Header />
         </div>
 
-        <div className="flex flex-1 pt-[60px] pb-[50px] h-full bg-neutral-100 overflow-x-hidden" style={{ position: 'relative', zIndex: 2 }}>
+        <div className="flex flex-1 pt-[10px] pb-[10px] h-full bg-neutral-100 overflow-x-hidden" style={{ position: 'relative', zIndex: 2 }}>
           <main className="flex-1 overflow-y-auto overflow-x-hidden px-2 sm:px-4 bg-[#f5f3ef] pb-28 max-w-full" style={{ position: 'relative', zIndex: 3 }}>
-            <div className="max-w-full overflow-hidden">
+            <div className="max-w-full overflow-hid5en">
               {children}
             </div>
           </main>

@@ -4,39 +4,37 @@ import parse, { domToReact, HTMLReactParserOptions } from "html-react-parser";
 import { GenericButton } from "../buttons/genericButton";
 import LazyYouTube from "../media/LazyYouTube";
 import GoogleAd from "../banner/google-ads";
-import ScrollIndicator from "../buttons/scrollIndicador";
 
 interface PostContentProps {
     html: string;
 }
 
 export function PostContent({ html }: PostContentProps) {
-    let adInserted = false;
+    let paragraphCount = 0; // contador de <p>
 
     const options: HTMLReactParserOptions = {
         replace: (domNode: any) => {
             if (domNode.type !== "tag") return;
 
-            // ✅ Insere anúncio após o primeiro <p>
-            if (!adInserted && domNode.name === "p") {
-                adInserted = true;
-                return (
-                    <>
-                        {domToReact(domNode.children, options)}
-                        <div className="flex items-center gap-2 mt-6 text-gray-700 animate-bounce">
-                            <ScrollIndicator />
-                        </div>
-                        {/* <div className="my-6 max-w-2xl mx-auto w-full h-[200px] rounded-lg relative">
-                            <div className="flex justify-center">
-                                <GoogleAd className="my-9" />
+            // ✅ Insere anúncio após o 2º <p>
+            if (domNode.name === "p") {
+                paragraphCount++;
+                if (paragraphCount === 2) {
+                    return (
+                        <>
+                            {domToReact(domNode.children, options)}
+
+                            <div className="my-6 max-w-2xl mx-auto w-full h-[150px] rounded-lg relative">
+                                <div className="flex justify-center">
+                                    <GoogleAd className="my-1" />
+                                </div>
                             </div>
-                        </div> */}
-                        <GoogleAd className="my-9" />
-                    </>
-                );
+                        </>
+                    );
+                }
             }
 
-            // ✅ Substitui <custom-button> por layout limpo com botões alinhados
+            // ✅ Substitui <custom-button>
             if (domNode.name === "custom-button") {
                 const label = domNode.attribs["data-label"] || "Botão";
                 const href = domNode.attribs["data-href"] || "#";
@@ -44,7 +42,6 @@ export function PostContent({ html }: PostContentProps) {
 
                 return (
                     <div className="w-full px-4 py-6 flex flex-col items-center gap-4 text-center">
-
                         <div className="flex flex-col w-full max-w-lg mx-auto gap-4">
                             <GenericButton label={label} href={href} variant={variant as any} />
                         </div>

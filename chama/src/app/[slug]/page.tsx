@@ -184,8 +184,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         />
       )}
 
-      {/* Conteúdo */}
-      <div className="my-6 max-w-2xl mx-auto w-full h-[200px] rounded-lg relative">
+      <div className="my-1 max-w-2xl mx-auto w-full h-[150px] rounded-lg relative">
         <div className="flex justify-center">
           <GoogleAd className="my-9" />
         </div>
@@ -194,16 +193,16 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       <article className="bg-white max-w-2xl mx-auto rounded-xl shadow-md p-3 sm:p-4 md:p-6 space-y-4 sm:space-y-6 overflow-hidden">
         <SubHeaderClient company={company} />
         <h1
-          className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight text-black break-words"
+          className="text-xl sm:text-2xl md:text-2xl font-semibold leading-tight text-black break-words"
           dangerouslySetInnerHTML={{ __html: post.title }}
         />
+
+        <PostContent html={sanitizeHtml(post.content)} />
+        <ShareButtons />
         <p className="text-xs sm:text-sm text-neutral-900">
           Publicado em <time dateTime={post.date}>{formattedDate}</time> por{" "}
           <span className="font-medium">{post.author}</span>
         </p>
-
-        <PostContent html={sanitizeHtml(post.content)} />
-        <ShareButtons />
       </article>
 
       <PostDataInitializer

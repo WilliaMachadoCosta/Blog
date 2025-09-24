@@ -147,7 +147,7 @@ export async function getAllPosts(): Promise<IPost[]> {
 
 export async function getAllForSitemap(): Promise<IPost[]> {
   try {
-    const perPage = 100;
+    const perPage = 10;
     let page = 1;
     let allPosts: IPost[] = [];
     let totalPages = 1;

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { BookOpen, Calendar, User, ArrowRight, MessageCircle } from 'lucide-react';
 import { IPost } from '@/models/interfaces/post';
-import { getAllPosts, getPostsByCategorySlug } from '@/services/postServices';
+import { getAllPosts, getAllPostsExcetoNoticias, getPostsByCategorySlug } from '@/services/postServices';
 
 // Função para buscar posts recentes das categorias definidas
 async function getRecentBlogPosts(): Promise<IPost[]> {
@@ -10,7 +10,7 @@ async function getRecentBlogPosts(): Promise<IPost[]> {
 
 
         // Combinar todos os posts e remover duplicatas
-        const allPosts = await getAllPosts();
+        const allPosts = await getAllPostsExcetoNoticias();
         const uniquePosts = allPosts.filter((post, index, self) =>
             index === self.findIndex(p => p.id === post.id)
         );

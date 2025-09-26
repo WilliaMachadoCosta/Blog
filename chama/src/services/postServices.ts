@@ -132,6 +132,44 @@ export async function getPostsByIds(ids: number[]): Promise<IPost[]> {
   }
 }
 
+
+
+export async function getAllPostsExcetoNoticias(): Promise<IPost[]> {
+  try {
+    const [postsData, categoriesData] = await Promise.all([
+      fetchJson(`${API_BASE}/posts?_embed&orderby=date&order=desc&per_page=20`),
+      getCategories()
+    ]);
+
+    const categoriesMap = new Map<number, string>();
+    categoriesData.forEach((cat: ICategory) => {
+      categoriesMap.set(cat.id, cat.name);
+    });
+
+    // Mapeia os posts
+    const mappedPosts = postsData.map((post: WordPressPost) => {
+      const mapped = mapPost(post);
+      return {
+        ...mapped,
+        categoryNames: mapped.categories.map(
+          catId => categoriesMap.get(catId) ?? "Sem categoria"
+        )
+      };
+    });
+
+    // 🔎 Filtra fora os posts que tenham a categoria ID 1941 (Notícia)
+    const filteredPosts = mappedPosts.filter((post: IPost) =>
+      !post.categories.includes(1941)
+    );
+
+
+    return filteredPosts;
+  } catch (err) {
+    console.error("Erro em getAllPosts:", err);
+    return [];
+  }
+}
+
 export async function getAllPosts(): Promise<IPost[]> {
   try {
     const [postsData, categoriesData] = await Promise.all([

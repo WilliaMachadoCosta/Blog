@@ -33,9 +33,6 @@ const fetchJson = async (url: string, useCache = true, retryCount = 0) => {
     }
   }
 
-  // Fazer requisição à API com timeout
-  console.log(`Fetching from API: ${url} (attempt ${retryCount + 1}/${maxRetries + 1})`);
-
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 segundos timeout
 
@@ -137,10 +134,41 @@ export async function getPostsByIds(ids: number[]): Promise<IPost[]> {
 
 export async function getAllPosts(): Promise<IPost[]> {
   try {
-    const data = await fetchJson(`${API_BASE}/posts?_embed&orderby=date&order=desc&per_page=20`);
-    return data.map(mapPost);
+    const [postsData, categoriesData] = await Promise.all([
+      fetchJson(`${API_BASE}/posts?_embed&orderby=date&order=desc&per_page=20`),
+      getCategories()
+    ]);
+
+    const categoriesMap = new Map<number, string>();
+    categoriesData.forEach((cat: ICategory) => {
+      categoriesMap.set(cat.id, cat.name);
+    });
+
+    return postsData.map((post: WordPressPost) => {
+      const mapped = mapPost(post);
+      return {
+        ...mapped,
+        categoryNames: mapped.categories.map(catId => categoriesMap.get(catId) ?? "Sem categoria")
+      };
+    });
   } catch (err) {
     console.error("Erro em getAllPosts:", err);
+    return [];
+  }
+}
+
+
+export interface ICategory {
+  id: number;
+  name: string;
+  slug: string;
+}
+
+export async function getCategories(): Promise<ICategory[]> {
+  try {
+    return await fetchJson(`${API_BASE}/categories?per_page=100`);
+  } catch (err) {
+    console.error("Erro em getCategories:", err);
     return [];
   }
 }
@@ -241,6 +269,37 @@ export async function getPostsByCategory(categoryId: number): Promise<IPost[]> {
   }
 }
 
+// retorna posts + totalPages (WordPress envia no header X-WP-TotalPages)
+export async function getPostsPaginatedByCategory(
+  categoryId: number,
+  page = 1,
+  perPage = 10
+): Promise<{ posts: IPost[]; totalPages: number; total: number }> {
+  try {
+    const url = `${API_BASE}/posts?categories=${categoryId}&_embed&orderby=date&order=desc&page=${page}&per_page=${perPage}`;
+    const res = await fetch(url, { next: { revalidate: 86400 } });
+
+    if (!res.ok) {
+      console.error("[getPostsPaginatedByCategory] HTTP error", res.status);
+      return { posts: [], totalPages: 1, total: 0 };
+    }
+
+    const data = await res.json();
+    const totalPages = parseInt(res.headers.get("X-WP-TotalPages") ?? "1", 10);
+    const total = parseInt(res.headers.get("X-WP-Total") ?? "0", 10);
+
+    return {
+      posts: Array.isArray(data) ? data.map(mapPost) : [],
+      totalPages: isNaN(totalPages) ? 1 : totalPages,
+      total: isNaN(total) ? 0 : total,
+    };
+  } catch (err) {
+    console.error("[getPostsPaginatedByCategory] erro:", err);
+    return { posts: [], totalPages: 1, total: 0 };
+  }
+}
+
+
 export async function getPostsByCategorySlug(categorySlug: string): Promise<IPost[]> {
   try {
     // Primeiro, buscar a categoria pelo slug para obter o ID
@@ -252,7 +311,6 @@ export async function getPostsByCategorySlug(categorySlug: string): Promise<IPos
     }
 
     const categoryId = categoryResponse[0].id;
-    console.log(`Buscando posts para categoria ID: ${categoryId} (slug: ${categorySlug})`);
 
     // Agora buscar os posts usando o ID da categoria
     const data = await fetchJson(`${API_BASE}/posts?categories=${categoryId}&_embed&orderby=date&order=desc`);
@@ -289,11 +347,9 @@ export async function searchPosts(query: string): Promise<IPost[]> {
 
   try {
     const searchQuery = encodeURIComponent(query.trim());
-    console.log('Buscando posts com query:', searchQuery);
 
     // Usar API route local para evitar CORS
     const url = `/api/posts/search?q=${searchQuery}`;
-    console.log('URL da busca local:', url);
 
     const response = await fetch(url);
 
@@ -302,7 +358,6 @@ export async function searchPosts(query: string): Promise<IPost[]> {
     }
 
     const data = await response.json();
-    console.log('Resultados da busca:', data?.length || 0, 'posts encontrados');
 
     if (!Array.isArray(data)) {
       console.error('Resposta da API não é um array:', data);
@@ -347,6 +402,8 @@ function mapPost(post: WordPressPost): IPost {
     featuredImage: fixDomain(post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ?? "/fallback.jpg"),
     author: post._embedded?.author?.[0]?.name ?? "William M.",
     categories: Array.isArray(post.categories) ? post.categories : [],
+    categoryNames: post._embedded?.["wp:term"]?.[0]?.map((c: any) => c.name) ?? [],
+    categorySlugs: post._embedded?.["wp:term"]?.[0]?.map((c: any) => c.slug) ?? [],
     modified: post.modified,
     comments: [],
   };

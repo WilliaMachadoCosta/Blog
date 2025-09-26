@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { BookOpen, Calendar, User, ArrowRight, MessageCircle } from 'lucide-react';
 import { IPost } from '@/models/interfaces/post';
 import { getAllPosts, getPostsByCategorySlug } from '@/services/postServices';
-import { getAllCategories } from '@/services/categoryServices';
 
 // Função para buscar posts recentes das categorias definidas
 async function getRecentBlogPosts(): Promise<IPost[]> {

@@ -1,26 +1,29 @@
+// types (exemplo)
 export interface ICategory {
   id: number;
   name: string;
   slug: string;
-  description: string;
-  count: number;
+  // ... outros campos que você usa
 }
+const API_BASE = "https://api.chamanozap.net/wp-json/wp/v2";
+export async function getAllCategoryBySlug(slug: string): Promise<ICategory | null> {
+  try {
+    const url = `${API_BASE}/categories?slug=${encodeURIComponent(slug)}`;
+    const res = await fetch(url, { next: { revalidate: 86400 } }); // ajusta cache se quiser
+    if (!res.ok) {
+      console.error("[getCategoryBySlug] HTTP error", res.status);
+      return null;
+    }
 
-// Importar categorias do arquivo JSON
-import categoriesConfig from '@/config/categories.json';
+    const data = await res.json();
+    if (!Array.isArray(data) || data.length === 0) {
+      console.log(`[getCategoryBySlug] Categoria não encontrada: ${slug}`);
+      return null;
+    }
 
-const categoriesData: ICategory[] = categoriesConfig.categories;
-
-export function getAllCategories(): ICategory[] {
-  return categoriesData;
+    return data[0] as ICategory;
+  } catch (err) {
+    console.error("[getCategoryBySlug] erro:", err);
+    return null;
+  }
 }
-
-export function getCategoryBySlug(slug: string): ICategory | null {
-  const category = categoriesData.find(cat => cat.slug === slug);
-  return category || null;
-}
-
-export function getCategoryById(id: number): ICategory | null {
-  const category = categoriesData.find(cat => cat.id === id);
-  return category || null;
-} 

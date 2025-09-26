@@ -8,8 +8,18 @@ export interface IPost {
   featuredImage: string;
   author: string;
   categories: number[];
+  categoryNames?: string[]; // ← nomes já prontos
+  categorySlugs: string[];
   modified: string;
   comments?: any[];
+}
+
+
+export interface WordPressCategory {
+  id: number;
+  name: string;
+  slug: string;
+  taxonomy: string;
 }
 
 export interface WordPressPost {
@@ -24,5 +34,7 @@ export interface WordPressPost {
   _embedded?: {
     author?: { name: string }[];
     "wp:featuredmedia"?: { source_url: string }[];
+    "wp:term"?: WordPressCategory[][]; // 👈 adiciona isso
   };
 }
+

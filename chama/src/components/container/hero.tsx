@@ -59,7 +59,7 @@ export default async function HeroHeader() {
                                     <Link
                                         key={posts[0].categorySlugs[idx]}
                                         href={`/categoria/${posts[0].categorySlugs[idx]}`}
-                                        className="inline-block text-xs font-semibold text-white bg-red-600 px-2 py-1 rounded-md mb-2 hover:bg-red-700 transition"
+                                        className="inline-block text-xs font-semibold text-white bg-green-600 px-2 py-1 rounded-md mb-2 hover:bg-red-700 transition"
                                     >
                                         {cat}
                                     </Link>
@@ -90,7 +90,7 @@ export default async function HeroHeader() {
                                     <Link
                                         key={post.categorySlugs[idx]}
                                         href={`/categoria/${post.categorySlugs[idx]}`}
-                                        className="inline-block text-xs font-semibold text-white bg-red-600 px-2 py-1 rounded-md mb-2 hover:bg-red-700 transition"
+                                        className="inline-block text-xs font-semibold text-white bg-green-600 px-2 py-1 rounded-md mb-2 hover:bg-green-700 transition"
                                     >
                                         {cat}
                                     </Link>

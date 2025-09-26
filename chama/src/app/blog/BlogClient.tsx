@@ -11,10 +11,9 @@ import { SpinLoader } from "@/components/SpinLoad/SpinLoader";
 
 interface BlogClientProps {
   initialPosts: IPost[];
-  categories: ICategory[];
 }
 
-export default function BlogClient({ initialPosts, categories }: BlogClientProps) {
+export default function BlogClient({ initialPosts }: BlogClientProps) {
   const [posts, setPosts] = useState<IPost[]>(initialPosts);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
@@ -63,9 +62,9 @@ export default function BlogClient({ initialPosts, categories }: BlogClientProps
     });
   };
 
-  const selectedCategoryName = selectedCategory
-    ? categories.find(cat => cat.slug === selectedCategory)?.name
-    : "Todas as categorias";
+  // const selectedCategoryName = selectedCategory
+  //   ? categories.find(cat => cat.slug === selectedCategory)?.name
+  //   : "Todas as categorias";
 
   return (
     <div className="space-y-6">
@@ -107,7 +106,7 @@ export default function BlogClient({ initialPosts, categories }: BlogClientProps
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors min-w-[200px] justify-between"
             >
-              <span className="text-gray-900">{selectedCategoryName}</span>
+              {/* <span className="text-gray-900">{selectedCategoryName}</span> */}
               <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
             </button>
 
@@ -121,16 +120,16 @@ export default function BlogClient({ initialPosts, categories }: BlogClientProps
                   <div className="text-sm text-gray-500">Ver todos os posts</div>
                 </button>
 
-                {categories.map((category) => (
+                {/* {categories.map((category) => (
                   <button
                     key={category.slug}
                     onClick={() => handleCategoryFilter(category.slug)}
                     className="w-full px-4 py-2 text-left hover:bg-gray-100 transition-colors border-b border-gray-100 last:border-b-0"
                   >
                     <div className="font-medium text-gray-900">{category.name}</div>
-                    <div className="text-sm text-gray-500">{category.description}</div>
+                    <div className="text-sm text-gray-500">{category.name}</div>
                   </button>
-                ))}
+                ))} */}
               </div>
             )}
           </div>
@@ -142,7 +141,7 @@ export default function BlogClient({ initialPosts, categories }: BlogClientProps
             <div className="flex items-center gap-2">
               <Tag className="w-4 h-4 text-green-600" />
               <span className="text-green-800 font-medium">
-                Mostrando posts da categoria: {selectedCategoryName}
+                {/* Mostrando posts da categoria: {selectedCategoryName} */}
               </span>
               <button
                 onClick={() => handleCategoryFilter("")}
@@ -169,7 +168,7 @@ export default function BlogClient({ initialPosts, categories }: BlogClientProps
             </h3>
             <p className="text-gray-600 mb-4">
               {selectedCategory
-                ? `Não há posts disponíveis na categoria "${selectedCategoryName}" no momento.`
+                ? `Não há posts disponíveis na categoria "" no momento.`
                 : "Não há posts disponíveis no momento."
               }
             </p>

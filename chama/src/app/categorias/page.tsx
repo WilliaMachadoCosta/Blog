@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { getAllCategories } from "@/services/categoryServices";
 import { Tag, ArrowRight, BookOpen } from "lucide-react";
 import type { Metadata } from "next";
+import { getAllCategories, ICategory } from "@/services/categoryServices";
 
 export const metadata: Metadata = {
   title: "Categorias | Blog",
@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 };
 
 export default async function CategoriesPage() {
-  const categories = getAllCategories();
 
+  const categories: ICategory[] = await getAllCategories();
   return (
     <main className="min-h-screen bg-[#f5f3ef] py-4 sm:py-6 px-2 sm:px-4">
       <div className="max-w-4xl mx-auto">
@@ -51,7 +51,7 @@ export default async function CategoriesPage() {
                 </div>
                 <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-green-600 group-hover:translate-x-1 transition-all" />
               </div>
-              
+
               {category.description && (
                 <p className="text-gray-600 text-sm leading-relaxed">
                   {category.description}

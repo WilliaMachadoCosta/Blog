@@ -20,15 +20,13 @@ export function PostContent({ html }: PostContentProps) {
             // ✅ Insere anúncio a cada 2 parágrafos
             if (domNode.name === "p") {
                 paragraphCount++;
-                if (paragraphCount % 3 === 0) {
+                if (paragraphCount % 4 === 0) {
                     return (
                         <>
                             {domToReact(domNode.children, options)}
-
-                            <div className="my-6 max-w-2xl mx-auto w-full rounded-lg relative z-50">
+                            <div className="my-6 max-w-2xl mx-auto w-full rounded-lg relative z-50 min-h-[300px]">
                                 <GoogleAdsense slot="9365926617" format="horizontal" />
                             </div>
-
                         </>
                     );
                 }

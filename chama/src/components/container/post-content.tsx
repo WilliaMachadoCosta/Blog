@@ -16,10 +16,10 @@ export function PostContent({ html }: PostContentProps) {
         replace: (domNode: any) => {
             if (domNode.type !== "tag") return;
 
-            // ✅ Insere anúncio após o 2º <p>
+            // ✅ Insere anúncio a cada 2 parágrafos
             if (domNode.name === "p") {
                 paragraphCount++;
-                if (paragraphCount === 2) {
+                if (paragraphCount % 2 === 0) {
                     return (
                         <>
                             {domToReact(domNode.children, options)}

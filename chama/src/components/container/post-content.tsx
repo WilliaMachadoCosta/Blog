@@ -4,6 +4,7 @@ import parse, { domToReact, HTMLReactParserOptions } from "html-react-parser";
 import { GenericButton } from "../buttons/genericButton";
 import LazyYouTube from "../media/LazyYouTube";
 import GoogleAd from "../banner/google-ads";
+import GoogleAdsense from "../banner/googleAdsense";
 
 interface PostContentProps {
     html: string;
@@ -24,11 +25,10 @@ export function PostContent({ html }: PostContentProps) {
                         <>
                             {domToReact(domNode.children, options)}
 
-                            <div className="my-6 max-w-2xl mx-auto w-full h-[150px] rounded-lg relative">
-                                <div className="flex justify-center">
-                                    <GoogleAd className="my-1" />
-                                </div>
+                            <div className="my-6 max-w-2xl mx-auto w-full h-[200px] rounded-lg relative bg-gray-100 z-50">
+                                <GoogleAdsense slot="9365926617" format="horizontal" />
                             </div>
+
                         </>
                     );
                 }

@@ -20,7 +20,7 @@ export function PostContent({ html }: PostContentProps) {
             // ✅ Insere anúncio a cada 2 parágrafos
             if (domNode.name === "p") {
                 paragraphCount++;
-                if (paragraphCount % 2 === 0) {
+                if (paragraphCount % 3 === 0) {
                     return (
                         <>
                             {domToReact(domNode.children, options)}

@@ -40,16 +40,17 @@ export default function GoogleAdsense({ className = '', slot, format = 'auto' }:
             <div
                 ref={adRef}
                 className={className}
-                style={{ display: 'block', width: '100%', margin: '1rem 0' }}
+                style={{ display: 'block', width: '100%', margin: '1rem 0', minHeight: '300px' }}
             >
                 <ins
                     className="adsbygoogle"
-                    style={{ display: 'block', width: '100%' }}
+                    style={{ display: 'block', width: '100%', height: '100%' }}
                     data-ad-client="ca-pub-5074393689985715"
                     data-ad-slot={slot}
                     data-ad-format={format}
                 />
             </div>
+
         </>
     );
 }

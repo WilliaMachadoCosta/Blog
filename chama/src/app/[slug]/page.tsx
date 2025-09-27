@@ -8,6 +8,7 @@ import { extractCompanyData } from "@/components/container/companyData";
 import SubHeaderClient from "@/components/header/sub-header-client";
 import GoogleAd from "@/components/banner/google-ads";
 import PostDataInitializer from "@/components/container/postdata";
+import GoogleAdRelaxed from "@/components/banner/googleRelaxed";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -203,6 +204,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           Publicado em <time dateTime={post.date}>{formattedDate}</time> por{" "}
           <span className="font-medium">{post.author}</span>
         </p>
+        {/* anúncio relaxado no final */}
+        <GoogleAdRelaxed className="max-w-3xl mx-auto" />
       </article>
 
       <PostDataInitializer

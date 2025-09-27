@@ -15,7 +15,7 @@ interface GoogleAdProps {
     format?: string;   // <--- adicionado
 }
 
-export default function GoogleAd({ className = '', slot, format = 'auto' }: GoogleAdProps) {
+export default function GoogleAdsense({ className = '', slot, format = 'auto' }: GoogleAdProps) {
     const adRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {

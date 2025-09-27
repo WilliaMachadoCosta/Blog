@@ -9,6 +9,7 @@ import SubHeaderClient from "@/components/header/sub-header-client";
 import GoogleAd from "@/components/banner/google-ads";
 import PostDataInitializer from "@/components/container/postdata";
 import GoogleAdRelaxed from "@/components/banner/googleRelaxed";
+import GoogleAdsense from "@/components/banner/googleAdsense";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -191,22 +192,39 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         </div>
       </div>
 
-      <article className="bg-white max-w-2xl mx-auto rounded-xl shadow-md p-3 sm:p-4 md:p-6 space-y-4 sm:space-y-6 overflow-hidden">
-        <SubHeaderClient company={company} />
-        <h1
-          className="text-xl sm:text-2xl md:text-2xl font-semibold leading-tight text-black break-words"
-          dangerouslySetInnerHTML={{ __html: post.title }}
-        />
+      {/* corpo */}
+      <div className="flex justify-center w-full px-4 lg:px-0">
+        <div className="flex w-full max-w-[1600px] gap-4">
+          {/* Anúncio esquerda */}
+          <aside className="hidden lg:block w-[300px] flex-shrink-0">
+            <GoogleAdsense slot="0987654321" className="w-[300px] h-[600px] mx-auto" />
+          </aside>
 
-        <PostContent html={sanitizeHtml(post.content)} />
-        <ShareButtons />
-        <p className="text-xs sm:text-sm text-neutral-900">
-          Publicado em <time dateTime={post.date}>{formattedDate}</time> por{" "}
-          <span className="font-medium">{post.author}</span>
-        </p>
-        {/* anúncio relaxado no final */}
-        <GoogleAdRelaxed className="max-w-3xl mx-auto" />
-      </article>
+          {/* Conteúdo principal */}
+          <article className="flex-1 bg-white rounded-xl shadow-md p-6 lg:p-10 space-y-6 max-w-[900px] mx-auto">
+            <SubHeaderClient company={company} />
+            <h1
+              className="text-2xl md:text-3xl font-semibold leading-tight text-black text-center"
+              dangerouslySetInnerHTML={{ __html: post.title }}
+            />
+            <PostContent html={sanitizeHtml(post.content)} />
+            <ShareButtons />
+            <p className="text-xs sm:text-sm text-neutral-900 text-center">
+              Publicado em <time dateTime={post.date}>{formattedDate}</time> por{" "}
+              <span className="font-medium">{post.author}</span>
+            </p>
+            <GoogleAdRelaxed className="w-full mx-auto" />
+          </article>
+
+          {/* Anúncio direita */}
+          <aside className="hidden lg:block w-[300px] flex-shrink-0">
+            <GoogleAdsense slot="0987654321" className="w-[300px] h-[600px] mx-auto" />
+          </aside>
+        </div>
+      </div>
+
+
+      {/* corpo */}
 
       <PostDataInitializer
         titulo={cleanTitle}

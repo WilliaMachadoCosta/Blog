@@ -39,8 +39,8 @@ export default function GoogleAdsense({ className = '', slot, format = 'auto' }:
 
             <div
                 ref={adRef}
-                className={`flex justify-center items-center ${className}`}
-                style={{ zIndex: 50, overflow: 'visible' }}
+                className={className}
+                style={{ display: 'block', width: '100%', margin: '1rem 0' }}
             >
                 <ins
                     className="adsbygoogle"

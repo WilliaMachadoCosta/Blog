@@ -197,7 +197,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         <div className="flex w-full max-w-[1600px] gap-4">
           {/* Anúncio esquerda */}
           <aside className="hidden lg:block w-[300px] flex-shrink-0">
-            <GoogleAdsense slot="0987654321" className="w-[300px] h-[600px] mx-auto" />
+            <GoogleAdsense slot="0987654321" className="w-[160px]" />
           </aside>
 
           {/* Conteúdo principal */}
@@ -218,7 +218,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
           {/* Anúncio direita */}
           <aside className="hidden lg:block w-[300px] flex-shrink-0">
-            <GoogleAdsense slot="0987654321" className="w-[300px] h-[600px] mx-auto" />
+            <GoogleAdsense slot="0987654321" className="w-[160px]" />
           </aside>
         </div>
       </div>

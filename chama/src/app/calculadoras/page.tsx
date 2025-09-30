@@ -1,6 +1,7 @@
 // app/calculadoras/page.tsx
 "use client";
 
+import GoogleAd from "@/components/banner/google-ads";
 import Head from "next/head";
 import Link from "next/link";
 
@@ -44,6 +45,8 @@ export default function CalculadorasPage() {
                     }}
                 />
             </Head>
+
+            <GoogleAd></GoogleAd>
 
             <main className="min-h-screen  bg-gradient-to-b from-purple-100 pt-20 to-purple-50 p-6 gap-6">
                 <div className="max-w-6xl mx-auto gap-6">

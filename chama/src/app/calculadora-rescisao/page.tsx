@@ -32,7 +32,7 @@ export default function CalculadoraRescisaoGame() {
                 <title>Calculadora de Rescisão Trabalhista 🎰 | Chama no Zap</title>
                 <meta name="description" content="Use nossa calculadora de rescisão trabalhista e descubra quanto você tem direito: FGTS, férias, 13º, saldo de salário e multa de 40%." />
                 <meta name="keywords" content="calculadora rescisão, calcular rescisão trabalhista, simulação rescisão, FGTS, férias, 13º salário" />
-                <link rel="canonical" href="https://chamanozap.net/calculadora-recisao" />
+                <link rel="canonical" href="https://chamanozap.net/calculadora-rescisao" />
             </Head>
 
             <div className="max-w-5xl mx-auto mt-6 sm:mt-8">

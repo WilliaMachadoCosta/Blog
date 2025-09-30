@@ -211,6 +211,7 @@ export async function getCategories(): Promise<ICategory[]> {
   }
 }
 
+
 export async function getAllForSitemap(): Promise<IPost[]> {
   try {
     const perPage = 10;
@@ -220,7 +221,10 @@ export async function getAllForSitemap(): Promise<IPost[]> {
 
     do {
       const res = await fetch(
-        `${API_BASE}/posts?_embed&orderby=date&order=desc&per_page=${perPage}&page=${page}`
+        `${API_BASE}/posts?_embed&orderby=date&order=desc&per_page=${perPage}&page=${page}`,
+        {
+          cache: "no-store", // 👈 garante runtime, sem cache no build
+        }
       );
 
       if (!res.ok) {
@@ -230,9 +234,7 @@ export async function getAllForSitemap(): Promise<IPost[]> {
       const data = await res.json();
 
       // headers retornados pelo WP
-      const total = res.headers.get("X-WP-Total");
       const totalPagesHeader = res.headers.get("X-WP-TotalPages");
-
       if (totalPagesHeader) {
         totalPages = parseInt(totalPagesHeader, 10);
       }
@@ -247,6 +249,7 @@ export async function getAllForSitemap(): Promise<IPost[]> {
     return [];
   }
 }
+
 
 
 export async function getCompanyPosts(): Promise<IPost[]> {

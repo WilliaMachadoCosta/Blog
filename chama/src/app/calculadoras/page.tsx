@@ -46,9 +46,12 @@ export default function CalculadorasPage() {
                 />
             </Head>
 
-            <GoogleAd></GoogleAd>
+
 
             <main className="min-h-screen  bg-gradient-to-b from-purple-100 pt-20 to-purple-50 p-6 gap-6">
+                <div className="flex justify-center">
+                    <GoogleAd className="my-9" />
+                </div>
                 <div className="max-w-6xl mx-auto gap-6">
                     <h1 className="text-4xl font-bold mb-6 text-center text-gray-900">
                         Calculadoras ChamanoZap
@@ -73,6 +76,8 @@ export default function CalculadorasPage() {
                         ))}
                     </div>
                 </div>
+
+                <GoogleAd className="my-80" />
             </main>
         </>
     );

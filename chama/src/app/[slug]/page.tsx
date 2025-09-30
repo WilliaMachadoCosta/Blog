@@ -193,7 +193,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       </div>
 
       {/* corpo */}
-      <div className="flex justify-center w-full px-4 lg:px-0">
+      <div className="flex justify-center ">
         <div className="flex w-full max-w-[1600px] gap-4">
           {/* Anúncio esquerda */}
           <aside className="hidden lg:block w-[400px] flex-shrink-0">
@@ -201,7 +201,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           </aside>
 
           {/* Conteúdo principal */}
-          <article className="flex-1 bg-white rounded-xl shadow-md p-6 lg:p-10 space-y-6 max-w-[900px] mx-auto">
+          <article className="flex-1 bg-white  p-6 lg:p-10  max-w-[900px] mx-auto">
             <SubHeaderClient company={company} />
             <h1
               className="text-2xl md:text-3xl font-semibold leading-tight text-black text-center"

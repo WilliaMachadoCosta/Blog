@@ -129,7 +129,7 @@ export default function RootLayout({
                   "@type": "SiteNavigationElement",
                   "position": 5,
                   "name": "Categorias",
-                  "url": "https://chamanozap.net/categorias"
+                  "url": "https://chamanozap.net/calculadoras"
                 }
               ]
             }

@@ -1,5 +1,5 @@
 'use client'
-import { Search, MoreVertical, X, Camera } from "lucide-react";
+import { Search, MoreVertical, X, Camera, CalculatorIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import CompanyLogo from "../company/companyLogo";
@@ -93,28 +93,38 @@ export default function Header() {
             </div>
 
             {/* Menu de Navegação */}
-            <nav className="flex items-center gap-6 w-full justify-center md:justify-center">
+            <nav className="flex items-center gap-3 w-full justify-center md:justify-center">
                 <Link href="/" className="font-semibold text-sm sm:text-base hover:text-green-600 transition-colors">
                     Início
                 </Link>
-                <Link href="/categorias" className="font-semibold text-sm sm:text-base hover:text-green-600 transition-colors">
+                {/* <Link href="/categorias" className="font-semibold text-sm sm:text-base hover:text-green-600 transition-colors">
                     Categorias
-                </Link>
+                </Link> */}
                 <Link href="/blog" className="font-semibold text-sm sm:text-base hover:text-green-600 transition-colors">
                     Blog
                 </Link>
+                <Link
+                    href="/calculadoras"
+                    className="flex items-center gap-2 font-semibold text-sm sm:text-base hover:text-green-600 transition-colors"
+                >
+                    <CalculatorIcon className="w-3 h-4" />
+                    <span>Calculadoras</span>
+                </Link>
+
+
+                {/* nao remover ate desfazer toda a implementacao */}
                 <button
                     aria-label="Compartilhar com foto"
                     onClick={handleOpenGenerator}
                     className="flex items-center gap-2 px-4 py-2 text-black rounded hover:bg-gray-70o"
                 >
-                    <Camera className="w-4 h-4" />
+
 
                 </button>
             </nav>
 
             {/* Ícones */}
-            <div className="flex items-center gap-3 sm:gap-5">
+            <div className="flex items-center gap-2 sm:gap-5">
                 {/* Caixa de Pesquisa */}
                 {isSearchOpen && (
                     <div className="absolute top-full left-0 right-0 bg-white shadow-lg border-t border-gray-200 z-50 p-2 sm:p-4">

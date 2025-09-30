@@ -1,5 +1,4 @@
-import { Metadata, MetadataRoute } from "next";
-import { userAgent } from "next/server";
+import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -7,10 +6,9 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: ["/", "/public/"],
-        disallow: ["/admin"]
-
-      }
+        disallow: ["/wp-admin/", "/wp-login.php"],
+      },
     ],
-    sitemap: "https://chamanozap.net/sitemap.xml"
-  }
+    sitemap: "https://chamanozap.net/sitemap.xml",
+  };
 }

@@ -25,7 +25,7 @@ export function PostContent({ html }: PostContentProps) {
                         <>
                             {domToReact(domNode.children, options)}
                             <div className="my-6 max-w-2xl mx-auto w-full rounded-lg relative z-50 min-h-[300px]">
-                                <GoogleAdsense slot="9365926617" format="horizontal" />
+                                <GoogleAd />
                             </div>
                         </>
                     );

@@ -6,7 +6,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const currentDate = new Date();
 
   const posts = await getAllForSitemap();
-  console.log(posts);
+
   // Rotas fixas
   const staticRoutes: MetadataRoute.Sitemap = [
     {

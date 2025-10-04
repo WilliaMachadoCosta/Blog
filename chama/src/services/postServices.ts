@@ -214,7 +214,7 @@ export async function getCategories(): Promise<ICategory[]> {
 
 export async function getAllForSitemap(): Promise<IPost[]> {
   try {
-    const perPage = 10;
+    const perPage = 50; // pode aumentar um pouco para reduzir requests
     let page = 1;
     let allPosts: IPost[] = [];
     let totalPages = 1;
@@ -223,7 +223,8 @@ export async function getAllForSitemap(): Promise<IPost[]> {
       const res = await fetch(
         `${API_BASE}/posts?_embed&orderby=date&order=desc&per_page=${perPage}&page=${page}`,
         {
-          cache: "no-store", // 👈 garante runtime, sem cache no build
+          next: { revalidate: 0 }, // 👈 nunca cachear
+          cache: "no-store",
         }
       );
 

@@ -38,6 +38,16 @@ const calculadoras = [
         textColor: "text-green-700",
         emoji: "📈"
     },
+    {
+        title: "Preço Justo de Ações",
+        description: "Descubra o valor real de qualquer ação e identifique oportunidades de investimento.",
+        url: "/calculadora-preco-justo-acoes",
+        icon: BarChart3,
+        color: "from-blue-500 to-indigo-500",
+        bgColor: "bg-blue-50",
+        textColor: "text-blue-700",
+        emoji: "🎯"
+    },
 ];
 
 export default function CalculadorasPage() {
@@ -87,7 +97,7 @@ export default function CalculadorasPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="text-lg sm:text-xl text-yellow-200 max-w-3xl mx-auto"
+                        className="text-lg sm:text-xl text-white max-w-3xl mx-auto font-medium"
                     >
                         Ferramentas práticas para cálculos trabalhistas e financeiros. 
                         Simule, calcule e planeje seu futuro com nossas calculadoras gratuitas!

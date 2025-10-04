@@ -97,18 +97,15 @@ export default function Header() {
                 <Link href="/" className="font-semibold text-sm sm:text-base hover:text-green-600 transition-colors">
                     Início
                 </Link>
-                {/* <Link href="/categorias" className="font-semibold text-sm sm:text-base hover:text-green-600 transition-colors">
-                    Categorias
-                </Link> */}
+                <Link href="/mensagens" className="font-semibold text-sm sm:text-base hover:text-green-600 transition-colors">
+                    Mensagens
+                </Link>
                 <Link href="/blog" className="font-semibold text-sm sm:text-base hover:text-green-600 transition-colors">
                     Blog
                 </Link>
                 <Link
-                    href="/calculadoras"
-                    className="flex items-center gap-2 font-semibold text-sm sm:text-base hover:text-green-600 transition-colors"
-                >
-                    <CalculatorIcon className="w-3 h-4" />
-                    <span>Calculadoras</span>
+                    href="/calculadoras" className="flex items-center gap-2 font-semibold text-sm sm:text-base hover:text-green-600 transition-colors" >
+                    Calculadoras
                 </Link>
 
 

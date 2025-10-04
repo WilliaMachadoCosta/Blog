@@ -44,7 +44,7 @@ export default function CalculadoraRescisaoGame() {
                         Calculadora de Rescisão
                         <PartyPopper className="w-6 h-6 sm:w-8 sm:h-8 text-pink-200" />
                     </h1>
-                    <p className="flex items-center gap-2 text-sm sm:text-base text-yellow-200">
+                    <p className="flex items-center gap-2 text-sm sm:text-base text-white font-medium">
                         Descubra quanto você leva no final!
                         <Banknote className="w-5 h-5 text-green-300" />
                     </p>

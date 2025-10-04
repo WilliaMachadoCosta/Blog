@@ -16,7 +16,7 @@ function monthsBetween(a: Date, b: Date): number {
 }
 
 export function useRescisao() {
-  const [salary, setSalary] = useState(2500);
+  const [salary, setSalary] = useState("");
   const [hireDate, setHireDate] = useState(() => {
     const d = new Date();
     d.setFullYear(d.getFullYear() - 1);
@@ -27,9 +27,9 @@ export function useRescisao() {
   );
   const [motive, setMotive] = useState("sem_justa_causa");
   const [aviso, setAviso] = useState("trabalhado");
-  const [dependents, setDependents] = useState(0);
-  const [fgtsBefore, setFgtsBefore] = useState(0);
-  const [vacationDays, setVacationDays] = useState(0);
+  const [dependents, setDependents] = useState("");
+  const [fgtsBefore, setFgtsBefore] = useState("");
+  const [vacationDays, setVacationDays] = useState("");
   const [showResult, setShowResult] = useState(false);
   const [explode, setExplode] = useState(false);
 

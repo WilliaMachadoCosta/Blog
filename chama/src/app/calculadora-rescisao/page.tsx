@@ -79,8 +79,11 @@ export default function CalculadoraRescisaoGame() {
                             <label className="text-sm mb-2">Salário bruto (R$)</label>
                             <input
                                 value={salary}
-                                onChange={(e) => setSalary(Number(e.target.value))}
-                                type="number"
+                                onChange={(e) => setSalary(e.target.value)}
+                                type="text"
+                                inputMode="numeric"
+                                pattern="[0-9]*"
+                                placeholder="Ex: 2500"
                                 className="w-full p-3 rounded-lg border"
                             />
                         </div>
@@ -140,18 +143,24 @@ export default function CalculadoraRescisaoGame() {
                             <div className="flex flex-col">
                                 <label className="text-sm mb-2">Dependentes</label>
                                 <input
-                                    type="number"
+                                    type="text"
+                                    inputMode="numeric"
+                                    pattern="[0-9]*"
                                     value={dependents}
-                                    onChange={(e) => setDependents(Number(e.target.value) || 0)}
+                                    onChange={(e) => setDependents(e.target.value)}
+                                    placeholder="Ex: 2"
                                     className="w-full p-2 rounded-lg border"
                                 />
                             </div>
                             <div className="flex flex-col">
                                 <label className="text-sm mb-2">Saldo FGTS antes</label>
                                 <input
-                                    type="number"
+                                    type="text"
+                                    inputMode="numeric"
+                                    pattern="[0-9]*"
                                     value={fgtsBefore}
-                                    onChange={(e) => setFgtsBefore(Number(e.target.value) || 0)}
+                                    onChange={(e) => setFgtsBefore(e.target.value)}
+                                    placeholder="Ex: 1000"
                                     className="w-full p-2 rounded-lg border"
                                 />
                             </div>
@@ -161,9 +170,12 @@ export default function CalculadoraRescisaoGame() {
                         <div className="flex flex-col mb-4">
                             <label className="text-sm mb-2">Férias vencidas (dias)</label>
                             <input
-                                type="number"
+                                type="text"
+                                inputMode="numeric"
+                                pattern="[0-9]*"
                                 value={vacationDays}
-                                onChange={(e) => setVacationDays(Number(e.target.value) || 0)}
+                                onChange={(e) => setVacationDays(e.target.value)}
+                                placeholder="Ex: 30"
                                 className="w-full p-2 rounded-lg border"
                             />
                         </div>
@@ -181,14 +193,14 @@ export default function CalculadoraRescisaoGame() {
                             </button>
                             <button
                                 onClick={() => {
-                                    setSalary(0);
+                                    setSalary("");
                                     setHireDate("");
                                     setTermDate("");
                                     setMotive("sem_justa_causa");
                                     setAviso("trabalhado");
-                                    setDependents(0);
-                                    setFgtsBefore(0);
-                                    setVacationDays(0);
+                                    setDependents("");
+                                    setFgtsBefore("");
+                                    setVacationDays("");
                                     setShowResult(false);
                                 }}
                                 className="py-3 px-5 rounded-xl border bg-white hover:bg-gray-100"

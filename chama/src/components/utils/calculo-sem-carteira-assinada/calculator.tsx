@@ -1,17 +1,24 @@
 'use client';
 
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Calculator, DollarSign, Calendar, Clock } from "lucide-react";
 
 export default function CalculatorClient() {
-    const [salario, setSalario] = useState(0);
-    const [diasTrabalhados, setDiasTrabalhados] = useState(0);
-    const [mesesTrabalhados, setMesesTrabalhados] = useState(0);
+    const [salario, setSalario] = useState("");
+    const [diasTrabalhados, setDiasTrabalhados] = useState("");
+    const [mesesTrabalhados, setMesesTrabalhados] = useState("");
     const [resultado, setResultado] = useState<any | null>(null);
+    const [showResult, setShowResult] = useState(false);
 
     const calcular = () => {
-        const salarioProporcional = (salario / 30) * diasTrabalhados;
-        const feriasProporcionais = (salario / 12) * mesesTrabalhados * 1.33;
-        const decimoTerceiro = (salario / 12) * mesesTrabalhados;
+        const salarioNum = Number(salario) || 0;
+        const diasNum = Number(diasTrabalhados) || 0;
+        const mesesNum = Number(mesesTrabalhados) || 0;
+
+        const salarioProporcional = (salarioNum / 30) * diasNum;
+        const feriasProporcionais = (salarioNum / 12) * mesesNum * 1.33;
+        const decimoTerceiro = (salarioNum / 12) * mesesNum;
 
         const total = salarioProporcional + feriasProporcionais + decimoTerceiro;
 
@@ -21,66 +28,152 @@ export default function CalculatorClient() {
             decimoTerceiro,
             total
         });
+        setShowResult(true);
+    };
+
+    const limpar = () => {
+        setSalario("");
+        setDiasTrabalhados("");
+        setMesesTrabalhados("");
+        setResultado(null);
+        setShowResult(false);
     };
 
     return (
-        <main className="min-h-screen bg-[#f5f3ef] py-6 px-4 text-black">
-            <article className="max-w-3xl mx-auto bg-white rounded-xl shadow-md p-6 space-y-6">
-                <h1 className="text-2xl sm:text-3xl font-bold leading-tight">
-                    Cálculo de Rescisão sem Carteira Assinada: Entenda seus Direitos e Como Calcular
-                </h1>
-
-                <p>
-                    O cálculo da rescisão de um contrato de trabalho sem carteira assinada é um tema que gera muitas dúvidas. Aqui você encontra um simulador prático.
-                </p>
-
-                <div className="space-y-4">
-                    <div>
-                        <label className="block text-sm font-medium">Salário Mensal (R$)</label>
-                        <input
-                            type="number"
-                            className="w-full border rounded-md px-3 py-2"
-                            value={salario}
-                            onChange={(e) => setSalario(Number(e.target.value))}
-                        />
-                    </div>
-                    <div>
-                        <label className="block text-sm font-medium">Dias Trabalhados no Mês</label>
-                        <input
-                            type="number"
-                            className="w-full border rounded-md px-3 py-2"
-                            value={diasTrabalhados}
-                            onChange={(e) => setDiasTrabalhados(Number(e.target.value))}
-                        />
-                    </div>
-                    <div>
-                        <label className="block text-sm font-medium">Meses Trabalhados</label>
-                        <input
-                            type="number"
-                            className="w-full border rounded-md px-3 py-2"
-                            value={mesesTrabalhados}
-                            onChange={(e) => setMesesTrabalhados(Number(e.target.value))}
-                        />
-                    </div>
-                    <button
-                        onClick={calcular}
-                        className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
-                    >
-                        Calcular
-                    </button>
+        <div className="space-y-6">
+            {/* Formulário */}
+            <div className="space-y-4">
+                <div className="flex flex-col">
+                    <label className="text-sm mb-2 flex items-center gap-2">
+                        <DollarSign className="w-4 h-4 text-green-600" />
+                        Salário Mensal (R$)
+                    </label>
+                    <input
+                        type="text"
+                        inputMode="numeric"
+                        pattern="[0-9]*"
+                        className="w-full p-3 rounded-lg border focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                        value={salario}
+                        onChange={(e) => setSalario(e.target.value)}
+                        placeholder="Digite seu salário mensal"
+                    />
                 </div>
 
-                {resultado && (
-                    <div className="mt-6 bg-gray-50 p-4 rounded-md">
-                        <h3 className="text-lg font-semibold mb-2">Resultado do Cálculo</h3>
-                        <p>Salário Proporcional: R$ {resultado.salarioProporcional.toFixed(2)}</p>
-                        <p>Férias Proporcionais (1/3 incluído): R$ {resultado.feriasProporcionais.toFixed(2)}</p>
-                        <p>13º Salário Proporcional: R$ {resultado.decimoTerceiro.toFixed(2)}</p>
-                        <hr className="my-2" />
-                        <p className="font-bold text-lg">Total: R$ {resultado.total.toFixed(2)}</p>
-                    </div>
+                <div className="flex flex-col">
+                    <label className="text-sm mb-2 flex items-center gap-2">
+                        <Calendar className="w-4 h-4 text-blue-600" />
+                        Dias Trabalhados no Mês
+                    </label>
+                    <input
+                        type="text"
+                        inputMode="numeric"
+                        pattern="[0-9]*"
+                        className="w-full p-3 rounded-lg border focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                        value={diasTrabalhados}
+                        onChange={(e) => setDiasTrabalhados(e.target.value)}
+                        placeholder="Ex: 20 dias"
+                    />
+                </div>
+
+                <div className="flex flex-col">
+                    <label className="text-sm mb-2 flex items-center gap-2">
+                        <Clock className="w-4 h-4 text-purple-600" />
+                        Meses Trabalhados
+                    </label>
+                    <input
+                        type="text"
+                        inputMode="numeric"
+                        pattern="[0-9]*"
+                        className="w-full p-3 rounded-lg border focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                        value={mesesTrabalhados}
+                        onChange={(e) => setMesesTrabalhados(e.target.value)}
+                        placeholder="Ex: 6 meses"
+                    />
+                </div>
+
+                {/* Botões */}
+                <div className="flex flex-col sm:flex-row gap-3 mt-6">
+                    <button
+                        onClick={calcular}
+                        className="flex-1 py-3 rounded-xl bg-gradient-to-r from-pink-500 to-yellow-400 text-white font-extrabold shadow-[0_0_15px_rgba(255,255,255,0.7)] hover:scale-105 active:scale-95 transition transform animate-pulse flex items-center justify-center gap-2"
+                    >
+                        <Calculator className="w-5 h-5" />
+                        Calcular Rescisão 🧮
+                    </button>
+                    <button
+                        onClick={limpar}
+                        className="py-3 px-5 rounded-xl border bg-white hover:bg-gray-100 transition"
+                    >
+                        Limpar
+                    </button>
+                </div>
+            </div>
+
+            {/* Resultados */}
+            <AnimatePresence>
+                {showResult && resultado && (
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.98 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="bg-gradient-to-r from-green-50 to-blue-50 p-4 rounded-2xl border border-green-200"
+                    >
+                        <h3 className="text-lg font-bold mb-4 text-green-700 flex items-center gap-2">
+                            <Calculator className="w-5 h-5" />
+                            Resultado do Cálculo
+                        </h3>
+                        
+                        <div className="space-y-3">
+                            <div className="flex justify-between items-center p-3 bg-white rounded-lg shadow-sm">
+                                <span className="text-sm text-gray-600">Salário Proporcional</span>
+                                <span className="font-semibold text-green-600">
+                                    R$ {resultado.salarioProporcional.toFixed(2)}
+                                </span>
+                            </div>
+                            
+                            <div className="flex justify-between items-center p-3 bg-white rounded-lg shadow-sm">
+                                <span className="text-sm text-gray-600">Férias Proporcionais (1/3 incluído)</span>
+                                <span className="font-semibold text-blue-600">
+                                    R$ {resultado.feriasProporcionais.toFixed(2)}
+                                </span>
+                            </div>
+                            
+                            <div className="flex justify-between items-center p-3 bg-white rounded-lg shadow-sm">
+                                <span className="text-sm text-gray-600">13º Salário Proporcional</span>
+                                <span className="font-semibold text-purple-600">
+                                    R$ {resultado.decimoTerceiro.toFixed(2)}
+                                </span>
+                            </div>
+                            
+                            <div className="border-t pt-3 mt-4">
+                                <div className="flex justify-between items-center p-4 bg-gradient-to-r from-green-200 to-green-400 rounded-xl">
+                                    <span className="text-lg font-bold text-green-800">Total Estimado</span>
+                                    <span className="text-2xl font-extrabold text-green-700">
+                                        R$ {resultado.total.toFixed(2)}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p className="text-xs text-gray-500 mt-4 italic">
+                            * Este cálculo é estimativo e serve como referência. Consulte um advogado trabalhista para valores oficiais.
+                        </p>
+                    </motion.div>
                 )}
-            </article>
-        </main>
+            </AnimatePresence>
+
+            {!showResult && (
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-center py-8 text-gray-500"
+                >
+                    <Calculator className="w-12 h-12 mx-auto mb-3 text-gray-300" />
+                    <p className="text-sm">
+                        Preencha os dados e clique em <span className="font-bold text-purple-600">Calcular Rescisão 🧮</span> para ver seus direitos.
+                    </p>
+                </motion.div>
+            )}
+        </div>
     );
 }

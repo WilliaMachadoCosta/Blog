@@ -11,8 +11,9 @@ declare global {
 
 interface GoogleAdProps {
     className?: string;
-    slot: string;      // <--- adicionado
+    slot: string;      // <--- adicionado (9825364292 WilliamTesteTamanhoAnuncio)
     format?: string;   // <--- adicionado
+
 }
 
 export default function GoogleAdsense({ className = '', slot, format = 'auto' }: GoogleAdProps) {
@@ -44,7 +45,7 @@ export default function GoogleAdsense({ className = '', slot, format = 'auto' }:
             >
                 <ins
                     className="adsbygoogle"
-                    style={{ display: 'block', width: '100%', height: '100%' }}
+                    style={{ display: 'inline-block', width: '728px', height: '300px' }}
                     data-ad-client="ca-pub-5074393689985715"
                     data-ad-slot={slot}
                     data-ad-format={format}

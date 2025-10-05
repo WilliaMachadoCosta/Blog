@@ -8,6 +8,7 @@ import { Tile } from "@/components/posts-templates/template-game/tile";
 import { useRescisao } from "./useRecisao";
 import MoneyRain from "@/components/posts-templates/template-game/money-rain";
 import GoogleAd from "@/components/banner/google-ads";
+import GoogleAdsense from "@/components/banner/googleAdsense";
 
 export default function CalculadoraRescisaoGame() {
     const {
@@ -50,7 +51,7 @@ export default function CalculadoraRescisaoGame() {
                     </p>
                 </header>
 
-                <GoogleAd />
+                <GoogleAdsense slot="9825364292" className="border-amber-600" />
 
                 {/* Bloco explicativo */}
                 <section className="bg-white/90 text-gray-900 p-4 sm:p-6 rounded-2xl shadow mb-6">

@@ -25,7 +25,13 @@ export function PostContent({ html }: PostContentProps) {
                         <>
                             {domToReact(domNode.children, options)}
                             <div className="my-6 max-w-2xl mx-auto w-full rounded-lg relative z-50 min-h-[300px]">
-                                <GoogleAd />
+                                <div className="mt-6 mb-6">
+                                    <p className="text-[10px] text-gray-500 text-center mb-2">Publicidade</p>
+                                    <GoogleAdsense
+                                        slot="9825364292"
+                                        className=" shadow-lg  rounded-xl"
+                                    />
+                                </div>
                             </div>
                         </>
                     );

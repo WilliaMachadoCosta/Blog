@@ -7,6 +7,7 @@ import { useJurosCompostos } from "./useJurosCompostos";
 import GoogleAd from "@/components/banner/google-ads";
 import InvestmentChart from "@/components/charts/InvestmentChart";
 import Script from 'next/script';
+import GoogleAdsense from "@/components/banner/googleAdsense";
 
 export default function CalculadoraJurosCompostos() {
     const {
@@ -79,7 +80,13 @@ export default function CalculadoraJurosCompostos() {
                     </p>
                 </header>
 
-                <GoogleAd />
+                <div className="mt-6 mb-6">
+                    <p className="text-[10px] text-gray-500 text-center mb-2">Publicidade</p>
+                    <GoogleAdsense
+                        slot="9825364292"
+                        className=" shadow-lg  rounded-xl"
+                    />
+                </div>
 
                 {/* Bloco explicativo */}
                 <section className="bg-white/90 text-gray-900 p-4 sm:p-6 rounded-2xl shadow mb-6">
@@ -293,8 +300,8 @@ export default function CalculadoraJurosCompostos() {
                                 <h2 className="text-xl sm:text-2xl font-bold mb-4 text-green-700 text-center">
                                     Evolução do Investimento ao Longo do Tempo 📊
                                 </h2>
-                                <InvestmentChart 
-                                    data={chartData} 
+                                <InvestmentChart
+                                    data={chartData}
                                     title="Crescimento do Patrimônio"
                                 />
                                 <p className="text-xs text-gray-500 mt-4 text-center italic">

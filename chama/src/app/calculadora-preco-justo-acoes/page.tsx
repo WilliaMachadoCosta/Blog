@@ -7,6 +7,7 @@ import { usePrecoJustoAcoes } from "./usePrecoJustoAcoes";
 import GoogleAd from "@/components/banner/google-ads";
 import StockChart from "@/components/charts/StockChart";
 import Script from 'next/script';
+import GoogleAdsense from "@/components/banner/googleAdsense";
 
 export default function CalculadoraPrecoJustoAcoes() {
     const {
@@ -68,7 +69,7 @@ export default function CalculadoraPrecoJustoAcoes() {
             <div className="max-w-6xl mx-auto mt-6 sm:mt-8">
                 {/* Header */}
                 <header className="text-center mb-8">
-                    <motion.h1 
+                    <motion.h1
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="flex items-center justify-center gap-3 text-4xl sm:text-5xl font-extrabold drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] mb-4"
@@ -77,21 +78,27 @@ export default function CalculadoraPrecoJustoAcoes() {
                         Preço Justo de Ações
                         <TrendingUp className="w-8 h-8 sm:w-10 sm:h-10 text-green-300" />
                     </motion.h1>
-                    <motion.p 
+                    <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
                         className="text-lg sm:text-xl text-white max-w-4xl mx-auto font-medium"
                     >
-                        🚀 <strong>Descubra o valor real de qualquer ação!</strong> Nossa calculadora revela se uma empresa está 
+                        🚀 <strong>Descubra o valor real de qualquer ação!</strong> Nossa calculadora revela se uma empresa está
                         subvalorizada ou supervalorizada, te dando a vantagem que você precisa para investir com confiança.
                     </motion.p>
                 </header>
 
-                <GoogleAd />
+                <div className="mt-6 mb-6">
+                    <p className="text-[10px] text-gray-500 text-center mb-2">Publicidade</p>
+                    <GoogleAdsense
+                        slot="9825364292"
+                        className=" shadow-lg  rounded-xl"
+                    />
+                </div>
 
                 {/* Copy Persuasivo */}
-                <motion.section 
+                <motion.section
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
@@ -106,21 +113,21 @@ export default function CalculadoraPrecoJustoAcoes() {
                             <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4">
                                 <h3 className="font-bold text-lg mb-2">💰 Evite Perdas</h3>
                                 <p className="text-sm text-white font-medium">
-                                    Não compre ações caras! Descubra quando uma empresa está supervalorizada 
+                                    Não compre ações caras! Descubra quando uma empresa está supervalorizada
                                     e evite investimentos que podem te dar prejuízo.
                                 </p>
                             </div>
                             <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4">
                                 <h3 className="font-bold text-lg mb-2">🎯 Encontre Oportunidades</h3>
                                 <p className="text-sm text-white font-medium">
-                                    Identifique ações subvalorizadas antes dos outros investidores. 
+                                    Identifique ações subvalorizadas antes dos outros investidores.
                                     Seja o primeiro a descobrir grandes oportunidades!
                                 </p>
                             </div>
                             <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4">
                                 <h3 className="font-bold text-lg mb-2">📈 Maximize Lucros</h3>
                                 <p className="text-sm text-white font-medium">
-                                    Invista no momento certo, no preço certo. Nossa calculadora te ajuda 
+                                    Invista no momento certo, no preço certo. Nossa calculadora te ajuda
                                     a tomar decisões mais inteligentes e lucrativas.
                                 </p>
                             </div>
@@ -289,22 +296,20 @@ export default function CalculadoraPrecoJustoAcoes() {
                                             </div>
                                         </div>
 
-                                        <motion.div className={`p-4 rounded-xl flex flex-col sm:flex-row items-center justify-between mt-2 shadow-lg gap-3 ${
-                                            result.recomendacao === 'COMPRAR' 
-                                                ? 'bg-gradient-to-r from-green-200 to-green-400' 
-                                                : result.recomendacao === 'VENDER'
+                                        <motion.div className={`p-4 rounded-xl flex flex-col sm:flex-row items-center justify-between mt-2 shadow-lg gap-3 ${result.recomendacao === 'COMPRAR'
+                                            ? 'bg-gradient-to-r from-green-200 to-green-400'
+                                            : result.recomendacao === 'VENDER'
                                                 ? 'bg-gradient-to-r from-red-200 to-red-400'
                                                 : 'bg-gradient-to-r from-yellow-200 to-yellow-400'
-                                        }`}>
+                                            }`}>
                                             <div>
                                                 <p className="text-sm text-gray-700">Recomendação</p>
-                                                <p className={`text-2xl sm:text-3xl font-extrabold ${
-                                                    result.recomendacao === 'COMPRAR' 
-                                                        ? 'text-green-700' 
-                                                        : result.recomendacao === 'VENDER'
+                                                <p className={`text-2xl sm:text-3xl font-extrabold ${result.recomendacao === 'COMPRAR'
+                                                    ? 'text-green-700'
+                                                    : result.recomendacao === 'VENDER'
                                                         ? 'text-red-700'
                                                         : 'text-yellow-700'
-                                                }`}>
+                                                    }`}>
                                                     {result.recomendacao} {result.recomendacao === 'COMPRAR' ? '🚀' : result.recomendacao === 'VENDER' ? '⚠️' : '⏳'}
                                                 </p>
                                             </div>
@@ -321,9 +326,8 @@ export default function CalculadoraPrecoJustoAcoes() {
                                         <div className="p-3 bg-purple-50 rounded-lg">
                                             <div className="flex justify-between items-center">
                                                 <span className="text-sm text-purple-800">Potencial de Ganho</span>
-                                                <span className={`font-semibold ${
-                                                    result.potencialGanho > 0 ? 'text-green-600' : 'text-red-600'
-                                                }`}>
+                                                <span className={`font-semibold ${result.potencialGanho > 0 ? 'text-green-600' : 'text-red-600'
+                                                    }`}>
                                                     {result.potencialGanho > 0 ? '+' : ''}{result.potencialGanho.toFixed(1)}%
                                                 </span>
                                             </div>
@@ -349,8 +353,8 @@ export default function CalculadoraPrecoJustoAcoes() {
                                 <h2 className="text-xl sm:text-2xl font-bold mb-4 text-blue-700 text-center">
                                     Análise Visual do Preço Justo 📈
                                 </h2>
-                                <StockChart 
-                                    data={chartData} 
+                                <StockChart
+                                    data={chartData}
                                     title="Comparação: Preço Atual vs Preço Justo"
                                 />
                                 <p className="text-xs text-gray-500 mt-4 text-center italic">
@@ -367,12 +371,12 @@ export default function CalculadoraPrecoJustoAcoes() {
                 <h2 className="text-2xl font-bold mb-6 text-center">
                     Como Calcular o Preço Justo de uma Ação? 💡
                 </h2>
-                
+
                 <div className="bg-gradient-to-r from-blue-50 to-green-50 p-6 rounded-2xl mb-8">
                     <h3 className="text-xl font-bold mb-4 text-blue-700">🎯 Método do Valor Presente dos Dividendos</h3>
                     <p className="mb-4">
-                        O preço justo de uma ação é calculado usando o <strong>Modelo de Gordon</strong>, 
-                        que considera os dividendos futuros descontados ao valor presente. É a forma mais 
+                        O preço justo de uma ação é calculado usando o <strong>Modelo de Gordon</strong>,
+                        que considera os dividendos futuros descontados ao valor presente. É a forma mais
                         simples e eficaz de determinar se uma ação está cara ou barata.
                     </p>
                     <div className="bg-white p-4 rounded-lg">
@@ -387,7 +391,7 @@ export default function CalculadoraPrecoJustoAcoes() {
                     <div className="bg-white p-6 rounded-xl shadow">
                         <h3 className="text-lg font-bold mb-3 text-green-700">📊 O que é LPA?</h3>
                         <p className="text-sm text-gray-700">
-                            <strong>Lucro por Ação (LPA)</strong> é o lucro líquido da empresa dividido pelo número de ações. 
+                            <strong>Lucro por Ação (LPA)</strong> é o lucro líquido da empresa dividido pelo número de ações.
                             Mostra quanto a empresa lucra para cada ação que você possui.
                         </p>
                         <p className="text-xs text-gray-500 mt-2">
@@ -397,7 +401,7 @@ export default function CalculadoraPrecoJustoAcoes() {
                     <div className="bg-white p-6 rounded-xl shadow">
                         <h3 className="text-lg font-bold mb-3 text-blue-700">📈 Crescimento Esperado</h3>
                         <p className="text-sm text-gray-700">
-                            É a taxa de crescimento anual esperada dos lucros da empresa. 
+                            É a taxa de crescimento anual esperada dos lucros da empresa.
                             Baseie-se no histórico da empresa e nas perspectivas do setor.
                         </p>
                         <p className="text-xs text-gray-500 mt-2">
@@ -407,7 +411,7 @@ export default function CalculadoraPrecoJustoAcoes() {
                     <div className="bg-white p-6 rounded-xl shadow">
                         <h3 className="text-lg font-bold mb-3 text-purple-700">🎯 Taxa de Desconto</h3>
                         <p className="text-sm text-gray-700">
-                            É o retorno mínimo que você espera do investimento. 
+                            É o retorno mínimo que você espera do investimento.
                             Geralmente entre 10% a 15% para ações brasileiras.
                         </p>
                         <p className="text-xs text-gray-500 mt-2">
@@ -417,7 +421,7 @@ export default function CalculadoraPrecoJustoAcoes() {
                     <div className="bg-white p-6 rounded-xl shadow">
                         <h3 className="text-lg font-bold mb-3 text-orange-700">⚖️ Margem de Segurança</h3>
                         <p className="text-sm text-gray-700">
-                            A diferença entre o preço justo e o preço atual. 
+                            A diferença entre o preço justo e o preço atual.
                             Quanto maior, mais segura é a oportunidade de investimento.
                         </p>
                         <p className="text-xs text-gray-500 mt-2">
@@ -431,7 +435,7 @@ export default function CalculadoraPrecoJustoAcoes() {
                     <h3 className="text-2xl font-bold mb-6 text-center text-blue-700">
                         🔍 Como Encontrar os Dados Necessários?
                     </h3>
-                    
+
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         {/* Crescimento Esperado */}
                         <div className="bg-white p-6 rounded-xl shadow">
@@ -439,7 +443,7 @@ export default function CalculadoraPrecoJustoAcoes() {
                                 <TrendingUp className="w-5 h-5" />
                                 Crescimento Esperado
                             </h4>
-                            
+
                             <div className="space-y-4">
                                 <div>
                                     <h5 className="font-semibold text-gray-800 mb-2">📊 Método 1: Histórico da Empresa</h5>
@@ -469,7 +473,7 @@ export default function CalculadoraPrecoJustoAcoes() {
 
                                 <div className="bg-yellow-50 border-l-4 border-yellow-400 p-3 rounded">
                                     <p className="text-xs text-yellow-700">
-                                        <strong>Dica:</strong> Para empresas estáveis, use 5-10%. Para empresas em crescimento, 10-20%. 
+                                        <strong>Dica:</strong> Para empresas estáveis, use 5-10%. Para empresas em crescimento, 10-20%.
                                         Para startups, 20-30% (com mais cautela).
                                     </p>
                                 </div>
@@ -482,7 +486,7 @@ export default function CalculadoraPrecoJustoAcoes() {
                                 <Target className="w-5 h-5" />
                                 Taxa de Desconto
                             </h4>
-                            
+
                             <div className="space-y-4">
                                 <div>
                                     <h5 className="font-semibold text-gray-800 mb-2">💰 Método 1: CDI + Prêmio</h5>
@@ -515,7 +519,7 @@ export default function CalculadoraPrecoJustoAcoes() {
 
                                 <div className="bg-green-50 border-l-4 border-green-400 p-3 rounded">
                                     <p className="text-xs text-green-700">
-                                        <strong>Recomendação:</strong> Para ações brasileiras, use entre 12% a 18%. 
+                                        <strong>Recomendação:</strong> Para ações brasileiras, use entre 12% a 18%.
                                         Empresas mais arriscadas = taxa maior. Empresas estáveis = taxa menor.
                                     </p>
                                 </div>
@@ -528,7 +532,7 @@ export default function CalculadoraPrecoJustoAcoes() {
                         <h4 className="text-xl font-bold mb-4 text-center text-gray-800">
                             📚 Onde Encontrar Esses Dados?
                         </h4>
-                        
+
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div className="text-center p-4">
                                 <h5 className="font-semibold text-blue-700 mb-2">Sites de Análise</h5>
@@ -539,7 +543,7 @@ export default function CalculadoraPrecoJustoAcoes() {
                                     <li>• Yahoo Finance</li>
                                 </ul>
                             </div>
-                            
+
                             <div className="text-center p-4">
                                 <h5 className="font-semibold text-green-700 mb-2">Relatórios Oficiais</h5>
                                 <ul className="text-sm text-gray-700 space-y-1">
@@ -549,7 +553,7 @@ export default function CalculadoraPrecoJustoAcoes() {
                                     <li>• Relatórios trimestrais</li>
                                 </ul>
                             </div>
-                            
+
                             <div className="text-center p-4">
                                 <h5 className="font-semibold text-purple-700 mb-2">Indicadores Econômicos</h5>
                                 <ul className="text-sm text-gray-700 space-y-1">
@@ -572,21 +576,21 @@ export default function CalculadoraPrecoJustoAcoes() {
                         <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4">
                             <h4 className="font-bold text-lg mb-2">🚀 Alto Potencial</h4>
                             <p className="text-sm text-white font-medium">
-                                Ações podem render muito mais que a poupança ou CDB, 
+                                Ações podem render muito mais que a poupança ou CDB,
                                 especialmente em empresas em crescimento.
                             </p>
                         </div>
                         <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4">
                             <h4 className="font-bold text-lg mb-2">💰 Dividendos</h4>
                             <p className="text-sm text-white font-medium">
-                                Muitas empresas pagam dividendos mensais ou trimestrais, 
+                                Muitas empresas pagam dividendos mensais ou trimestrais,
                                 gerando renda passiva constante.
                             </p>
                         </div>
                         <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4">
                             <h4 className="font-bold text-lg mb-2">📈 Valorização</h4>
                             <p className="text-sm text-white font-medium">
-                                Além dos dividendos, suas ações podem se valorizar ao longo do tempo, 
+                                Além dos dividendos, suas ações podem se valorizar ao longo do tempo,
                                 multiplicando seu investimento.
                             </p>
                         </div>
@@ -596,8 +600,8 @@ export default function CalculadoraPrecoJustoAcoes() {
                 <div className="mt-8 bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded">
                     <h3 className="text-lg font-bold mb-2 text-yellow-800">⚠️ Importante</h3>
                     <p className="text-sm text-yellow-700">
-                        Esta calculadora é uma ferramenta educativa. O mercado de ações envolve riscos e 
-                        a análise fundamentalista é apenas uma das ferramentas. Sempre faça sua própria 
+                        Esta calculadora é uma ferramenta educativa. O mercado de ações envolve riscos e
+                        a análise fundamentalista é apenas uma das ferramentas. Sempre faça sua própria
                         pesquisa e considere consultar um consultor financeiro antes de investir.
                     </p>
                 </div>

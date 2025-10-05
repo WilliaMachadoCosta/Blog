@@ -51,7 +51,15 @@ export default function CalculadoraRescisaoGame() {
                     </p>
                 </header>
 
-                <GoogleAdsense slot="9825364292" className="border-2 border-amber-600" />
+                {/* <GoogleAdsense slot="9825364292" className="border-2 border-purple-700 mb-6 shadow-lg" /> */}
+                <div className="mt-6 mb-6">
+                    <p className="text-[10px] text-gray-500 text-center mb-2">Publicidade</p>
+                    <GoogleAdsense
+                        slot="9825364292"
+                        className="border-2 border-amber-600 shadow-lg shadow-amber-500/30 rounded-xl"
+                    />
+                </div>
+
 
                 {/* Bloco explicativo */}
                 <section className="bg-white/90 text-gray-900 p-4 sm:p-6 rounded-2xl shadow mb-6">
@@ -300,6 +308,7 @@ export default function CalculadoraRescisaoGame() {
                 </main>
 
             </div>
+            <GoogleAdsense slot="9825364292" className="border-2 border-purple-700 mb-6 shadow-lg" />
             <section className="max-w-4xl mx-auto px-4 py-12 text-gray-800">
                 <h2 className="text-2xl font-bold mb-6">
                     Como funciona a rescisão de contrato de trabalho?

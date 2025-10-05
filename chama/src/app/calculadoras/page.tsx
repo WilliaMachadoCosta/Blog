@@ -6,6 +6,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Calculator, TrendingUp, FileText, DollarSign, BarChart3, Users } from "lucide-react";
+import GoogleAdsense from "@/components/banner/googleAdsense";
 
 const calculadoras = [
     {
@@ -84,7 +85,7 @@ export default function CalculadorasPage() {
             <div className="max-w-6xl mx-auto mt-6 sm:mt-8">
                 {/* Header */}
                 <header className="text-center mb-8">
-                    <motion.h1 
+                    <motion.h1
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="flex items-center justify-center gap-3 text-4xl sm:text-5xl font-extrabold drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] mb-4"
@@ -93,21 +94,27 @@ export default function CalculadorasPage() {
                         Calculadoras
                         <BarChart3 className="w-8 h-8 sm:w-10 sm:h-10 text-pink-200" />
                     </motion.h1>
-                    <motion.p 
+                    <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
                         className="text-lg sm:text-xl text-white max-w-3xl mx-auto font-medium"
                     >
-                        Ferramentas práticas para cálculos trabalhistas e financeiros. 
+                        Ferramentas práticas para cálculos trabalhistas e financeiros.
                         Simule, calcule e planeje seu futuro com nossas calculadoras gratuitas!
                     </motion.p>
                 </header>
 
-                <GoogleAd />
+                <div className="mt-6 mb-6">
+                    <p className="text-[10px] text-gray-500 text-center mb-2">Publicidade</p>
+                    <GoogleAdsense
+                        slot="9825364292"
+                        className="border-2 border-amber-600 shadow-lg shadow-amber-500/30 rounded-xl"
+                    />
+                </div>
 
                 {/* Bloco explicativo */}
-                <motion.section 
+                <motion.section
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
@@ -175,7 +182,7 @@ export default function CalculadorasPage() {
                 </div>
 
                 {/* Seção de Destaque */}
-                <motion.section 
+                <motion.section
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8 }}
@@ -183,7 +190,7 @@ export default function CalculadorasPage() {
                 >
                     <h2 className="text-2xl font-bold mb-4">Precisa de Ajuda?</h2>
                     <p className="text-lg mb-6 opacity-90">
-                        Nossas calculadoras são ferramentas educativas. Para questões específicas, 
+                        Nossas calculadoras são ferramentas educativas. Para questões específicas,
                         consulte sempre um profissional qualificado.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">

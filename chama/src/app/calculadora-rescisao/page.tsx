@@ -51,7 +51,7 @@ export default function CalculadoraRescisaoGame() {
                     </p>
                 </header>
 
-                <GoogleAdsense slot="9825364292" className="border-amber-600" />
+                <GoogleAdsense slot="9825364292" className="border-2 border-amber-600" />
 
                 {/* Bloco explicativo */}
                 <section className="bg-white/90 text-gray-900 p-4 sm:p-6 rounded-2xl shadow mb-6">

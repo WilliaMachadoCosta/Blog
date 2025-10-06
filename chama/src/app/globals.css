@@ -63,6 +63,11 @@ main {
   position: relative !important;
 }
 
+ins.adsbygoogle>div[id^="aswift_"]>div>iframe+div[id^="mys-wrapper"] {
+  height: auto !important;
+}
+
+
 /* Garantir que iframes de anúncios não cubram o conteúdo */
 iframe[src*="googlesyndication"],
 iframe[src*="doubleclick"],

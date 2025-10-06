@@ -41,7 +41,7 @@ export default function GoogleAdsense({ className = '', slot, format = 'auto' }:
             <div
                 ref={adRef}
                 className={className}
-                style={{ display: 'block', width: '100%', margin: '1rem 1', minHeight: '300px' }}
+                style={{ display: 'block' }}
             >
                 <ins
                     className="adsbygoogle"

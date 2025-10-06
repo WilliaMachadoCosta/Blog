@@ -137,7 +137,7 @@ export default function RootLayout({
         </Script>
       </head>
 
-      <body className="flex flex-col h-screen bg-neutral-100 text-black " >
+      <body className="flex flex-col h-screen bg-neutral-100 text-black overflow-x-hidden" style={{ position: 'relative', zIndex: 1 }}>
         <div className="fixed top-0 left-0 w-full z-50">
           <Header />
         </div>

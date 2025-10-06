@@ -48,7 +48,7 @@ export default function GoogleAdsense({ className = '', slot, format = 'rectangl
                     style={{ display: 'block' }}
                     data-ad-client="ca-pub-5074393689985715"
                     data-ad-slot={slot}
-                    data-ad-format="auto"
+                    data-ad-format="rectangle"
                     data-full-width-responsive="true"
                 />
             </div>

@@ -41,11 +41,11 @@ export default function GoogleAdsense({ className = '', slot, format = 'rectangl
             <div
                 ref={adRef}
                 className={className}
-                style={{ display: 'block', height: '500px', position: "relative" }}
+                style={{ display: 'block', height: '500px', position: "absolute" }}
             >
                 <ins
                     className="adsbygoogle"
-                    style={{ display: 'block', position: "relative" }}
+                    style={{ display: 'block', height: '500px', position: "absolute" }}
                     data-ad-client="ca-pub-5074393689985715"
                     data-ad-slot={slot}
                     data-ad-format="horizontal"

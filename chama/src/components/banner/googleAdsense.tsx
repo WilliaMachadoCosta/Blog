@@ -16,7 +16,7 @@ interface GoogleAdProps {
 
 }
 
-export default function GoogleAdsense({ className = '', slot, format = 'auto' }: GoogleAdProps) {
+export default function GoogleAdsense({ className = '', slot, format = 'rectangle' }: GoogleAdProps) {
     const adRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -41,7 +41,7 @@ export default function GoogleAdsense({ className = '', slot, format = 'auto' }:
             <div
                 ref={adRef}
                 className={className}
-                style={{ display: 'block' }}
+                style={{ display: 'block', margin: '0 auto' }}
             >
                 <ins
                     className="adsbygoogle"

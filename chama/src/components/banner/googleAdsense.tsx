@@ -16,7 +16,7 @@ interface GoogleAdProps {
 
 }
 
-export default function GoogleAdsense({ className = '', slot, format = 'rectangle' }: GoogleAdProps) {
+export default function GoogleAdsense({ className = '', slot, format = 'auto' }: GoogleAdProps) {
     const adRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -41,14 +41,14 @@ export default function GoogleAdsense({ className = '', slot, format = 'rectangl
             <div
                 ref={adRef}
                 className={className}
-                style={{ display: 'block', height: '500px', position: "absolute" }}
+                style={{ display: 'block' }}
             >
                 <ins
                     className="adsbygoogle"
-                    style={{ display: 'block', height: '500px', position: "absolute" }}
+                    style={{ display: 'block' }}
                     data-ad-client="ca-pub-5074393689985715"
                     data-ad-slot={slot}
-                    data-ad-format="horizontal"
+                    data-ad-format="auto"
                     data-full-width-responsive="true"
                 />
             </div>

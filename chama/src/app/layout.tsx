@@ -1,40 +1,41 @@
-// src/app/layout.tsx
-
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header/Header";
 import { Footer } from "@/components/footer/footer";
-
-import Script from 'next/script';
-import CacheMonitor from "@/components/debug/cache-monitor";
-import GoogleAd from "@/components/banner/google-ads";
-import GoogleAdsense from "@/components/banner/googleAdsense";
-
-declare global {
-  interface Window {
-    dataLayer: any[];
-    gtag: (...args: any[]) => void;
-  }
-}
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Chama no Zap - WhatsApp",
-  description: "O Chama no Zap é sua plataforma de conexão direta com as principais empresas e serviços do Brasil. Facilitamos o contato entre você e as empresas que você precisa.",
+  description:
+    "O Chama no Zap é sua plataforma de conexão direta com as principais empresas e serviços do Brasil.",
+  verification: {
+    google: "U7FyXiaQb1HX4vXf7lBdxip1NGWDq83wWtrqH1TLFSI",
+  },
+  openGraph: {
+    title: "Chama no Zap - WhatsApp",
+    description: "Conecte-se facilmente com empresas e serviços via WhatsApp.",
+    url: "https://chamanozap.net/",
+    siteName: "Chama no Zap",
+    locale: "pt_BR",
+    type: "website",
+  },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  // Defina as alturas do header/footer em px ou rem
+  const HEADER_HEIGHT = 80; // px
+  const FOOTER_HEIGHT = 80; // px
+
   return (
     <html lang="pt" className="bg-neutral-100">
-      <head>
-        <meta name="google-site-verification" content="U7FyXiaQb1HX4vXf7lBdxip1NGWDq83wWtrqH1TLFSI" />
-
+      <body
+        className={`${inter.className} flex flex-col min-h-screen bg-neutral-100 text-black overflow-x-hidden`}
+        style={{ position: "relative", zIndex: 1 }}
+      >
+        {/* Scripts de terceiros */}
         <Script
           id="adsense-init"
           async
@@ -42,18 +43,17 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
 
-        {/* Microsoft Clarity Script */}
         <Script id="clarity-script" strategy="afterInteractive">
           {`
             (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
             })(window, document, "clarity", "script", "nviib1pqrd");
           `}
         </Script>
 
-        {/* JSON-LD Schema.org - WebSite */}
+        {/* JSON-LD WebSite */}
         <Script id="ld-json-website" type="application/ld+json">
           {`
             {
@@ -69,7 +69,7 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Organization Structured Data */}
+        {/* JSON-LD Organization */}
         <Script id="organization-ld-json" type="application/ld+json">
           {`
             {
@@ -94,63 +94,47 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* SiteNavigationElement Structured Data */}
+        {/* JSON-LD SiteNavigation */}
         <Script id="site-navigation-jsonld" type="application/ld+json">
           {`
             {
               "@context": "https://schema.org",
               "@type": "ItemList",
               "itemListElement": [
-                {
-                  "@type": "SiteNavigationElement",
-                  "position": 1,
-                  "name": "Início",
-                  "url": "https://chamanozap.net/"
-                },
-                {
-                  "@type": "SiteNavigationElement",
-                  "position": 2,
-                  "name": "Mensagens",
-                  "url": "https://chamanozap.net/mensagens"
-                },
-                {
-                  "@type": "SiteNavigationElement",
-                  "position": 3,
-                  "name": "Ferramentas",
-                  "url": "https://chamanozap.net/ferramentas"
-                },
-                {
-                  "@type": "SiteNavigationElement",
-                  "position": 4,
-                  "name": "Blog",
-                  "url": "https://chamanozap.net/blog"
-                },
-                {
-                  "@type": "SiteNavigationElement",
-                  "position": 5,
-                  "name": "Categorias",
-                  "url": "https://chamanozap.net/calculadoras"
-                }
+                {"@type": "SiteNavigationElement","position":1,"name":"Início","url":"https://chamanozap.net/"},
+                {"@type": "SiteNavigationElement","position":2,"name":"Mensagens","url":"https://chamanozap.net/mensagens"},
+                {"@type": "SiteNavigationElement","position":3,"name":"Ferramentas","url":"https://chamanozap.net/ferramentas"},
+                {"@type": "SiteNavigationElement","position":4,"name":"Blog","url":"https://chamanozap.net/blog"},
+                {"@type": "SiteNavigationElement","position":5,"name":"Calculadoras","url":"https://chamanozap.net/calculadoras"}
               ]
             }
           `}
         </Script>
-      </head>
 
-      <body className="flex flex-col h-screen bg-neutral-100 text-black overflow-x-hidden" style={{ position: 'relative', zIndex: 1 }}>
-        <div className="fixed top-0 left-0 w-full z-50">
+        {/* Header */}
+        <div
+          className="fixed top-0 left-0 w-full z-50"
+          style={{ height: HEADER_HEIGHT }}
+        >
           <Header />
         </div>
 
-        <div className="flex flex-1 pt-[10px] pb-[10px] h-full bg-neutral-100 overflow-x-hidden" style={{ position: 'relative', zIndex: 2 }}>
-          <main className="flex-1 overflow-y-auto overflow-x-hidden px-2 sm:px-4 bg-[#f5f3ef] pb-28 max-w-full" style={{ position: 'relative', zIndex: 3 }}>
-            <div className="max-w-full overflow-hid5en">
-              {children}
-            </div>
-          </main>
-        </div>
+        {/* Main */}
+        <main
+          className="flex-1 flex justify-center bg-[#f5f3ef]"
+          style={{
+            marginTop: HEADER_HEIGHT,
+            marginBottom: FOOTER_HEIGHT,
+          }}
+        >
+          <div className="w-full max-w-[1600px] px-4 mx-auto">{children}</div>
+        </main>
 
-        <div className="fixed bottom-0 left-0 w-full z-50">
+        {/* Footer */}
+        <div
+          className="fixed bottom-0 left-0 w-full z-50"
+          style={{ height: FOOTER_HEIGHT }}
+        >
           <Footer />
         </div>
       </body>

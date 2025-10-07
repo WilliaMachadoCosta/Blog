@@ -11,13 +11,13 @@ export default function AdContainer({ children, className = '' }: AdContainerPro
             ad-container
             w-full 
             max-w-full 
-            overflow-hidden 
-            bg-white 
-            //min-h-[300px]         
+            overflow-hidden         
             rounded-lg 
             shadow-sm 
-            px-4 py-2
-            mb-6 mt-4
+            px-0 py-0
+            mb-0 mt-0
+            border 3
+            border-b-blue-800
             ${className}
         `}>
 

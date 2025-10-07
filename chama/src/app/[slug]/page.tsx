@@ -186,11 +186,13 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         />
       )}
 
-      <div className="my-1 max-w-2xl mx-auto w-full h-[150px] rounded-lg relative">
-        <div className="flex justify-center">
-          <GoogleAd className="my-9" />
+      <div className="my-10 max-w-2xl mx-auto w-full h-[300px] rounded-lg relative">
+        <div className="flex justify-center mb-10">
+          <GoogleAd />
         </div>
       </div>
+
+
 
       {/* corpo */}
       <div className="flex justify-center w-full px-4 lg:px-0">

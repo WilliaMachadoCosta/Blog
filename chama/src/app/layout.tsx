@@ -153,12 +153,6 @@ export default function RootLayout({
         <div className="fixed bottom-0 left-0 w-full z-50">
           <Footer />
         </div>
-
-        {process.env.NODE_ENV === 'development' && (
-          <div className="fixed bottom-2 sm:bottom-4 right-2 sm:right-4 z-50">
-            <CacheMonitor />
-          </div>
-        )}
       </body>
     </html>
   );

@@ -37,20 +37,7 @@ export function SubHeader({ company, onBack }: SubHeaderProps) {
             </div>
 
             {/* Direita: ícones */}
-            <div className="flex items-center gap-2 sm:gap-3 text-blue-600 pr-1">
-                {/* <Link href={`#mensagem`} aria-label="Mensagem" className="p-1 hover:bg-gray-100 rounded-full transition-colors">
-                    <MessageCircle size={16} className="sm:w-4 sm:h-4" />
-                </Link> */}
-                {/* {company.telefone ? (
-                    <a href={`tel:${company.telefone}`} aria-label="Telefone" className="p-1 hover:bg-gray-100 rounded-full transition-colors">
-                        <Phone size={16} className="sm:w-4 sm:h-4" />
-                    </a>
-                ) : (
-                    <span className="p-1 rounded-full opacity-50 cursor-not-allowed">
-                        <Phone size={16} className="sm:w-4 sm:h-4" />
-                    </span>
-                )} */}
-            </div>
+
         </div>
     );
 }

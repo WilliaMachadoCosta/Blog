@@ -137,7 +137,7 @@ export async function getPostsByIds(ids: number[]): Promise<IPost[]> {
 export async function getAllPostsExcetoNoticias(): Promise<IPost[]> {
   try {
     const [postsData, categoriesData] = await Promise.all([
-      fetchJson(`${API_BASE}/posts?_embed&orderby=date&order=desc&per_page=20`),
+      fetchJson(`${API_BASE}/posts?_embed&orderby=date&order=desc&per_page=50`),
       getCategories()
     ]);
 

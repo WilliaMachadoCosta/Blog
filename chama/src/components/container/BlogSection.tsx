@@ -17,7 +17,7 @@ async function getRecentBlogPosts(): Promise<IPost[]> {
 
         return uniquePosts
             .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-            .slice(0, 3);
+            .slice(0, 10);
     } catch (error) {
         console.error("Erro ao buscar posts do blog:", error);
         // Fallback: buscar todos os posts se houver erro

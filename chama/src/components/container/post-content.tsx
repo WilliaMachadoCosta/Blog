@@ -6,6 +6,7 @@ import LazyYouTube from "../media/LazyYouTube";
 import GoogleAd from "../banner/google-ads";
 import GoogleAdsense from "../banner/googleAdsense";
 import GoogleAdChat from "../banner/google-chat";
+import GoogleAdRecize from "../banner/googleAdRecize";
 
 interface PostContentProps {
     html: string;
@@ -25,16 +26,10 @@ export function PostContent({ html }: PostContentProps) {
                     return (
                         <>
                             {domToReact(domNode.children, options)}
-                            {/* <div className="my-6 max-w-2xl mx-auto w-full rounded-lg relative z-50 min-h-[300px]"> */}
-                            {/* <div className="my-6 max-w-3xl mx-auto w-full rounded-lg relative mb-6">
-                                <div className="mt-6 mb-6">
+                            <div className="my-6 max-w-3xl mx-auto w-full">
+                                <GoogleAdRecize slot="9365926617" className="rounded-xl" />
+                            </div>
 
-                                    <GoogleAd
-                                        className=" rounded-xl"
-                                    />
-                                </div>
-                            </div> */}
-                            <GoogleAdChat slot="9365926617" />
                         </>
                     );
                 }

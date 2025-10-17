@@ -19,19 +19,50 @@ interface GoogleAdProps {
 export default function GoogleAdChat({
     slot,
     format = 'auto',
-    style = {},
     className = '',
 }: GoogleAdProps) {
     const adRef = useRef<HTMLModElement>(null);
+    const wrapperRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (!adRef.current) return;
 
+        // Inicia AdSense
         try {
             (window.adsbygoogle = window.adsbygoogle || []).push({});
         } catch (e) {
-            console.log('AdSense error:', e);
+            console.warn('AdSense push error', e);
         }
+
+        const wrapper = wrapperRef.current;
+        if (!wrapper) return;
+
+        // 🔍 Observa múltiplos iframes (Google cria mais de um às vezes)
+        const resizeObserver = new ResizeObserver(() => {
+            const iframes = wrapper.querySelectorAll('iframe');
+            let maxHeight = 0;
+
+            iframes.forEach((iframe) => {
+                const rect = iframe.getBoundingClientRect();
+                if (rect.height > maxHeight) maxHeight = rect.height;
+            });
+
+            if (maxHeight > 0) {
+                wrapper.style.height = `${maxHeight}px`;
+            }
+        });
+
+        const mutationObserver = new MutationObserver(() => {
+            const iframes = wrapper.querySelectorAll('iframe');
+            iframes.forEach((iframe) => resizeObserver.observe(iframe));
+        });
+
+        mutationObserver.observe(wrapper, { childList: true, subtree: true });
+
+        return () => {
+            resizeObserver.disconnect();
+            mutationObserver.disconnect();
+        };
     }, []);
 
     return (
@@ -42,9 +73,20 @@ export default function GoogleAdChat({
                 strategy="afterInteractive"
                 crossOrigin="anonymous"
             />
+
             <div
-                className={`w-full flex justify-center overflow-hidden ${className}`}
-                style={{ minHeight: '100px', ...style }}
+                ref={wrapperRef}
+                className={`google-ad-wrapper w-full mx-auto ${className}`}
+                style={{
+                    display: 'block',
+                    textAlign: 'center',
+                    width: '100%',
+                    maxWidth: '100%',
+                    overflow: 'visible', // 🔥 permite que o Google expanda sem corte
+                    position: 'relative',
+                    minHeight: '120px', // altura inicial segura
+                    transition: 'height 0.3s ease',
+                }}
             >
                 <ins
                     ref={adRef}

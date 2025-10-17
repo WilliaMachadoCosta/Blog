@@ -211,7 +211,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             className="text-2xl md:text-3xl font-semibold leading-tight text-black text-center"
             dangerouslySetInnerHTML={{ __html: post.title }}
           />
-          <PostContent html={sanitizeHtml(post.content)} />
+          <PostContent html={sanitizeHtmlMaster(post.content)} />
           <ShareButtons />
           <p className="text-xs sm:text-sm text-neutral-900 text-center">
             Publicado em <time dateTime={post.date}>{formattedDate}</time> por{" "}
@@ -249,6 +249,39 @@ function sanitizeHtml(html: string): string {
     .replace(/<!--[\s\S]*?-->/g, "")
     .replace(/data-src=/gi, "src=")
     .replace(/<ins(?=[^>]*data-ad-client="ca-pub-[^"]*")[^>]*><\/ins>/gi, "");
+}
+
+function sanitizeHtmlMaster(html: string): string {
+  const ldJsonScripts: string[] = [];
+  // Regex para encontrar especificamente scripts do tipo application/ld+json
+  const ldJsonRegex = /<script\s+type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/gi;
+  const placeholderPrefix = "___JSON_LD_PLACEHOLDER_";
+
+  // 1. Extrai os scripts JSON-LD e os substitui por placeholders
+  let tempHtml = html.replace(ldJsonRegex, (match) => {
+    const placeholder = `${placeholderPrefix}${ldJsonScripts.length}___`;
+    ldJsonScripts.push(match);
+    return placeholder;
+  });
+
+  // 2. Aplica as regras de sanitização existentes no restante do HTML
+  // Esta regra agora removerá apenas os scripts que *não* são JSON-LD
+  tempHtml = tempHtml
+    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "") // Remove outros scripts
+    .replace(/class="[^"]*"/g, "")                     // Remove classes
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/data-src=/gi, "src=")                   // Converte data-src para src
+    .replace(/<ins(?=[^>]*data-ad-client="ca-pub-[^"]*")[^>]*><\/ins>/gi, ""); // Remove tags <ins> de anúncios
+
+  // 3. Restaura os scripts JSON-LD nos seus devidos lugares
+  let finalHtml = tempHtml;
+  ldJsonScripts.forEach((script, index) => {
+    // Usamos RegExp para garantir que o placeholder seja tratado como string literal
+    const placeholder = new RegExp(`${placeholderPrefix}${index}___`, 'g');
+    finalHtml = finalHtml.replace(placeholder, script);
+  });
+
+  return finalHtml;
 }
 
 export async function generateStaticParams() {

@@ -26,8 +26,8 @@ export function PostContent({ html }: PostContentProps) {
                     return (
                         <>
                             {domToReact(domNode.children, options)}
-                            <div className="my-6 max-w-3xl mx-auto w-full">
-                                <GoogleAdRecize slot="9365926617" className="rounded-xl" />
+                            <div className="my-8 mx-auto max-w-3xl">
+                                <GoogleAdChat slot="9365926617" />
                             </div>
 
                         </>

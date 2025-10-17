@@ -23,7 +23,7 @@ export default async function HeroHeader() {
         });
 
     return (
-        <section className="mt-8 mb-6">
+        <section className="mt-2 mb-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {/* Post principal (maior) */}
                 {posts[0] && (

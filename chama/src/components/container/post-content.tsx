@@ -5,6 +5,7 @@ import { GenericButton } from "../buttons/genericButton";
 import LazyYouTube from "../media/LazyYouTube";
 import GoogleAd from "../banner/google-ads";
 import GoogleAdsense from "../banner/googleAdsense";
+import GoogleAdChat from "../banner/google-chat";
 
 interface PostContentProps {
     html: string;
@@ -25,14 +26,15 @@ export function PostContent({ html }: PostContentProps) {
                         <>
                             {domToReact(domNode.children, options)}
                             {/* <div className="my-6 max-w-2xl mx-auto w-full rounded-lg relative z-50 min-h-[300px]"> */}
-                            <div className="my-6 max-w-3xl mx-auto w-full rounded-lg relative mb-6">
+                            {/* <div className="my-6 max-w-3xl mx-auto w-full rounded-lg relative mb-6">
                                 <div className="mt-6 mb-6">
 
                                     <GoogleAd
-                                        className=" shadow-lg  rounded-xl"
+                                        className=" rounded-xl"
                                     />
                                 </div>
-                            </div>
+                            </div> */}
+                            <GoogleAdChat slot="9365926617" />
                         </>
                     );
                 }

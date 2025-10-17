@@ -16,8 +16,7 @@ export default function AdContainer({ children, className = '' }: AdContainerPro
             shadow-sm 
             px-0 py-0
             mb-0 mt-0
-            border 3
-            border-b-blue-800
+         
             ${className}
         `}>
 

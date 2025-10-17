@@ -121,13 +121,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         {/* Main */}
         <main
-          className="flex-1 flex justify-center bg-[#f5f3ef]"
+          className="flex-1 bg-[#f5f3ef]"
           style={{
             marginTop: HEADER_HEIGHT,
             marginBottom: FOOTER_HEIGHT,
           }}
         >
-          <div className="w-full max-w-[1600px] px-4 mx-auto">{children}</div>
+          <div className="w-full ">{children}</div>
         </main>
 
         {/* Footer */}

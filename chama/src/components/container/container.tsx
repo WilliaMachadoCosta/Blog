@@ -9,23 +9,23 @@ import HeroHeader from "./hero";
 import NoticiasSection, { NoticiasSectionSkeleton } from "./NoticiasSection";
 
 // Skeletons
-// function CompanyItemSkeleton() {
-//     return (
-//         <div className="flex justify-between bg-white p-3 sm:p-4 rounded shadow animate-pulse w-full">
-//             <div className="flex gap-3 flex-1 min-w-0">
-//                 <div className="w-8 h-8 bg-gray-300 rounded-full flex-shrink-0"></div>
-//                 <div className="flex-1 min-w-0">
-//                     <div className="h-4 bg-gray-300 rounded w-32 mb-1"></div>
-//                     <div className="h-3 bg-gray-200 rounded w-24"></div>
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// }
+function CompanyItemSkeleton() {
+    return (
+        <div className="flex justify-between bg-white p-3 sm:p-4 rounded shadow animate-pulse w-full">
+            <div className="flex gap-3 flex-1 min-w-0">
+                <div className="w-8 h-8 bg-gray-300 rounded-full flex-shrink-0"></div>
+                <div className="flex-1 min-w-0">
+                    <div className="h-4 bg-gray-300 rounded w-32 mb-1"></div>
+                    <div className="h-3 bg-gray-200 rounded w-24"></div>
+                </div>
+            </div>
+        </div>
+    );
+}
 
 // Dados de empresas (mantive)
 async function CompaniesData() {
-    const rawCompanies = await getPostsByIds([927, 1410, 6142, 476, 7427, 417, 1091, 758, 1128]);
+    const rawCompanies = await getPostsByIds([927, 1410, 8504, 482, 6142, 4241, 949, 7521, 476, 1057, 320, 7427, 417, 826, 1091, 758, 1128, 1026]);
     const companies = rawCompanies.map((post) => {
         const empresa = extractCompanyData(post.content);
         return {
@@ -47,13 +47,13 @@ export default function Container({ showAds = true }: { showAds?: boolean }) {
 
 
             {/* === Lista de Empresas (mantida, mas jogada para baixo) === */}
-            {/* <section>
-                <h2 className="text-lg font-semibold mb-3 text-black">🏢 Empresas</h2>
+            <section>
+
                 {showAds && <GoogleAd className="my-6" />}
                 <Suspense
                     fallback={
                         <div className="space-y-2 mb-8">
-                            {[...Array(5)].map((_, i) => (
+                            {[...Array(9)].map((_, i) => (
                                 <CompanyItemSkeleton key={i} />
                             ))}
                         </div>
@@ -61,7 +61,7 @@ export default function Container({ showAds = true }: { showAds?: boolean }) {
                 >
                     <CompaniesData />
                 </Suspense>
-            </section> */}
+            </section> *
             {/* === Blog Section (mantida no final) === */}
             <section>
                 <Suspense fallback={<BlogSectionSkeleton />}>

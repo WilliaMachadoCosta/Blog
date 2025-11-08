@@ -53,7 +53,7 @@ const calculadoras = [
 
 export default function CalculadorasPage() {
     return (
-        <div className="min-h-screen bg-gradient-to-b from-purple-700 to-white p-4 sm:p-6 text-white">
+        <div className="w-full max-w-6xl mx-auto bg-gradient-to-b from-purple-700 to-white p-4 sm:p-6 text-white mt-6 sm:mt-8">
             <Head>
                 <title>Calculadoras | Chama no Zap</title>
                 <meta
@@ -81,10 +81,8 @@ export default function CalculadorasPage() {
                     }}
                 />
             </Head>
-
-            <div className="max-w-6xl mx-auto mt-6 sm:mt-8">
-                {/* Header */}
-                <header className="text-center mb-8">
+            {/* Header */}
+            <header className="text-center mb-8">
                     <motion.h1
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -204,7 +202,6 @@ export default function CalculadorasPage() {
                         </div>
                     </div>
                 </motion.section>
-            </div>
         </div>
     );
 }

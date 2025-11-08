@@ -12,8 +12,7 @@ export default async function CategoriesPage() {
 
   const categories: ICategory[] = await getAllCategories();
   return (
-    <main className="min-h-screen bg-[#f5f3ef] py-4 sm:py-6 px-2 sm:px-4">
-      <div className="max-w-4xl mx-auto">
+    <div className="w-full max-w-4xl mx-auto py-4 sm:py-6 px-2 sm:px-4">
         {/* Header */}
         <div className="bg-white rounded-xl shadow-md p-6 mb-6">
           <div className="flex items-center gap-3 mb-4">
@@ -112,7 +111,6 @@ export default async function CategoriesPage() {
             </Link>
           </div>
         </div>
-      </div>
-    </main>
+    </div>
   );
 } 

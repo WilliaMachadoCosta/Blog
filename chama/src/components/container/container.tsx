@@ -41,7 +41,7 @@ async function CompaniesData() {
 
 export default function Container({ showAds = true }: { showAds?: boolean }) {
     return (
-        <div className="w-full max-w-[1200px] mx-auto py-2 space-y-0">
+        <div className="w-full max-w-4xl mx-auto py-2 px-1 space-y-0">
 
             {/* === Hero / Mensagem do Dia === */}
 

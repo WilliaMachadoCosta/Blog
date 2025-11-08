@@ -6,8 +6,7 @@ import GoogleAd from "@/components/banner/google-ads";
 
 export default function SobrePage() {
     return (
-        <div className="min-h-screen bg-[#f5f3ef] py-4 px-2 sm:px-4">
-            <div className="max-w-4xl mx-auto">
+        <div className="w-full max-w-4xl mx-auto py-4 px-2 sm:px-4">
                 {/* Header da página */}
                 <div className="bg-white rounded-lg shadow-md p-6 mb-6">
                     <div className="flex items-center gap-3 mb-4">
@@ -157,7 +156,6 @@ export default function SobrePage() {
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     );
 }

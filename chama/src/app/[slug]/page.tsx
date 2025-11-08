@@ -114,7 +114,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   }
 
   return (
-    <main className="min-h-screen bg-[#f5f3ef] py-4 sm:py-6 overflow-x-hidden">
+    <>
       {/* BreadcrumbList */}
       <script
         type="application/ld+json"
@@ -179,33 +179,19 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       />
 
       {/* Anúncio topo */}
-      <div className="my-10 max-w-2xl mx-auto w-full h-[300px] rounded-lg relative">
-        <div className="flex justify-center mb-10">
-          <GoogleAd />
-        </div>
+      <div className="my-10 max-w-2xl mx-auto w-full">
+        <GoogleAd />
       </div>
 
       {/* Corpo principal */}
-      <div className="flex flex-col lg:flex-row w-full gap-6 justify-center items-start lg:px-6">
+      <div className="flex flex-col lg:flex-row w-full gap-6 justify-center items-start py-4 sm:py-6 lg:px-6 overflow-x-hidden">
         {/* Anúncio esquerda */}
         <aside className="hidden lg:block w-[300px] flex-shrink-0">
           <GoogleAdsense slot="0987654321" className="w-[160px]" />
         </aside>
 
         {/* Conteúdo principal */}
-        <article
-          className="
-           bg-white shadow-sm 
-    p-4 sm:p-6 md:p-8 
-    space-y-6 
-    w-full max-w-5xl 
-    mx-auto 
-    rounded-none sm:rounded-2xl
-    transition-all duration-300
-          "
-        >
-
-
+        <article className="bg-white shadow-sm p-4 sm:p-6 md:p-8 space-y-6 w-full max-w-5xl mx-auto rounded-none sm:rounded-2xl transition-all duration-300">
           <SubHeaderClient company={company} />
           <h1
             className="text-2xl md:text-3xl font-semibold leading-tight text-black text-center"
@@ -238,7 +224,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         whatsapp={company?.whatsapp}
         site={company?.site}
       />
-    </main>
+    </>
   );
 }
 

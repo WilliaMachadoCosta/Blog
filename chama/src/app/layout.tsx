@@ -127,7 +127,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             marginBottom: FOOTER_HEIGHT,
           }}
         >
-          <div className="w-full ">{children}</div>
+          {children}
         </main>
 
         {/* Footer */}

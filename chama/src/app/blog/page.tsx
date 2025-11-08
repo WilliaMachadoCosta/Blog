@@ -6,12 +6,10 @@ import BlogClient from "./BlogClient";
 
 export default async function BlogPage() {
   return (
-    <div className="min-h-screen bg-[#f5f3ef] py-4 px-2 sm:px-4">
-      <div className="max-w-6xl mx-auto">
-        <Suspense fallback={<SpinLoader />}>
-          <BlogContent />
-        </Suspense>
-      </div>
+    <div className="w-full max-w-6xl mx-auto py-4 px-2 sm:px-4">
+      <Suspense fallback={<SpinLoader />}>
+        <BlogContent />
+      </Suspense>
     </div>
   );
 }

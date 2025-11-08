@@ -1,0 +1,25 @@
+export const mensagensSextaFeira = {
+    mensagens: [
+        "🎉 Sextou! Hora de celebrar a semana que passou e curtir o fim de semana!",
+        "🍻 Sexta-feira chegou! Momento perfeito para relaxar e recarregar as energias!",
+        "🎊 Sextou, galera! Que o fim de semana seja cheio de alegria e momentos especiais!",
+        "🌟 Finalmente sexta! Desejo um fim de semana incrível para você!",
+        "🎈 Sextou! Que seus dias de descanso sejam repletos de felicidade!",
+        "🎸 Sexta-feira é sinônimo de alegria! Aproveite cada momento do fim de semana!",
+        "🎯 Sextou! Hora de colocar os pés para cima e aproveitar o merecido descanso!",
+        "🎨 Sexta-feira chegou trazendo a energia do fim de semana! Aproveite!",
+        "🎪 Sextou! Que o seu fim de semana seja tão especial quanto você merece!",
+        "🎭 Finalmente chegou a melhor dia da semana! Sexta-feira! Aproveite!",
+        "🎬 Sextou! Hora de desligar do trabalho e ligar no modo descanso!",
+        "🎤 Sexta-feira é o início de momentos especiais! Curta bastante!",
+        "🎧 Sextou! Que o fim de semana traga tudo de bom que você precisa!",
+        "🎲 Sexta-feira chegou! Vamos fazer deste fim de semana inesquecível!",
+        "🎰 Sextou! Momento de relaxar, se divertir e aproveitar a vida!",
+    ],
+    titulo: "Sextou! Frases para WhatsApp: Mensagens Divertidas para Sexta-feira 🎉",
+    descricao: "Celebre a chegada da sexta-feira com as melhores frases para WhatsApp! Compartilhe mensagens divertidas e positivas para animar seus contatos. Copie, baixe e espalhe a alegria do fim de semana!",
+    metaTitle: "Sextou! Frases para WhatsApp: Mensagens Divertidas para Sexta-feira",
+    metaDescription: "Compartilhe as melhores frases de sexta-feira no WhatsApp. Mensagens divertidas e positivas para celebrar o fim de semana com amigos e familiares.",
+    url: "https://chamanozap.net/sextou-frases-para-whatsapp",
+};
+

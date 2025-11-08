@@ -25,14 +25,13 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  // Defina as alturas do header/footer em px ou rem
-  const HEADER_HEIGHT = 80; // px
+  // Altura aproximada do footer fixo
   const FOOTER_HEIGHT = 80; // px
 
   return (
-    <html lang="pt" className="bg-neutral-100">
+    <html lang="pt" className="bg-[#f5f3ef]">
       <body
-        className={`${inter.className} flex flex-col min-h-screen bg-neutral-100 text-black overflow-x-hidden`}
+        className={`${inter.className} flex flex-col min-h-screen bg-[#f5f3ef] text-black overflow-x-hidden`}
         style={{ position: "relative", zIndex: 1 }}
       >
         {/* Scripts de terceiros */}
@@ -112,31 +111,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Script>
 
         {/* Header */}
-        <div
-          className="fixed top-0 left-0 w-full z-50"
-          style={{ height: HEADER_HEIGHT }}
-        >
-          <Header />
-        </div>
+        <Header />
 
         {/* Main */}
-        <main
+        <main 
           className="flex-1 bg-[#f5f3ef]"
-          style={{
-            marginTop: HEADER_HEIGHT,
-            marginBottom: FOOTER_HEIGHT,
-          }}
+          style={{ paddingBottom: FOOTER_HEIGHT }}
         >
           {children}
         </main>
 
         {/* Footer */}
-        <div
-          className="fixed bottom-0 left-0 w-full z-50"
-          style={{ height: FOOTER_HEIGHT }}
-        >
-          <Footer />
-        </div>
+        <Footer />
       </body>
     </html>
   );

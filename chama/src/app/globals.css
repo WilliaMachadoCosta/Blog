@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #f5f3ef;
   --foreground: #171717;
 }
 
@@ -14,16 +14,39 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #f5f3ef;
+    --foreground: #171717;
   }
 }
 
-html,
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #f5f3ef !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
 body {
-  background: var(--background);
+  background: #f5f3ef !important;
   color: var(--foreground);
   font-family: 'Segoe UI', 'Roboto', 'San Francisco', 'Helvetica Neue', Arial, sans-serif;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Garantir que não haja espaço acima do header */
+header:first-of-type {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
 
@@ -35,9 +58,6 @@ main {
 }
 
 /* Prevenir overlays indesejados */
-* {
-  box-sizing: border-box;
-}
 
 /* ===== PROTEÇÃO CONTRA ELEMENTOS QUE COBREM A TELA ===== */
 /* Prevenir que qualquer elemento cubra toda a tela */

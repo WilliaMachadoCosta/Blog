@@ -82,7 +82,7 @@ export default function Header() {
     };
 
     return (
-        <header className="w-full bg-[#f5f3ef] text-black flex items-center justify-between px-3 sm:px-4 py-2 sm:py-3 relative">
+        <header className="w-full bg-[#f5f3ef] text-black flex items-center justify-between px-3 sm:px-4 py-2 sm:py-3 relative top-0 left-0 right-0 m-0">
             {/* Logo ou Nome */}
             <div className="text-lg sm:text-xl font-semibold">
                 <Link href="/" aria-label="Ir para página inicial">

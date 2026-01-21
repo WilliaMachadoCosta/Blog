@@ -1,0 +1,87 @@
+---
+alwaysApply: true
+---
+You are working on the website chamanozap.net.
+
+This project is a high-scale static website (800+ pages) focused on:
+- Mobile-first usability with an app-like experience
+- High performance and fast loading
+- SEO and Google AdSense monetization
+- Product reviews and WhatsApp contact pages
+
+The stack is strictly limited to:
+- HTML
+- CSS
+- Vanilla JavaScript
+
+The use of React, any JavaScript framework, backend code, databases, APIs, SSR, SPAs, or client-side frameworks is strictly forbidden.
+
+PUBLIC URL RULES:
+- All public pages use flat URLs with semantic prefixes.
+- Valid URL patterns are:
+  /whatsapp-{slug}
+  /review-{slug}
+- Examples:
+  /whatsapp-expresso-guanabara
+  /review-fogao-consul-5-bocas
+- Subfolders, query parameters, and file extensions (.html) must never appear in public URLs.
+
+CONTENT AND DATA RULES:
+- There is no database.
+- All page content is stored in static JSON files:
+  /public/data/whatsapp.json
+  /public/data/review.json
+- Each JSON entry represents one public page.
+- Pages must never be created by duplicating HTML files.
+
+TEMPLATE RULES:
+- Only two HTML templates are allowed:
+  /pages/whatsapp.html
+  /pages/review.html
+- Templates must load content dynamically from JSON.
+- The slug must be extracted from the URL.
+- SEO elements (title, meta description, h1) must be injected dynamically.
+- The user must never see internal paths, parameters, or template files.
+
+UX AND MOBILE-FIRST RULES:
+- All layouts must be designed mobile-first.
+- The interface must feel like a mobile application.
+- No sidebars, no complex menus, no visual clutter.
+- Desktop is only an adaptation of the mobile layout.
+
+BUTTONS AND CTA RULES:
+- Buttons are a core business element.
+- Every page must include visible call-to-action buttons.
+- Buttons must appear above the fold on mobile.
+- Minimum button height is 44px.
+- High contrast and full clickable area are mandatory.
+- Common CTAs include WhatsApp, phone call, and "Saiba mais" or "Site oficial".
+
+SEO RULES (NON-NEGOTIABLE):
+- Every page must have a unique <title>.
+- Every page must have a unique <meta name="description">.
+- Every page must have exactly one <h1>.
+- Semantic HTML structure is mandatory.
+- Thin content and placeholder text are forbidden.
+
+JAVASCRIPT RULES:
+- JavaScript may only be used for:
+  - Reading the current URL
+  - Loading JSON data
+  - Rendering content into templates
+  - Small, non-intrusive UI interactions
+- JavaScript must never behave as a SPA or break SEO.
+
+PERFORMANCE AND ADSENSE RULES:
+- Performance is critical, especially on mobile.
+- Heavy libraries, carousels, autoplay videos, and intrusive popups are forbidden.
+- Pages must comply with Google AdSense policies.
+- Core Web Vitals must remain high.
+
+SCALABILITY PRINCIPLE:
+- The project must scale to hundreds of pages without structural changes.
+- Adding a new page must require only adding a new entry to a JSON file.
+
+ABSOLUTE PRINCIPLE:
+- chamanozap.net is not a traditional website.
+- It is a static, scalable, SEO-driven page engine where simplicity, speed, and monetization come before visual complexity.

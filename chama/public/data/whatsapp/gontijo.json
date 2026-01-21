@@ -1,0 +1,92 @@
+{
+  "slug": "gontijo",
+  "title": "Gontijo Telefone WhatsApp: SAC, 0800, Compra de Passagem",
+  "description": "Descubra o WhatsApp da Gontijo para comprar passagens de ônibus pelo celular. Telefone SAC 0800 728 0044, compra online e atendimento. Guia completo e atualizado.",
+  "themeColor": "#FFC107",
+  "h1": "Gontijo: Sua viagem começa com confiança.",
+  "intro": "Esqueça filas e burocracia! Com o Gontijo telefone WhatsApp, você garante sua passagem em segundos, escolhe seu assento e recebe seu bilhete na hora. Ônibus confortáveis, ar-condicionado e atendimento humanizado esperam por você.\n\nNão deixe para depois. Clique no WhatsApp, reserve seu lugar e embarque com confiança!",
+  "whatsapp": {
+    "number": "553194551741",
+    "text": "Olá, quero comprar uma passagem"
+  },
+  "contacts": [
+    {
+      "label": "SAC",
+      "value": "0800 728 0044",
+      "type": "phone"
+    },
+    {
+      "label": "Compra Online",
+      "value": "https://www.gontijo.com.br/",
+      "type": "link"
+    }
+  ],
+  "sections": [
+    {
+      "title": "📞 Telefones Oficiais da Gontijo",
+      "content": "Está buscando o WhatsApp da Gontijo para comprar sua passagem ou falar com o atendimento? Aqui você encontra o número oficial, links de contato e as vantagens de usar o canal direto da empresa.\n\nSe você pesquisou no Google por \"Qual é o número do WhatsApp da Gontijo?\", \"telefone da Gontijo Tietê\", \"como falar com a Gontijo\" ou \"Gontijo telefone 0800\", está no lugar certo."
+    },
+    {
+      "title": "📲 WhatsApp da Gontijo para Compra de Passagens",
+      "content": "O número oficial do WhatsApp da Gontijo é (31) 9455-1741. Com ele, você pode comprar passagens, escolher assentos, fazer pagamento via PIX e receber seu bilhete digital na hora, tudo sem sair de casa.",
+      "steps": [
+        {
+          "number": "1",
+          "title": "Adicione o Número e Inicie a Conversa",
+          "content": "Adicione o número (31) 9455-1741 no seu WhatsApp e envie \"Olá\" para começar. O atendimento automatizado vai te guiar pelo processo de compra de forma simples e rápida."
+        },
+        {
+          "number": "2",
+          "title": "Informe Rota e Data da Viagem",
+          "content": "O sistema vai pedir informações essenciais:\n\n• Origem e Destino da viagem\n• Data e horário preferidos\n• Número de passagens necessárias\n\nSeja claro e objetivo para agilizar o atendimento."
+        },
+        {
+          "number": "3",
+          "title": "Escolha Seu Assento e Finalize o Pagamento",
+          "content": "Após selecionar a rota, você poderá escolher seu assento preferido. O pagamento é feito via PIX, de forma rápida e segura, diretamente pelo WhatsApp."
+        },
+        {
+          "number": "4",
+          "title": "Receba Seu Bilhete Digital",
+          "content": "Assim que o pagamento for confirmado, você recebe seu bilhete digital (QR Code) pelo WhatsApp. Pronto para embarcar! Sem filas, sem burocracia, tudo na palma da sua mão."
+        }
+      ]
+    },
+    {
+      "title": "Como Comprar Passagem da Gontijo pelo Site",
+      "content": "Se preferir usar o site oficial, acesse www.gontijo.com.br. O processo é simples:\n\n1. Escolha sua rota e data\n2. Selecione seu assento preferido\n3. Finalize com pagamento em cartão\n4. Receba o QR Code por e-mail\n\nO site oferece a mesma praticidade, com a vantagem de visualizar todos os horários disponíveis de uma vez."
+    },
+    {
+      "title": "FAQ – Perguntas Frequentes",
+      "content": "Tire suas dúvidas mais comuns sobre a compra de passagens da Gontijo:",
+      "services": [
+        {
+          "label": "Como comprar passagem da Gontijo pelo WhatsApp?",
+          "value": "Adicione o número (31) 9455-1741, envie \"Olá\" e siga as instruções. O pagamento é feito via PIX."
+        },
+        {
+          "label": "Como comprar passagem da Gontijo pelo site?",
+          "value": "Acesse www.gontijo.com.br, escolha rota e assento, finalize com pagamento em cartão e receba o QR Code por e-mail."
+        },
+        {
+          "label": "É possível pagar em dinheiro?",
+          "value": "Sim, mas apenas nas rodoviárias. No site e WhatsApp, o pagamento é via cartão ou PIX."
+        },
+        {
+          "label": "Telefone SAC",
+          "value": "0800 728 0044"
+        },
+        {
+          "label": "WhatsApp Oficial",
+          "value": "(31) 9455-1741"
+        }
+      ]
+    }
+  ],
+  "relatedLinks": [
+    {
+      "text": "Como Escolher o Melhor Lugar em uma Viagem de Ônibus",
+      "url": "#"
+    }
+  ]
+}

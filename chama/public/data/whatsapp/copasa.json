@@ -1,0 +1,120 @@
+{
+  "slug": "copasa",
+  "title": "WhatsApp Copasa: Telefone, SAC, Atendimento, 0800",
+  "description": "Descubra o WhatsApp da Copasa para emitir 2ª via de conta, resolver pendências e falar com o atendimento. Telefone SAC 115, 0800 0300 115 e agências. Guia completo.",
+  "themeColor": "#2196F3",
+  "h1": "Copasa",
+  "intro": "Mantenha suas contas em dia! Use o WhatsApp da Copasa para resolver pendências financeiras e evitar atrasos no pagamento da sua água.",
+  "whatsapp": {
+    "number": "553197707000",
+    "text": "Olá, preciso de ajuda"
+  },
+  "contacts": [
+    {
+      "label": "SAC",
+      "value": "115",
+      "type": "phone"
+    },
+    {
+      "label": "SAC Gratuito",
+      "value": "0800 0300 115",
+      "type": "phone"
+    },
+    {
+      "label": "Agência Virtual",
+      "value": "https://www.copasa.com.br/",
+      "type": "link"
+    }
+  ],
+  "sections": [
+    {
+      "title": "Atendimento Copasa",
+      "content": "Emita a 2ª via da sua conta Copasa pelo WhatsApp! Adicione (31) 99770-7000 aos contatos e solicite de forma rápida e prática. Veja como!\n\nSede: Rua Mar de Espanha, 525 – Bairro Santo Antônio – CEP 30.330-900 – Belo Horizonte – MG"
+    },
+    {
+      "title": "5 formas de tirar a segunda via Copasa",
+      "content": "A Copasa Minas Gerais disponibiliza diversos canais de atendimento para solicitar serviços como a segunda via de conta, troca de titularidade, solicitação de religamento.\n\nPara isso, basta ter o número do CPF ou CNPJ e a senha de login (ou, então, fazer o cadastro na hora mesmo)."
+    },
+    {
+      "title": "💬 Pelo WhatsApp",
+      "content": "O Número do WhatsApp Copasa é 55 31 9770-7000.\n\nAdicione a sua agenda o número 55 31 9770-7000 e solicite diversos serviços à Copasa MG diretamente pelo WhatsApp.",
+      "steps": [
+        {
+          "number": "1",
+          "title": "Como Tirar a 2ª Via Copasa Pelo WhatsApp",
+          "content": "Adicione o número do Chico (assistente virtual da Copasa) aos seus contatos:\n\n📱 (31) 9 9770 7000\n\nEnvie um \"Oi\" para iniciar o atendimento.\n\n• Escolha a opção 1 para solicitar a 2ª via.\n• Informe seu CPF e faça o download da conta para pagamento."
+        }
+      ]
+    },
+    {
+      "title": "💻 2. Pelo Site",
+      "content": "Acesse o Site da Copasa\n🔗 Visite a página de identificação da Copasa\nVocê será redirecionado para a página de identificação.\n\nPreencha seus dados"
+    },
+    {
+      "title": "💬 3. Pelo Chat (Chico, Assistente Virtual)",
+      "content": "Acesse a Agência Virtual Copasa\n🔗 Clique aqui para acessar a Agência Virtual\nLocalize o assistente virtual Chico.\n\nInteraja com o Chico\n• Selecione a opção Segunda Via de Conta.\n• Informe seu CPF.\n📄 Sua 2ª via Copasa estará disponível para baixar e imprimir, ou você pode copiar o código de barras para pagamento pelo app do banco."
+    },
+    {
+      "title": "📱 4. Pelo Aplicativo",
+      "content": "Baixe o App Copasa\n• App para Android\n• App para iOS\n\nAcesse sua conta\n• Faça login.\n• Selecione a opção 2ª Via de Contas.\n\n🛠️ Outros serviços no app:\n• Informar falta de água e vazamentos.\n• Verificar histórico de consumo.\n• Cadastrar o envio da fatura por e-mail."
+    },
+    {
+      "title": "📞 5. Pelo Telefone",
+      "content": "Ligue para os números de atendimento da Copasa:\n• 115\n• 0800 0300 115\n\n☎️ Solicite a 2ª via da sua conta diretamente pelo atendimento telefônico."
+    },
+    {
+      "title": "Como entrar em contato com a Copasa Minas Gerais caso não consiga tirar a 2ª via",
+      "content": "O telefone SAC Copasa é o número 0800 0300 115 ou ligue no 115\n\nCom o Telefone Copasa é possível fazer pedido de ligação, solicitar informações sobre a conta de água, fazer uma reclamação, tirar dúvidas em geral ou solicitar a segunda via Copasa.\n\nLigue para 0800 0300 115 a ligação é gratuita e o atendimento é realizado 24 horas por dia.\n\nOu através da agência Digital Copasa. Clique aqui",
+      "services": [
+        {
+          "label": "Telefone SAC",
+          "value": "115"
+        },
+        {
+          "label": "SAC Gratuito",
+          "value": "0800 0300 115"
+        },
+        {
+          "label": "WhatsApp",
+          "value": "(31) 9770-7000"
+        },
+        {
+          "label": "Agência Virtual",
+          "value": "https://www.copasa.com.br/"
+        },
+        {
+          "label": "Sede",
+          "value": "Rua Mar de Espanha, 525 – Bairro Santo Antônio – CEP 30.330-900 – Belo Horizonte – MG"
+        }
+      ]
+    },
+    {
+      "title": "Agências da Copasa",
+      "content": "Encontre uma agência física da Copasa perto de você. Horário de funcionamento: 08:30 às 16:30",
+      "services": [
+        {
+          "label": "Contagem",
+          "value": "R. Rodrigues da Cunha, 268 – Ressaca, Contagem – MG, 32113-340 - Telefone: 115"
+        },
+        {
+          "label": "Betim",
+          "value": "R. Pedro Francisco de Melo, 64 – Centro, Betim – MG, 32600-052 - Telefone: 115"
+        },
+        {
+          "label": "Belo Horizonte",
+          "value": "Av. do Contorno, 1316 – Floresta, Belo Horizonte – MG, 30110-008 - Telefone: 115"
+        },
+        {
+          "label": "Montes Claros",
+          "value": "R. Dr. Santos, 14 – Centro, Montes Claros – MG, 39400-001 - Telefone: 115"
+        }
+      ]
+    }
+  ],
+  "relatedLinks": [
+    {
+      "text": "Como Escolher o Melhor Lugar em uma Viagem de Ônibus",
+      "url": "#"
+    }
+  ]
+}

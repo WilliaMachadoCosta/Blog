@@ -1,0 +1,22 @@
+RewriteEngine On
+
+# Redirecionar /whatsapp-{slug} para /pages/whatsapp.html
+RewriteRule ^whatsapp-(.+)$ /pages/whatsapp.html [L]
+
+# Redirecionar /review-{slug} para /pages/review.html
+RewriteRule ^review-(.+)$ /pages/review.html [L]
+
+# Servir arquivos estáticos normalmente
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Headers para performance
+<IfModule mod_headers.c>
+  Header set Cache-Control "public, max-age=31536000"
+</IfModule>
+
+# Compressão GZIP
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+

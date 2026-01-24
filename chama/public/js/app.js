@@ -570,5 +570,32 @@
   } else {
     init();
   }
+
+  // Function to insert AdSense ads every 3 paragraphs
+  document.addEventListener("DOMContentLoaded", function () {
+    const adCode = `
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5074393689985715"
+            crossorigin="anonymous"></script>
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-5074393689985715"
+            data-ad-slot="9825364292"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    `;
+
+    const paragraphs = document.querySelectorAll("p");
+
+    paragraphs.forEach((paragraph, index) => {
+        if ((index + 1) % 3 === 0) { // Every 3 paragraphs
+            const adContainer = document.createElement("div");
+            adContainer.innerHTML = adCode;
+            paragraph.parentNode.insertBefore(adContainer, paragraph.nextSibling);
+        }
+    });
+});
 })();
 

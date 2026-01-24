@@ -1,0 +1,298 @@
+{
+  "slug": "caixa-economica",
+  "title": "WhatsApp Caixa Econômica: Atendimento, Telefone, 0800, SAC, Serviços",
+  "description": "Descubra o WhatsApp da Caixa Econômica Federal para consultar saldo, extrato, transferências e muito mais. Telefone SAC 0800 726 0101, atendimento 24 horas.",
+  "themeColor": "#0066CC",
+  "h1": "Caixa Econômica: Seus serviços bancários na palma da sua mão",
+  "intro": "Sem filas, sem burocracia! Com o WhatsApp da Caixa Econômica, você consulta saldo, solicita extrato, realiza transferências, paga contas e muito mais direto do seu celular. Atendimento rápido, seguro e disponível para facilitar sua vida financeira.",
+  "whatsapp": {
+    "number": "551100104104",
+    "text": "Olá Caixa"
+  },
+  "contacts": [
+    {
+      "label": "WhatsApp",
+      "value": "0800 104 0104",
+      "type": "phone"
+    },
+    {
+      "label": "SAC",
+      "value": "0800 726 0101",
+      "type": "phone"
+    },
+    {
+      "label": "Ouvidoria",
+      "value": "0800 725 7474",
+      "type": "phone"
+    },
+    {
+      "label": "Fale Conosco",
+      "value": "https://www.caixa.gov.br/faleconosco",
+      "type": "link"
+    },
+    {
+      "label": "Agência Digital",
+      "value": "3004-8104 ou 0800-208-8104",
+      "type": "phone"
+    }
+  ],
+  "sections": [
+    {
+      "title": "📲 WhatsApp Caixa Econômica: Qual é o Número?",
+      "content": "O WhatsApp oficial da Caixa Econômica Federal é 0800 104 0104. Acionando a Caixa diretamente por meio do WhatsApp, você terá acesso fácil a mais de 10 serviços que podem ser resolvidos sem a necessidade de ligar na central de atendimento.\n\nAtendimento disponível em dias úteis, das 08h às 21h. Basta adicionar o número aos seus contatos e enviar uma mensagem para começar!"
+    },
+    {
+      "title": "🏦 Serviços Disponíveis no WhatsApp Caixa",
+      "content": "Vários serviços estão disponíveis através do WhatsApp da Caixa. Acesse com facilidade sem sair de casa:",
+      "services": [
+        {
+          "label": "Consultar Saldo",
+          "value": "Verifique o saldo da sua conta em tempo real"
+        },
+        {
+          "label": "Solicitar Extrato",
+          "value": "Receba seu extrato bancário pelo WhatsApp"
+        },
+        {
+          "label": "Transferências",
+          "value": "Realize transferências entre contas"
+        },
+        {
+          "label": "Pagamento de Contas",
+          "value": "Pague suas contas e boletos"
+        },
+        {
+          "label": "Recarga de Celular",
+          "value": "Recarregue seu telefone diretamente"
+        },
+        {
+          "label": "Consultar Faturas de Cartão",
+          "value": "Acompanhe suas faturas de crédito"
+        },
+        {
+          "label": "Desbloquear Caixa Tem",
+          "value": "Desbloqueie sua conta Caixa Tem"
+        },
+        {
+          "label": "Abrir Conta",
+          "value": "Abra uma conta corrente"
+        },
+        {
+          "label": "Suporte ao Cliente",
+          "value": "Tire dúvidas e resolva problemas"
+        },
+        {
+          "label": "Informações Gerais",
+          "value": "Consulte informações sobre seus produtos"
+        }
+      ]
+    },
+    {
+      "title": "🔐 Como Desbloquear Caixa Tem pelo WhatsApp",
+      "content": "Se você precisa desbloquear sua conta Caixa Tem, o processo é simples:",
+      "steps": [
+        {
+          "number": "1",
+          "title": "Baixe o Aplicativo Caixa Tem",
+          "content": "Faça o download do app Caixa Tem, disponível para Android e iOS."
+        },
+        {
+          "number": "2",
+          "title": "Acesse sua Conta",
+          "content": "Faça login na sua conta Caixa Tem."
+        },
+        {
+          "number": "3",
+          "title": "Procure por 'Liberar Acesso'",
+          "content": "No menu, encontre a opção 'Liberar Acesso'."
+        },
+        {
+          "number": "4",
+          "title": "Sistema de Ajuda Automática",
+          "content": "O sistema o encaminhará por meio da ajuda automática. Clique no ícone disponível e acesse o link gerado para iniciar uma conversa no WhatsApp."
+        },
+        {
+          "number": "5",
+          "title": "Siga as Orientações",
+          "content": "Envie os documentos necessários conforme solicitado para desbloquear sua conta Caixa Tem."
+        }
+      ]
+    },
+    {
+      "title": "☎️ Telefone Caixa Econômica: Todos os Números",
+      "content": "Se preferir falar por telefone, a Caixa oferece diversos números de atendimento:",
+      "services": [
+        {
+          "label": "SAC (24 horas)",
+          "value": "0800 726 0101 - Atendimento ao cliente disponível 24h"
+        },
+        {
+          "label": "Capitais e Regiões Metropolitanas",
+          "value": "4004-0104"
+        },
+        {
+          "label": "Demais Regiões",
+          "value": "0800 104 0104"
+        },
+        {
+          "label": "Exterior",
+          "value": "55 (61) 3533-2000"
+        },
+        {
+          "label": "Deficiências Auditiva e de Fala",
+          "value": "0800 726 2492"
+        },
+        {
+          "label": "Cartões Caixa",
+          "value": "4004-0104 ou 0800 104 0104"
+        },
+        {
+          "label": "FGTS (Saque Imediato)",
+          "value": "0800 724 2019"
+        },
+        {
+          "label": "Minha Casa Minha Vida",
+          "value": "0800 721 6268"
+        },
+        {
+          "label": "Caixa Cidadão",
+          "value": "0800 726 0207"
+        },
+        {
+          "label": "Agência Digital",
+          "value": "3004-8104 (Capitais) ou 0800 208 8104 (Demais regiões)"
+        },
+        {
+          "label": "Ouvidoria",
+          "value": "0800 725 7474"
+        },
+        {
+          "label": "Denúncias",
+          "value": "0800 512 6677"
+        }
+      ]
+    },
+    {
+      "title": "💻 Outros Canais de Atendimento Caixa",
+      "content": "A Caixa Econômica oferece múltiplos canais para sua comodidade e segurança:",
+      "services": [
+        {
+          "label": "WhatsApp",
+          "value": "0800 104 0104 - Dias úteis, 08h às 21h"
+        },
+        {
+          "label": "Telefone",
+          "value": "0800 726 0101 - 24 horas, 7 dias por semana"
+        },
+        {
+          "label": "Agência Digital",
+          "value": "Atendimento personalizado por telefone, WhatsApp ou e-mail em horário estendido"
+        },
+        {
+          "label": "Chat Online",
+          "value": "Acesse www.caixa.gov.br para suporte em tempo real"
+        },
+        {
+          "label": "Fale Conosco",
+          "value": "www.caixa.gov.br/faleconosco - Formulário de contato"
+        },
+        {
+          "label": "Redes Sociais",
+          "value": "Twitter, Facebook e YouTube da Caixa Econômica"
+        }
+      ]
+    },
+    {
+      "title": "🏢 Agências Físicas Caixa",
+      "content": "Se preferir atendimento presencial, a Caixa possui agências em todo o Brasil. Para encontrar a agência mais próxima de você, visite o site www.caixa.gov.br ou ligue para 0800 726 0101.",
+      "services": [
+        {
+          "label": "Horário de Atendimento",
+          "value": "Segunda a sexta, geralmente das 08h às 17h"
+        },
+        {
+          "label": "Localizador de Agências",
+          "value": "Acesse www.caixa.gov.br para encontrar a agência mais próxima"
+        }
+      ]
+    },
+    {
+      "title": "❓ FAQ – Perguntas Frequentes",
+      "content": "Tire suas dúvidas sobre os serviços da Caixa Econômica:",
+      "services": [
+        {
+          "label": "A Caixa Econômica tem WhatsApp?",
+          "value": "Sim! O WhatsApp Caixa é o 0800 104 0104. Atendimento em dias úteis, das 08h às 21h."
+        },
+        {
+          "label": "Qual o WhatsApp Caixa Econômica?",
+          "value": "(+55) 0800 104 0104 - Adicione aos contatos e envie uma mensagem para começar"
+        },
+        {
+          "label": "Qual é o telefone SAC da Caixa?",
+          "value": "0800 726 0101 - Disponível 24 horas, 7 dias por semana, gratuitamente"
+        },
+        {
+          "label": "Como consultar meu saldo pelo WhatsApp?",
+          "value": "Envie 'saldo' ou siga as orientações do assistente virtual após iniciar a conversa"
+        },
+        {
+          "label": "Posso solicitar extrato pelo WhatsApp?",
+          "value": "Sim! Envie 'extrato' e informe o período desejado. Receberá em PDF no WhatsApp"
+        },
+        {
+          "label": "Como desbloquear Caixa Tem?",
+          "value": "Abra o app, acesse 'Liberar Acesso' e siga o link para conversar no WhatsApp com a Caixa"
+        },
+        {
+          "label": "Posso fazer transferências pelo WhatsApp?",
+          "value": "Sim! Solicite pelo WhatsApp e siga as instruções de segurança para completar a transação"
+        },
+        {
+          "label": "A Caixa tem e-mail para contato?",
+          "value": "Não existe e-mail direto, mas você pode usar o formulário 'Fale Conosco' no site"
+        },
+        {
+          "label": "Qual é o WhatsApp para reclamações?",
+          "value": "Use o mesmo número 0800 104 0104 ou ligue para a Ouvidoria: 0800 725 7474"
+        },
+        {
+          "label": "Qual o 0800 da Caixa para consultar saldo?",
+          "value": "Ligue para 4004 0104 (Capitais) ou 0800 104 0104 (Demais regiões)"
+        }
+      ]
+    },
+    {
+      "title": "🔒 Segurança e Privacidade",
+      "content": "A Caixa Econômica Federal está comprometida com a segurança de seus dados. Nunca compartilhe suas informações bancárias, senhas ou documentos pessoais por canais não oficiais. Sempre verifique se está conversando com o número oficial antes de compartilhar qualquer dado sensível.",
+      "services": [
+        {
+          "label": "WhatsApp Oficial",
+          "value": "0800 104 0104"
+        },
+        {
+          "label": "Denunciar Fraude",
+          "value": "0800 512 6677"
+        },
+        {
+          "label": "Política de Privacidade",
+          "value": "Consulte no site www.caixa.gov.br"
+        }
+      ]
+    }
+  ],
+  "relatedLinks": [
+    {
+      "text": "Diferença entre Conta Corrente e Poupança",
+      "url": "#"
+    },
+    {
+      "text": "Como Economizar Dinheiro com a Caixa",
+      "url": "#"
+    },
+    {
+      "text": "Guia Completo do FGTS",
+      "url": "#"
+    }
+  ]
+}

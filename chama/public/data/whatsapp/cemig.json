@@ -1,0 +1,246 @@
+{
+  "slug": "cemig",
+  "title": "WhatsApp Cemig: Atendimento, Telefone, 0800, 2ª Via, Falta de Energia",
+  "description": "Descubra o WhatsApp da Cemig para solicitar 2ª via de conta, informar falta de energia, parcelamento e muito mais. Telefone SAC 116, 0800 721 0116. Atendimento 24h.",
+  "themeColor": "#DC143C",
+  "h1": "Cemig: Energia que conecta você ao melhor atendimento",
+  "intro": "Sem filas, sem espera! Use o WhatsApp da Cemig para resolver seus problemas de energia quando quiser. Solicite 2ª via, informe falta de energia, faça parcelamento de débitos e muito mais. Atendimento rápido, prático e disponível 24 horas pelo seu celular.",
+  "whatsapp": {
+    "number": "553135061160",
+    "text": "Olá Cemig"
+  },
+  "contacts": [
+    {
+      "label": "SAC",
+      "value": "116",
+      "type": "phone"
+    },
+    {
+      "label": "SAC Gratuito",
+      "value": "0800 721 0116",
+      "type": "phone"
+    },
+    {
+      "label": "Ouvidoria",
+      "value": "0800 723 8007",
+      "type": "phone"
+    },
+    {
+      "label": "Telegram",
+      "value": "@Cemigbot",
+      "type": "link"
+    },
+    {
+      "label": "Atendimento Web",
+      "value": "https://atende.cemig.com.br/Login",
+      "type": "link"
+    }
+  ],
+  "sections": [
+    {
+      "title": "📲 WhatsApp Cemig: Qual é o Número?",
+      "content": "O WhatsApp oficial da Cemig é (31) 3506-1160. Acionando a concessionária diretamente por meio do WhatsApp, você terá acesso fácil a mais de 15 serviços que podem ser resolvidos sem a necessidade de ir até uma loja de atendimento.\n\nO cliente também pode comunicar interrupções de energia via mensagem no aplicativo, enviando o número da conta contrato, agilizando a realização do serviço."
+    },
+    {
+      "title": "🔌 Serviços Disponíveis no WhatsApp Cemig",
+      "content": "Vários serviços estão disponíveis através do WhatsApp da Cemig. Basta adicionar o número (31) 3506-1160 na sua agenda e enviar a solicitação. Veja os principais:",
+      "services": [
+        {
+          "label": "Informar leitura do medidor",
+          "value": "Envie a leitura do seu medidor"
+        },
+        {
+          "label": "Estou sem luz",
+          "value": "Informe falta de energia com urgência"
+        },
+        {
+          "label": "Segunda via de conta",
+          "value": "Solicite sua 2ª via Cemig"
+        },
+        {
+          "label": "Religação",
+          "value": "Solicite reativação do fornecimento"
+        },
+        {
+          "label": "Meus Débitos",
+          "value": "Consulte seus débitos em aberto"
+        },
+        {
+          "label": "Parcelamento de débitos",
+          "value": "Organize o pagamento em parcelas"
+        },
+        {
+          "label": "Troca de titularidade",
+          "value": "Altere o titular da conta"
+        },
+        {
+          "label": "Ligação nova",
+          "value": "Solicite nova conexão de energia"
+        },
+        {
+          "label": "Conta de luz por e-mail",
+          "value": "Receba sua fatura por e-mail"
+        },
+        {
+          "label": "Atualizar meus contatos",
+          "value": "Mantenha seus dados atualizados"
+        }
+      ]
+    },
+    {
+      "title": "📄 Como Tirar a 2ª Via Cemig pelo WhatsApp",
+      "content": "A segunda via de conta é um dos serviços mais solicitados. Veja como fazer:",
+      "steps": [
+        {
+          "number": "1",
+          "title": "Adicione o Número da Cemig",
+          "content": "Adicione (31) 3506-1160 na sua agenda de contatos."
+        },
+        {
+          "number": "2",
+          "title": "Envie uma Mensagem",
+          "content": "Abra o WhatsApp e envie a mensagem: \"Olá Cemig\" ou \"2 via de conta Cemig\". O assistente virtual irá responder."
+        },
+        {
+          "number": "3",
+          "title": "Identifique-se",
+          "content": "Você precisará informar um dos seguintes dados:\n\n• CPF ou CNPJ (para empresas)\n• Número de Cliente\n• Número da Instalação"
+        },
+        {
+          "number": "4",
+          "title": "Receba sua 2ª Via",
+          "content": "Após a verificação, você receberá a 2ª via em formato PDF pronto para download, além do código PIX para pagamento da conta em aberto.\n\nSe precisar de segunda via de outro mês, basta informar o mês/ano desejado."
+        }
+      ]
+    },
+    {
+      "title": "💰 Como Solicitar Parcelamento Cemig pelo WhatsApp",
+      "content": "Você pode parcelar seus débitos de forma rápida pelo WhatsApp:",
+      "steps": [
+        {
+          "number": "1",
+          "title": "Inicie a Conversa",
+          "content": "Envie \"Olá Cemig\" para o número (31) 3506-1160."
+        },
+        {
+          "number": "2",
+          "title": "Solicite Parcelamento",
+          "content": "Escreva a mensagem: \"Parcelar meus débitos\""
+        },
+        {
+          "number": "3",
+          "title": "Tenha seus Dados em Mão",
+          "content": "Prepare o CPF ou CNPJ do titular. Apenas o titular pode solicitar parcelamento."
+        },
+        {
+          "number": "4",
+          "title": "Escolha o Plano",
+          "content": "O sistema apresentará as faturas em condição de parcelamento e as opções disponíveis. Digite o número referente à opção escolhida."
+        },
+        {
+          "number": "5",
+          "title": "Finalize a Negociação",
+          "content": "Digite o número de declaração de aceite ao plano de pagamento. Você receberá o documento do contrato e o boleto referente à entrada do parcelamento."
+        }
+      ]
+    },
+    {
+      "title": "☎️ Telefone Cemig: Atendimento 24 Horas",
+      "content": "Se preferir falar por telefone, a Cemig oferece atendimento de emergência em todo o estado, 24 horas por dia:",
+      "services": [
+        {
+          "label": "Telefone SAC",
+          "value": "116"
+        },
+        {
+          "label": "Telefone Fora do Estado",
+          "value": "0800 721 0116"
+        },
+        {
+          "label": "Ouvidoria",
+          "value": "0800 723 8007"
+        },
+        {
+          "label": "SMS",
+          "value": "29810"
+        }
+      ]
+    },
+    {
+      "title": "💻 Outros Canais de Atendimento Cemig",
+      "content": "A Cemig disponibiliza múltiplos canais para você escolher o mais conveniente:",
+      "services": [
+        {
+          "label": "Cemig Atende Web",
+          "value": "https://atende.cemig.com.br/Login - Plataforma completa para a maioria dos serviços"
+        },
+        {
+          "label": "App Cemig Atende",
+          "value": "Disponível para Android e iOS"
+        },
+        {
+          "label": "Telegram",
+          "value": "@Cemigbot - Envie 'segunda via' para solicitar sua 2ª via"
+        },
+        {
+          "label": "Agências Físicas",
+          "value": "Visite uma agência presencialmente se necessário"
+        }
+      ]
+    },
+    {
+      "title": "🏢 Agências Cemig em Minas Gerais",
+      "content": "Se preferir atendimento presencial, confira os endereços das principais agências:",
+      "services": [
+        {
+          "label": "Belo Horizonte",
+          "value": "R. Rio de Janeiro, 1144 – Centro – CEP 30160-041 | Horário: 08:00 – 16:30 | Tel: 0800 721 0116"
+        },
+        {
+          "label": "Contagem",
+          "value": "R. Osório de Morais, 281 – Cidade Industrial – CEP 32210-140 | Horário: 08:00 – 16:30 | Tel: 0800 721 0116"
+        }
+      ]
+    },
+    {
+      "title": "❓ FAQ – Perguntas Frequentes",
+      "content": "Tire suas dúvidas sobre os serviços da Cemig:",
+      "services": [
+        {
+          "label": "Qual é o WhatsApp da Cemig?",
+          "value": "(31) 3506-1160 - Número oficial para todos os serviços"
+        },
+        {
+          "label": "Como informar falta de energia?",
+          "value": "Adicione o número da Cemig, envie 'Estou sem luz' e informe seu número de cliente ou instalação"
+        },
+        {
+          "label": "Qual é o telefone SAC Cemig?",
+          "value": "116 (dentro de MG) ou 0800 721 0116 (de fora do estado) - Atendimento 24h"
+        },
+        {
+          "label": "Consigo parcelar meus débitos pelo WhatsApp?",
+          "value": "Sim! Apenas o titular pode solicitar. Envie 'Parcelar meus débitos' para (31) 3506-1160"
+        },
+        {
+          "label": "Como tirar 2ª via pelo Telegram?",
+          "value": "Busque por @cemigbot e envie 'segunda via'. Informe CPF/CNPJ ou número do cliente"
+        },
+        {
+          "label": "Política de Privacidade",
+          "value": "https://www.cemig.com.br/privacidade/"
+        }
+      ]
+    }
+  ],
+  "relatedLinks": [
+    {
+      "text": "Como Economizar Energia Elétrica em Casa",
+      "url": "#"
+    },
+    {
+      "text": "Entenda Sua Conta de Luz",
+      "url": "#"
+    }
+  ]
+}

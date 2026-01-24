@@ -6,7 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const url = require('url');
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 const MIME_TYPES = {
   '.html': 'text/html',
   '.css': 'text/css',
